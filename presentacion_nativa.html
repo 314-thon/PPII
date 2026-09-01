@@ -349,18 +349,21 @@
             
             <div class="grid grid-cols-3 gap-6 w-full pt-6 border-t border-slate-200">
               <div class="liquid-glass rounded-2xl p-6 border border-amber-300 hover:border-amber-500 transition-all flex flex-col items-center text-center shadow-sm">
+                <div class="font-mono text-xs font-bold text-amber-800 mb-1 uppercase">BLOQUE 1 (TEMAS 1 AL 5)</div>
                 <div class="text-2xl md:text-3xl font-black text-slate-900 leading-tight">Araujo<br>Roberto</div>
-                <div class="text-xs text-slate-500 mt-2 font-medium">Concepto, Componentes, Org & DSS (Temas 1-5)</div>
+                <div class="text-xs text-slate-500 mt-2 font-medium">Concepto, Componentes, Org, Tipos & DSS</div>
               </div>
 
               <div class="liquid-glass rounded-2xl p-6 border border-indigo-300 hover:border-indigo-500 transition-all flex flex-col items-center text-center shadow-sm">
+                <div class="font-mono text-xs font-bold text-indigo-800 mb-1 uppercase">BLOQUE 2 (TEMAS 6 AL 10)</div>
                 <div class="text-2xl md:text-3xl font-black text-slate-900 leading-tight">Avilas<br>Martín</div>
-                <div class="text-xs text-slate-500 mt-2 font-medium">EIS, MIS, Matriz, Niveles & DDDM (Temas 6-10)</div>
+                <div class="text-xs text-slate-500 mt-2 font-medium">EIS, MIS, Matriz, 3 Niveles & DDDM</div>
               </div>
 
               <div class="liquid-glass rounded-2xl p-6 border border-emerald-300 hover:border-emerald-500 transition-all flex flex-col items-center text-center shadow-sm">
+                <div class="font-mono text-xs font-bold text-emerald-800 mb-1 uppercase">BLOQUE 3 (TEMAS 11 AL 14)</div>
                 <div class="text-2xl md:text-3xl font-black text-slate-900 leading-tight">Gaitán<br>Evelyn</div>
-                <div class="text-xs text-slate-500 mt-2 font-medium">Datos, FOTF, Caso MELI & Cierre (Temas 11-14)</div>
+                <div class="text-xs text-slate-500 mt-2 font-medium">Datos, FOTF, Caso MELI & Cierre</div>
               </div>
             </div>
           </div>
@@ -386,17 +389,20 @@
         `
       },
 
-      // 3. ¿Qué es un Sistema de Información?
+      // ==========================================
+      // BLOQUE 1: ROBERTO ARAUJO (TEMAS 1 AL 5)
+      // ==========================================
+
+      // 3. ¿Qué es un Sistema de Información? (Tema 1 y 2)
       {
         category: "CONCEPTOS FUNDAMENTALES",
         timing: "ROBERTO ARAUJO",
         title: "¿Qué es un Sistema de Información?",
         speaker: "Araujo Roberto",
         speakerTag: "TEMA 1 & 2 • CONCEPTO Y COMPONENTES",
-        notes: `<p><strong>Definición:</strong> Conjunto ordenado de personas, procesos y herramientas. Explicar los 3 componentes: Equipos, Personas y Datos.</p>`,
+        notes: `<p><strong>Definición & Componentes:</strong> Conjunto ordenado de personas, procesos y herramientas. Explicar los 3 componentes: Equipos, Personas y Datos.</p>`,
         render: () => `
           <div class="grid grid-cols-2 gap-8 h-full items-stretch didactic-grid p-2">
-            <!-- Left: Definicion -->
             <div class="liquid-glass rounded-3xl p-8 flex flex-col justify-center items-center didactic-card border border-amber-300 hover:border-amber-500 text-center cursor-pointer">
               <div class="card-header-block flex flex-col items-center">
                 <h3 class="text-4xl md:text-5xl lg:text-6xl font-black text-slate-900 leading-[1.08] tracking-tight">
@@ -411,7 +417,6 @@
               </div>
             </div>
 
-            <!-- Right: Componentes Principales -->
             <div class="liquid-glass rounded-3xl p-8 flex flex-col justify-center items-center didactic-card border border-indigo-300 hover:border-indigo-500 text-center cursor-pointer">
               <div class="card-header-block flex flex-col items-center">
                 <h3 class="text-4xl md:text-5xl lg:text-6xl font-black text-slate-900 leading-[1.08] tracking-tight">
@@ -437,7 +442,7 @@
         `
       },
 
-      // 4. Ejemplos de Sistemas de Información
+      // 4. Ejemplos de Sistemas de Información (Tema 1)
       {
         category: "CONCEPTOS FUNDAMENTALES",
         timing: "ROBERTO ARAUJO",
@@ -447,7 +452,6 @@
         notes: `<p><strong>Ejemplos:</strong> Control de calidad, Bases de datos de bibliotecas y Hojas de cálculo.</p>`,
         render: () => `
           <div class="grid grid-cols-3 gap-6 h-full items-stretch didactic-grid p-2">
-            <!-- Control de Calidad -->
             <div class="liquid-glass rounded-3xl p-6 flex flex-col justify-center items-center didactic-card border border-amber-300 hover:border-amber-500 text-center cursor-pointer">
               <div class="card-header-block flex flex-col items-center">
                 <h4 class="text-3xl md:text-4xl lg:text-5xl font-black text-slate-900 leading-[1.1]">
@@ -462,7 +466,6 @@
               </div>
             </div>
 
-            <!-- Bases de Datos de Bibliotecas -->
             <div class="liquid-glass rounded-3xl p-6 flex flex-col justify-center items-center didactic-card border border-indigo-300 hover:border-indigo-500 text-center cursor-pointer">
               <div class="card-header-block flex flex-col items-center">
                 <h4 class="text-3xl md:text-4xl lg:text-5xl font-black text-slate-900 leading-[1.1]">
@@ -477,7 +480,6 @@
               </div>
             </div>
 
-            <!-- Hojas de Calculo -->
             <div class="liquid-glass rounded-3xl p-6 flex flex-col justify-center items-center didactic-card border border-emerald-300 hover:border-emerald-500 text-center cursor-pointer">
               <div class="card-header-block flex flex-col items-center">
                 <h4 class="text-3xl md:text-4xl lg:text-5xl font-black text-slate-900 leading-[1.1]">
@@ -495,7 +497,7 @@
         `
       },
 
-      // 5. Sistemas de Información y Organizaciones
+      // 5. Sistemas de Información y Organizaciones (Tema 3)
       {
         category: "GESTIÓN EMPRESARIAL",
         timing: "ROBERTO ARAUJO",
@@ -505,7 +507,6 @@
         notes: `<p><strong>Impacto y Ventajas Clave:</strong> Organización y vinculación de datos en tiempo real, e integración para operar como bloque sólido.</p>`,
         render: () => `
           <div class="grid grid-cols-2 gap-8 h-full items-stretch didactic-grid p-2">
-            <!-- Impacto Operativo -->
             <div class="liquid-glass rounded-3xl p-8 flex flex-col justify-center items-center didactic-card border border-amber-300 hover:border-amber-500 text-center cursor-pointer">
               <div class="card-header-block flex flex-col items-center">
                 <h3 class="text-5xl md:text-6xl lg:text-7xl font-black text-slate-900 leading-[1.05] tracking-tight">
@@ -520,7 +521,6 @@
               </div>
             </div>
 
-            <!-- Ventajas Clave -->
             <div class="liquid-glass rounded-3xl p-8 flex flex-col justify-center items-center didactic-card border border-emerald-300 hover:border-emerald-500 text-center cursor-pointer">
               <div class="card-header-block flex flex-col items-center">
                 <h3 class="text-5xl md:text-6xl lg:text-7xl font-black text-slate-900 leading-[1.05] tracking-tight">
@@ -538,7 +538,7 @@
         `
       },
 
-      // 6. Ventajas de los Sistemas de Información
+      // 6. Ventajas de los Sistemas de Información (Tema 3)
       {
         category: "GESTIÓN EMPRESARIAL",
         timing: "ROBERTO ARAUJO",
@@ -600,111 +600,7 @@
         `
       },
 
-      // 7. LOS 3 niveles de gestión empresarial - 1. Nivel estratégico
-      {
-        category: "NIVELES DE GESTIÓN",
-        timing: "MARTÍN AVILAS",
-        title: "LOS 3 niveles de gestión empresarial — 1. Nivel estratégico",
-        speaker: "Avilas Martín",
-        speakerTag: "TEMA 9 • INFORMACIÓN ESTRATÉGICA",
-        notes: `<p><strong>Nivel Estratégico:</strong> Visión general, objetivos corporativos y dirección general.</p>`,
-        render: () => `
-          <div class="grid grid-cols-12 gap-8 h-full items-center p-2">
-            <div class="col-span-5 flex flex-col items-center justify-center p-4">
-              <div class="w-full max-w-[320px] p-8 md:p-10 rounded-3xl bg-indigo-100 border-2 border-indigo-400 text-center shadow-lg">
-                <h3 class="text-4xl md:text-5xl font-black text-indigo-950 leading-tight">
-                  1.<br>Nivel<br>Estratégico
-                </h3>
-              </div>
-            </div>
-            <div class="col-span-7 flex flex-col justify-center space-y-4">
-              <div class="liquid-glass rounded-2xl p-6 border border-indigo-300 shadow-sm">
-                <p class="text-base md:text-lg text-slate-800 leading-relaxed font-semibold">
-                  Se trata de la <strong class="text-indigo-950">visión que mueve las acciones de la empresa</strong>. Establece los objetivos a cumplir y las líneas maestras para alcanzarlos.
-                </p>
-              </div>
-              <div class="liquid-glass rounded-2xl p-6 border border-indigo-300 shadow-sm">
-                <p class="text-base md:text-lg text-slate-800 leading-relaxed font-semibold">
-                  La dirección juega un <strong class="text-indigo-950">rol principal en la toma de decisiones a la hora de definir la estrategia</strong>, por lo que debe actuar con suma precisión para que toda la organización comprenda su visión.
-                </p>
-              </div>
-            </div>
-          </div>
-        `
-      },
-
-      // 8. LOS 3 niveles de gestión empresarial - 2. Nivel táctico
-      {
-        category: "NIVELES DE GESTIÓN",
-        timing: "MARTÍN AVILAS",
-        title: "LOS 3 niveles de gestión empresarial — 2. Nivel táctico",
-        speaker: "Avilas Martín",
-        speakerTag: "TEMA 9 • INFORMACIÓN TÁCTICA",
-        notes: `<p><strong>Nivel Táctico:</strong> Departamentos, creación de acciones para ejecutar la estrategia y planificación detallada.</p>`,
-        render: () => `
-          <div class="grid grid-cols-12 gap-8 h-full items-center p-2">
-            <div class="col-span-5 flex flex-col items-center justify-center p-4">
-              <div class="w-full max-w-[320px] p-8 md:p-10 rounded-3xl bg-amber-100 border-2 border-amber-400 text-center shadow-lg">
-                <h3 class="text-4xl md:text-5xl font-black text-amber-950 leading-tight">
-                  2.<br>Nivel<br>Táctico
-                </h3>
-              </div>
-            </div>
-            <div class="col-span-7 flex flex-col justify-center space-y-4">
-              <div class="liquid-glass rounded-2xl p-6 border border-amber-300 shadow-sm">
-                <p class="text-base md:text-lg text-slate-800 leading-relaxed font-semibold">
-                  <strong class="text-amber-950">Solo los departamentos</strong> se encargan de desarrollar este nivel.
-                </p>
-              </div>
-              <div class="liquid-glass rounded-2xl p-6 border border-amber-300 shadow-sm">
-                <p class="text-base md:text-lg text-slate-800 leading-relaxed font-semibold">
-                  Se definen los objetivos y se crean las <strong class="text-amber-950">acciones a realizar para hacer realidad la estrategia</strong> de la empresa.
-                </p>
-              </div>
-              <div class="liquid-glass rounded-2xl p-6 border border-amber-300 shadow-sm">
-                <p class="text-base md:text-lg text-slate-800 leading-relaxed font-semibold">
-                  Es un tipo de <strong class="text-amber-950">planificación específica</strong> y que atiende en profundidad a los detalles.
-                </p>
-              </div>
-            </div>
-          </div>
-        `
-      },
-
-      // 9. LOS 3 niveles de gestión empresarial - 3. Nivel operativo
-      {
-        category: "NIVELES DE GESTIÓN",
-        timing: "MARTÍN AVILAS",
-        title: "LOS 3 niveles de gestión empresarial — 3. Nivel operativo",
-        speaker: "Avilas Martín",
-        speakerTag: "TEMA 9 • INFORMACIÓN OPERATIVA",
-        notes: `<p><strong>Nivel Operativo:</strong> Agentes ejecutores de acciones tácticas, corta duración y rol de todos.</p>`,
-        render: () => `
-          <div class="grid grid-cols-12 gap-8 h-full items-center p-2">
-            <div class="col-span-5 flex flex-col items-center justify-center p-4">
-              <div class="w-full max-w-[320px] p-8 md:p-10 rounded-3xl bg-sky-100 border-2 border-sky-400 text-center shadow-lg">
-                <h3 class="text-4xl md:text-5xl font-black text-sky-950 leading-tight">
-                  3.<br>Nivel<br>Operativo
-                </h3>
-              </div>
-            </div>
-            <div class="col-span-7 flex flex-col justify-center space-y-4">
-              <div class="liquid-glass rounded-2xl p-6 border border-sky-300 shadow-sm">
-                <p class="text-base md:text-lg text-slate-800 leading-relaxed font-semibold">
-                  En este último nivel aparecen los <strong class="text-sky-950">agentes encargados de ejecutar las acciones</strong> desarrolladas en el nivel táctico.
-                </p>
-              </div>
-              <div class="liquid-glass rounded-2xl p-6 border border-sky-300 shadow-sm">
-                <p class="text-base md:text-lg text-slate-800 leading-relaxed font-semibold">
-                  Realizan <strong class="text-sky-950">acciones de corta duración</strong> y todos en la empresa tienen un rol que desempeñar en este nivel.
-                </p>
-              </div>
-            </div>
-          </div>
-        `
-      },
-
-      // 10. Ventajas Estratégicas y Organizacionales
+      // 7. Ventajas Estratégicas y Organizacionales (Tema 3)
       {
         category: "GESTIÓN EMPRESARIAL",
         timing: "ROBERTO ARAUJO",
@@ -716,7 +612,7 @@
           <div class="grid grid-cols-3 gap-4 h-full items-stretch didactic-grid p-2">
             <div class="liquid-glass rounded-2xl p-5 flex flex-col justify-center items-center didactic-card border border-amber-300 hover:border-amber-500 text-center cursor-pointer">
               <div class="card-header-block">
-                <h5 class="text-2xl md:text-3xl font-black text-slate-900 leading-tight">Automati<br>zación</h5>
+                <h5 class="text-2xl font-black text-slate-900">Automatización</h5>
               </div>
               <div class="hover-details w-full pt-2">
                 <p class="text-xs md:text-sm text-slate-700 font-medium">Reducción de carga manual y mayor eficiencia.</p>
@@ -724,7 +620,7 @@
             </div>
             <div class="liquid-glass rounded-2xl p-5 flex flex-col justify-center items-center didactic-card border border-indigo-300 hover:border-indigo-500 text-center cursor-pointer">
               <div class="card-header-block">
-                <h5 class="text-2xl md:text-3xl font-black text-slate-900 leading-tight">Recursos<br>Humanos</h5>
+                <h5 class="text-2xl font-black text-slate-900 leading-tight">Recursos<br>Humanos</h5>
               </div>
               <div class="hover-details w-full pt-2">
                 <p class="text-xs md:text-sm text-slate-700 font-medium">Nómina, desempeño y satisfacción del personal.</p>
@@ -732,7 +628,7 @@
             </div>
             <div class="liquid-glass rounded-2xl p-5 flex flex-col justify-center items-center didactic-card border border-emerald-300 hover:border-emerald-500 text-center cursor-pointer">
               <div class="card-header-block">
-                <h5 class="text-2xl md:text-3xl font-black text-slate-900 leading-tight">Innovación<br>& I+D</h5>
+                <h5 class="text-2xl font-black text-slate-900 leading-tight">Innovación<br>& I+D</h5>
               </div>
               <div class="hover-details w-full pt-2">
                 <p class="text-xs md:text-sm text-slate-700 font-medium">Plataformas de experimentación tecnológica.</p>
@@ -740,7 +636,7 @@
             </div>
             <div class="liquid-glass rounded-2xl p-5 flex flex-col justify-center items-center didactic-card border border-yellow-300 hover:border-yellow-500 text-center cursor-pointer">
               <div class="card-header-block">
-                <h5 class="text-2xl md:text-3xl font-black text-slate-900 leading-tight">Seguimiento<br>Financiero</h5>
+                <h5 class="text-2xl font-black text-slate-900 leading-tight">Seguimiento<br>Financiero</h5>
               </div>
               <div class="hover-details w-full pt-2">
                 <p class="text-xs md:text-sm text-slate-700 font-medium">Gestión contable, facturación y previsión sólida.</p>
@@ -748,7 +644,7 @@
             </div>
             <div class="liquid-glass rounded-2xl p-5 flex flex-col justify-center items-center didactic-card border border-sky-300 hover:border-sky-500 text-center cursor-pointer">
               <div class="card-header-block">
-                <h5 class="text-2xl md:text-3xl font-black text-slate-900 leading-tight">Adaptación<br>al Mercado</h5>
+                <h5 class="text-2xl font-black text-slate-900 leading-tight">Adaptación<br>al Mercado</h5>
               </div>
               <div class="hover-details w-full pt-2">
                 <p class="text-xs md:text-sm text-slate-700 font-medium">Análisis dinámico de tendencias y competencia.</p>
@@ -756,7 +652,7 @@
             </div>
             <div class="liquid-glass rounded-2xl p-5 flex flex-col justify-center items-center didactic-card border border-slate-300 text-center">
               <div class="card-header-block">
-                <h5 class="text-2xl md:text-3xl font-black text-slate-900 leading-tight">Alineación<br>Global</h5>
+                <h5 class="text-2xl font-black text-slate-900 leading-tight">Alineación<br>Global</h5>
               </div>
               <div class="hover-details w-full pt-2">
                 <p class="text-xs md:text-sm text-slate-700 font-medium">Coordinación multinivel en tiempo real.</p>
@@ -766,7 +662,7 @@
         `
       },
 
-      // 11. Tipos de Sistemas de Información (1/2)
+      // 8. Tipos de Sistemas de Información (1/2) (Tema 4)
       {
         category: "TAXONOMÍA DE SISTEMAS",
         timing: "ROBERTO ARAUJO",
@@ -792,7 +688,7 @@
         `
       },
 
-      // 12. Tipos de Sistemas de Información (2/2)
+      // 9. Tipos de Sistemas de Información (2/2) (Tema 4)
       {
         category: "TAXONOMÍA DE SISTEMAS",
         timing: "ROBERTO ARAUJO",
@@ -817,111 +713,39 @@
         `
       },
 
-      // 13. Sistemas de información gerencial (MIS)
+      // 10. Sistemas de Soporte de Decisiones (DSS) (Tema 5)
       {
-        category: "SISTEMAS MIS",
-        timing: "MARTÍN AVILAS",
-        title: "Sistemas de información gerencial (MIS)",
-        speaker: "Avilas Martín",
-        speakerTag: "TEMA 7 • SISTEMAS GERENCIALES (MIS)",
-        notes: `<p><strong>MIS:</strong> Herramientas tecnológicas y procedimientos organizados para información estructurada a nivel táctico/gerencial.</p>`,
+        category: "APOYO A DECISIONES (DSS)",
+        timing: "ROBERTO ARAUJO",
+        title: "Sistemas de Soporte de Decisiones (DSS)",
+        speaker: "Araujo Roberto",
+        speakerTag: "TEMA 5 • APOYO A DECISIONES (DSS)",
+        notes: `<p><strong>Apoyo a Decisiones (DSS):</strong> Sistemas interactivos que analizan grandes volúmenes de datos para evaluar incertidumbres, ventajas y desventajas.</p>`,
         render: () => `
           <div class="flex-1 flex flex-col justify-center items-center max-w-4xl mx-auto space-y-6 text-center">
-            <div class="liquid-glass rounded-3xl p-8 border border-amber-300 w-full shadow-md">
-              <p class="text-2xl md:text-3xl font-black text-slate-900 leading-snug">
-                Son un conjunto de herramientas tecnológicas, de software y de procedimientos organizados
-              </p>
+            <div class="liquid-glass rounded-3xl p-8 border border-indigo-300 w-full shadow-md">
+              <h3 class="text-4xl md:text-5xl font-black text-slate-900 leading-tight">
+                Sistemas de Soporte<br>de Decisiones (DSS)
+              </h3>
             </div>
-            <div class="liquid-glass rounded-3xl p-8 md:p-10 border-2 border-amber-400 w-full shadow-lg">
+            <div class="liquid-glass rounded-3xl p-8 md:p-10 border-2 border-indigo-400 w-full shadow-lg">
+              <img src="assets/images/nobg/dss_simulation_nobg.png" alt="DSS" class="w-full max-h-48 object-contain drop-shadow-xl mx-auto mb-4"/>
               <p class="text-base md:text-xl text-slate-800 leading-relaxed font-semibold">
-                <strong>Función principal:</strong> <span class="text-amber-950 font-black">recopilar, procesar, resumir y presentar información estructurada</span> para apoyar las actividades de gestión, control y toma de decisiones a nivel táctico o gerencial dentro de una organización.
+                Sistemas interactivos que analizan grandes volúmenes de datos para evaluar <span class="text-indigo-950 font-black">incertidumbres, ventajas y desventajas</span>, apoyando la gestión operativa y de planificación gerencial.
               </p>
             </div>
           </div>
         `
       },
 
-      // 14. Sistemas de información gerencial (MIS) - Apoyo a la gestión
-      {
-        category: "SISTEMAS MIS",
-        timing: "MARTÍN AVILAS",
-        title: "Sistemas de información gerencial (MIS) — Apoyo a la Gestión",
-        speaker: "Avilas Martín",
-        speakerTag: "TEMA 7 • REPORTES Y CONTROL MIS",
-        notes: `<p><strong>Apoyo MIS:</strong> Informes periódicos, comparación real vs planificado/objetivos, acceso a bases históricas.</p>`,
-        render: () => `
-          <div class="flex-1 flex flex-col justify-center max-w-4xl mx-auto space-y-4">
-            <h4 class="text-xl font-black text-slate-900 text-center mb-2">Estos sistemas apoyan la gestión empresarial mediante:</h4>
-            <div class="liquid-glass rounded-2xl p-5 border border-amber-300 shadow-sm flex items-start gap-4">
-              <p class="text-base md:text-lg font-semibold text-slate-800">
-                • <strong>Generación automatizada de informes periódicos</strong> sobre el estado financiero, ventas, inventarios y recursos humanos.
-              </p>
-            </div>
-            <div class="liquid-glass rounded-2xl p-5 border border-amber-300 shadow-sm flex items-start gap-4">
-              <p class="text-base md:text-lg font-semibold text-slate-800">
-                • <strong>Comparación entre los resultados reales planificados y los objetivos presupuestados</strong> para facilitar el control de gestión.
-              </p>
-            </div>
-            <div class="liquid-glass rounded-2xl p-5 border border-amber-300 shadow-sm flex items-start gap-4">
-              <p class="text-base md:text-lg font-semibold text-slate-800">
-                • <strong>Acceso estructurado a bases de datos históricas</strong> para identificar patrones de rendimiento y tendencias internas.
-              </p>
-            </div>
-          </div>
-        `
-      },
-
-      // 15. Sistemas de Gestión (MIS) y Soporte (DSS)
-      {
-        category: "COMPARACIÓN MIS VS DSS",
-        timing: "ROBERTO ARAUJO",
-        title: "Sistemas de Gestión (MIS) y Soporte (DSS)",
-        speaker: "Araujo Roberto",
-        speakerTag: "TEMA 5 • GESTIÓN (MIS) Y SOPORTE (DSS)",
-        notes: `<p><strong>Gestión (MIS) vs Decisión (DSS):</strong> Datos normativos y contables vs análisis interactivo de incertidumbre y ventajas.</p>`,
-        render: () => `
-          <div class="grid grid-cols-2 gap-8 h-full items-stretch didactic-grid p-2">
-            <!-- Gestión MIS -->
-            <div class="liquid-glass rounded-3xl p-8 flex flex-col justify-center items-center didactic-card border border-amber-300 hover:border-amber-500 text-center cursor-pointer">
-              <div class="card-header-block flex flex-col items-center">
-                <h3 class="text-5xl md:text-6xl font-black text-slate-900 leading-[1.08] tracking-tight">
-                  Gestión<br>(MIS)
-                </h3>
-              </div>
-              <div class="hover-details w-full pt-2">
-                <img src="assets/images/nobg/mis_dashboard_nobg.png" alt="MIS" class="w-full max-h-48 object-contain drop-shadow-xl mx-auto mb-3"/>
-                <p class="text-sm md:text-base text-slate-700 leading-relaxed font-medium">
-                  Herramientas técnicas y organizativas para recoger, almacenar y procesar datos normativos y contables. Convierte la información entrante en reportes analíticos para ajustar objetivos y planificar.
-                </p>
-              </div>
-            </div>
-
-            <!-- Soporte DSS -->
-            <div class="liquid-glass rounded-3xl p-8 flex flex-col justify-center items-center didactic-card border border-indigo-300 hover:border-indigo-500 text-center cursor-pointer">
-              <div class="card-header-block flex flex-col items-center">
-                <h3 class="text-5xl md:text-6xl font-black text-slate-900 leading-[1.08] tracking-tight">
-                  Apoyo a<br>Decisiones<br>(DSS)
-                </h3>
-              </div>
-              <div class="hover-details w-full pt-2">
-                <img src="assets/images/nobg/dss_simulation_nobg.png" alt="DSS" class="w-full max-h-48 object-contain drop-shadow-xl mx-auto mb-3"/>
-                <p class="text-sm md:text-base text-slate-700 leading-relaxed font-medium">
-                  Sistemas interactivos que analizan grandes volúmenes de datos para evaluar incertidumbres, ventajas y desventajas, apoyando la gestión operativa y de planificación gerencial.
-                </p>
-              </div>
-            </div>
-          </div>
-        `
-      },
-
-      // 16. Categorías de Sistemas DSS (Daniel J. Power)
+      // 11. Categorías de Sistemas DSS (Daniel J. Power) (Tema 5)
       {
         category: "TAXONOMÍA POWER",
         timing: "ROBERTO ARAUJO",
         title: "Categorías de Sistemas DSS (Daniel J. Power)",
         speaker: "Araujo Roberto",
-        speakerTag: "TEMA 5 • SISTEMAS DE APOYO A DECISIONES (DSS)",
-        notes: `<p><strong>Taxonomía Power:</strong> Basados en Datos, Modelos, Conocimiento, Documentos y Grupo (GDSS).</p>`,
+        speakerTag: "TEMA 5 • CATEGORÍAS DSS POWER",
+        notes: `<p><strong>Taxonomía Power:</strong> Basados en Datos, Modelos, Conocimiento, Documentos y Grupo (GDSS).<br><strong>Pase de palabra a Martín Avilas para el Bloque 2.</strong></p>`,
         render: () => `
           <div class="grid grid-cols-5 gap-3.5 h-full items-stretch didactic-grid p-2">
             <div class="liquid-glass rounded-2xl p-4 flex flex-col justify-center items-center didactic-card border border-amber-300 hover:border-amber-500 text-center cursor-pointer">
@@ -973,7 +797,11 @@
         `
       },
 
-      // 17. Sistemas de información ejecutiva (EIS/ESS)
+      // ==========================================
+      // BLOQUE 2: MARTÍN AVILAS (TEMAS 6 AL 10)
+      // ==========================================
+
+      // 12. Sistemas de información ejecutiva (EIS/ESS) (Tema 6)
       {
         category: "SISTEMAS EJECUTIVOS",
         timing: "MARTÍN AVILAS",
@@ -997,7 +825,7 @@
         `
       },
 
-      // 18. Sistemas de información ejecutiva (EIS/ESS) - Funciones Clave
+      // 13. Sistemas de información ejecutiva (EIS/ESS) — Funciones Clave (Tema 6)
       {
         category: "SISTEMAS EJECUTIVOS",
         timing: "MARTÍN AVILAS",
@@ -1047,7 +875,61 @@
         `
       },
 
-      // 19. Diferencia entre MIS, DSS y EIS
+      // 14. Sistemas de información gerencial (MIS) (Tema 7)
+      {
+        category: "SISTEMAS MIS",
+        timing: "MARTÍN AVILAS",
+        title: "Sistemas de información gerencial (MIS)",
+        speaker: "Avilas Martín",
+        speakerTag: "TEMA 7 • SISTEMAS GERENCIALES (MIS)",
+        notes: `<p><strong>MIS:</strong> Herramientas tecnológicas y procedimientos organizados para información estructurada a nivel táctico/gerencial.</p>`,
+        render: () => `
+          <div class="flex-1 flex flex-col justify-center items-center max-w-4xl mx-auto space-y-6 text-center">
+            <div class="liquid-glass rounded-3xl p-8 border border-amber-300 w-full shadow-md">
+              <p class="text-2xl md:text-3xl font-black text-slate-900 leading-snug">
+                Son un conjunto de herramientas tecnológicas, de software y de procedimientos organizados
+              </p>
+            </div>
+            <div class="liquid-glass rounded-3xl p-8 md:p-10 border-2 border-amber-400 w-full shadow-lg">
+              <p class="text-base md:text-xl text-slate-800 leading-relaxed font-semibold">
+                <strong>Función principal:</strong> <span class="text-amber-950 font-black">recopilar, procesar, resumir y presentar información estructurada</span> para apoyar las actividades de gestión, control y toma de decisiones a nivel táctico o gerencial dentro de una organización.
+              </p>
+            </div>
+          </div>
+        `
+      },
+
+      // 15. Sistemas de información gerencial (MIS) — Apoyo a la Gestión (Tema 7)
+      {
+        category: "SISTEMAS MIS",
+        timing: "MARTÍN AVILAS",
+        title: "Sistemas de información gerencial (MIS) — Apoyo a la Gestión",
+        speaker: "Avilas Martín",
+        speakerTag: "TEMA 7 • REPORTES Y CONTROL MIS",
+        notes: `<p><strong>Apoyo MIS:</strong> Informes periódicos, comparación real vs planificado/objetivos, acceso a bases históricas.</p>`,
+        render: () => `
+          <div class="flex-1 flex flex-col justify-center max-w-4xl mx-auto space-y-4">
+            <h4 class="text-xl font-black text-slate-900 text-center mb-2">Estos sistemas apoyan la gestión empresarial mediante:</h4>
+            <div class="liquid-glass rounded-2xl p-5 border border-amber-300 shadow-sm flex items-start gap-4">
+              <p class="text-base md:text-lg font-semibold text-slate-800">
+                • <strong>Generación automatizada de informes periódicos</strong> sobre el estado financiero, ventas, inventarios y recursos humanos.
+              </p>
+            </div>
+            <div class="liquid-glass rounded-2xl p-5 border border-amber-300 shadow-sm flex items-start gap-4">
+              <p class="text-base md:text-lg font-semibold text-slate-800">
+                • <strong>Comparación entre los resultados reales planificados y los objetivos presupuestados</strong> para facilitar el control de gestión.
+              </p>
+            </div>
+            <div class="liquid-glass rounded-2xl p-5 border border-amber-300 shadow-sm flex items-start gap-4">
+              <p class="text-base md:text-lg font-semibold text-slate-800">
+                • <strong>Acceso estructurado a bases de datos históricas</strong> para identificar patrones de rendimiento y tendencias internas.
+              </p>
+            </div>
+          </div>
+        `
+      },
+
+      // 16. Diferencia entre MIS, DSS y EIS (Tema 8)
       {
         category: "MATRIZ COMPARATIVA",
         timing: "MARTÍN AVILAS",
@@ -1105,14 +987,118 @@
         `
       },
 
-      // 20. Toma de decisiones basada en datos (DDDM)
+      // 17. LOS 3 niveles de gestión empresarial — 1. Nivel estratégico (Tema 9)
+      {
+        category: "NIVELES DE GESTIÓN",
+        timing: "MARTÍN AVILAS",
+        title: "LOS 3 niveles de gestión empresarial — 1. Nivel estratégico",
+        speaker: "Avilas Martín",
+        speakerTag: "TEMA 9 • INFORMACIÓN ESTRATÉGICA",
+        notes: `<p><strong>Nivel Estratégico:</strong> Visión general, objetivos corporativos y dirección general.</p>`,
+        render: () => `
+          <div class="grid grid-cols-12 gap-8 h-full items-center p-2">
+            <div class="col-span-5 flex flex-col items-center justify-center p-4">
+              <div class="w-full max-w-[320px] p-8 md:p-10 rounded-3xl bg-indigo-100 border-2 border-indigo-400 text-center shadow-lg">
+                <h3 class="text-4xl md:text-5xl font-black text-indigo-950 leading-tight">
+                  1.<br>Nivel<br>Estratégico
+                </h3>
+              </div>
+            </div>
+            <div class="col-span-7 flex flex-col justify-center space-y-4">
+              <div class="liquid-glass rounded-2xl p-6 border border-indigo-300 shadow-sm">
+                <p class="text-base md:text-lg text-slate-800 leading-relaxed font-semibold">
+                  Se trata de la <strong class="text-indigo-950">visión que mueve las acciones de la empresa</strong>. Establece los objetivos a cumplir y las líneas maestras para alcanzarlos.
+                </p>
+              </div>
+              <div class="liquid-glass rounded-2xl p-6 border border-indigo-300 shadow-sm">
+                <p class="text-base md:text-lg text-slate-800 leading-relaxed font-semibold">
+                  La dirección juega un <strong class="text-indigo-950">rol principal en la toma de decisiones a la hora de definir la estrategia</strong>, por lo que debe actuar con suma precisión para que toda la organización comprenda su visión.
+                </p>
+              </div>
+            </div>
+          </div>
+        `
+      },
+
+      // 18. LOS 3 niveles de gestión empresarial — 2. Nivel táctico (Tema 9)
+      {
+        category: "NIVELES DE GESTIÓN",
+        timing: "MARTÍN AVILAS",
+        title: "LOS 3 niveles de gestión empresarial — 2. Nivel táctico",
+        speaker: "Avilas Martín",
+        speakerTag: "TEMA 9 • INFORMACIÓN TÁCTICA",
+        notes: `<p><strong>Nivel Táctico:</strong> Departamentos, creación de acciones para ejecutar la estrategia y planificación detallada.</p>`,
+        render: () => `
+          <div class="grid grid-cols-12 gap-8 h-full items-center p-2">
+            <div class="col-span-5 flex flex-col items-center justify-center p-4">
+              <div class="w-full max-w-[320px] p-8 md:p-10 rounded-3xl bg-amber-100 border-2 border-amber-400 text-center shadow-lg">
+                <h3 class="text-4xl md:text-5xl font-black text-amber-950 leading-tight">
+                  2.<br>Nivel<br>Táctico
+                </h3>
+              </div>
+            </div>
+            <div class="col-span-7 flex flex-col justify-center space-y-4">
+              <div class="liquid-glass rounded-2xl p-6 border border-amber-300 shadow-sm">
+                <p class="text-base md:text-lg text-slate-800 leading-relaxed font-semibold">
+                  <strong class="text-amber-950">Solo los departamentos</strong> se encargan de desarrollar este nivel.
+                </p>
+              </div>
+              <div class="liquid-glass rounded-2xl p-6 border border-amber-300 shadow-sm">
+                <p class="text-base md:text-lg text-slate-800 leading-relaxed font-semibold">
+                  Se definen los objetivos y se crean las <strong class="text-amber-950">acciones a realizar para hacer realidad la estrategia</strong> de la empresa.
+                </p>
+              </div>
+              <div class="liquid-glass rounded-2xl p-6 border border-amber-300 shadow-sm">
+                <p class="text-base md:text-lg text-slate-800 leading-relaxed font-semibold">
+                  Es un tipo de <strong class="text-amber-950">planificación específica</strong> y que atiende en profundidad a los detalles.
+                </p>
+              </div>
+            </div>
+          </div>
+        `
+      },
+
+      // 19. LOS 3 niveles de gestión empresarial — 3. Nivel operativo (Tema 9)
+      {
+        category: "NIVELES DE GESTIÓN",
+        timing: "MARTÍN AVILAS",
+        title: "LOS 3 niveles de gestión empresarial — 3. Nivel operativo",
+        speaker: "Avilas Martín",
+        speakerTag: "TEMA 9 • INFORMACIÓN OPERATIVA",
+        notes: `<p><strong>Nivel Operativo:</strong> Agentes ejecutores de acciones tácticas, corta duración y rol de todos.</p>`,
+        render: () => `
+          <div class="grid grid-cols-12 gap-8 h-full items-center p-2">
+            <div class="col-span-5 flex flex-col items-center justify-center p-4">
+              <div class="w-full max-w-[320px] p-8 md:p-10 rounded-3xl bg-sky-100 border-2 border-sky-400 text-center shadow-lg">
+                <h3 class="text-4xl md:text-5xl font-black text-sky-950 leading-tight">
+                  3.<br>Nivel<br>Operativo
+                </h3>
+              </div>
+            </div>
+            <div class="col-span-7 flex flex-col justify-center space-y-4">
+              <div class="liquid-glass rounded-2xl p-6 border border-sky-300 shadow-sm">
+                <p class="text-base md:text-lg text-slate-800 leading-relaxed font-semibold">
+                  En este último nivel aparecen los <strong class="text-sky-950">agentes encargados de ejecutar las acciones</strong> desarrolladas en el nivel táctico.
+                </p>
+              </div>
+              <div class="liquid-glass rounded-2xl p-6 border border-sky-300 shadow-sm">
+                <p class="text-base md:text-lg text-slate-800 leading-relaxed font-semibold">
+                  Realizan <strong class="text-sky-950">acciones de corta duración</strong> y todos en la empresa tienen un rol que desempeñar en este nivel.
+                </p>
+              </div>
+            </div>
+          </div>
+        `
+      },
+
+      // 20. Toma de decisiones basada en datos (DDDM) (Tema 10)
       {
         category: "METODOLOGÍA ANALÍTICA",
         timing: "MARTÍN AVILAS",
         title: "Toma de decisiones basada en datos (DDDM)",
         speaker: "Avilas Martín",
         speakerTag: "TEMA 10 • DECISIONES BASADAS EN DATOS (DDDM)",
-        notes: `<p><strong>DDDM:</strong> Énfasis en datos y análisis en lugar de intuición. Fuentes de datos múltiples e interpretación para alinear metas.</p>`,
+        notes: `<p><strong>DDDM:</strong> Énfasis en datos y análisis en lugar de intuición. Fuentes de datos múltiples e interpretación para alinear metas.<br><strong>Pase de palabra a Evelyn Gaitán para el Bloque 3.</strong></p>`,
         render: () => `
           <div class="flex-1 flex flex-col justify-center max-w-4xl mx-auto space-y-4">
             <div class="liquid-glass rounded-2xl p-6 border border-amber-300 shadow-sm">
@@ -1134,7 +1120,11 @@
         `
       },
 
-      // 21. Caso de Estudio: Mercado Libre (MELI)
+      // ==========================================
+      // BLOQUE 3: EVELYN GAITÁN (TEMAS 11 AL 14 + CIERRE)
+      // ==========================================
+
+      // 21. Caso de Estudio: Mercado Libre (MELI) (Tema 13 y 14)
       {
         category: "CASO DE ESTUDIO",
         timing: "EVELYN GAITÁN",
@@ -1155,7 +1145,7 @@
         `
       },
 
-      // 22. Mercado Libre: Desafíos Operativos (Contexto y Unidades)
+      // 22. Mercado Libre: Desafíos Operativos — Contexto y Unidades (Tema 14)
       {
         category: "CASO MERCADO LIBRE",
         timing: "EVELYN GAITÁN",
@@ -1185,7 +1175,7 @@
         `
       },
 
-      // 23. Mercado Libre: Desafíos Operativos (Problemas Críticos a Resolver)
+      // 23. Mercado Libre: Desafíos Operativos — Problemas Críticos a Resolver (Tema 14)
       {
         category: "CASO MERCADO LIBRE",
         timing: "EVELYN GAITÁN",
@@ -1215,7 +1205,7 @@
         `
       },
 
-      // 24. Integración Tecnológica en MELI
+      // 24. Integración Tecnológica en MELI (Tema 13 y 14)
       {
         category: "CASO MERCADO LIBRE",
         timing: "EVELYN GAITÁN",
@@ -1225,7 +1215,6 @@
         notes: `<p><strong>Integración:</strong> MIS (operaciones diarias, GMV, SLAs), DSS (IA riesgo y logística predictiva), EIS (tableros C-Level en USD).</p>`,
         render: () => `
           <div class="grid grid-cols-3 gap-6 h-full items-stretch didactic-grid p-2">
-            <!-- MIS -->
             <div class="liquid-glass rounded-3xl p-6 flex flex-col justify-center items-center didactic-card border border-blue-300 hover:border-blue-500 text-center cursor-pointer">
               <div class="card-header-block">
                 <h4 class="text-3xl md:text-4xl font-black text-slate-900 leading-tight">Sistemas<br>MIS<br>(Gerencial)</h4>
@@ -1238,7 +1227,6 @@
               </div>
             </div>
 
-            <!-- DSS -->
             <div class="liquid-glass rounded-3xl p-6 flex flex-col justify-center items-center didactic-card border border-amber-300 hover:border-amber-500 text-center cursor-pointer">
               <div class="card-header-block">
                 <h4 class="text-3xl md:text-4xl font-black text-slate-900 leading-tight">Sistemas<br>DSS<br>(Analítico)</h4>
@@ -1251,7 +1239,6 @@
               </div>
             </div>
 
-            <!-- EIS -->
             <div class="liquid-glass rounded-3xl p-6 flex flex-col justify-center items-center didactic-card border border-emerald-300 hover:border-emerald-500 text-center cursor-pointer">
               <div class="card-header-block">
                 <h4 class="text-3xl md:text-4xl font-black text-slate-900 leading-tight">Sistemas<br>EIS<br>(Ejecutivo)</h4>
@@ -1267,7 +1254,7 @@
         `
       },
 
-      // 25. Lecciones del Caso Mercado Libre
+      // 25. Lecciones del Caso Mercado Libre (Tema 11)
       {
         category: "ANÁLISIS CRÍTICO",
         timing: "EVELYN GAITÁN",
@@ -1277,7 +1264,6 @@
         notes: `<p><strong>2 Lecciones:</strong> Calidad de Datos (Garbage In, Garbage Out) y Madurez Organizacional.</p>`,
         render: () => `
           <div class="grid grid-cols-2 gap-8 h-full items-stretch didactic-grid p-2">
-            <!-- Calidad de Datos -->
             <div class="liquid-glass rounded-3xl p-8 flex flex-col justify-center items-center didactic-card border border-rose-300 hover:border-rose-500 text-center cursor-pointer">
               <div class="card-header-block flex flex-col items-center">
                 <h3 class="text-4xl md:text-5xl lg:text-6xl font-black text-slate-900 leading-[1.08] tracking-tight">
@@ -1292,7 +1278,6 @@
               </div>
             </div>
 
-            <!-- Madurez Organizacional -->
             <div class="liquid-glass rounded-3xl p-8 flex flex-col justify-center items-center didactic-card border border-amber-300 hover:border-amber-500 text-center cursor-pointer">
               <div class="card-header-block flex flex-col items-center">
                 <h3 class="text-4xl md:text-5xl lg:text-6xl font-black text-slate-900 leading-[1.08] tracking-tight">
@@ -1310,7 +1295,7 @@
         `
       },
 
-      // 26. Análisis Crítico (FOTF)
+      // 26. Análisis Crítico (FOTF) (Tema 12)
       {
         category: "ANÁLISIS CRÍTICO",
         timing: "EVELYN GAITÁN",
@@ -1320,7 +1305,6 @@
         notes: `<p><strong>FOTF:</strong> Fortalezas, Oportunidades, Debilidades y Amenazas de los sistemas de información.</p>`,
         render: () => `
           <div class="grid grid-cols-2 gap-8 h-full items-stretch didactic-grid p-2">
-            <!-- Fortalezas y Debilidades -->
             <div class="liquid-glass rounded-3xl p-8 flex flex-col justify-center items-center didactic-card border border-amber-300 text-center">
               <div class="card-header-block">
                 <h4 class="text-4xl md:text-5xl font-black text-slate-900 leading-tight mb-2">Fortalezas<br>& Debilidades</h4>
@@ -1335,7 +1319,6 @@
               </div>
             </div>
 
-            <!-- Oportunidades y Amenazas -->
             <div class="liquid-glass rounded-3xl p-8 flex flex-col justify-center items-center didactic-card border border-indigo-300 text-center">
               <div class="card-header-block">
                 <h4 class="text-4xl md:text-5xl font-black text-slate-900 leading-tight mb-2">Oportunidades<br>& Amenazas</h4>
@@ -1353,7 +1336,7 @@
         `
       },
 
-      // 27. Posibles Tendencias Futuras en los Sistemas de Información
+      // 27. Posibles Tendencias Futuras en los Sistemas de Información (Tema 11 y 13)
       {
         category: "FUTURO & TENDENCIAS",
         timing: "EVELYN GAITÁN",
@@ -1382,7 +1365,7 @@
         `
       },
 
-      // 28. Conclusión y Pregunta Orientadora
+      // 28. Conclusión y Pregunta Orientadora (Cierre)
       {
         category: "SÍNTESIS Y CIERRE",
         timing: "EVELYN GAITÁN",
