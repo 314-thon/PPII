@@ -353,6 +353,107 @@
 
   <!-- SLIDES DATA & INTERACTIVE LOGIC -->
   <script>
+    // CLEAN SPOTLIGHT DICTIONARY (ZERO ESCAPING BUGS)
+    const cardSpotlights = {
+      // Slide 3
+      's3_c1': {
+        title: 'Sistema de Información',
+        img: 'assets/images/overview_systems.jpg',
+        body: '<p>Un sistema de información es un <strong class="text-amber-950 font-black">conjunto ordenado de personas, procesos y herramientas</strong> para administrar, recuperar y procesar datos con un fin común.</p>'
+      },
+      's3_c2': {
+        title: 'Componentes Principales',
+        img: 'assets/images/cloud_architecture.jpg',
+        body: '<div class="space-y-3 text-left w-full max-w-xl mx-auto"><div class="p-3.5 rounded-2xl bg-white/95 border border-slate-200 text-sm md:text-base"><strong class="text-slate-900 font-bold">Equipos:</strong> Elementos tecnológicos físicos o virtuales (hardware, servidores, software, bases de datos y redes).</div><div class="p-3.5 rounded-2xl bg-white/95 border border-slate-200 text-sm md:text-base"><strong class="text-slate-900 font-bold">Personas:</strong> Individuos que ingresan, operan, administran y toman decisiones con los datos.</div><div class="p-3.5 rounded-2xl bg-white/95 border border-slate-200 text-sm md:text-base"><strong class="text-slate-900 font-bold">Datos:</strong> Registros e información estructurada y no estructurada procesada por el sistema.</div></div>'
+      },
+
+      // Slide 4
+      's4_c1': {
+        title: 'Control de Calidad',
+        img: 'assets/images/data_governance.jpg',
+        body: '<p>Sistemas que solicitan retroalimentación al cliente y evalúan resultados estadísticamente para elaborar informes orientados a la gerencia.</p>'
+      },
+      's4_c2': {
+        title: 'Bases de Datos de Bibliotecas',
+        img: 'assets/images/academic_library.jpg',
+        body: '<p>Sistemas que contienen un gran volumen de documentos (libros, revistas, tesis) para ubicar y recuperar registros precisa y rápidamente.</p>'
+      },
+      's4_c3': {
+        title: 'Hojas de Cálculo',
+        img: 'assets/images/mis_dashboard.jpg',
+        body: '<p>Sistemas en los que se ingresa información en bruto para organizarla de manera cuantificable y obtener directrices financieras.</p>'
+      },
+
+      // Slide 5
+      's5_c1': {
+        title: 'Impacto Operativo',
+        img: 'assets/images/overview_systems.jpg',
+        body: '<p>Permiten a las empresas organizar y vincular datos de diferentes áreas. Los trabajadores pueden localizar información de alto valor en tiempo real desde una sola plataforma para captar, almacenar y analizar datos.</p>'
+      },
+      's5_c2': {
+        title: 'Ventajas Clave',
+        img: 'assets/images/meli_logistics.jpg',
+        body: '<p><strong>Integración y Tiempos:</strong> Centralizan datos para operar como un bloque sólido y automatizan tareas rutinarias, permitiendo a los colaboradores focalizarse en actividades más rentables y de mayor valor.</p>'
+      },
+
+      // Slide 6
+      's6_c1': { title: 'Integración', img: 'assets/images/overview_systems.jpg', body: '<p>Unificación centralizada de áreas para mejorar la planeación global y eliminar inconsistencias de datos entre sectores.</p>' },
+      's6_c2': { title: 'Optimización de Procesos', img: 'assets/images/cloud_architecture.jpg', body: '<p>Optimización operativa continua y disminución drástica de errores humanos y duplicación de tareas.</p>' },
+      's6_c3': { title: 'Disponibilidad', img: 'assets/images/data_governance.jpg', body: '<p>Acceso permanente y seguro a grandes volúmenes de datos desde cualquier plataforma o sede en la nube.</p>' },
+      's6_c4': { title: 'Control de Gestión', img: 'assets/images/mis_dashboard.jpg', body: '<p>Control riguroso de operaciones, medición de SLAs corporativos e impulso a la mejora continua.</p>' },
+      's6_c5': { title: 'Reducción de Costos', img: 'assets/images/dss_simulation.jpg', body: '<p>Ahorro sustancial en costes administrativos y operativos gracias a la automatización de flujos repetitivos.</p>' },
+      's6_c6': { title: 'Seguridad de la Información', img: 'assets/images/data_governance.jpg', body: '<p>Máxima protección, gobernanza y cifrado de datos sensibles ante riesgos de ciberseguridad y fugas.</p>' },
+
+      // Slide 7
+      's7_c1': { title: 'Automatización', img: 'assets/images/overview_systems.jpg', body: '<p>Reducción sistemática de carga manual y aumento de la eficiencia operativa en toda la cadena de valor.</p>' },
+      's7_c2': { title: 'Recursos Humanos', img: 'assets/images/team_qa_dialogue.jpg', body: '<p>Gestión ágil de nómina, evaluación objetiva de desempeño y monitoreo de satisfacción del personal.</p>' },
+      's7_c3': { title: 'Innovación & I+D', img: 'assets/images/future_decision_ai.jpg', body: '<p>Plataformas de experimentación tecnológica, análisis ágil y desarrollo de nuevas soluciones comerciales.</p>' },
+      's7_c4': { title: 'Seguimiento Financiero', img: 'assets/images/mis_dashboard.jpg', body: '<p>Gestión contable en tiempo real, facturación electrónica y previsión presupuestaria sólida.</p>' },
+      's7_c5': { title: 'Adaptación al Mercado', img: 'assets/images/dss_simulation.jpg', body: '<p>Análisis dinámico de tendencias, monitoreo de competencia y rápida respuesta a cambios del entorno.</p>' },
+      's7_c6': { title: 'Alineación Global', img: 'assets/images/cloud_architecture.jpg', body: '<p>Coordinación multinivel en tiempo real entre la dirección estratégica y las operaciones diarias.</p>' },
+
+      // Slide 11
+      's11_c1': { title: 'DSS Basados en Datos', img: 'assets/images/data_governance.jpg', body: '<p>Archivos masivos, informes de gestión, EIS y SIG. Permiten una alta manipulación y análisis de series de datos históricos y transaccionales.</p>' },
+      's11_c2': { title: 'DSS Basados en Modelos', img: 'assets/images/dss_simulation.jpg', body: '<p>Modelos financieros, contables, estadísticos y de optimización analítica para simulación cuantitativa de escenarios.</p>' },
+      's11_c3': { title: 'DSS Basados en Conocimiento', img: 'assets/images/future_decision_ai.jpg', body: '<p>Sistemas expertos de asesoramiento, diagnóstico inteligente y sugerencia probabilística de cursos de acción.</p>' },
+      's11_c4': { title: 'DSS Basados en Documentos', img: 'assets/images/overview_systems.jpg', body: '<p>Integración de motores de búsqueda y tecnologías para recuperación, indexación y clasificación de documentos corporativos no estructurados.</p>' },
+      's11_c5': { title: 'Comunicación & Grupo (GDSS)', img: 'assets/images/eis_executive.jpg', body: '<p>Plataformas de colaboración y coordinación sincrónica para consensuar decisiones complejas en equipos ejecutivos.</p>' },
+
+      // Slide 13
+      's13_c1': { title: 'Executive Dashboards', img: 'assets/images/eis_executive.jpg', body: '<p>Visualización de KPIs consolidados e indicadores semaforizados para un control rápido y ejecutivo en tiempo real.</p>' },
+      's13_c2': { title: 'Desglose Analítico (Drill-Down)', img: 'assets/images/cloud_architecture.jpg', body: '<p>Capacidad analítica para profundizar desde un KPI global hasta el nivel departamental o transacción individual.</p>' },
+      's13_c3': { title: 'Variables Exógenas', img: 'assets/images/dss_simulation.jpg', body: '<p>Integración del contexto macroeconómico: fluctuaciones de tipo de cambio, inflación, tasas y comportamiento de competidores.</p>' },
+      's13_c4': { title: 'Acceso Móvil Seguro', img: 'assets/images/meli_logistics.jpg', body: '<p>Conexión cifrada de alta disponibilidad accesible desde smartphones y tablets corporativas las 24 horas.</p>' },
+
+      // Slide 24
+      's24_c1': { title: 'Sistemas MIS en MELI', img: 'assets/images/mis_dashboard.jpg', body: '<p>Tableros interactivos tácticos que supervisan en vivo operaciones de comercio electrónico, volumen bruto vendido (GMV), stock de fulfillment en almacenes y cumplimiento estricto de entregas (SLAs).</p>' },
+      's24_c2': { title: 'Sistemas DSS en MELI', img: 'assets/images/future_decision_ai.jpg', body: '<p>Modelos predictivos de IA para evaluación automática de scoring crediticio de Mercado Crédito en segundos y ruteo logístico dinámico ante picos de demanda como CyberMonday y HotSale.</p>' },
+      's24_c3': { title: 'Sistemas EIS en MELI', img: 'assets/images/cloud_architecture.jpg', body: '<p>Tableros consolidados para la alta dirección corporativa (C-Level) con conversión en tiempo real a dólares de métricas operativas e ingresos financieros provenientes de los 18 países.</p>' },
+
+      // Slide 25
+      's25_c1': { title: 'Calidad de Datos (GIGO)', img: 'assets/images/data_governance.jpg', body: '<p>Los algoritmos avanzados y modelos predictivos (DSS) pierden toda su utilidad si los datos operativos de base (MIS) son inconsistentes, incompletos o desfasados en el tiempo. Garbage In, Garbage Out.</p>' },
+      's25_c2': { title: 'Madurez Organizacional', img: 'assets/images/overview_systems.jpg', body: '<p>La tecnología no corrige procesos deficientes; acelera la cultura existente. Si la base organizacional es sólida, escala el negocio exponencialmente; si es caótica, la tecnología solo automatiza el caos.</p>' },
+
+      // Slide 26
+      's26_c1': {
+        title: 'Fortalezas y Debilidades',
+        img: 'assets/images/overview_systems.jpg',
+        body: '<div class="space-y-3 text-left w-full max-w-xl mx-auto"><div class="p-3.5 rounded-2xl bg-white/95 border border-slate-200 text-sm md:text-base"><strong class="text-emerald-900 font-bold">Fortalezas:</strong> Centralizan datos y eliminan discrepancias gerenciales entre áreas.</div><div class="p-3.5 rounded-2xl bg-white/95 border border-slate-200 text-sm md:text-base"><strong class="text-rose-900 font-bold">Debilidades:</strong> Costos elevados de mantenimiento, infoxicación por sobrecarga de datos y resistencia inicial al cambio cultural.</div></div>'
+      },
+      's26_c2': {
+        title: 'Oportunidades y Amenazas',
+        img: 'assets/images/future_decision_ai.jpg',
+        body: '<div class="space-y-3 text-left w-full max-w-xl mx-auto"><div class="p-3.5 rounded-2xl bg-white/95 border border-slate-200 text-sm md:text-base"><strong class="text-indigo-900 font-bold">Oportunidades:</strong> Expansión de BI descentralizado (self-service) y analítica predictiva avanzada con IA.</div><div class="p-3.5 rounded-2xl bg-white/95 border border-slate-200 text-sm md:text-base"><strong class="text-amber-900 font-bold">Amenazas:</strong> Exposición a ciberataques, fugas de datos y rápida obsolescencia de software.</div></div>'
+      }
+    };
+
+    function triggerSpotlightKey(cardEl, key) {
+      const data = cardSpotlights[key];
+      if (data) {
+        openMorphSpotlight(cardEl, data.title, data.img, data.body);
+      }
+    }
+
     const slidesData = [
       // 1. Portada
       {
@@ -434,14 +535,14 @@
         render: () => `
           <div class="grid grid-cols-2 gap-8 h-full items-stretch didactic-grid">
             <div class="liquid-glass rounded-3xl p-8 flex flex-col justify-center items-center didactic-card border border-amber-300 text-center"
-                 onclick="openMorphSpotlight(this, 'Sistema de Información', 'assets/images/overview_systems.jpg', 'Un sistema de información es un <strong class=\'text-amber-950 font-black\'>conjunto ordenado de personas, procesos y herramientas</strong> para administrar, recuperar y procesar datos con un fin común.')">
+                 onclick="triggerSpotlightKey(this, 's3_c1')">
               <h3 class="text-4xl md:text-5xl lg:text-6xl font-black text-slate-900 leading-[1.08] tracking-tight">
                 Sistema<br>de<br>Información
               </h3>
             </div>
 
             <div class="liquid-glass rounded-3xl p-8 flex flex-col justify-center items-center didactic-card border border-indigo-300 text-center"
-                 onclick="openMorphSpotlight(this, 'Componentes Principales', 'assets/images/cloud_architecture.jpg', '<div class=\'space-y-3 text-left w-full max-w-xl mx-auto\'><div class=\'p-3.5 rounded-2xl bg-white/95 border border-slate-200 text-sm md:text-base\'><strong class=\'text-slate-900 font-bold\'>Equipos:</strong> Elementos tecnológicos físicos o virtuales (hardware, servidores, software, bases de datos y redes).</div><div class=\'p-3.5 rounded-2xl bg-white/95 border border-slate-200 text-sm md:text-base\'><strong class=\'text-slate-900 font-bold\'>Personas:</strong> Individuos que ingresan, operan, administran y toman decisiones con los datos.</div><div class=\'p-3.5 rounded-2xl bg-white/95 border border-slate-200 text-sm md:text-base\'><strong class=\'text-slate-900 font-bold\'>Datos:</strong> Registros e información estructurada y no estructurada procesada por el sistema.</div></div>')">
+                 onclick="triggerSpotlightKey(this, 's3_c2')">
               <h3 class="text-4xl md:text-5xl lg:text-6xl font-black text-slate-900 leading-[1.08] tracking-tight">
                 Componentes<br>Principales
               </h3>
@@ -461,21 +562,21 @@
         render: () => `
           <div class="grid grid-cols-3 gap-6 h-full items-stretch didactic-grid">
             <div class="liquid-glass rounded-3xl p-6 flex flex-col justify-center items-center didactic-card border border-amber-300 text-center"
-                 onclick="openMorphSpotlight(this, 'Control de Calidad', 'assets/images/data_governance.jpg', 'Sistemas que solicitan retroalimentación al cliente y evalúan resultados estadísticamente para elaborar informes orientados a la gerencia.')">
+                 onclick="triggerSpotlightKey(this, 's4_c1')">
               <h4 class="text-3xl md:text-4xl font-black text-slate-900 leading-[1.1]">
                 Control<br>de<br>Calidad
               </h4>
             </div>
 
             <div class="liquid-glass rounded-3xl p-6 flex flex-col justify-center items-center didactic-card border border-indigo-300 text-center"
-                 onclick="openMorphSpotlight(this, 'Bases de Datos de Bibliotecas', 'assets/images/academic_library.jpg', 'Sistemas que contienen un gran volumen de documentos (libros, revistas, tesis) para ubicar y recuperar registros precisa y rápidamente.')">
+                 onclick="triggerSpotlightKey(this, 's4_c2')">
               <h4 class="text-3xl md:text-4xl font-black text-slate-900 leading-[1.1]">
                 Bases<br>de Datos<br>Bibliotecas
               </h4>
             </div>
 
             <div class="liquid-glass rounded-3xl p-6 flex flex-col justify-center items-center didactic-card border border-emerald-300 text-center"
-                 onclick="openMorphSpotlight(this, 'Hojas de Cálculo', 'assets/images/mis_dashboard.jpg', 'Sistemas en los que se ingresa información en bruto para organizarla de manera cuantificable y obtener directrices financieras.')">
+                 onclick="triggerSpotlightKey(this, 's4_c3')">
               <h4 class="text-3xl md:text-4xl font-black text-slate-900 leading-[1.1]">
                 Hojas<br>de<br>Cálculo
               </h4>
@@ -495,14 +596,14 @@
         render: () => `
           <div class="grid grid-cols-2 gap-8 h-full items-stretch didactic-grid">
             <div class="liquid-glass rounded-3xl p-8 flex flex-col justify-center items-center didactic-card border border-amber-300 text-center"
-                 onclick="openMorphSpotlight(this, 'Impacto Operativo', 'assets/images/overview_systems.jpg', 'Permiten a las empresas organizar y vincular datos de diferentes áreas. Los trabajadores pueden localizar información de alto valor en tiempo real desde una sola plataforma para captar, almacenar y analizar datos.')">
+                 onclick="triggerSpotlightKey(this, 's5_c1')">
               <h3 class="text-4xl md:text-5xl lg:text-6xl font-black text-slate-900 leading-[1.05] tracking-tight">
                 Impacto<br>Operativo
               </h3>
             </div>
 
             <div class="liquid-glass rounded-3xl p-8 flex flex-col justify-center items-center didactic-card border border-emerald-300 text-center"
-                 onclick="openMorphSpotlight(this, 'Ventajas Clave', 'assets/images/meli_logistics.jpg', '<strong>Integración y Tiempos:</strong> Centralizan datos para operar como un bloque sólido y automatizan tareas rutinarias, permitiendo a los colaboradores focalizarse en actividades más rentables y de mayor valor.')">
+                 onclick="triggerSpotlightKey(this, 's5_c2')">
               <h3 class="text-4xl md:text-5xl lg:text-6xl font-black text-slate-900 leading-[1.05] tracking-tight">
                 Ventajas<br>Clave
               </h3>
@@ -522,27 +623,27 @@
         render: () => `
           <div class="grid grid-cols-3 gap-5 h-full items-stretch didactic-grid">
             <div class="liquid-glass rounded-2xl p-6 flex flex-col justify-center items-center didactic-card border border-amber-300 text-center"
-                 onclick="openMorphSpotlight(this, 'Integración', 'assets/images/overview_systems.jpg', 'Unificación centralizada de áreas para mejorar la planeación global y eliminar inconsistencias de datos entre sectores.')">
+                 onclick="triggerSpotlightKey(this, 's6_c1')">
               <h5 class="text-3xl font-black text-slate-900">Integración</h5>
             </div>
             <div class="liquid-glass rounded-2xl p-6 flex flex-col justify-center items-center didactic-card border border-emerald-300 text-center"
-                 onclick="openMorphSpotlight(this, 'Optimización de Procesos', 'assets/images/cloud_architecture.jpg', 'Optimización operativa continua y disminución drástica de errores humanos y duplicación de tareas.')">
+                 onclick="triggerSpotlightKey(this, 's6_c2')">
               <h5 class="text-3xl font-black text-slate-900">Procesos</h5>
             </div>
             <div class="liquid-glass rounded-2xl p-6 flex flex-col justify-center items-center didactic-card border border-indigo-300 text-center"
-                 onclick="openMorphSpotlight(this, 'Disponibilidad', 'assets/images/data_governance.jpg', 'Acceso permanente y seguro a grandes volúmenes de datos desde cualquier plataforma o sede en la nube.')">
+                 onclick="triggerSpotlightKey(this, 's6_c3')">
               <h5 class="text-3xl font-black text-slate-900">Disponibilidad</h5>
             </div>
             <div class="liquid-glass rounded-2xl p-6 flex flex-col justify-center items-center didactic-card border border-blue-300 text-center"
-                 onclick="openMorphSpotlight(this, 'Control de Gestión', 'assets/images/mis_dashboard.jpg', 'Control riguroso de operaciones, medición de SLAs corporativos e impulso a la mejora continua.')">
+                 onclick="triggerSpotlightKey(this, 's6_c4')">
               <h5 class="text-3xl font-black text-slate-900">Gestión</h5>
             </div>
             <div class="liquid-glass rounded-2xl p-6 flex flex-col justify-center items-center didactic-card border border-yellow-300 text-center"
-                 onclick="openMorphSpotlight(this, 'Reducción de Costos', 'assets/images/dss_simulation.jpg', 'Ahorro sustancial en costes administrativos y operativos gracias a la automatización de flujos repetitivos.')">
+                 onclick="triggerSpotlightKey(this, 's6_c5')">
               <h5 class="text-3xl font-black text-slate-900">Costos</h5>
             </div>
             <div class="liquid-glass rounded-2xl p-6 flex flex-col justify-center items-center didactic-card border border-rose-300 text-center"
-                 onclick="openMorphSpotlight(this, 'Seguridad de la Información', 'assets/images/data_governance.jpg', 'Máxima protección, gobernanza y cifrado de datos sensibles ante riesgos de ciberseguridad y fugas.')">
+                 onclick="triggerSpotlightKey(this, 's6_c6')">
               <h5 class="text-3xl font-black text-slate-900">Seguridad</h5>
             </div>
           </div>
@@ -560,27 +661,27 @@
         render: () => `
           <div class="grid grid-cols-3 gap-5 h-full items-stretch didactic-grid">
             <div class="liquid-glass rounded-2xl p-5 flex flex-col justify-center items-center didactic-card border border-amber-300 text-center"
-                 onclick="openMorphSpotlight(this, 'Automatización', 'assets/images/overview_systems.jpg', 'Reducción sistemática de carga manual y aumento de la eficiencia operativa en toda la cadena de valor.')">
+                 onclick="triggerSpotlightKey(this, 's7_c1')">
               <h5 class="text-2xl font-black text-slate-900">Automatización</h5>
             </div>
             <div class="liquid-glass rounded-2xl p-5 flex flex-col justify-center items-center didactic-card border border-indigo-300 text-center"
-                 onclick="openMorphSpotlight(this, 'Recursos Humanos', 'assets/images/team_qa_dialogue.jpg', 'Gestión ágil de nómina, evaluación objetiva de desempeño y monitoreo de satisfacción del personal.')">
+                 onclick="triggerSpotlightKey(this, 's7_c2')">
               <h5 class="text-2xl font-black text-slate-900 leading-tight">Recursos<br>Humanos</h5>
             </div>
             <div class="liquid-glass rounded-2xl p-5 flex flex-col justify-center items-center didactic-card border border-emerald-300 text-center"
-                 onclick="openMorphSpotlight(this, 'Innovación & I+D', 'assets/images/future_decision_ai.jpg', 'Plataformas de experimentación tecnológica, análisis ágil y desarrollo de nuevas soluciones comerciales.')">
+                 onclick="triggerSpotlightKey(this, 's7_c3')">
               <h5 class="text-2xl font-black text-slate-900 leading-tight">Innovación<br>& I+D</h5>
             </div>
             <div class="liquid-glass rounded-2xl p-5 flex flex-col justify-center items-center didactic-card border border-yellow-300 text-center"
-                 onclick="openMorphSpotlight(this, 'Seguimiento Financiero', 'assets/images/mis_dashboard.jpg', 'Gestión contable en tiempo real, facturación electrónica y previsión presupuestaria sólida.')">
+                 onclick="triggerSpotlightKey(this, 's7_c4')">
               <h5 class="text-2xl font-black text-slate-900 leading-tight">Seguimiento<br>Financiero</h5>
             </div>
             <div class="liquid-glass rounded-2xl p-5 flex flex-col justify-center items-center didactic-card border border-sky-300 text-center"
-                 onclick="openMorphSpotlight(this, 'Adaptación al Mercado', 'assets/images/dss_simulation.jpg', 'Análisis dinámico de tendencias, monitoreo de competencia y rápida respuesta a cambios del entorno.')">
+                 onclick="triggerSpotlightKey(this, 's7_c5')">
               <h5 class="text-2xl font-black text-slate-900 leading-tight">Adaptación<br>al Mercado</h5>
             </div>
             <div class="liquid-glass rounded-2xl p-5 flex flex-col justify-center items-center didactic-card border border-slate-300 text-center"
-                 onclick="openMorphSpotlight(this, 'Alineación Global', 'assets/images/cloud_architecture.jpg', 'Coordinación multinivel en tiempo real entre la dirección estratégica y las operaciones diarias.')">
+                 onclick="triggerSpotlightKey(this, 's7_c6')">
               <h5 class="text-2xl font-black text-slate-900 leading-tight">Alineación<br>Global</h5>
             </div>
           </div>
@@ -674,23 +775,23 @@
         render: () => `
           <div class="grid grid-cols-5 gap-3.5 h-full items-stretch didactic-grid">
             <div class="liquid-glass rounded-2xl p-4 flex flex-col justify-center items-center didactic-card border border-amber-300 text-center"
-                 onclick="openMorphSpotlight(this, 'DSS Basados en Datos', 'assets/images/data_governance.jpg', 'Archivos masivos, informes de gestión, EIS y SIG. Permiten una alta manipulación y análisis de series de datos históricos y transaccionales.')">
+                 onclick="triggerSpotlightKey(this, 's11_c1')">
               <h5 class="text-lg md:text-xl font-black text-slate-900 leading-tight">Basados<br>en Datos</h5>
             </div>
             <div class="liquid-glass rounded-2xl p-4 flex flex-col justify-center items-center didactic-card border border-indigo-300 text-center"
-                 onclick="openMorphSpotlight(this, 'DSS Basados en Modelos', 'assets/images/dss_simulation.jpg', 'Modelos financieros, contables, estadísticos y de optimización analítica para simulación cuantitativa de escenarios.')">
+                 onclick="triggerSpotlightKey(this, 's11_c2')">
               <h5 class="text-lg md:text-xl font-black text-slate-900 leading-tight">Basados<br>en Modelos</h5>
             </div>
             <div class="liquid-glass rounded-2xl p-4 flex flex-col justify-center items-center didactic-card border border-emerald-300 text-center"
-                 onclick="openMorphSpotlight(this, 'DSS Basados en Conocimiento', 'assets/images/future_decision_ai.jpg', 'Sistemas expertos de asesoramiento, diagnóstico inteligente y sugerencia probabilística de cursos de acción.')">
+                 onclick="triggerSpotlightKey(this, 's11_c3')">
               <h5 class="text-lg md:text-xl font-black text-slate-900 leading-tight">Basados en<br>Conocimiento</h5>
             </div>
             <div class="liquid-glass rounded-2xl p-4 flex flex-col justify-center items-center didactic-card border border-yellow-300 text-center"
-                 onclick="openMorphSpotlight(this, 'DSS Basados en Documentos', 'assets/images/overview_systems.jpg', 'Integración de motores de búsqueda y tecnologías para recuperación, indexación y clasificación de documentos corporativos no estructurados.')">
+                 onclick="triggerSpotlightKey(this, 's11_c4')">
               <h5 class="text-lg md:text-xl font-black text-slate-900 leading-tight">Basados en<br>Documentos</h5>
             </div>
             <div class="liquid-glass rounded-2xl p-4 flex flex-col justify-center items-center didactic-card border border-rose-300 text-center"
-                 onclick="openMorphSpotlight(this, 'Comunicación & Grupo (GDSS)', 'assets/images/eis_executive.jpg', 'Plataformas de colaboración y coordinación sincrónica para consensuar decisiones complejas en equipos ejecutivos.')">
+                 onclick="triggerSpotlightKey(this, 's11_c5')">
               <h5 class="text-lg md:text-xl font-black text-slate-900 leading-tight">Comuni<br>cación<br>& Grupo</h5>
             </div>
           </div>
@@ -736,19 +837,19 @@
         render: () => `
           <div class="grid grid-cols-2 gap-6 h-full items-stretch didactic-grid">
             <div class="liquid-glass rounded-3xl p-6 flex flex-col justify-center items-center didactic-card border border-indigo-300 text-center"
-                 onclick="openMorphSpotlight(this, 'Executive Dashboards', 'assets/images/eis_executive.jpg', 'Visualización de KPIs consolidados e indicadores semaforizados para un control rápido y ejecutivo en tiempo real.')">
+                 onclick="triggerSpotlightKey(this, 's13_c1')">
               <h4 class="text-2xl md:text-3xl font-black text-slate-900 leading-tight">Executive<br>Dashboards</h4>
             </div>
             <div class="liquid-glass rounded-3xl p-6 flex flex-col justify-center items-center didactic-card border border-indigo-300 text-center"
-                 onclick="openMorphSpotlight(this, 'Desglose Analítico (Drill-Down)', 'assets/images/cloud_architecture.jpg', 'Capacidad analítica para profundizar desde un KPI global hasta el nivel departamental o transacción individual.')">
+                 onclick="triggerSpotlightKey(this, 's13_c2')">
               <h4 class="text-2xl md:text-3xl font-black text-slate-900 leading-tight">Desglose<br>Analítico<br>(Drill-Down)</h4>
             </div>
             <div class="liquid-glass rounded-3xl p-6 flex flex-col justify-center items-center didactic-card border border-indigo-300 text-center"
-                 onclick="openMorphSpotlight(this, 'Variables Exógenas', 'assets/images/dss_simulation.jpg', 'Integración del contexto macroeconómico: fluctuaciones de tipo de cambio, inflación, tasas y comportamiento de competidores.')">
+                 onclick="triggerSpotlightKey(this, 's13_c3')">
               <h4 class="text-2xl md:text-3xl font-black text-slate-900 leading-tight">Variables<br>Exógenas</h4>
             </div>
             <div class="liquid-glass rounded-3xl p-6 flex flex-col justify-center items-center didactic-card border border-indigo-300 text-center"
-                 onclick="openMorphSpotlight(this, 'Acceso Móvil Seguro', 'assets/images/meli_logistics.jpg', 'Conexión cifrada de alta disponibilidad accesible desde smartphones y tablets corporativas las 24 horas.')">
+                 onclick="triggerSpotlightKey(this, 's13_c4')">
               <h4 class="text-2xl md:text-3xl font-black text-slate-900 leading-tight">Acceso<br>Móvil</h4>
             </div>
           </div>
@@ -876,7 +977,7 @@
         speakerTag: "TEMA 9 • INFORMACIÓN ESTRATÉGICA",
         notes: `<p><strong>Nivel Estratégico:</strong> Visión general, objetivos corporativos y dirección general.</p>`,
         render: () => `
-<div class="grid grid-cols-12 gap-8 h-full items-center p-2">
+          <div class="grid grid-cols-12 gap-8 h-full items-center p-2">
             <!-- Left Inverted Text Pyramid (Short Acronym at Top, Wider Level Title at Bottom) -->
             <div class="col-span-6 flex flex-col items-center justify-center p-2">
               <svg viewBox="0 0 520 380" class="w-full max-w-[440px] drop-shadow-xl select-none transition-all">
@@ -922,7 +1023,7 @@
         speakerTag: "TEMA 9 • INFORMACIÓN TÁCTICA",
         notes: `<p><strong>Nivel Táctico:</strong> Departamentos, creación de acciones para ejecutar la estrategia y planificación detallada.</p>`,
         render: () => `
-<div class="grid grid-cols-12 gap-8 h-full items-center p-2">
+          <div class="grid grid-cols-12 gap-8 h-full items-center p-2">
             <!-- Left Inverted Text Pyramid (Short Acronym at Top, Wider Level Title at Bottom) -->
             <div class="col-span-6 flex flex-col items-center justify-center p-2">
               <svg viewBox="0 0 520 380" class="w-full max-w-[440px] drop-shadow-xl select-none transition-all">
@@ -973,7 +1074,7 @@
         speakerTag: "TEMA 9 • INFORMACIÓN OPERATIVA",
         notes: `<p><strong>Nivel Operativo:</strong> Agentes ejecutores de acciones tácticas, corta duración y rol de todos.</p>`,
         render: () => `
-<div class="grid grid-cols-12 gap-8 h-full items-center p-2">
+          <div class="grid grid-cols-12 gap-8 h-full items-center p-2">
             <!-- Left Inverted Text Pyramid (Short Acronym at Top, Wider Level Title at Bottom) -->
             <div class="col-span-6 flex flex-col items-center justify-center p-2">
               <svg viewBox="0 0 520 380" class="w-full max-w-[440px] drop-shadow-xl select-none transition-all">
@@ -1038,10 +1139,6 @@
           </div>
         `
       },
-
-      // ==========================================
-      // BLOQUE 3: EVELYN GAITÁN (TEMAS 11 AL 14 + CIERRE)
-      // ==========================================
 
       // 21. Caso de Estudio: Mercado Libre (MELI) (Tema 13 y 14)
       {
@@ -1135,17 +1232,17 @@
         render: () => `
           <div class="grid grid-cols-3 gap-6 h-full items-stretch didactic-grid">
             <div class="liquid-glass rounded-3xl p-6 flex flex-col justify-center items-center didactic-card border border-blue-300 text-center"
-                 onclick="openMorphSpotlight(this, 'Sistemas MIS en MELI', 'assets/images/mis_dashboard.jpg', 'Tableros interactivos tácticos que supervisan en vivo operaciones de comercio electrónico, volumen bruto vendido (GMV), stock de fulfillment en almacenes y cumplimiento estricto de entregas (SLAs).')">
+                 onclick="triggerSpotlightKey(this, 's24_c1')">
               <h4 class="text-3xl md:text-4xl font-black text-slate-900 leading-tight">Sistemas<br>MIS<br>(Gerencial)</h4>
             </div>
 
             <div class="liquid-glass rounded-3xl p-6 flex flex-col justify-center items-center didactic-card border border-amber-300 text-center"
-                 onclick="openMorphSpotlight(this, 'Sistemas DSS en MELI', 'assets/images/future_decision_ai.jpg', 'Modelos predictivos de IA para evaluación automática de scoring crediticio de Mercado Crédito en segundos y ruteo logístico dinámico ante picos de demanda como CyberMonday y HotSale.')">
+                 onclick="triggerSpotlightKey(this, 's24_c2')">
               <h4 class="text-3xl md:text-4xl font-black text-slate-900 leading-tight">Sistemas<br>DSS<br>(Analítico)</h4>
             </div>
 
             <div class="liquid-glass rounded-3xl p-6 flex flex-col justify-center items-center didactic-card border border-emerald-300 text-center"
-                 onclick="openMorphSpotlight(this, 'Sistemas EIS en MELI', 'assets/images/cloud_architecture.jpg', 'Tableros consolidados para la alta dirección corporativa (C-Level) con conversión en tiempo real a dólares de métricas operativas e ingresos financieros provenientes de los 18 países.')">
+                 onclick="triggerSpotlightKey(this, 's24_c3')">
               <h4 class="text-3xl md:text-4xl font-black text-slate-900 leading-tight">Sistemas<br>EIS<br>(Ejecutivo)</h4>
             </div>
           </div>
@@ -1163,14 +1260,14 @@
         render: () => `
           <div class="grid grid-cols-2 gap-8 h-full items-stretch didactic-grid">
             <div class="liquid-glass rounded-3xl p-8 flex flex-col justify-center items-center didactic-card border border-rose-300 text-center"
-                 onclick="openMorphSpotlight(this, 'Calidad de Datos (GIGO)', 'assets/images/data_governance.jpg', 'Los algoritmos avanzados y modelos predictivos (DSS) pierden toda su utilidad si los datos operativos de base (MIS) son inconsistentes, incompletos o desfasados en el tiempo. Garbage In, Garbage Out.')">
+                 onclick="triggerSpotlightKey(this, 's25_c1')">
               <h3 class="text-4xl md:text-5xl lg:text-6xl font-black text-slate-900 leading-[1.08] tracking-tight">
                 Calidad<br>de Datos<br><span class="text-2xl md:text-3xl font-bold text-slate-600">(GIGO)</span>
               </h3>
             </div>
 
             <div class="liquid-glass rounded-3xl p-8 flex flex-col justify-center items-center didactic-card border border-amber-300 text-center"
-                 onclick="openMorphSpotlight(this, 'Madurez Organizacional', 'assets/images/overview_systems.jpg', 'La tecnología no corrige procesos deficientes; acelera la cultura existente. Si la base organizacional es sólida, escala el negocio exponencialmente; si es caótica, la tecnología solo automatiza el caos.')">
+                 onclick="triggerSpotlightKey(this, 's25_c2')">
               <h3 class="text-4xl md:text-5xl lg:text-6xl font-black text-slate-900 leading-[1.08] tracking-tight">
                 Madurez<br>Organizacional
               </h3>
@@ -1190,12 +1287,12 @@
         render: () => `
           <div class="grid grid-cols-2 gap-8 h-full items-stretch didactic-grid">
             <div class="liquid-glass rounded-3xl p-8 flex flex-col justify-center items-center didactic-card border border-amber-300 text-center"
-                 onclick="openMorphSpotlight(this, 'Fortalezas y Debilidades', 'assets/images/overview_systems.jpg', '<div class=\'space-y-3 text-left w-full max-w-xl mx-auto\'><div class=\'p-3.5 rounded-2xl bg-white/95 border border-slate-200 text-sm md:text-base\'><strong class=\'text-emerald-900 font-bold\'>Fortalezas:</strong> Centralizan datos y eliminan discrepancias gerenciales entre áreas.</div><div class=\'p-3.5 rounded-2xl bg-white/95 border border-slate-200 text-sm md:text-base\'><strong class=\'text-rose-900 font-bold\'>Debilidades:</strong> Costos elevados de mantenimiento, infoxicación por sobrecarga de datos y resistencia inicial al cambio cultural.</div></div>')">
+                 onclick="triggerSpotlightKey(this, 's26_c1')">
               <h4 class="text-4xl md:text-5xl font-black text-slate-900 leading-tight mb-2">Fortalezas<br>& Debilidades</h4>
             </div>
 
             <div class="liquid-glass rounded-3xl p-8 flex flex-col justify-center items-center didactic-card border border-indigo-300 text-center"
-                 onclick="openMorphSpotlight(this, 'Oportunidades y Amenazas', 'assets/images/future_decision_ai.jpg', '<div class=\'space-y-3 text-left w-full max-w-xl mx-auto\'><div class=\'p-3.5 rounded-2xl bg-white/95 border border-slate-200 text-sm md:text-base\'><strong class=\'text-indigo-900 font-bold\'>Oportunidades:</strong> Expansión de BI descentralizado (self-service) y analítica predictiva avanzada con IA.</div><div class=\'p-3.5 rounded-2xl bg-white/95 border border-slate-200 text-sm md:text-base\'><strong class=\'text-amber-900 font-bold\'>Amenazas:</strong> Exposición a ciberataques, fugas de datos y rápida obsolescencia de software.</div></div>')">
+                 onclick="triggerSpotlightKey(this, 's26_c2')">
               <h4 class="text-4xl md:text-5xl font-black text-slate-900 leading-tight mb-2">Oportunidades<br>& Amenazas</h4>
             </div>
           </div>
