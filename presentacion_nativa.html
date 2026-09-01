@@ -877,35 +877,35 @@
         notes: `<p><strong>Nivel Estratégico:</strong> Visión general, objetivos corporativos y dirección general.</p>`,
         render: () => `
 <div class="grid grid-cols-12 gap-8 h-full items-center p-2">
-            <!-- Left Polished SVG Pyramid Diagram (Text 100% Contained Inside) -->
+            <!-- Left Unified Consistent SVG Pyramid (Text 100% Contained & High Legibility) -->
             <div class="col-span-5 flex flex-col items-center justify-center p-2">
-              <svg viewBox="0 0 380 300" class="w-full max-w-[340px] drop-shadow-md select-none transition-all">
-                <!-- Top Tier: Estrategico -->
-                <polygon points="190,20 275,105 105,105" fill="#4F46E5" stroke="#3730A3" stroke-width="2.5" class="drop-shadow-lg cursor-pointer" onclick="renderSlide(16)"/>
-                <text x="190" y="68" text-anchor="middle" font-family="'Inter', sans-serif" font-size="12.5px" fill="#FFFFFF" font-weight="900" class="pointer-events-none tracking-tight">1. ESTRATÉGICO</text>
-                <text x="190" y="86" text-anchor="middle" font-family="'Inter', sans-serif" font-size="10.5px" fill="#E0E7FF" font-weight="700" class="pointer-events-none">EIS / ESS</text>
+              <svg viewBox="0 0 420 320" class="w-full max-w-[350px] drop-shadow-md select-none transition-all">
+                <!-- Tier 1: Estratégico -->
+                <polygon points="210,15 320,115 100,115" fill="#FFE600" stroke="#D97706" stroke-width="2.5" class="drop-shadow-lg cursor-pointer" onclick="renderSlide(16)"/>
+                <text x="210" y="78" text-anchor="middle" font-family="'Inter', sans-serif" fill="#0F172A" font-weight="900" font-size="13px" class="pointer-events-none tracking-tight">1. ESTRATÉGICO</text>
+                <text x="210" y="98" text-anchor="middle" font-family="'Inter', sans-serif" fill="#334155" font-weight="700" font-size="11px" class="pointer-events-none">EIS / ESS</text>
 
-                <!-- Middle Tier: Tactico -->
-                <polygon points="105,112 275,112 320,198 60,198" fill="#FFFBEB" stroke="#FDE68A" stroke-width="1.5" class="hover:fill-amber-100 transition-all cursor-pointer" onclick="renderSlide(17)"/>
-                <text x="190" y="152" text-anchor="middle" font-family="'Inter', sans-serif" font-size="13.5px" fill="#92400E" font-weight="800" class="pointer-events-none tracking-tight">2. TÁCTICO</text>
-                <text x="190" y="172" text-anchor="middle" font-family="'Inter', sans-serif" font-size="11px" fill="#B45309" font-weight="600" class="pointer-events-none">MIS / DSS</text>
+                <!-- Tier 2: Táctico -->
+                <polygon points="100,122 320,122 370,208 50,208" fill="#FFFDF0" stroke="#FDE68A" stroke-width="1.5" class="hover:fill-amber-100/70 transition-all cursor-pointer" onclick="renderSlide(17)"/>
+                <text x="210" y="158" text-anchor="middle" font-family="'Inter', sans-serif" fill="#78350F" font-weight="700" font-size="13.5px" class="pointer-events-none tracking-tight">2. TÁCTICO</text>
+                <text x="210" y="178" text-anchor="middle" font-family="'Inter', sans-serif" fill="#92400E" font-weight="600" font-size="10.5px" class="pointer-events-none">MIS / DSS</text>
 
-                <!-- Base Tier: Operativo -->
-                <polygon points="60,205 320,205 365,290 15,290" fill="#F0F9FF" stroke="#BAE6FD" stroke-width="1.5" class="hover:fill-sky-100 transition-all cursor-pointer" onclick="renderSlide(18)"/>
-                <text x="190" y="244" text-anchor="middle" font-family="'Inter', sans-serif" font-size="14px" fill="#0369A1" font-weight="800" class="pointer-events-none tracking-tight">3. OPERATIVO</text>
-                <text x="190" y="264" text-anchor="middle" font-family="'Inter', sans-serif" font-size="11px" fill="#0284C7" font-weight="600" class="pointer-events-none">TPS (Transaccional)</text>
+                <!-- Tier 3: Operativo -->
+                <polygon points="50,215 370,215 410,300 10,300" fill="#FFFDF0" stroke="#FDE68A" stroke-width="1.5" class="hover:fill-amber-100/70 transition-all cursor-pointer" onclick="renderSlide(18)"/>
+                <text x="210" y="250" text-anchor="middle" font-family="'Inter', sans-serif" fill="#78350F" font-weight="700" font-size="13.5px" class="pointer-events-none tracking-tight">3. OPERATIVO</text>
+                <text x="210" y="270" text-anchor="middle" font-family="'Inter', sans-serif" fill="#92400E" font-weight="600" font-size="10.5px" class="pointer-events-none">TPS (Transaccional)</text>
               </svg>
             </div>
-            <!-- Right Content Area -->
+            <!-- Right Content Area (Consistent High-End Glass Cards) -->
             <div class="col-span-7 flex flex-col justify-center space-y-4">
-              <div class="liquid-glass rounded-2xl p-6 border border-indigo-300 shadow-sm">
+              <div class="liquid-glass rounded-2xl p-6 border border-amber-300/80 shadow-sm">
                 <p class="text-base md:text-lg text-slate-800 leading-relaxed font-semibold">
-                  Se trata de la <strong class="text-indigo-950 font-black">visión que mueve las acciones de la empresa</strong>. Establece los objetivos a cumplir y las líneas maestras para alcanzarlos.
+                  Se trata de la <strong class="text-amber-950 font-black">visión que mueve las acciones de la empresa</strong>. Establece los objetivos a cumplir y las líneas maestras para alcanzarlos.
                 </p>
               </div>
-              <div class="liquid-glass rounded-2xl p-6 border border-indigo-300 shadow-sm">
+              <div class="liquid-glass rounded-2xl p-6 border border-amber-300/80 shadow-sm">
                 <p class="text-base md:text-lg text-slate-800 leading-relaxed font-semibold">
-                  La dirección juega un <strong class="text-indigo-950 font-black">rol principal en la toma de decisiones a la hora de definir la estrategia</strong>, por lo que debe actuar con suma precisión para que toda la organización comprenda su visión.
+                  La dirección juega un <strong class="text-amber-950 font-black">rol principal en la toma de decisiones a la hora de definir la estrategia</strong>, por lo que debe actuar con suma precisión para que toda la organización comprenda su visión.
                 </p>
               </div>
             </div>
@@ -923,38 +923,38 @@
         notes: `<p><strong>Nivel Táctico:</strong> Departamentos, creación de acciones para ejecutar la estrategia y planificación detallada.</p>`,
         render: () => `
 <div class="grid grid-cols-12 gap-8 h-full items-center p-2">
-            <!-- Left Polished SVG Pyramid Diagram (Text 100% Contained Inside) -->
+            <!-- Left Unified Consistent SVG Pyramid (Text 100% Contained & High Legibility) -->
             <div class="col-span-5 flex flex-col items-center justify-center p-2">
-              <svg viewBox="0 0 380 300" class="w-full max-w-[340px] drop-shadow-md select-none transition-all">
-                <!-- Top Tier: Estrategico -->
-                <polygon points="190,20 275,105 105,105" fill="#EEF2FF" stroke="#C7D2FE" stroke-width="1.5" class="hover:fill-indigo-100 transition-all cursor-pointer" onclick="renderSlide(16)"/>
-                <text x="190" y="68" text-anchor="middle" font-family="'Inter', sans-serif" font-size="12.5px" fill="#4338CA" font-weight="800" class="pointer-events-none tracking-tight">1. ESTRATÉGICO</text>
-                <text x="190" y="86" text-anchor="middle" font-family="'Inter', sans-serif" font-size="10.5px" fill="#6366F1" font-weight="600" class="pointer-events-none">EIS / ESS</text>
+              <svg viewBox="0 0 420 320" class="w-full max-w-[350px] drop-shadow-md select-none transition-all">
+                <!-- Tier 1: Estratégico -->
+                <polygon points="210,15 320,115 100,115" fill="#FFFDF0" stroke="#FDE68A" stroke-width="1.5" class="hover:fill-amber-100/70 transition-all cursor-pointer" onclick="renderSlide(16)"/>
+                <text x="210" y="78" text-anchor="middle" font-family="'Inter', sans-serif" fill="#78350F" font-weight="700" font-size="12.5px" class="pointer-events-none tracking-tight">1. ESTRATÉGICO</text>
+                <text x="210" y="98" text-anchor="middle" font-family="'Inter', sans-serif" fill="#92400E" font-weight="600" font-size="10.5px" class="pointer-events-none">EIS / ESS</text>
 
-                <!-- Middle Tier: Tactico -->
-                <polygon points="105,112 275,112 320,198 60,198" fill="#F59E0B" stroke="#D97706" stroke-width="2.5" class="drop-shadow-lg cursor-pointer" onclick="renderSlide(17)"/>
-                <text x="190" y="152" text-anchor="middle" font-family="'Inter', sans-serif" font-size="13.5px" fill="#0F172A" font-weight="900" class="pointer-events-none tracking-tight">2. TÁCTICO</text>
-                <text x="190" y="172" text-anchor="middle" font-family="'Inter', sans-serif" font-size="11px" fill="#1E293B" font-weight="700" class="pointer-events-none">MIS / DSS</text>
+                <!-- Tier 2: Táctico -->
+                <polygon points="100,122 320,122 370,208 50,208" fill="#FFE600" stroke="#D97706" stroke-width="2.5" class="drop-shadow-lg cursor-pointer" onclick="renderSlide(17)"/>
+                <text x="210" y="158" text-anchor="middle" font-family="'Inter', sans-serif" fill="#0F172A" font-weight="900" font-size="14px" class="pointer-events-none tracking-tight">2. TÁCTICO</text>
+                <text x="210" y="178" text-anchor="middle" font-family="'Inter', sans-serif" fill="#334155" font-weight="700" font-size="11px" class="pointer-events-none">MIS / DSS</text>
 
-                <!-- Base Tier: Operativo -->
-                <polygon points="60,205 320,205 365,290 15,290" fill="#F0F9FF" stroke="#BAE6FD" stroke-width="1.5" class="hover:fill-sky-100 transition-all cursor-pointer" onclick="renderSlide(18)"/>
-                <text x="190" y="244" text-anchor="middle" font-family="'Inter', sans-serif" font-size="14px" fill="#0369A1" font-weight="800" class="pointer-events-none tracking-tight">3. OPERATIVO</text>
-                <text x="190" y="264" text-anchor="middle" font-family="'Inter', sans-serif" font-size="11px" fill="#0284C7" font-weight="600" class="pointer-events-none">TPS (Transaccional)</text>
+                <!-- Tier 3: Operativo -->
+                <polygon points="50,215 370,215 410,300 10,300" fill="#FFFDF0" stroke="#FDE68A" stroke-width="1.5" class="hover:fill-amber-100/70 transition-all cursor-pointer" onclick="renderSlide(18)"/>
+                <text x="210" y="250" text-anchor="middle" font-family="'Inter', sans-serif" fill="#78350F" font-weight="700" font-size="13.5px" class="pointer-events-none tracking-tight">3. OPERATIVO</text>
+                <text x="210" y="270" text-anchor="middle" font-family="'Inter', sans-serif" fill="#92400E" font-weight="600" font-size="10.5px" class="pointer-events-none">TPS (Transaccional)</text>
               </svg>
             </div>
-            <!-- Right Content Area -->
+            <!-- Right Content Area (Consistent High-End Glass Cards) -->
             <div class="col-span-7 flex flex-col justify-center space-y-4">
-              <div class="liquid-glass rounded-2xl p-6 border border-amber-300 shadow-sm">
+              <div class="liquid-glass rounded-2xl p-6 border border-amber-300/80 shadow-sm">
                 <p class="text-base md:text-lg text-slate-800 leading-relaxed font-semibold">
                   <strong class="text-amber-950 font-black">Solo los departamentos</strong> se encargan de desarrollar este nivel.
                 </p>
               </div>
-              <div class="liquid-glass rounded-2xl p-6 border border-amber-300 shadow-sm">
+              <div class="liquid-glass rounded-2xl p-6 border border-amber-300/80 shadow-sm">
                 <p class="text-base md:text-lg text-slate-800 leading-relaxed font-semibold">
                   Se definen los objetivos y se crean las <strong class="text-amber-950 font-black">acciones a realizar para hacer realidad la estrategia</strong> de la empresa.
                 </p>
               </div>
-              <div class="liquid-glass rounded-2xl p-6 border border-amber-300 shadow-sm">
+              <div class="liquid-glass rounded-2xl p-6 border border-amber-300/80 shadow-sm">
                 <p class="text-base md:text-lg text-slate-800 leading-relaxed font-semibold">
                   Es un tipo de <strong class="text-amber-950 font-black">planificación específica</strong> y que atiende en profundidad a los detalles.
                 </p>
@@ -974,35 +974,35 @@
         notes: `<p><strong>Nivel Operativo:</strong> Agentes ejecutores de acciones tácticas, corta duración y rol de todos.</p>`,
         render: () => `
 <div class="grid grid-cols-12 gap-8 h-full items-center p-2">
-            <!-- Left Polished SVG Pyramid Diagram (Text 100% Contained Inside) -->
+            <!-- Left Unified Consistent SVG Pyramid (Text 100% Contained & High Legibility) -->
             <div class="col-span-5 flex flex-col items-center justify-center p-2">
-              <svg viewBox="0 0 380 300" class="w-full max-w-[340px] drop-shadow-md select-none transition-all">
-                <!-- Top Tier: Estrategico -->
-                <polygon points="190,20 275,105 105,105" fill="#EEF2FF" stroke="#C7D2FE" stroke-width="1.5" class="hover:fill-indigo-100 transition-all cursor-pointer" onclick="renderSlide(16)"/>
-                <text x="190" y="68" text-anchor="middle" font-family="'Inter', sans-serif" font-size="12.5px" fill="#4338CA" font-weight="800" class="pointer-events-none tracking-tight">1. ESTRATÉGICO</text>
-                <text x="190" y="86" text-anchor="middle" font-family="'Inter', sans-serif" font-size="10.5px" fill="#6366F1" font-weight="600" class="pointer-events-none">EIS / ESS</text>
+              <svg viewBox="0 0 420 320" class="w-full max-w-[350px] drop-shadow-md select-none transition-all">
+                <!-- Tier 1: Estratégico -->
+                <polygon points="210,15 320,115 100,115" fill="#FFFDF0" stroke="#FDE68A" stroke-width="1.5" class="hover:fill-amber-100/70 transition-all cursor-pointer" onclick="renderSlide(16)"/>
+                <text x="210" y="78" text-anchor="middle" font-family="'Inter', sans-serif" fill="#78350F" font-weight="700" font-size="12.5px" class="pointer-events-none tracking-tight">1. ESTRATÉGICO</text>
+                <text x="210" y="98" text-anchor="middle" font-family="'Inter', sans-serif" fill="#92400E" font-weight="600" font-size="10.5px" class="pointer-events-none">EIS / ESS</text>
 
-                <!-- Middle Tier: Tactico -->
-                <polygon points="105,112 275,112 320,198 60,198" fill="#FFFBEB" stroke="#FDE68A" stroke-width="1.5" class="hover:fill-amber-100 transition-all cursor-pointer" onclick="renderSlide(17)"/>
-                <text x="190" y="152" text-anchor="middle" font-family="'Inter', sans-serif" font-size="13.5px" fill="#92400E" font-weight="800" class="pointer-events-none tracking-tight">2. TÁCTICO</text>
-                <text x="190" y="172" text-anchor="middle" font-family="'Inter', sans-serif" font-size="11px" fill="#B45309" font-weight="600" class="pointer-events-none">MIS / DSS</text>
+                <!-- Tier 2: Táctico -->
+                <polygon points="100,122 320,122 370,208 50,208" fill="#FFFDF0" stroke="#FDE68A" stroke-width="1.5" class="hover:fill-amber-100/70 transition-all cursor-pointer" onclick="renderSlide(17)"/>
+                <text x="210" y="158" text-anchor="middle" font-family="'Inter', sans-serif" fill="#78350F" font-weight="700" font-size="13.5px" class="pointer-events-none tracking-tight">2. TÁCTICO</text>
+                <text x="210" y="178" text-anchor="middle" font-family="'Inter', sans-serif" fill="#92400E" font-weight="600" font-size="10.5px" class="pointer-events-none">MIS / DSS</text>
 
-                <!-- Base Tier: Operativo -->
-                <polygon points="60,205 320,205 365,290 15,290" fill="#0284C7" stroke="#0369A1" stroke-width="2.5" class="drop-shadow-lg cursor-pointer" onclick="renderSlide(18)"/>
-                <text x="190" y="244" text-anchor="middle" font-family="'Inter', sans-serif" font-size="14px" fill="#FFFFFF" font-weight="900" class="pointer-events-none tracking-tight">3. OPERATIVO</text>
-                <text x="190" y="264" text-anchor="middle" font-family="'Inter', sans-serif" font-size="11px" fill="#E0F2FE" font-weight="700" class="pointer-events-none">TPS (Transaccional)</text>
+                <!-- Tier 3: Operativo -->
+                <polygon points="50,215 370,215 410,300 10,300" fill="#FFE600" stroke="#D97706" stroke-width="2.5" class="drop-shadow-lg cursor-pointer" onclick="renderSlide(18)"/>
+                <text x="210" y="250" text-anchor="middle" font-family="'Inter', sans-serif" fill="#0F172A" font-weight="900" font-size="14px" class="pointer-events-none tracking-tight">3. OPERATIVO</text>
+                <text x="210" y="270" text-anchor="middle" font-family="'Inter', sans-serif" fill="#334155" font-weight="700" font-size="11px" class="pointer-events-none">TPS (Transaccional)</text>
               </svg>
             </div>
-            <!-- Right Content Area -->
+            <!-- Right Content Area (Consistent High-End Glass Cards) -->
             <div class="col-span-7 flex flex-col justify-center space-y-4">
-              <div class="liquid-glass rounded-2xl p-6 border border-sky-300 shadow-sm">
+              <div class="liquid-glass rounded-2xl p-6 border border-amber-300/80 shadow-sm">
                 <p class="text-base md:text-lg text-slate-800 leading-relaxed font-semibold">
-                  En este último nivel aparecen los <strong class="text-sky-950 font-black">agentes encargados de ejecutar las acciones</strong> desarrolladas en el nivel táctico.
+                  En este último nivel aparecen los <strong class="text-amber-950 font-black">agentes encargados de ejecutar las acciones</strong> desarrolladas en el nivel táctico.
                 </p>
               </div>
-              <div class="liquid-glass rounded-2xl p-6 border border-sky-300 shadow-sm">
+              <div class="liquid-glass rounded-2xl p-6 border border-amber-300/80 shadow-sm">
                 <p class="text-base md:text-lg text-slate-800 leading-relaxed font-semibold">
-                  Realizan <strong class="text-sky-950 font-black">acciones de corta duración</strong> y todos en la empresa tienen un rol que desempeñar en este nivel.
+                  Realizan <strong class="text-amber-950 font-black">acciones de corta duración</strong> y todos en la empresa tienen un rol que desempeñar en este nivel.
                 </p>
               </div>
             </div>
