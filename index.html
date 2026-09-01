@@ -76,9 +76,9 @@
       transition: all 1.1s cubic-bezier(0.16, 1, 0.3, 1);
     }
     .didactic-grid:hover .didactic-card:not(:hover):not(.active-expand) {
-      opacity: 0.38;
-      filter: blur(2.5px) grayscale(25%);
-      transform: scale(0.975);
+      opacity: 0.25;
+      filter: blur(3.5px) grayscale(30%);
+      transform: scale(0.96);
     }
 
     .didactic-card {
@@ -90,43 +90,41 @@
                   border-color 0.9s cubic-bezier(0.16, 1, 0.3, 1);
       will-change: transform, box-shadow, filter, opacity;
       position: relative;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
     }
     
     .didactic-card:hover, .didactic-card.active-expand {
-      transform: scale(1.035) !important;
+      transform: scale(1.05) !important;
       opacity: 1 !important;
       filter: none !important;
-      z-index: 30;
+      z-index: 40;
       background: rgba(255, 255, 255, 0.98);
-      box-shadow: 0 24px 50px -10px rgba(15, 23, 42, 0.14);
+      box-shadow: 0 30px 60px -15px rgba(15, 23, 42, 0.18);
     }
     
-    /* Header & Footer smooth scale and glide */
+    /* Header title scaling: Big in rest, shrinks smoothly on hover */
     .card-header-block {
       transition: transform 1.1s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.8s ease;
       transform-origin: center center;
+      width: 100%;
     }
     .didactic-card:hover .card-header-block, .didactic-card.active-expand .card-header-block {
-      transform: translateY(-6px) scale(0.9);
+      transform: translateY(-8px) scale(0.82);
     }
 
-    .card-footer-block {
-      transition: transform 1.1s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.8s ease;
-      transform-origin: center center;
-    }
-    .didactic-card:hover .card-footer-block, .didactic-card.active-expand .card-footer-block {
-      transform: translateY(6px) scale(0.92);
-    }
-
-    /* Smooth Height Expansion for Details */
+    /* Hover details smoothly expand with large protagonist image */
     .hover-details {
       max-height: 0;
       opacity: 0;
       overflow: hidden;
+      width: 100%;
       transition: max-height 1.1s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.9s cubic-bezier(0.16, 1, 0.3, 1);
     }
     .didactic-card:hover .hover-details, .didactic-card.active-expand .hover-details {
-      max-height: 520px;
+      max-height: 600px;
       opacity: 1;
     }
 
@@ -221,7 +219,7 @@
           <span class="w-1.5 h-1.5 rounded-full bg-amber-400"></span>
           <span>Prácticas Profesionalizantes II — TP Nº1 • Prof. Santoro Martín</span>
         </div>
-        <div>Alumnos: Avilas Martín • Araujo Roberto • Gaitán Evelyn</div>
+        <div>Alumnos: Araujo Roberto • Avilas Martín • Gaitán Evelyn</div>
       </div>
 
     </div>
@@ -230,13 +228,13 @@
   <!-- Bottom Navigation Bar -->
   <footer class="h-14 px-6 border-t border-slate-200/80 bg-white/85 backdrop-blur-xl flex items-center justify-between z-30 shrink-0 shadow-sm">
     <div class="flex items-center gap-3 text-xs text-slate-500">
-      <span class="flex items-center gap-1"><kbd class="px-1.5 py-0.5 bg-white border border-slate-200 rounded-mono text-[10px] text-slate-700 shadow-sm">←</kbd> <kbd class="px-1.5 py-0.5 bg-white border border-slate-200 rounded-mono text-[10px] text-slate-700 shadow-sm">→</kbd> Navegar</span>
+      <span class="flex items-center gap-1"><kbd class="px-1.5 py-0.5 bg-white border border-slate-200 rounded font-mono text-[10px] text-slate-700 shadow-sm">←</kbd> <kbd class="px-1.5 py-0.5 bg-white border border-slate-200 rounded font-mono text-[10px] text-slate-700 shadow-sm">→</kbd> Navegar</span>
       <span class="text-slate-300">•</span>
-      <span class="flex items-center gap-1"><kbd class="px-1.5 py-0.5 bg-white border border-slate-200 rounded-mono text-[10px] text-slate-700 shadow-sm">Espacio</kbd> Avanzar</span>
+      <span class="flex items-center gap-1"><kbd class="px-1.5 py-0.5 bg-white border border-slate-200 rounded font-mono text-[10px] text-slate-700 shadow-sm">Espacio</kbd> Avanzar</span>
       <span class="text-slate-300">•</span>
-      <span class="flex items-center gap-1"><kbd class="px-1.5 py-0.5 bg-white border border-slate-200 rounded-mono text-[10px] text-slate-700 shadow-sm">G</kbd> Abrir/Cerrar Índice</span>
+      <span class="flex items-center gap-1"><kbd class="px-1.5 py-0.5 bg-white border border-slate-200 rounded font-mono text-[10px] text-slate-700 shadow-sm">G</kbd> Abrir/Cerrar Índice</span>
       <span class="text-slate-300">•</span>
-      <span class="flex items-center gap-1"><kbd class="px-1.5 py-0.5 bg-white border border-slate-200 rounded-mono text-[10px] text-slate-700 shadow-sm">N</kbd> Notas de orador</span>
+      <span class="flex items-center gap-1"><kbd class="px-1.5 py-0.5 bg-white border border-slate-200 rounded font-mono text-[10px] text-slate-700 shadow-sm">N</kbd> Notas de orador</span>
     </div>
 
     <div class="flex items-center gap-2">
@@ -299,7 +297,7 @@
 
       <div class="text-sm font-mono text-amber-950 font-bold bg-white/80 px-6 py-2.5 rounded-2xl border border-amber-300 shadow-sm pointer-events-none">
         Prácticas Profesionalizantes II — TP Nº1 • Prof. Santoro Martín<br>
-        <span class="text-slate-700 font-semibold text-xs">Alumnos: Avilas Martín • Araujo Roberto • Gaitán Evelyn</span>
+        <span class="text-slate-700 font-semibold text-xs">Alumnos: Araujo Roberto • Avilas Martín • Gaitán Evelyn</span>
       </div>
 
     </div>
@@ -342,21 +340,18 @@
             
             <div class="grid grid-cols-3 gap-6 w-full pt-6 border-t border-slate-200">
               <div class="liquid-glass rounded-2xl p-5 border border-amber-300 hover:border-amber-500 transition-all flex flex-col items-center text-center shadow-sm">
-                <div class="font-mono text-[11px] text-amber-800 font-bold mb-1 uppercase">BLOQUE 1 • TEMAS 1 AL 5</div>
-                <div class="text-lg font-black text-slate-900">Araujo Roberto</div>
-                <div class="text-xs text-slate-500 mt-1 font-medium">Concepto, Componentes, Org & DSS</div>
+                <div class="text-2xl font-black text-slate-900">Araujo Roberto</div>
+                <div class="text-xs text-slate-500 mt-1 font-medium">Concepto, Componentes, Org & DSS (Temas 1-5)</div>
               </div>
 
               <div class="liquid-glass rounded-2xl p-5 border border-indigo-300 hover:border-indigo-500 transition-all flex flex-col items-center text-center shadow-sm">
-                <div class="font-mono text-[11px] text-indigo-800 font-bold mb-1 uppercase">BLOQUE 2 • TEMAS 6 AL 10</div>
-                <div class="text-lg font-black text-slate-900">Avilas Martín</div>
-                <div class="text-xs text-slate-500 mt-1 font-medium">EIS, MIS, Matriz, Niveles & DDDM</div>
+                <div class="text-2xl font-black text-slate-900">Avilas Martín</div>
+                <div class="text-xs text-slate-500 mt-1 font-medium">EIS, MIS, Matriz, Niveles & DDDM (Temas 6-10)</div>
               </div>
 
               <div class="liquid-glass rounded-2xl p-5 border border-emerald-300 hover:border-emerald-500 transition-all flex flex-col items-center text-center shadow-sm">
-                <div class="font-mono text-[11px] text-emerald-800 font-bold mb-1 uppercase">BLOQUE 3 • TEMAS 11 AL 14</div>
-                <div class="text-lg font-black text-slate-900">Gaitán Evelyn</div>
-                <div class="text-xs text-slate-500 mt-1 font-medium">Datos, FOTF, Caso MELI & Cierre</div>
+                <div class="text-2xl font-black text-slate-900">Gaitán Evelyn</div>
+                <div class="text-xs text-slate-500 mt-1 font-medium">Datos, FOTF, Caso MELI & Cierre (Temas 11-14)</div>
               </div>
             </div>
           </div>
@@ -366,16 +361,15 @@
       // 2. Pregunta Orientadora
       {
         category: "INTRODUCCIÓN",
-        timing: "GRUPO 1",
+        timing: "APERTURA • ARAUJO",
         title: "Pregunta Orientadora",
         speaker: "Araujo Roberto",
         speakerTag: "PREGUNTA ORIENTADORA • GRUPO 1",
         notes: `<p><strong>Pregunta Central de Cátedra:</strong> Plantear el interrogante directriz que guiará toda la investigación y exposición.</p>`,
         render: () => `
-          <div class="flex-1 flex flex-col justify-center items-center text-center max-w-3xl mx-auto p-6">
-            <div class="w-16 h-16 rounded-2xl bg-amber-100 text-amber-900 flex items-center justify-center font-mono text-2xl font-black mb-6 border border-amber-300 shadow-md">?</div>
-            <div class="liquid-glass rounded-3xl p-8 md:p-10 border-2 border-amber-300/80 shadow-lg">
-              <p class="text-2xl md:text-3xl font-extrabold text-slate-900 leading-relaxed italic">
+          <div class="flex-1 flex flex-col justify-center items-center text-center max-w-4xl mx-auto p-6">
+            <div class="liquid-glass rounded-3xl p-10 md:p-14 border-2 border-amber-300/80 shadow-xl">
+              <p class="text-2xl md:text-4xl font-extrabold text-slate-900 leading-relaxed italic">
                 “¿Cómo influye la calidad y oportunidad de la información generada por los MIS, DSS y EIS en la toma de decisiones estratégicas dentro de una organización?”
               </p>
             </div>
@@ -396,39 +390,35 @@
             <!-- Left: Definicion -->
             <div class="liquid-glass rounded-3xl p-6 flex flex-col justify-center items-center didactic-card border border-amber-300 hover:border-amber-500 hover:ring-2 hover:ring-amber-300/40 text-center cursor-pointer">
               <div class="card-header-block flex flex-col items-center">
-                <span class="font-mono text-xs font-bold text-amber-800 bg-amber-100 px-3 py-1 rounded-full mb-2">DEFINICIÓN</span>
-                <h3 class="text-2xl font-black text-slate-900">Concepto Central</h3>
+                <h3 class="text-3xl font-black text-slate-900">Concepto de Sistema de Información</h3>
               </div>
               <div class="hover-details w-full pt-2">
-                <img src="assets/images/nobg/overview_systems_nobg.png" alt="Concepto SI" class="w-full max-h-32 object-contain drop-shadow-md mx-auto mb-2"/>
+                <img src="assets/images/nobg/overview_systems_nobg.png" alt="Concepto SI" class="w-full max-h-48 object-contain drop-shadow-xl mx-auto mb-3"/>
+                <p class="text-sm md:text-base font-bold text-slate-800 leading-relaxed">
+                  Un sistema de información es un <span class="text-amber-950 font-black">conjunto ordenado de personas, procesos y herramientas</span> para administrar, recuperar y procesar datos con un fin común.
+                </p>
               </div>
-              <p class="text-lg md:text-xl font-bold text-slate-800 leading-relaxed mt-2">
-                Un sistema de información es un <span class="text-amber-950 font-black">conjunto ordenado de personas, procesos y herramientas</span> para administrar, recuperar y procesar datos con un fin común.
-              </p>
-              <div class="card-footer-block text-xs font-mono text-amber-900/80 font-bold mt-3">Estructura & Procesamiento</div>
             </div>
 
             <!-- Right: Componentes Principales -->
             <div class="liquid-glass rounded-3xl p-6 flex flex-col justify-center items-center didactic-card border border-indigo-300 hover:border-indigo-500 hover:ring-2 hover:ring-indigo-300/40 text-center cursor-pointer">
               <div class="card-header-block flex flex-col items-center">
-                <span class="font-mono text-xs font-bold text-indigo-800 bg-indigo-100 px-3 py-1 rounded-full mb-2">3 PILARES</span>
-                <h3 class="text-2xl font-black text-slate-900">Componentes Principales</h3>
+                <h3 class="text-3xl font-black text-slate-900">Componentes Principales</h3>
               </div>
               <div class="hover-details w-full pt-2">
-                <img src="assets/images/nobg/cloud_architecture_nobg.png" alt="Componentes SI" class="w-full max-h-28 object-contain drop-shadow-md mx-auto mb-2"/>
+                <img src="assets/images/nobg/cloud_architecture_nobg.png" alt="Componentes SI" class="w-full max-h-40 object-contain drop-shadow-xl mx-auto mb-3"/>
+                <div class="space-y-2 w-full text-left">
+                  <div class="p-2.5 rounded-xl bg-white/90 border border-slate-200 text-xs">
+                    <strong class="text-slate-900 text-sm font-bold">Equipos:</strong> Elementos tecnológicos físicos o virtuales (hardware, software, redes).
+                  </div>
+                  <div class="p-2.5 rounded-xl bg-white/90 border border-slate-200 text-xs">
+                    <strong class="text-slate-900 text-sm font-bold">Personas:</strong> Individuos que cumplen un rol activo en el sistema.
+                  </div>
+                  <div class="p-2.5 rounded-xl bg-white/90 border border-slate-200 text-xs">
+                    <strong class="text-slate-900 text-sm font-bold">Datos:</strong> Elementos relacionados con información cualitativa o cuantitativa.
+                  </div>
+                </div>
               </div>
-              <div class="space-y-2.5 w-full text-left mt-2">
-                <div class="p-2.5 rounded-xl bg-white/90 border border-slate-200 text-xs">
-                  <strong class="text-slate-900 text-sm font-bold">Equipos:</strong> Elementos tecnológicos físicos o virtuales (hardware, software, redes).
-                </div>
-                <div class="p-2.5 rounded-xl bg-white/90 border border-slate-200 text-xs">
-                  <strong class="text-slate-900 text-sm font-bold">Personas:</strong> Individuos que cumplen un rol activo en el sistema.
-                </div>
-                <div class="p-2.5 rounded-xl bg-white/90 border border-slate-200 text-xs">
-                  <strong class="text-slate-900 text-sm font-bold">Datos:</strong> Elementos relacionados con información cualitativa o cuantitativa.
-                </div>
-              </div>
-              <div class="card-footer-block text-xs font-mono text-indigo-900/80 font-bold mt-3">Equipos • Personas • Datos</div>
             </div>
           </div>
         `
@@ -445,48 +435,42 @@
         render: () => `
           <div class="grid grid-cols-3 gap-6 h-full items-stretch didactic-grid p-2">
             <!-- Control de Calidad -->
-            <div class="liquid-glass rounded-3xl p-5 flex flex-col justify-center items-center didactic-card border border-amber-300 hover:border-amber-500 hover:ring-2 hover:ring-amber-300/40 text-center cursor-pointer">
+            <div class="liquid-glass rounded-3xl p-6 flex flex-col justify-center items-center didactic-card border border-amber-300 hover:border-amber-500 hover:ring-2 hover:ring-amber-300/40 text-center cursor-pointer">
               <div class="card-header-block flex flex-col items-center">
-                <span class="w-8 h-8 rounded-xl bg-amber-100 text-amber-900 font-mono text-sm font-black flex items-center justify-center border border-amber-300 mb-2">01</span>
-                <h4 class="text-xl font-black text-slate-900">Control de Calidad</h4>
+                <h4 class="text-2xl md:text-3xl font-black text-slate-900">Sistemas de Control de Calidad</h4>
               </div>
-              <div class="hover-details w-full pt-1">
-                <img src="assets/images/nobg/data_governance_nobg.png" alt="Calidad" class="w-full max-h-28 object-contain drop-shadow-md mx-auto mb-2"/>
+              <div class="hover-details w-full pt-2">
+                <img src="assets/images/nobg/data_governance_nobg.png" alt="Calidad" class="w-full max-h-44 object-contain drop-shadow-xl mx-auto mb-3"/>
+                <p class="text-xs md:text-sm text-slate-700 leading-relaxed font-medium">
+                  Sistemas que solicitan retroalimentación al cliente y evalúan resultados estadísticamente para elaborar informes orientados a la gerencia.
+                </p>
               </div>
-              <p class="text-xs text-slate-700 leading-relaxed font-medium mt-1">
-                Sistemas que solicitan retroalimentación al cliente y evalúan resultados estadísticamente para elaborar informes orientados a la gerencia.
-              </p>
-              <div class="card-footer-block text-xs font-mono text-amber-800/80 font-bold mt-2">Retroalimentación & Métricas</div>
             </div>
 
             <!-- Bases de Datos de Bibliotecas -->
-            <div class="liquid-glass rounded-3xl p-5 flex flex-col justify-center items-center didactic-card border border-indigo-300 hover:border-indigo-500 hover:ring-2 hover:ring-indigo-300/40 text-center cursor-pointer">
+            <div class="liquid-glass rounded-3xl p-6 flex flex-col justify-center items-center didactic-card border border-indigo-300 hover:border-indigo-500 hover:ring-2 hover:ring-indigo-300/40 text-center cursor-pointer">
               <div class="card-header-block flex flex-col items-center">
-                <span class="w-8 h-8 rounded-xl bg-indigo-100 text-indigo-900 font-mono text-sm font-black flex items-center justify-center border border-indigo-300 mb-2">02</span>
-                <h4 class="text-xl font-black text-slate-900">Bases de Datos Bibliotecas</h4>
+                <h4 class="text-2xl md:text-3xl font-black text-slate-900">Bases de Datos de Bibliotecas</h4>
               </div>
-              <div class="hover-details w-full pt-1">
-                <img src="assets/images/nobg/academic_library_nobg.png" alt="Biblioteca" class="w-full max-h-28 object-contain drop-shadow-md mx-auto mb-2"/>
+              <div class="hover-details w-full pt-2">
+                <img src="assets/images/nobg/academic_library_nobg.png" alt="Biblioteca" class="w-full max-h-44 object-contain drop-shadow-xl mx-auto mb-3"/>
+                <p class="text-xs md:text-sm text-slate-700 leading-relaxed font-medium">
+                  Sistemas que contienen un gran volumen de documentos (libros, revistas, tesis) para ubicar y recuperar registros precisa y rápidamente.
+                </p>
               </div>
-              <p class="text-xs text-slate-700 leading-relaxed font-medium mt-1">
-                Sistemas que contienen un gran volumen de documentos (libros, revistas, tesis) para ubicar y recuperar registros precisa y rápidamente.
-              </p>
-              <div class="card-footer-block text-xs font-mono text-indigo-800/80 font-bold mt-2">Recuperación Documental</div>
             </div>
 
             <!-- Hojas de Calculo -->
-            <div class="liquid-glass rounded-3xl p-5 flex flex-col justify-center items-center didactic-card border border-emerald-300 hover:border-emerald-500 hover:ring-2 hover:ring-emerald-300/40 text-center cursor-pointer">
+            <div class="liquid-glass rounded-3xl p-6 flex flex-col justify-center items-center didactic-card border border-emerald-300 hover:border-emerald-500 hover:ring-2 hover:ring-emerald-300/40 text-center cursor-pointer">
               <div class="card-header-block flex flex-col items-center">
-                <span class="w-8 h-8 rounded-xl bg-emerald-100 text-emerald-900 font-mono text-sm font-black flex items-center justify-center border border-emerald-300 mb-2">03</span>
-                <h4 class="text-xl font-black text-slate-900">Hojas de Cálculo</h4>
+                <h4 class="text-2xl md:text-3xl font-black text-slate-900">Hojas de Cálculo</h4>
               </div>
-              <div class="hover-details w-full pt-1">
-                <img src="assets/images/nobg/mis_dashboard_nobg.png" alt="Hojas de Calculo" class="w-full max-h-28 object-contain drop-shadow-md mx-auto mb-2"/>
+              <div class="hover-details w-full pt-2">
+                <img src="assets/images/nobg/mis_dashboard_nobg.png" alt="Hojas de Calculo" class="w-full max-h-44 object-contain drop-shadow-xl mx-auto mb-3"/>
+                <p class="text-xs md:text-sm text-slate-700 leading-relaxed font-medium">
+                  Sistemas en los que se ingresa información en bruto para organizarla de manera cuantificable y obtener directrices financieras.
+                </p>
               </div>
-              <p class="text-xs text-slate-700 leading-relaxed font-medium mt-1">
-                Sistemas en los que se ingresa información en bruto para organizarla de manera cuantificable y obtener directrices financieras.
-              </p>
-              <div class="card-footer-block text-xs font-mono text-emerald-800/80 font-bold mt-2">Cálculo & Finanzas</div>
             </div>
           </div>
         `
@@ -505,31 +489,27 @@
             <!-- Impacto Operativo -->
             <div class="liquid-glass rounded-3xl p-6 flex flex-col justify-center items-center didactic-card border border-amber-300 hover:border-amber-500 hover:ring-2 hover:ring-amber-300/40 text-center cursor-pointer">
               <div class="card-header-block flex flex-col items-center">
-                <span class="font-mono text-xs font-bold text-amber-800 bg-amber-100 px-3 py-1 rounded-full mb-2">OPERACIÓN</span>
-                <h3 class="text-2xl font-black text-slate-900">Impacto Operativo</h3>
+                <h3 class="text-3xl font-black text-slate-900">Impacto Operativo</h3>
               </div>
               <div class="hover-details w-full pt-2">
-                <img src="assets/images/nobg/overview_systems_nobg.png" alt="Impacto" class="w-full max-h-32 object-contain drop-shadow-md mx-auto mb-2"/>
+                <img src="assets/images/nobg/overview_systems_nobg.png" alt="Impacto" class="w-full max-h-48 object-contain drop-shadow-xl mx-auto mb-3"/>
+                <p class="text-sm md:text-base text-slate-700 leading-relaxed font-medium">
+                  Permiten a las empresas organizar y vincular datos de diferentes áreas. Los trabajadores pueden localizar información de alto valor en tiempo real desde una sola plataforma para captar, almacenar y analizar datos.
+                </p>
               </div>
-              <p class="text-sm md:text-base text-slate-700 leading-relaxed font-medium mt-2">
-                Permiten a las empresas organizar y vincular datos de diferentes áreas. Los trabajadores pueden localizar información de alto valor en tiempo real desde una sola plataforma para captar, almacenar y analizar datos.
-              </p>
-              <div class="card-footer-block text-xs font-mono text-amber-900/80 font-bold mt-3">Vinculación de Áreas en Tiempo Real</div>
             </div>
 
             <!-- Ventajas Clave -->
             <div class="liquid-glass rounded-3xl p-6 flex flex-col justify-center items-center didactic-card border border-emerald-300 hover:border-emerald-500 hover:ring-2 hover:ring-emerald-300/40 text-center cursor-pointer">
               <div class="card-header-block flex flex-col items-center">
-                <span class="font-mono text-xs font-bold text-emerald-800 bg-emerald-100 px-3 py-1 rounded-full mb-2">EFICIENCIA</span>
-                <h3 class="text-2xl font-black text-slate-900">Ventajas Clave</h3>
+                <h3 class="text-3xl font-black text-slate-900">Ventajas Clave</h3>
               </div>
               <div class="hover-details w-full pt-2">
-                <img src="assets/images/nobg/meli_logistics_nobg.png" alt="Ventajas Clave" class="w-full max-h-32 object-contain drop-shadow-md mx-auto mb-2"/>
+                <img src="assets/images/nobg/meli_logistics_nobg.png" alt="Ventajas Clave" class="w-full max-h-48 object-contain drop-shadow-xl mx-auto mb-3"/>
+                <p class="text-sm md:text-base text-slate-700 leading-relaxed font-medium">
+                  <strong>Integración y Tiempos:</strong> Centralizan datos para operar como un bloque sólido y automatizan tareas rutinarias, permitiendo a los colaboradores focalizarse en actividades más rentables y de mayor valor.
+                </p>
               </div>
-              <p class="text-sm md:text-base text-slate-700 leading-relaxed font-medium mt-2">
-                <strong>Integración y Tiempos:</strong> Centralizan datos para operar como un bloque sólido y automatizan tareas rutinarias, permitiendo a los colaboradores focalizarse en actividades más rentables y de mayor valor.
-              </p>
-              <div class="card-footer-block text-xs font-mono text-emerald-900/80 font-bold mt-3">Centralización & Mayor Valor</div>
             </div>
           </div>
         `
@@ -545,29 +525,53 @@
         notes: `<p><strong>6 Ventajas:</strong> Integración, Procesos, Disponibilidad, Gestión, Costos y Seguridad.</p>`,
         render: () => `
           <div class="grid grid-cols-3 gap-4 h-full items-stretch didactic-grid p-2">
-            <div class="liquid-glass rounded-2xl p-4 flex flex-col justify-center items-center didactic-card border border-amber-300 hover:border-amber-500 text-center cursor-pointer">
-              <h5 class="text-lg font-black text-slate-900">Integración</h5>
-              <p class="text-xs text-slate-700 font-medium mt-1">Unificación para mejorar la planeación global.</p>
+            <div class="liquid-glass rounded-2xl p-5 flex flex-col justify-center items-center didactic-card border border-amber-300 hover:border-amber-500 text-center cursor-pointer">
+              <div class="card-header-block">
+                <h5 class="text-2xl font-black text-slate-900">Integración</h5>
+              </div>
+              <div class="hover-details w-full pt-2">
+                <p class="text-xs md:text-sm text-slate-700 font-medium">Unificación para mejorar la planeación global.</p>
+              </div>
             </div>
-            <div class="liquid-glass rounded-2xl p-4 flex flex-col justify-center items-center didactic-card border border-emerald-300 hover:border-emerald-500 text-center cursor-pointer">
-              <h5 class="text-lg font-black text-slate-900">Procesos</h5>
-              <p class="text-xs text-slate-700 font-medium mt-1">Optimización operativa y disminución de errores.</p>
+            <div class="liquid-glass rounded-2xl p-5 flex flex-col justify-center items-center didactic-card border border-emerald-300 hover:border-emerald-500 text-center cursor-pointer">
+              <div class="card-header-block">
+                <h5 class="text-2xl font-black text-slate-900">Procesos</h5>
+              </div>
+              <div class="hover-details w-full pt-2">
+                <p class="text-xs md:text-sm text-slate-700 font-medium">Optimización operativa y disminución de errores.</p>
+              </div>
             </div>
-            <div class="liquid-glass rounded-2xl p-4 flex flex-col justify-center items-center didactic-card border border-indigo-300 hover:border-indigo-500 text-center cursor-pointer">
-              <h5 class="text-lg font-black text-slate-900">Disponibilidad</h5>
-              <p class="text-xs text-slate-700 font-medium mt-1">Acceso permanente a grandes volúmenes de datos.</p>
+            <div class="liquid-glass rounded-2xl p-5 flex flex-col justify-center items-center didactic-card border border-indigo-300 hover:border-indigo-500 text-center cursor-pointer">
+              <div class="card-header-block">
+                <h5 class="text-2xl font-black text-slate-900">Disponibilidad</h5>
+              </div>
+              <div class="hover-details w-full pt-2">
+                <p class="text-xs md:text-sm text-slate-700 font-medium">Acceso permanente a grandes volúmenes de datos.</p>
+              </div>
             </div>
-            <div class="liquid-glass rounded-2xl p-4 flex flex-col justify-center items-center didactic-card border border-blue-300 hover:border-blue-500 text-center cursor-pointer">
-              <h5 class="text-lg font-black text-slate-900">Gestión</h5>
-              <p class="text-xs text-slate-700 font-medium mt-1">Control riguroso de operaciones y mejora continua.</p>
+            <div class="liquid-glass rounded-2xl p-5 flex flex-col justify-center items-center didactic-card border border-blue-300 hover:border-blue-500 text-center cursor-pointer">
+              <div class="card-header-block">
+                <h5 class="text-2xl font-black text-slate-900">Gestión</h5>
+              </div>
+              <div class="hover-details w-full pt-2">
+                <p class="text-xs md:text-sm text-slate-700 font-medium">Control riguroso de operaciones y mejora continua.</p>
+              </div>
             </div>
-            <div class="liquid-glass rounded-2xl p-4 flex flex-col justify-center items-center didactic-card border border-yellow-300 hover:border-yellow-500 text-center cursor-pointer">
-              <h5 class="text-lg font-black text-slate-900">Costos</h5>
-              <p class="text-xs text-slate-700 font-medium mt-1">Ahorro en costes administrativos y operativos.</p>
+            <div class="liquid-glass rounded-2xl p-5 flex flex-col justify-center items-center didactic-card border border-yellow-300 hover:border-yellow-500 text-center cursor-pointer">
+              <div class="card-header-block">
+                <h5 class="text-2xl font-black text-slate-900">Costos</h5>
+              </div>
+              <div class="hover-details w-full pt-2">
+                <p class="text-xs md:text-sm text-slate-700 font-medium">Ahorro en costes administrativos y operativos.</p>
+              </div>
             </div>
-            <div class="liquid-glass rounded-2xl p-4 flex flex-col justify-center items-center didactic-card border border-rose-300 hover:border-rose-500 text-center cursor-pointer">
-              <h5 class="text-lg font-black text-slate-900">Seguridad</h5>
-              <p class="text-xs text-slate-700 font-medium mt-1">Máxima protección de datos sensibles.</p>
+            <div class="liquid-glass rounded-2xl p-5 flex flex-col justify-center items-center didactic-card border border-rose-300 hover:border-rose-500 text-center cursor-pointer">
+              <div class="card-header-block">
+                <h5 class="text-2xl font-black text-slate-900">Seguridad</h5>
+              </div>
+              <div class="hover-details w-full pt-2">
+                <p class="text-xs md:text-sm text-slate-700 font-medium">Máxima protección de datos sensibles.</p>
+              </div>
             </div>
           </div>
         `
@@ -584,10 +588,8 @@
         render: () => `
           <div class="grid grid-cols-12 gap-6 h-full items-center p-2">
             <div class="col-span-5 flex flex-col items-center justify-center p-4">
-              <div class="w-full max-w-[280px] p-6 rounded-3xl bg-indigo-100 border-2 border-indigo-400 text-center shadow-md">
-                <span class="text-xs font-mono font-bold text-indigo-900 uppercase">CÚSPIDE ORGANIZACIONAL</span>
-                <h3 class="text-2xl font-black text-indigo-950 mt-1">Nivel Estratégico</h3>
-                <p class="text-xs text-indigo-800 font-medium mt-1">Alta Dirección • Largo Plazo</p>
+              <div class="w-full max-w-[300px] p-8 rounded-3xl bg-indigo-100 border-2 border-indigo-400 text-center shadow-lg">
+                <h3 class="text-3xl font-black text-indigo-950">1. Nivel Estratégico</h3>
               </div>
             </div>
             <div class="col-span-7 flex flex-col justify-center space-y-4">
@@ -617,10 +619,8 @@
         render: () => `
           <div class="grid grid-cols-12 gap-6 h-full items-center p-2">
             <div class="col-span-5 flex flex-col items-center justify-center p-4">
-              <div class="w-full max-w-[280px] p-6 rounded-3xl bg-amber-100 border-2 border-amber-400 text-center shadow-md">
-                <span class="text-xs font-mono font-bold text-amber-900 uppercase">MANDOS MEDIOS</span>
-                <h3 class="text-2xl font-black text-amber-950 mt-1">Nivel Táctico</h3>
-                <p class="text-xs text-amber-800 font-medium mt-1">Departamentos • Mediano Plazo</p>
+              <div class="w-full max-w-[300px] p-8 rounded-3xl bg-amber-100 border-2 border-amber-400 text-center shadow-lg">
+                <h3 class="text-3xl font-black text-amber-950">2. Nivel Táctico</h3>
               </div>
             </div>
             <div class="col-span-7 flex flex-col justify-center space-y-4">
@@ -655,10 +655,8 @@
         render: () => `
           <div class="grid grid-cols-12 gap-6 h-full items-center p-2">
             <div class="col-span-5 flex flex-col items-center justify-center p-4">
-              <div class="w-full max-w-[280px] p-6 rounded-3xl bg-sky-100 border-2 border-sky-400 text-center shadow-md">
-                <span class="text-xs font-mono font-bold text-sky-900 uppercase">BASE OPERACIONAL</span>
-                <h3 class="text-2xl font-black text-sky-950 mt-1">Nivel Operativo</h3>
-                <p class="text-xs text-sky-800 font-medium mt-1">Ejecución • Corto Plazo / Día a Día</p>
+              <div class="w-full max-w-[300px] p-8 rounded-3xl bg-sky-100 border-2 border-sky-400 text-center shadow-lg">
+                <h3 class="text-3xl font-black text-sky-950">3. Nivel Operativo</h3>
               </div>
             </div>
             <div class="col-span-7 flex flex-col justify-center space-y-4">
@@ -687,29 +685,53 @@
         notes: `<p><strong>5 Ejes:</strong> Automatización, RRHH, Innovación, Finanzas y Adaptación al mercado.</p>`,
         render: () => `
           <div class="grid grid-cols-3 gap-4 h-full items-stretch didactic-grid p-2">
-            <div class="liquid-glass rounded-2xl p-4 flex flex-col justify-center items-center didactic-card border border-amber-300 hover:border-amber-500 text-center cursor-pointer">
-              <h5 class="text-lg font-black text-slate-900">Automatización</h5>
-              <p class="text-xs text-slate-700 font-medium mt-1">Reducción de carga manual y mayor eficiencia.</p>
+            <div class="liquid-glass rounded-2xl p-5 flex flex-col justify-center items-center didactic-card border border-amber-300 hover:border-amber-500 text-center cursor-pointer">
+              <div class="card-header-block">
+                <h5 class="text-2xl font-black text-slate-900">Automatización</h5>
+              </div>
+              <div class="hover-details w-full pt-2">
+                <p class="text-xs md:text-sm text-slate-700 font-medium">Reducción de carga manual y mayor eficiencia.</p>
+              </div>
             </div>
-            <div class="liquid-glass rounded-2xl p-4 flex flex-col justify-center items-center didactic-card border border-indigo-300 hover:border-indigo-500 text-center cursor-pointer">
-              <h5 class="text-lg font-black text-slate-900">Recursos Humanos</h5>
-              <p class="text-xs text-slate-700 font-medium mt-1">Nómina, desempeño y satisfacción del personal.</p>
+            <div class="liquid-glass rounded-2xl p-5 flex flex-col justify-center items-center didactic-card border border-indigo-300 hover:border-indigo-500 text-center cursor-pointer">
+              <div class="card-header-block">
+                <h5 class="text-2xl font-black text-slate-900">Recursos Humanos</h5>
+              </div>
+              <div class="hover-details w-full pt-2">
+                <p class="text-xs md:text-sm text-slate-700 font-medium">Nómina, desempeño y satisfacción del personal.</p>
+              </div>
             </div>
-            <div class="liquid-glass rounded-2xl p-4 flex flex-col justify-center items-center didactic-card border border-emerald-300 hover:border-emerald-500 text-center cursor-pointer">
-              <h5 class="text-lg font-black text-slate-900">Innovación & Desarrollo</h5>
-              <p class="text-xs text-slate-700 font-medium mt-1">Plataformas de experimentación tecnológica.</p>
+            <div class="liquid-glass rounded-2xl p-5 flex flex-col justify-center items-center didactic-card border border-emerald-300 hover:border-emerald-500 text-center cursor-pointer">
+              <div class="card-header-block">
+                <h5 class="text-2xl font-black text-slate-900">Innovación & Desarrollo</h5>
+              </div>
+              <div class="hover-details w-full pt-2">
+                <p class="text-xs md:text-sm text-slate-700 font-medium">Plataformas de experimentación tecnológica.</p>
+              </div>
             </div>
-            <div class="liquid-glass rounded-2xl p-4 flex flex-col justify-center items-center didactic-card border border-yellow-300 hover:border-yellow-500 text-center cursor-pointer">
-              <h5 class="text-lg font-black text-slate-900">Seguimiento Financiero</h5>
-              <p class="text-xs text-slate-700 font-medium mt-1">Gestión contable, facturación y previsión sólida.</p>
+            <div class="liquid-glass rounded-2xl p-5 flex flex-col justify-center items-center didactic-card border border-yellow-300 hover:border-yellow-500 text-center cursor-pointer">
+              <div class="card-header-block">
+                <h5 class="text-2xl font-black text-slate-900">Seguimiento Financiero</h5>
+              </div>
+              <div class="hover-details w-full pt-2">
+                <p class="text-xs md:text-sm text-slate-700 font-medium">Gestión contable, facturación y previsión sólida.</p>
+              </div>
             </div>
-            <div class="liquid-glass rounded-2xl p-4 flex flex-col justify-center items-center didactic-card border border-sky-300 hover:border-sky-500 text-center cursor-pointer">
-              <h5 class="text-lg font-black text-slate-900">Adaptación al Mercado</h5>
-              <p class="text-xs text-slate-700 font-medium mt-1">Análisis dinámico de tendencias y competencia.</p>
+            <div class="liquid-glass rounded-2xl p-5 flex flex-col justify-center items-center didactic-card border border-sky-300 hover:border-sky-500 text-center cursor-pointer">
+              <div class="card-header-block">
+                <h5 class="text-2xl font-black text-slate-900">Adaptación al Mercado</h5>
+              </div>
+              <div class="hover-details w-full pt-2">
+                <p class="text-xs md:text-sm text-slate-700 font-medium">Análisis dinámico de tendencias y competencia.</p>
+              </div>
             </div>
-            <div class="liquid-glass rounded-2xl p-4 flex flex-col justify-center items-center didactic-card border border-slate-300 text-center">
-              <span class="text-xs font-mono text-slate-500 font-bold uppercase">ALINEACIÓN INTEGRAL</span>
-              <p class="text-xs text-slate-600 font-semibold mt-1">Coordinación multinivel en tiempo real.</p>
+            <div class="liquid-glass rounded-2xl p-5 flex flex-col justify-center items-center didactic-card border border-slate-300 text-center">
+              <div class="card-header-block">
+                <h5 class="text-2xl font-black text-slate-900">Alineación Global</h5>
+              </div>
+              <div class="hover-details w-full pt-2">
+                <p class="text-xs md:text-sm text-slate-700 font-medium">Coordinación multinivel en tiempo real.</p>
+              </div>
             </div>
           </div>
         `
@@ -725,17 +747,17 @@
         notes: `<p><strong>Tipos 1/2:</strong> MIS, SIA, SIM, Ventas, CRM, TPS, BMP y ERP.</p>`,
         render: () => `
           <div class="grid grid-cols-2 gap-4 h-full items-stretch didactic-grid p-2">
-            <div class="liquid-glass rounded-2xl p-4 flex flex-col justify-center space-y-2 border border-amber-300">
-              <div class="p-2 rounded-xl bg-white/90 border border-slate-200 text-sm font-bold text-slate-900">• Sistemas de Información Gerencial (MIS)</div>
-              <div class="p-2 rounded-xl bg-white/90 border border-slate-200 text-sm font-bold text-slate-900">• Sistemas de Información Administrativa</div>
-              <div class="p-2 rounded-xl bg-white/90 border border-slate-200 text-sm font-bold text-slate-900">• Sistema de Información de Marketing (SIM)</div>
-              <div class="p-2 rounded-xl bg-white/90 border border-slate-200 text-sm font-bold text-slate-900">• Sistemas de Ventas</div>
+            <div class="liquid-glass rounded-3xl p-6 flex flex-col justify-center space-y-3 border border-amber-300">
+              <div class="p-3 rounded-xl bg-white/90 border border-slate-200 text-base font-bold text-slate-900">• Sistemas de Información Gerencial (MIS)</div>
+              <div class="p-3 rounded-xl bg-white/90 border border-slate-200 text-base font-bold text-slate-900">• Sistemas de Información Administrativa</div>
+              <div class="p-3 rounded-xl bg-white/90 border border-slate-200 text-base font-bold text-slate-900">• Sistema de Información de Marketing (SIM)</div>
+              <div class="p-3 rounded-xl bg-white/90 border border-slate-200 text-base font-bold text-slate-900">• Sistemas de Ventas</div>
             </div>
-            <div class="liquid-glass rounded-2xl p-4 flex flex-col justify-center space-y-2 border border-indigo-300">
-              <div class="p-2 rounded-xl bg-white/90 border border-slate-200 text-sm font-bold text-slate-900">• Gestión de Relaciones con Clientes (CRM)</div>
-              <div class="p-2 rounded-xl bg-white/90 border border-slate-200 text-sm font-bold text-slate-900">• Sistemas de Procesamiento de Transacciones (TPS)</div>
-              <div class="p-2 rounded-xl bg-white/90 border border-slate-200 text-sm font-bold text-slate-900">• Sistemas de Control de Procesos (BMP)</div>
-              <div class="p-2 rounded-xl bg-white/90 border border-slate-200 text-sm font-bold text-slate-900">• Sistema de Planificación de Recursos (ERP)</div>
+            <div class="liquid-glass rounded-3xl p-6 flex flex-col justify-center space-y-3 border border-indigo-300">
+              <div class="p-3 rounded-xl bg-white/90 border border-slate-200 text-base font-bold text-slate-900">• Gestión de Relaciones con Clientes (CRM)</div>
+              <div class="p-3 rounded-xl bg-white/90 border border-slate-200 text-base font-bold text-slate-900">• Sistemas de Procesamiento de Transacciones (TPS)</div>
+              <div class="p-3 rounded-xl bg-white/90 border border-slate-200 text-base font-bold text-slate-900">• Sistemas de Control de Procesos (BMP)</div>
+              <div class="p-3 rounded-xl bg-white/90 border border-slate-200 text-base font-bold text-slate-900">• Sistema de Planificación de Recursos (ERP)</div>
             </div>
           </div>
         `
@@ -751,16 +773,16 @@
         notes: `<p><strong>Tipos 2/2:</strong> EIS, DSS, SCM, SIE, GDSS, EDSS y SIC.</p>`,
         render: () => `
           <div class="grid grid-cols-2 gap-4 h-full items-stretch didactic-grid p-2">
-            <div class="liquid-glass rounded-2xl p-4 flex flex-col justify-center space-y-2 border border-emerald-300">
-              <div class="p-2 rounded-xl bg-white/90 border border-slate-200 text-sm font-bold text-slate-900">• Sistemas de Apoyo a Ejecutivos (EIS)</div>
-              <div class="p-2 rounded-xl bg-white/90 border border-slate-200 text-sm font-bold text-slate-900">• Sistemas de Soporte de Decisiones (DSS)</div>
-              <div class="p-2 rounded-xl bg-white/90 border border-slate-200 text-sm font-bold text-slate-900">• Administración de Cadena de Suministros (SCM)</div>
-              <div class="p-2 rounded-xl bg-white/90 border border-slate-200 text-sm font-bold text-slate-900">• Sistemas de Información Estratégicos (SIE)</div>
+            <div class="liquid-glass rounded-3xl p-6 flex flex-col justify-center space-y-3 border border-emerald-300">
+              <div class="p-3 rounded-xl bg-white/90 border border-slate-200 text-base font-bold text-slate-900">• Sistemas de Apoyo a Ejecutivos (EIS)</div>
+              <div class="p-3 rounded-xl bg-white/90 border border-slate-200 text-base font-bold text-slate-900">• Sistemas de Soporte de Decisiones (DSS)</div>
+              <div class="p-3 rounded-xl bg-white/90 border border-slate-200 text-base font-bold text-slate-900">• Administración de Cadena de Suministros (SCM)</div>
+              <div class="p-3 rounded-xl bg-white/90 border border-slate-200 text-base font-bold text-slate-900">• Sistemas de Información Estratégicos (SIE)</div>
             </div>
-            <div class="liquid-glass rounded-2xl p-4 flex flex-col justify-center space-y-2 border border-yellow-300">
-              <div class="p-2 rounded-xl bg-white/90 border border-slate-200 text-sm font-bold text-slate-900">• Sistemas para Toma de Decisiones en Grupo (GDSS)</div>
-              <div class="p-2 rounded-xl bg-white/90 border border-slate-200 text-sm font-bold text-slate-900">• Sistemas Expertos de Soporte (EDSS)</div>
-              <div class="p-2 rounded-xl bg-white/90 border border-slate-200 text-sm font-bold text-slate-900">• Sistema de Información Contable (SIC)</div>
+            <div class="liquid-glass rounded-3xl p-6 flex flex-col justify-center space-y-3 border border-yellow-300">
+              <div class="p-3 rounded-xl bg-white/90 border border-slate-200 text-base font-bold text-slate-900">• Sistemas para Toma de Decisiones en Grupo (GDSS)</div>
+              <div class="p-3 rounded-xl bg-white/90 border border-slate-200 text-base font-bold text-slate-900">• Sistemas Expertos de Soporte (EDSS)</div>
+              <div class="p-3 rounded-xl bg-white/90 border border-slate-200 text-base font-bold text-slate-900">• Sistema de Información Contable (SIC)</div>
             </div>
           </div>
         `
@@ -776,13 +798,13 @@
         notes: `<p><strong>MIS:</strong> Herramientas tecnológicas y procedimientos organizados para información estructurada a nivel táctico/gerencial.</p>`,
         render: () => `
           <div class="flex-1 flex flex-col justify-center items-center max-w-4xl mx-auto space-y-6 text-center">
-            <div class="liquid-glass rounded-3xl p-6 border border-amber-300 w-full shadow-sm">
-              <p class="text-xl md:text-2xl font-black text-slate-900">
+            <div class="liquid-glass rounded-3xl p-8 border border-amber-300 w-full shadow-md">
+              <p class="text-2xl md:text-3xl font-black text-slate-900 leading-snug">
                 Son un conjunto de herramientas tecnológicas, de software y de procedimientos organizados
               </p>
             </div>
-            <div class="liquid-glass rounded-3xl p-8 border-2 border-amber-400 w-full shadow-md">
-              <p class="text-base md:text-lg text-slate-800 leading-relaxed font-semibold">
+            <div class="liquid-glass rounded-3xl p-8 md:p-10 border-2 border-amber-400 w-full shadow-lg">
+              <p class="text-base md:text-xl text-slate-800 leading-relaxed font-semibold">
                 <strong>Función principal:</strong> <span class="text-amber-950 font-black">recopilar, procesar, resumir y presentar información estructurada</span> para apoyar las actividades de gestión, control y toma de decisiones a nivel táctico o gerencial dentro de una organización.
               </p>
             </div>
@@ -800,23 +822,20 @@
         notes: `<p><strong>Apoyo MIS:</strong> Informes periódicos, comparación real vs planificado/objetivos, acceso a bases históricas.</p>`,
         render: () => `
           <div class="flex-1 flex flex-col justify-center max-w-4xl mx-auto space-y-4">
-            <h4 class="text-lg font-bold text-slate-900 text-center mb-2">Estos sistemas apoyan la gestión empresarial mediante:</h4>
+            <h4 class="text-xl font-black text-slate-900 text-center mb-2">Estos sistemas apoyan la gestión empresarial mediante:</h4>
             <div class="liquid-glass rounded-2xl p-5 border border-amber-300 shadow-sm flex items-start gap-4">
-              <span class="w-8 h-8 rounded-xl bg-amber-100 text-amber-900 font-mono font-black flex items-center justify-center shrink-0 border border-amber-300">1</span>
-              <p class="text-base font-semibold text-slate-800">
-                <strong>Generación automatizada de informes periódicos</strong> sobre el estado financiero, ventas, inventarios y recursos humanos.
+              <p class="text-base md:text-lg font-semibold text-slate-800">
+                • <strong>Generación automatizada de informes periódicos</strong> sobre el estado financiero, ventas, inventarios y recursos humanos.
               </p>
             </div>
             <div class="liquid-glass rounded-2xl p-5 border border-amber-300 shadow-sm flex items-start gap-4">
-              <span class="w-8 h-8 rounded-xl bg-amber-100 text-amber-900 font-mono font-black flex items-center justify-center shrink-0 border border-amber-300">2</span>
-              <p class="text-base font-semibold text-slate-800">
-                <strong>Comparación entre los resultados reales planificados y los objetivos presupuestados</strong> para facilitar el control de gestión.
+              <p class="text-base md:text-lg font-semibold text-slate-800">
+                • <strong>Comparación entre los resultados reales planificados y los objetivos presupuestados</strong> para facilitar el control de gestión.
               </p>
             </div>
             <div class="liquid-glass rounded-2xl p-5 border border-amber-300 shadow-sm flex items-start gap-4">
-              <span class="w-8 h-8 rounded-xl bg-amber-100 text-amber-900 font-mono font-black flex items-center justify-center shrink-0 border border-amber-300">3</span>
-              <p class="text-base font-semibold text-slate-800">
-                <strong>Acceso estructurado a bases de datos históricas</strong> para identificar patrones de rendimiento y tendencias internas.
+              <p class="text-base md:text-lg font-semibold text-slate-800">
+                • <strong>Acceso estructurado a bases de datos históricas</strong> para identificar patrones de rendimiento y tendencias internas.
               </p>
             </div>
           </div>
@@ -836,31 +855,27 @@
             <!-- Gestión MIS -->
             <div class="liquid-glass rounded-3xl p-6 flex flex-col justify-center items-center didactic-card border border-amber-300 hover:border-amber-500 text-center cursor-pointer">
               <div class="card-header-block flex flex-col items-center">
-                <span class="font-mono text-xs font-bold text-amber-800 bg-amber-100 px-3 py-1 rounded-full mb-2">CONTROL TÁCTICO</span>
-                <h3 class="text-2xl font-black text-slate-900">Gestión (MIS)</h3>
+                <h3 class="text-3xl font-black text-slate-900">Gestión (MIS)</h3>
               </div>
               <div class="hover-details w-full pt-2">
-                <img src="assets/images/nobg/mis_dashboard_nobg.png" alt="MIS" class="w-full max-h-32 object-contain drop-shadow-md mx-auto mb-2"/>
+                <img src="assets/images/nobg/mis_dashboard_nobg.png" alt="MIS" class="w-full max-h-48 object-contain drop-shadow-xl mx-auto mb-3"/>
+                <p class="text-sm md:text-base text-slate-700 leading-relaxed font-medium">
+                  Herramientas técnicas y organizativas para recoger, almacenar y procesar datos normativos y contables. Convierte la información entrante en reportes analíticos para ajustar objetivos y planificar.
+                </p>
               </div>
-              <p class="text-sm md:text-base text-slate-700 leading-relaxed font-medium mt-2">
-                Herramientas técnicas y organizativas para recoger, almacenar y procesar datos normativos y contables. Convierte la información entrante en reportes analíticos para ajustar objetivos y planificar.
-              </p>
-              <div class="card-footer-block text-xs font-mono text-amber-900/80 font-bold mt-3">Normativo & Contable</div>
             </div>
 
             <!-- Soporte DSS -->
             <div class="liquid-glass rounded-3xl p-6 flex flex-col justify-center items-center didactic-card border border-indigo-300 hover:border-indigo-500 text-center cursor-pointer">
               <div class="card-header-block flex flex-col items-center">
-                <span class="font-mono text-xs font-bold text-indigo-800 bg-indigo-100 px-3 py-1 rounded-full mb-2">ANALÍTICA FUTURA</span>
-                <h3 class="text-2xl font-black text-slate-900">Apoyo a Decisiones (DSS)</h3>
+                <h3 class="text-3xl font-black text-slate-900">Apoyo a Decisiones (DSS)</h3>
               </div>
               <div class="hover-details w-full pt-2">
-                <img src="assets/images/nobg/dss_simulation_nobg.png" alt="DSS" class="w-full max-h-32 object-contain drop-shadow-md mx-auto mb-2"/>
+                <img src="assets/images/nobg/dss_simulation_nobg.png" alt="DSS" class="w-full max-h-48 object-contain drop-shadow-xl mx-auto mb-3"/>
+                <p class="text-sm md:text-base text-slate-700 leading-relaxed font-medium">
+                  Sistemas interactivos que analizan grandes volúmenes de datos para evaluar incertidumbres, ventajas y desventajas, apoyando la gestión operativa y de planificación gerencial.
+                </p>
               </div>
-              <p class="text-sm md:text-base text-slate-700 leading-relaxed font-medium mt-2">
-                Sistemas interactivos que analizan grandes volúmenes de datos para evaluar incertidumbres, ventajas y desventajas, apoyando la gestión operativa y de planificación gerencial.
-              </p>
-              <div class="card-footer-block text-xs font-mono text-indigo-900/80 font-bold mt-3">Incertidumbre & Escenarios</div>
             </div>
           </div>
         `
@@ -877,29 +892,49 @@
         render: () => `
           <div class="grid grid-cols-5 gap-3.5 h-full items-stretch didactic-grid p-2">
             <div class="liquid-glass rounded-2xl p-4 flex flex-col justify-center items-center didactic-card border border-amber-300 hover:border-amber-500 text-center cursor-pointer">
-              <span class="text-xs font-mono font-black text-amber-800 bg-amber-100 px-3 py-1 rounded-full mb-2">01</span>
-              <h5 class="text-base font-black text-slate-900">Basados en Datos</h5>
-              <p class="text-xs text-slate-700 font-medium mt-2">Archivos masivos, informes, EIS y SIG. Alta manipulación.</p>
+              <div class="card-header-block">
+                <h5 class="text-lg md:text-xl font-black text-slate-900">Basados en Datos</h5>
+              </div>
+              <div class="hover-details w-full pt-2">
+                <img src="assets/images/nobg/data_governance_nobg.png" alt="Datos" class="w-full max-h-32 object-contain drop-shadow-md mx-auto mb-2"/>
+                <p class="text-xs text-slate-700 font-medium">Archivos masivos, informes, EIS y SIG. Alta manipulación.</p>
+              </div>
             </div>
             <div class="liquid-glass rounded-2xl p-4 flex flex-col justify-center items-center didactic-card border border-indigo-300 hover:border-indigo-500 text-center cursor-pointer">
-              <span class="text-xs font-mono font-black text-indigo-800 bg-indigo-100 px-3 py-1 rounded-full mb-2">02</span>
-              <h5 class="text-base font-black text-slate-900">Basados en Modelos</h5>
-              <p class="text-xs text-slate-700 font-medium mt-2">Modelos financieros, contables y de optimización enfocados en parámetros analíticos.</p>
+              <div class="card-header-block">
+                <h5 class="text-lg md:text-xl font-black text-slate-900">Basados en Modelos</h5>
+              </div>
+              <div class="hover-details w-full pt-2">
+                <img src="assets/images/nobg/dss_simulation_nobg.png" alt="Modelos" class="w-full max-h-32 object-contain drop-shadow-md mx-auto mb-2"/>
+                <p class="text-xs text-slate-700 font-medium">Modelos financieros, contables y de optimización analítica.</p>
+              </div>
             </div>
             <div class="liquid-glass rounded-2xl p-4 flex flex-col justify-center items-center didactic-card border border-emerald-300 hover:border-emerald-500 text-center cursor-pointer">
-              <span class="text-xs font-mono font-black text-emerald-800 bg-emerald-100 px-3 py-1 rounded-full mb-2">03</span>
-              <h5 class="text-base font-black text-slate-900">Basados en Conocimiento</h5>
-              <p class="text-xs text-slate-700 font-medium mt-2">Sistemas expertos de asesoramiento, diagnóstico y predicción.</p>
+              <div class="card-header-block">
+                <h5 class="text-lg md:text-xl font-black text-slate-900">Basados en Conocimiento</h5>
+              </div>
+              <div class="hover-details w-full pt-2">
+                <img src="assets/images/nobg/future_decision_ai_nobg.png" alt="Conocimiento" class="w-full max-h-32 object-contain drop-shadow-md mx-auto mb-2"/>
+                <p class="text-xs text-slate-700 font-medium">Sistemas expertos de asesoramiento, diagnóstico y predicción.</p>
+              </div>
             </div>
             <div class="liquid-glass rounded-2xl p-4 flex flex-col justify-center items-center didactic-card border border-yellow-300 hover:border-amber-500 text-center cursor-pointer">
-              <span class="text-xs font-mono font-black text-amber-800 bg-yellow-100 px-3 py-1 rounded-full mb-2">04</span>
-              <h5 class="text-base font-black text-slate-900">Basados en Documentos</h5>
-              <p class="text-xs text-slate-700 font-medium mt-2">Integración de tecnologías para recuperación textual.</p>
+              <div class="card-header-block">
+                <h5 class="text-lg md:text-xl font-black text-slate-900">Basados en Documentos</h5>
+              </div>
+              <div class="hover-details w-full pt-2">
+                <img src="assets/images/nobg/overview_systems_nobg.png" alt="Documentos" class="w-full max-h-32 object-contain drop-shadow-md mx-auto mb-2"/>
+                <p class="text-xs text-slate-700 font-medium">Integración de tecnologías para recuperación textual.</p>
+              </div>
             </div>
             <div class="liquid-glass rounded-2xl p-4 flex flex-col justify-center items-center didactic-card border border-rose-300 hover:border-rose-500 text-center cursor-pointer">
-              <span class="text-xs font-mono font-black text-rose-800 bg-rose-100 px-3 py-1 rounded-full mb-2">05</span>
-              <h5 class="text-base font-black text-slate-900">Comunicación & Grupo</h5>
-              <p class="text-xs text-slate-700 font-medium mt-2">Colaboración y coordinación para toma de decisiones compartidas (GDSS).</p>
+              <div class="card-header-block">
+                <h5 class="text-lg md:text-xl font-black text-slate-900">Comunicación & Grupo</h5>
+              </div>
+              <div class="hover-details w-full pt-2">
+                <img src="assets/images/nobg/eis_executive_nobg.png" alt="Grupo" class="w-full max-h-32 object-contain drop-shadow-md mx-auto mb-2"/>
+                <p class="text-xs text-slate-700 font-medium">Colaboración y coordinación para decisiones compartidas (GDSS).</p>
+              </div>
             </div>
           </div>
         `
@@ -915,13 +950,13 @@
         notes: `<p><strong>EIS/ESS:</strong> Herramientas para la alta dirección: filtrar, resumir y visualizar info crítica interna y externa para detectar tendencias.</p>`,
         render: () => `
           <div class="flex-1 flex flex-col justify-center items-center max-w-4xl mx-auto space-y-6 text-center">
-            <div class="liquid-glass rounded-3xl p-6 border border-indigo-300 w-full shadow-sm">
-              <p class="text-xl md:text-2xl font-black text-slate-900">
+            <div class="liquid-glass rounded-3xl p-8 border border-indigo-300 w-full shadow-md">
+              <p class="text-2xl md:text-3xl font-black text-slate-900 leading-snug">
                 Son herramientas tecnológicas diseñadas para satisfacer las necesidades estratégicas y de largo plazo de la alta dirección.
               </p>
             </div>
-            <div class="liquid-glass rounded-3xl p-8 border-2 border-indigo-400 w-full shadow-md">
-              <p class="text-base md:text-lg text-slate-800 leading-relaxed font-semibold">
+            <div class="liquid-glass rounded-3xl p-8 md:p-10 border-2 border-indigo-400 w-full shadow-lg">
+              <p class="text-base md:text-xl text-slate-800 leading-relaxed font-semibold">
                 <strong>Función principal:</strong> <span class="text-indigo-950 font-black">Filtrar, resumir y visualizar información crítica</span> (interna y externa) de forma rápida e intuitiva para detectar tendencias.
               </p>
             </div>
@@ -940,20 +975,40 @@
         render: () => `
           <div class="grid grid-cols-2 gap-4 h-full items-stretch didactic-grid p-2">
             <div class="liquid-glass rounded-2xl p-5 flex flex-col justify-center items-center didactic-card border border-indigo-300 text-center cursor-pointer">
-              <h4 class="text-lg font-black text-slate-900">Executive Dashboards</h4>
-              <p class="text-xs text-slate-700 font-medium mt-2">Visualización de KPIs consolidados e indicadores semaforizados para un control rápido.</p>
+              <div class="card-header-block">
+                <h4 class="text-2xl font-black text-slate-900">Executive Dashboards</h4>
+              </div>
+              <div class="hover-details w-full pt-2">
+                <img src="assets/images/nobg/eis_executive_nobg.png" alt="Dashboards" class="w-full max-h-36 object-contain drop-shadow-md mx-auto mb-2"/>
+                <p class="text-xs md:text-sm text-slate-700 font-medium">Visualización de KPIs consolidados e indicadores semaforizados para un control rápido.</p>
+              </div>
             </div>
             <div class="liquid-glass rounded-2xl p-5 flex flex-col justify-center items-center didactic-card border border-indigo-300 text-center cursor-pointer">
-              <h4 class="text-lg font-black text-slate-900">Desglose Analítico (Drill-Down)</h4>
-              <p class="text-xs text-slate-700 font-medium mt-2">Capacidad de profundizar en los datos según la necesidad.</p>
+              <div class="card-header-block">
+                <h4 class="text-2xl font-black text-slate-900">Desglose Analítico (Drill-Down)</h4>
+              </div>
+              <div class="hover-details w-full pt-2">
+                <img src="assets/images/nobg/cloud_architecture_nobg.png" alt="Drill Down" class="w-full max-h-36 object-contain drop-shadow-md mx-auto mb-2"/>
+                <p class="text-xs md:text-sm text-slate-700 font-medium">Capacidad de profundizar en los datos según la necesidad.</p>
+              </div>
             </div>
             <div class="liquid-glass rounded-2xl p-5 flex flex-col justify-center items-center didactic-card border border-indigo-300 text-center cursor-pointer">
-              <h4 class="text-lg font-black text-slate-900">Variables Exógenas</h4>
-              <p class="text-xs text-slate-700 font-medium mt-2">Integración del contexto macroeconómico (divisas, inflación y competencia).</p>
+              <div class="card-header-block">
+                <h4 class="text-2xl font-black text-slate-900">Variables Exógenas</h4>
+              </div>
+              <div class="hover-details w-full pt-2">
+                <img src="assets/images/nobg/dss_simulation_nobg.png" alt="Variables Exogenas" class="w-full max-h-36 object-contain drop-shadow-md mx-auto mb-2"/>
+                <p class="text-xs md:text-sm text-slate-700 font-medium">Integración del contexto macroeconómico (divisas, inflación y competencia).</p>
+              </div>
             </div>
             <div class="liquid-glass rounded-2xl p-5 flex flex-col justify-center items-center didactic-card border border-indigo-300 text-center cursor-pointer">
-              <h4 class="text-lg font-black text-slate-900">Acceso Móvil</h4>
-              <p class="text-xs text-slate-700 font-medium mt-2">Conexión segura y disponible desde cualquier dispositivo.</p>
+              <div class="card-header-block">
+                <h4 class="text-2xl font-black text-slate-900">Acceso Móvil</h4>
+              </div>
+              <div class="hover-details w-full pt-2">
+                <img src="assets/images/nobg/meli_logistics_nobg.png" alt="Acceso Movil" class="w-full max-h-36 object-contain drop-shadow-md mx-auto mb-2"/>
+                <p class="text-xs md:text-sm text-slate-700 font-medium">Conexión segura y disponible desde cualquier dispositivo.</p>
+              </div>
             </div>
           </div>
         `
@@ -969,46 +1024,46 @@
         notes: `<p><strong>Comparación Estructural:</strong> Nivel, Decisiones, Propósito, Información y Salida.</p>`,
         render: () => `
           <div class="overflow-hidden w-full h-full flex items-center justify-center p-2">
-            <div class="liquid-glass rounded-2xl w-full p-3 border border-slate-300 overflow-x-auto shadow-sm">
+            <div class="liquid-glass rounded-2xl w-full p-4 border border-slate-300 overflow-x-auto shadow-sm">
               <table class="w-full text-left text-xs border-collapse">
                 <thead>
                   <tr class="bg-amber-100/70 border-b border-amber-200 text-slate-800 text-center">
-                    <th class="p-2 font-bold uppercase font-mono text-[11px] text-amber-900 text-left">Dimensión</th>
-                    <th class="p-2 font-bold uppercase font-mono text-[11px] text-blue-900">MIS</th>
-                    <th class="p-2 font-bold uppercase font-mono text-[11px] text-indigo-900">DSS</th>
-                    <th class="p-2 font-bold uppercase font-mono text-[11px] text-emerald-900">EIS / ESS</th>
+                    <th class="p-2.5 font-bold uppercase font-mono text-xs text-amber-900 text-left">Dimensión</th>
+                    <th class="p-2.5 font-bold uppercase font-mono text-xs text-blue-900">MIS</th>
+                    <th class="p-2.5 font-bold uppercase font-mono text-xs text-indigo-900">DSS</th>
+                    <th class="p-2.5 font-bold uppercase font-mono text-xs text-emerald-900">EIS / ESS</th>
                   </tr>
                 </thead>
-                <tbody class="divide-y divide-slate-200 text-slate-700">
+                <tbody class="divide-y divide-slate-200 text-slate-700 text-xs md:text-sm">
                   <tr class="hover:bg-amber-50/70 transition-colors">
-                    <td class="p-2 font-bold text-slate-900 font-mono text-[11px]">Nivel</td>
-                    <td class="p-2 text-center">Táctico / Mandos medios</td>
-                    <td class="p-2 text-center">Analítico / Analistas</td>
-                    <td class="p-2 text-center">Estratégico / Alta dirección</td>
+                    <td class="p-2.5 font-bold text-slate-900 font-mono">Nivel</td>
+                    <td class="p-2.5 text-center">Táctico / Mandos medios</td>
+                    <td class="p-2.5 text-center">Analítico / Analistas</td>
+                    <td class="p-2.5 text-center">Estratégico / Alta dirección</td>
                   </tr>
                   <tr class="hover:bg-amber-50/70 transition-colors">
-                    <td class="p-2 font-bold text-slate-900 font-mono text-[11px]">Decisiones</td>
-                    <td class="p-2 text-center">Estructuradas y rutinarias</td>
-                    <td class="p-2 text-center">Semi-estructuradas y complejas</td>
-                    <td class="p-2 text-center">No estructuradas y largo plazo</td>
+                    <td class="p-2.5 font-bold text-slate-900 font-mono">Decisiones</td>
+                    <td class="p-2.5 text-center">Estructuradas y rutinarias</td>
+                    <td class="p-2.5 text-center">Semi-estructuradas y complejas</td>
+                    <td class="p-2.5 text-center">No estructuradas y largo plazo</td>
                   </tr>
                   <tr class="hover:bg-amber-50/70 transition-colors">
-                    <td class="p-2 font-bold text-slate-900 font-mono text-[11px]">Propósito</td>
-                    <td class="p-2 text-center">Controlar rendimiento y eficiencia</td>
-                    <td class="p-2 text-center">Analizar y resolver problemas</td>
-                    <td class="p-2 text-center">Visión global y estratégica</td>
+                    <td class="p-2.5 font-bold text-slate-900 font-mono">Propósito</td>
+                    <td class="p-2.5 text-center">Controlar rendimiento y eficiencia</td>
+                    <td class="p-2.5 text-center">Analizar y resolver problemas</td>
+                    <td class="p-2.5 text-center">Visión global y estratégica</td>
                   </tr>
                   <tr class="hover:bg-amber-50/70 transition-colors">
-                    <td class="p-2 font-bold text-slate-900 font-mono text-[11px]">Información</td>
-                    <td class="p-2 text-center">Datos internos históricos y actuales</td>
-                    <td class="p-2 text-center">Datos internos + externos + modelos</td>
-                    <td class="p-2 text-center">KPIs globales + variables externas</td>
+                    <td class="p-2.5 font-bold text-slate-900 font-mono">Información</td>
+                    <td class="p-2.5 text-center">Datos internos históricos y actuales</td>
+                    <td class="p-2.5 text-center">Datos internos + externos + modelos</td>
+                    <td class="p-2.5 text-center">KPIs globales + variables externas</td>
                   </tr>
                   <tr class="hover:bg-amber-50/70 transition-colors">
-                    <td class="p-2 font-bold text-slate-900 font-mono text-[11px]">Salida</td>
-                    <td class="p-2 text-center">Reportes y resúmenes periódicos</td>
-                    <td class="p-2 text-center">Análisis interactivos y consultas</td>
-                    <td class="p-2 text-center">Dashboards ejecutivos y KPIs</td>
+                    <td class="p-2.5 font-bold text-slate-900 font-mono">Salida</td>
+                    <td class="p-2.5 text-center">Reportes y resúmenes periódicos</td>
+                    <td class="p-2.5 text-center">Análisis interactivos y consultas</td>
+                    <td class="p-2.5 text-center">Dashboards ejecutivos y KPIs</td>
                   </tr>
                 </tbody>
               </table>
@@ -1027,17 +1082,17 @@
         notes: `<p><strong>DDDM:</strong> Énfasis en datos y análisis en lugar de intuición. Fuentes de datos múltiples e interpretación para alinear metas.</p>`,
         render: () => `
           <div class="flex-1 flex flex-col justify-center max-w-4xl mx-auto space-y-4">
-            <div class="liquid-glass rounded-2xl p-5 border border-amber-300 shadow-sm">
+            <div class="liquid-glass rounded-2xl p-6 border border-amber-300 shadow-sm">
               <p class="text-base md:text-lg text-slate-800 leading-relaxed font-semibold">
                 Es un enfoque que <strong class="text-amber-950">enfatiza el uso de datos y análisis en lugar de la intuición</strong> para fundamentar las decisiones comerciales.
               </p>
             </div>
-            <div class="liquid-glass rounded-2xl p-5 border border-indigo-300 shadow-sm">
+            <div class="liquid-glass rounded-2xl p-6 border border-indigo-300 shadow-sm">
               <p class="text-base md:text-lg text-slate-800 leading-relaxed font-semibold">
                 Implica aprovechar <strong class="text-indigo-950">fuentes de datos como los comentarios de los clientes, las tendencias del mercado y los datos financieros</strong> a fin de guiar el proceso de toma de decisiones.
               </p>
             </div>
-            <div class="liquid-glass rounded-2xl p-5 border border-emerald-300 shadow-sm">
+            <div class="liquid-glass rounded-2xl p-6 border border-emerald-300 shadow-sm">
               <p class="text-base md:text-lg text-slate-800 leading-relaxed font-semibold">
                 Al recopilar, analizar e interpretar datos, las organizaciones pueden <strong class="text-emerald-950">tomar mejores decisiones que se alinean más estrechamente con las metas y objetivos</strong> del negocio.
               </p>
@@ -1056,13 +1111,10 @@
         notes: `<p><strong>Caso Real MELI:</strong> Aplicación práctica de MIS, DSS y EIS en un ecosistema digital masivo en América Latina.</p>`,
         render: () => `
           <div class="flex-1 flex flex-col justify-center items-center text-center max-w-3xl mx-auto p-4">
-            <span class="px-4 py-1 rounded-full bg-yellow-100 text-amber-950 border border-yellow-300 font-mono text-xs font-bold uppercase tracking-wider mb-4">
-              ECOSISTEMA DIGITAL LÍDER EN LATAM
-            </span>
-            <div class="liquid-glass rounded-3xl p-8 border-2 border-amber-300 w-full shadow-lg flex flex-col items-center">
-              <img src="assets/images/nobg/meli_logistics_nobg.png" alt="MELI" class="w-full max-h-48 object-contain drop-shadow-xl mb-4"/>
-              <h3 class="text-3xl font-black text-slate-900 mb-2">Mercado Libre (MELI)</h3>
-              <p class="text-base text-slate-700 font-medium">
+            <div class="liquid-glass rounded-3xl p-8 md:p-12 border-2 border-amber-300 w-full shadow-lg flex flex-col items-center">
+              <img src="assets/images/nobg/meli_logistics_nobg.png" alt="MELI" class="w-full max-h-56 object-contain drop-shadow-xl mb-4"/>
+              <h3 class="text-3xl md:text-4xl font-black text-slate-900 mb-2">Mercado Libre (MELI)</h3>
+              <p class="text-base md:text-lg text-slate-700 font-semibold">
                 Aplicación práctica de MIS, DSS y EIS en un ecosistema digital masivo.
               </p>
             </div>
@@ -1081,20 +1133,19 @@
         render: () => `
           <div class="grid grid-cols-2 gap-6 h-full items-center p-2">
             <div class="liquid-glass rounded-3xl p-8 border border-amber-300 shadow-sm flex flex-col justify-center text-center">
-              <span class="font-mono text-xs font-bold text-amber-800 bg-amber-100 px-3 py-1 rounded-full mb-3 self-center">CONTEXTO REGIONAL</span>
-              <h3 class="text-2xl font-black text-slate-900 mb-3">Contexto y Unidades</h3>
-              <p class="text-base text-slate-800 leading-relaxed font-semibold">
+              <h3 class="text-3xl font-black text-slate-900 mb-4">Contexto y Unidades</h3>
+              <p class="text-base md:text-lg text-slate-800 leading-relaxed font-semibold">
                 Fundada en 1999, opera en <strong>18 países con más de 100 millones de usuarios activos</strong>. Integra Marketplace, Mercado Pago, Envíos, Crédito, Ads y Shops.
               </p>
             </div>
             <div class="flex flex-col items-center justify-center p-4">
-              <div class="grid grid-cols-2 gap-3 w-full max-w-sm">
-                <div class="p-3 rounded-2xl bg-white/90 border border-amber-200 text-xs font-bold text-center shadow-sm">Mercado Envíos</div>
-                <div class="p-3 rounded-2xl bg-white/90 border border-amber-200 text-xs font-bold text-center shadow-sm">Mercado Pago</div>
-                <div class="p-3 rounded-2xl bg-white/90 border border-amber-200 text-xs font-bold text-center shadow-sm">Mercado Libre</div>
-                <div class="p-3 rounded-2xl bg-white/90 border border-amber-200 text-xs font-bold text-center shadow-sm">Mercado Shops</div>
-                <div class="p-3 rounded-2xl bg-white/90 border border-amber-200 text-xs font-bold text-center shadow-sm">Mercado Crédito</div>
-                <div class="p-3 rounded-2xl bg-white/90 border border-amber-200 text-xs font-bold text-center shadow-sm">Mercado Ads</div>
+              <div class="grid grid-cols-2 gap-3.5 w-full max-w-sm">
+                <div class="p-3.5 rounded-2xl bg-white/90 border border-amber-200 text-sm font-bold text-center shadow-sm">Mercado Envíos</div>
+                <div class="p-3.5 rounded-2xl bg-white/90 border border-amber-200 text-sm font-bold text-center shadow-sm">Mercado Pago</div>
+                <div class="p-3.5 rounded-2xl bg-white/90 border border-amber-200 text-sm font-bold text-center shadow-sm">Mercado Libre</div>
+                <div class="p-3.5 rounded-2xl bg-white/90 border border-amber-200 text-sm font-bold text-center shadow-sm">Mercado Shops</div>
+                <div class="p-3.5 rounded-2xl bg-white/90 border border-amber-200 text-sm font-bold text-center shadow-sm">Mercado Crédito</div>
+                <div class="p-3.5 rounded-2xl bg-white/90 border border-amber-200 text-sm font-bold text-center shadow-sm">Mercado Ads</div>
               </div>
             </div>
           </div>
@@ -1111,23 +1162,20 @@
         notes: `<p><strong>3 Problemas Críticos:</strong> Logística (cuellos de botella), Riesgo (crédito masivo automático), Silos (18 países).</p>`,
         render: () => `
           <div class="flex-1 flex flex-col justify-center max-w-4xl mx-auto space-y-4">
-            <h4 class="text-xl font-black text-slate-900 text-center mb-2">Problemas Críticos a Resolver</h4>
-            <div class="liquid-glass rounded-2xl p-5 border border-rose-300 shadow-sm flex items-start gap-4">
-              <span class="w-8 h-8 rounded-xl bg-rose-100 text-rose-900 font-mono font-black flex items-center justify-center shrink-0 border border-rose-300">1</span>
-              <p class="text-base font-semibold text-slate-800">
-                <strong>Logística:</strong> Cuellos de botella en picos de demanda.
+            <h4 class="text-2xl font-black text-slate-900 text-center mb-2">Problemas Críticos a Resolver</h4>
+            <div class="liquid-glass rounded-2xl p-6 border border-rose-300 shadow-sm">
+              <p class="text-base md:text-lg font-semibold text-slate-800">
+                • <strong>Logística:</strong> Cuellos de botella en picos de demanda.
               </p>
             </div>
-            <div class="liquid-glass rounded-2xl p-5 border border-rose-300 shadow-sm flex items-start gap-4">
-              <span class="w-8 h-8 rounded-xl bg-rose-100 text-rose-900 font-mono font-black flex items-center justify-center shrink-0 border border-rose-300">2</span>
-              <p class="text-base font-semibold text-slate-800">
-                <strong>Riesgo:</strong> Evaluación masiva y automática de créditos.
+            <div class="liquid-glass rounded-2xl p-6 border border-rose-300 shadow-sm">
+              <p class="text-base md:text-lg font-semibold text-slate-800">
+                • <strong>Riesgo:</strong> Evaluación masiva y automática de créditos.
               </p>
             </div>
-            <div class="liquid-glass rounded-2xl p-5 border border-rose-300 shadow-sm flex items-start gap-4">
-              <span class="w-8 h-8 rounded-xl bg-rose-100 text-rose-900 font-mono font-black flex items-center justify-center shrink-0 border border-rose-300">3</span>
-              <p class="text-base font-semibold text-slate-800">
-                <strong>Silos:</strong> Dispersión regional de información en 18 países.
+            <div class="liquid-glass rounded-2xl p-6 border border-rose-300 shadow-sm">
+              <p class="text-base md:text-lg font-semibold text-slate-800">
+                • <strong>Silos:</strong> Dispersión regional de información en 18 países.
               </p>
             </div>
           </div>
@@ -1145,30 +1193,42 @@
         render: () => `
           <div class="grid grid-cols-3 gap-6 h-full items-stretch didactic-grid p-2">
             <!-- MIS -->
-            <div class="liquid-glass rounded-3xl p-5 flex flex-col justify-center items-center didactic-card border border-blue-300 hover:border-blue-500 text-center cursor-pointer">
-              <h4 class="text-lg font-black text-slate-900">Sistemas MIS (Gerencial)</h4>
-              <p class="text-xs text-slate-700 leading-relaxed font-medium mt-2">
-                Tableros interactivos tácticos que supervisan operaciones diarias, volumen bruto (GMV), stock de fulfillment y cumplimiento de entregas (SLA).
-              </p>
-              <div class="card-footer-block text-xs font-mono text-blue-900/80 font-bold mt-3">Operaciones & SLAs</div>
+            <div class="liquid-glass rounded-3xl p-6 flex flex-col justify-center items-center didactic-card border border-blue-300 hover:border-blue-500 text-center cursor-pointer">
+              <div class="card-header-block">
+                <h4 class="text-2xl font-black text-slate-900">Sistemas MIS (Gerencial)</h4>
+              </div>
+              <div class="hover-details w-full pt-2">
+                <img src="assets/images/nobg/mis_dashboard_nobg.png" alt="MIS MELI" class="w-full max-h-44 object-contain drop-shadow-xl mx-auto mb-3"/>
+                <p class="text-xs md:text-sm text-slate-700 leading-relaxed font-medium">
+                  Tableros interactivos tácticos que supervisan operaciones diarias, volumen bruto (GMV), stock de fulfillment y cumplimiento de entregas (SLA).
+                </p>
+              </div>
             </div>
 
             <!-- DSS -->
-            <div class="liquid-glass rounded-3xl p-5 flex flex-col justify-center items-center didactic-card border border-amber-300 hover:border-amber-500 text-center cursor-pointer">
-              <h4 class="text-lg font-black text-slate-900">Sistemas DSS (Analítico)</h4>
-              <p class="text-xs text-slate-700 leading-relaxed font-medium mt-2">
-                Modelos de IA para evaluación automática de riesgo crediticio en segundos y simulación logística predictiva ante alta demanda.
-              </p>
-              <div class="card-footer-block text-xs font-mono text-amber-900/80 font-bold mt-3">IA Crédito & Ruteo</div>
+            <div class="liquid-glass rounded-3xl p-6 flex flex-col justify-center items-center didactic-card border border-amber-300 hover:border-amber-500 text-center cursor-pointer">
+              <div class="card-header-block">
+                <h4 class="text-2xl font-black text-slate-900">Sistemas DSS (Analítico)</h4>
+              </div>
+              <div class="hover-details w-full pt-2">
+                <img src="assets/images/nobg/future_decision_ai_nobg.png" alt="DSS MELI" class="w-full max-h-44 object-contain drop-shadow-xl mx-auto mb-3"/>
+                <p class="text-xs md:text-sm text-slate-700 leading-relaxed font-medium">
+                  Modelos de IA para evaluación automática de riesgo crediticio en segundos y simulación logística predictiva ante alta demanda.
+                </p>
+              </div>
             </div>
 
             <!-- EIS -->
-            <div class="liquid-glass rounded-3xl p-5 flex flex-col justify-center items-center didactic-card border border-emerald-300 hover:border-emerald-500 text-center cursor-pointer">
-              <h4 class="text-lg font-black text-slate-900">Sistemas EIS (Ejecutivo)</h4>
-              <p class="text-xs text-slate-700 leading-relaxed font-medium mt-2">
-                Tableros globales consolidados para la alta dirección (C-Level) con conversión a dólares de métricas operativas de los 18 países.
-              </p>
-              <div class="card-footer-block text-xs font-mono text-emerald-900/80 font-bold mt-3">C-Level 18 Países en USD</div>
+            <div class="liquid-glass rounded-3xl p-6 flex flex-col justify-center items-center didactic-card border border-emerald-300 hover:border-emerald-500 text-center cursor-pointer">
+              <div class="card-header-block">
+                <h4 class="text-2xl font-black text-slate-900">Sistemas EIS (Ejecutivo)</h4>
+              </div>
+              <div class="hover-details w-full pt-2">
+                <img src="assets/images/nobg/cloud_architecture_nobg.png" alt="EIS MELI" class="w-full max-h-44 object-contain drop-shadow-xl mx-auto mb-3"/>
+                <p class="text-xs md:text-sm text-slate-700 leading-relaxed font-medium">
+                  Tableros globales consolidados para la alta dirección (C-Level) con conversión a dólares de métricas operativas de los 18 países.
+                </p>
+              </div>
             </div>
           </div>
         `
@@ -1187,31 +1247,27 @@
             <!-- Calidad de Datos -->
             <div class="liquid-glass rounded-3xl p-6 flex flex-col justify-center items-center didactic-card border border-rose-300 hover:border-rose-500 text-center cursor-pointer">
               <div class="card-header-block flex flex-col items-center">
-                <span class="font-mono text-xs font-bold text-rose-800 bg-rose-100 px-3 py-1 rounded-full mb-2">GOBERNANZA</span>
-                <h3 class="text-2xl font-black text-slate-900">Calidad de Datos<br><span class="text-sm font-semibold text-slate-600">(Garbage In, Garbage Out)</span></h3>
+                <h3 class="text-3xl font-black text-slate-900">Calidad de Datos<br><span class="text-base font-semibold text-slate-600">(Garbage In, Garbage Out)</span></h3>
               </div>
               <div class="hover-details w-full pt-2">
-                <img src="assets/images/nobg/data_governance_nobg.png" alt="GIGO" class="w-full max-h-32 object-contain drop-shadow-md mx-auto mb-2"/>
+                <img src="assets/images/nobg/data_governance_nobg.png" alt="GIGO" class="w-full max-h-48 object-contain drop-shadow-xl mx-auto mb-3"/>
+                <p class="text-sm md:text-base text-slate-700 leading-relaxed font-medium">
+                  Los algoritmos avanzados y modelos predictivos (DSS) pierden utilidad si los datos operativos de base (MIS) son inconsistentes o desfasados.
+                </p>
               </div>
-              <p class="text-sm md:text-base text-slate-700 leading-relaxed font-medium mt-2">
-                Los algoritmos avanzados y modelos predictivos (DSS) pierden utilidad si los datos operativos de base (MIS) son inconsistentes o desfasados.
-              </p>
-              <div class="card-footer-block text-xs font-mono text-rose-900/80 font-bold mt-3">Datos Limpios & Consistentes</div>
             </div>
 
             <!-- Madurez Organizacional -->
             <div class="liquid-glass rounded-3xl p-6 flex flex-col justify-center items-center didactic-card border border-amber-300 hover:border-amber-500 text-center cursor-pointer">
               <div class="card-header-block flex flex-col items-center">
-                <span class="font-mono text-xs font-bold text-amber-800 bg-amber-100 px-3 py-1 rounded-full mb-2">CULTURA</span>
-                <h3 class="text-2xl font-black text-slate-900">Madurez Organizacional</h3>
+                <h3 class="text-3xl font-black text-slate-900">Madurez Organizacional</h3>
               </div>
               <div class="hover-details w-full pt-2">
-                <img src="assets/images/nobg/overview_systems_nobg.png" alt="Madurez" class="w-full max-h-32 object-contain drop-shadow-md mx-auto mb-2"/>
+                <img src="assets/images/nobg/overview_systems_nobg.png" alt="Madurez" class="w-full max-h-48 object-contain drop-shadow-xl mx-auto mb-3"/>
+                <p class="text-sm md:text-base text-slate-700 leading-relaxed font-medium">
+                  La tecnología no corrige procesos deficientes; acelera la cultura existente. Si la base es sólida, escala el negocio; si es caótica, solo automatiza el caos.
+                </p>
               </div>
-              <p class="text-sm md:text-base text-slate-700 leading-relaxed font-medium mt-2">
-                La tecnología no corrige procesos deficientes; acelera la cultura existente. Si la base es sólida, escala el negocio; si es caótica, solo automatiza el caos.
-              </p>
-              <div class="card-footer-block text-xs font-mono text-amber-900/80 font-bold mt-3">Procesos Sólidos para Escalar</div>
             </div>
           </div>
         `
@@ -1229,12 +1285,14 @@
           <div class="grid grid-cols-2 gap-6 h-full items-stretch didactic-grid p-2">
             <!-- Fortalezas y Debilidades -->
             <div class="liquid-glass rounded-3xl p-6 flex flex-col justify-center items-center didactic-card border border-amber-300 text-center">
-              <h4 class="text-xl font-black text-slate-900 mb-3">Fortalezas y Debilidades</h4>
-              <div class="space-y-3 text-left w-full">
-                <div class="p-3 rounded-xl bg-white/90 border border-slate-200 text-xs">
+              <div class="card-header-block">
+                <h4 class="text-3xl font-black text-slate-900 mb-3">Fortalezas y Debilidades</h4>
+              </div>
+              <div class="hover-details w-full pt-2 space-y-3 text-left">
+                <div class="p-3.5 rounded-xl bg-white/90 border border-slate-200 text-sm">
                   <strong class="text-emerald-900 font-bold">Fortalezas:</strong> Centralizan datos y eliminan discrepancias gerenciales.
                 </div>
-                <div class="p-3 rounded-xl bg-white/90 border border-slate-200 text-xs">
+                <div class="p-3.5 rounded-xl bg-white/90 border border-slate-200 text-sm">
                   <strong class="text-rose-900 font-bold">Debilidades:</strong> Costos elevados de mantenimiento, infoxicación y resistencia inicial al cambio.
                 </div>
               </div>
@@ -1242,12 +1300,14 @@
 
             <!-- Oportunidades y Amenazas -->
             <div class="liquid-glass rounded-3xl p-6 flex flex-col justify-center items-center didactic-card border border-indigo-300 text-center">
-              <h4 class="text-xl font-black text-slate-900 mb-3">Oportunidades y Amenazas</h4>
-              <div class="space-y-3 text-left w-full">
-                <div class="p-3 rounded-xl bg-white/90 border border-slate-200 text-xs">
+              <div class="card-header-block">
+                <h4 class="text-3xl font-black text-slate-900 mb-3">Oportunidades y Amenazas</h4>
+              </div>
+              <div class="hover-details w-full pt-2 space-y-3 text-left">
+                <div class="p-3.5 rounded-xl bg-white/90 border border-slate-200 text-sm">
                   <strong class="text-indigo-900 font-bold">Oportunidades:</strong> Expansión de BI descentralizado y analítica predictiva.
                 </div>
-                <div class="p-3 rounded-xl bg-white/90 border border-slate-200 text-xs">
+                <div class="p-3.5 rounded-xl bg-white/90 border border-slate-200 text-sm">
                   <strong class="text-amber-900 font-bold">Amenazas:</strong> Exposición a ciberataques, fugas y rápida obsolescencia de software.
                 </div>
               </div>
@@ -1266,21 +1326,19 @@
         notes: `<p><strong>Tendencias:</strong> Asistentes proactivos, Decision Intelligence (acciones en tiempo real) e IA Generativa con lenguaje cotidiano.</p>`,
         render: () => `
           <div class="flex-1 flex flex-col justify-center max-w-4xl mx-auto space-y-4">
-            <div class="liquid-glass rounded-2xl p-5 border border-amber-300 shadow-sm text-center">
-              <p class="text-base md:text-lg text-slate-900 font-bold">
+            <div class="liquid-glass rounded-2xl p-6 border border-amber-300 shadow-sm text-center">
+              <p class="text-lg md:text-xl text-slate-900 font-bold">
                 Las plataformas pasan de ser herramientas de consulta pasiva a <span class="text-amber-950 font-black">asistentes estratégicos proactivos</span>.
               </p>
             </div>
-            <div class="liquid-glass rounded-2xl p-5 border border-indigo-300 shadow-sm flex items-start gap-4">
-              <span class="w-8 h-8 rounded-xl bg-indigo-100 text-indigo-900 font-mono font-black flex items-center justify-center shrink-0 border border-indigo-300">1</span>
-              <p class="text-sm md:text-base font-semibold text-slate-800">
-                <strong>Inteligencia de Decisiones (Decision Intelligence):</strong> Evolución hacia modelos que no solo simulan escenarios, sino que sugieren o ejecutan acciones en tiempo real.
+            <div class="liquid-glass rounded-2xl p-6 border border-indigo-300 shadow-sm">
+              <p class="text-base md:text-lg font-semibold text-slate-800">
+                • <strong>Inteligencia de Decisiones (Decision Intelligence):</strong> Evolución hacia modelos que no solo simulan escenarios, sino que sugieren o ejecutan acciones en tiempo real.
               </p>
             </div>
-            <div class="liquid-glass rounded-2xl p-5 border border-emerald-300 shadow-sm flex items-start gap-4">
-              <span class="w-8 h-8 rounded-xl bg-emerald-100 text-emerald-900 font-mono font-black flex items-center justify-center shrink-0 border border-emerald-300">2</span>
-              <p class="text-sm md:text-base font-semibold text-slate-800">
-                <strong>IA Generativa y Lenguaje Natural:</strong> La consulta se vuelve conversacional; los directivos pueden solicitar diagnósticos y proyecciones en lenguaje cotidiano.
+            <div class="liquid-glass rounded-2xl p-6 border border-emerald-300 shadow-sm">
+              <p class="text-base md:text-lg font-semibold text-slate-800">
+                • <strong>IA Generativa y Lenguaje Natural:</strong> La consulta se vuelve conversacional; los directivos pueden solicitar diagnósticos y proyecciones en lenguaje cotidiano.
               </p>
             </div>
           </div>
@@ -1297,17 +1355,17 @@
         notes: `<p><strong>Conclusión:</strong> Motor de datos a conocimiento, articulación de datos sólidos y eliminación de la intuición a ciegas.</p>`,
         render: () => `
           <div class="flex-1 flex flex-col justify-center max-w-4xl mx-auto space-y-4">
-            <div class="liquid-glass rounded-2xl p-5 border border-amber-300 shadow-sm">
+            <div class="liquid-glass rounded-2xl p-6 border border-amber-300 shadow-sm">
               <p class="text-base md:text-lg text-slate-800 font-semibold text-center">
                 Los sistemas de información (MIS, DSS, EIS) son el <strong class="text-amber-950 font-black">motor que convierte los datos operativos diarios en conocimiento estratégico</strong>.
               </p>
             </div>
-            <div class="liquid-glass rounded-2xl p-5 border border-indigo-300 shadow-sm">
+            <div class="liquid-glass rounded-2xl p-6 border border-indigo-300 shadow-sm">
               <p class="text-base md:text-lg text-slate-800 font-semibold text-center">
                 La herramienta por sí sola no genera ventajas; su verdadero valor radica en <strong class="text-indigo-950 font-black">articular datos sólidos que conecten la gestión operativa con la visión directiva</strong>.
               </p>
             </div>
-            <div class="liquid-glass rounded-2xl p-5 border border-emerald-300 shadow-sm">
+            <div class="liquid-glass rounded-2xl p-6 border border-emerald-300 shadow-sm">
               <p class="text-base md:text-lg text-slate-800 font-semibold text-center">
                 Una información precisa y oportuna <strong class="text-emerald-950 font-black">elimina la intuición a ciegas</strong> (evitando el Garbage In, Garbage Out) y transforma una gestión reactiva en una estrategia proactiva.
               </p>
@@ -1319,14 +1377,14 @@
       // 29. Dudas y Consultas
       {
         category: "CIERRE & DEBATE",
-        timing: "GRUPO 1 • CIERRE",
+        timing: "GRUPO 1",
         title: "Dudas y Consultas",
         speaker: "Equipo Grupo 1",
-        speakerTag: "Q & A FINAL",
+        speakerTag: "ESPACIO DE PREGUNTAS Y DEBATE",
         notes: `<p><strong>Cierre:</strong> Agradecimiento y apertura del espacio de debate.</p>`,
         render: () => `
           <div class="flex-1 flex flex-col justify-center items-center text-center max-w-3xl mx-auto p-4">
-            <div id="card-thanks-trigger" class="liquid-glass-yellow rounded-3xl p-8 md:p-12 border-2 border-amber-400 w-full shadow-xl flex flex-col items-center cursor-pointer transition hover:scale-[1.02]" onclick="openCelebration()" title="Clic para finalizar y festejar">
+            <div id="card-thanks-trigger" class="liquid-glass-yellow rounded-3xl p-10 md:p-14 border-2 border-amber-400 w-full shadow-xl flex flex-col items-center cursor-pointer transition hover:scale-[1.02]" onclick="openCelebration()" title="Clic para finalizar y festejar">
               <h2 class="text-4xl md:text-5xl font-black text-slate-900 mb-4">
                 Muchas Gracias por su atención
               </h2>
@@ -1347,11 +1405,11 @@
         category: "FUENTES ACADÉMICAS",
         timing: "GRUPO 1",
         title: "Bibliografía Consultada (1/3)",
-        speaker: "Grupo 1",
-        speakerTag: "BIBLIOGRAFÍA (PARTE 1)",
+        speaker: "Equipo Grupo 1",
+        speakerTag: "BIBLIOGRAFÍA PARTE 1",
         notes: `<p><strong>Fuentes 1/3:</strong> Concepto.de, APD (2020), IBM (2025) y Ceupe.</p>`,
         render: () => `
-          <div class="flex-1 flex flex-col justify-center max-w-4xl mx-auto space-y-3 text-xs text-slate-800">
+          <div class="flex-1 flex flex-col justify-center max-w-4xl mx-auto space-y-3 text-xs md:text-sm text-slate-800">
             <div class="liquid-glass rounded-2xl p-4 border border-slate-200 shadow-sm">
               <strong>Concepto de niveles de información.</strong> <a href="https://concepto.de/sistema-de-informacion/" target="_blank" class="text-blue-700 hover:underline">https://concepto.de/sistema-de-informacion/</a>
             </div>
@@ -1373,11 +1431,11 @@
         category: "FUENTES ACADÉMICAS",
         timing: "GRUPO 1",
         title: "Bibliografía Consultada (2/3)",
-        speaker: "Grupo 1",
-        speakerTag: "BIBLIOGRAFÍA (PARTE 2)",
+        speaker: "Equipo Grupo 1",
+        speakerTag: "BIBLIOGRAFÍA PARTE 2",
         notes: `<p><strong>Fuentes 2/3:</strong> Mercado Libre (2024, 2025) y La Nación (2026).</p>`,
         render: () => `
-          <div class="flex-1 flex flex-col justify-center max-w-4xl mx-auto space-y-3 text-xs text-slate-800">
+          <div class="flex-1 flex flex-col justify-center max-w-4xl mx-auto space-y-3 text-xs md:text-sm text-slate-800">
             <div class="liquid-glass rounded-2xl p-4 border border-slate-200 shadow-sm">
               <strong>Mercado Libre. (2024).</strong> <em>Ecosistema Mercado Libre: El valor de pensar todas las soluciones integradas.</em> Portal Institucional de Prensa y Novedades. <a href="https://www.mercadolibre.cl/institucional/hacemos/ecosistema-mercadolibre" target="_blank" class="text-blue-700 hover:underline">https://www.mercadolibre.cl/institucional/hacemos/ecosistema-mercadolibre</a>
             </div>
@@ -1396,24 +1454,24 @@
         category: "FUENTES ACADÉMICAS",
         timing: "GRUPO 1",
         title: "Bibliografía Consultada (3/3)",
-        speaker: "Grupo 1",
-        speakerTag: "BIBLIOGRAFÍA (PARTE 3)",
+        speaker: "Equipo Grupo 1",
+        speakerTag: "BIBLIOGRAFÍA PARTE 3",
         notes: `<p><strong>Fuentes 3/3:</strong> Salesforce (2026), Economipedia, IEBS (2023), Forbes Argentina y Laudon & Laudon (2016).</p>`,
         render: () => `
-          <div class="flex-1 flex flex-col justify-center max-w-4xl mx-auto space-y-2.5 text-[11px] text-slate-800">
-            <div class="liquid-glass rounded-xl p-3 border border-slate-200 shadow-sm">
+          <div class="flex-1 flex flex-col justify-center max-w-4xl mx-auto space-y-3 text-xs md:text-sm text-slate-800">
+            <div class="liquid-glass rounded-xl p-3.5 border border-slate-200 shadow-sm">
               <strong>Salesforce. (2026).</strong> <em>Cinco tendencias de inteligencia artificial que transformarán los negocios y la toma de decisiones.</em> Salesforce Blog.
             </div>
-            <div class="liquid-glass rounded-xl p-3 border border-slate-200 shadow-sm">
+            <div class="liquid-glass rounded-xl p-3.5 border border-slate-200 shadow-sm">
               <strong>Economipedia.</strong> <em>Sistema de información gerencial (MIS).</em>
             </div>
-            <div class="liquid-glass rounded-xl p-3 border border-slate-200 shadow-sm">
+            <div class="liquid-glass rounded-xl p-3.5 border border-slate-200 shadow-sm">
               <strong>IEBS Business School. (2023).</strong> <em>Sistemas de soporte a la decisión (DSS): qué son y para qué sirven.</em> IEBS Digital School.
             </div>
-            <div class="liquid-glass rounded-xl p-3 border border-slate-200 shadow-sm">
+            <div class="liquid-glass rounded-xl p-3.5 border border-slate-200 shadow-sm">
               <strong>Forbes Argentina.</strong> <em>Transformación digital y negocios en la economía actual.</em> Forbes Media.
             </div>
-            <div class="liquid-glass rounded-xl p-3 border border-slate-200 shadow-sm">
+            <div class="liquid-glass rounded-xl p-3.5 border border-slate-200 shadow-sm">
               <strong>Laudon, K. C., y Laudon, J. P. (2016).</strong> <em>Sistemas de información gerencial</em> (14ª ed.). Pearson Educación.
             </div>
           </div>
