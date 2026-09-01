@@ -1357,33 +1357,7 @@
         `
       },
 
-      // 29. Dudas y Consultas
-      {
-        category: "CIERRE & DEBATE",
-        timing: "GRUPO 1",
-        title: "Dudas y Consultas",
-        speaker: "Equipo Grupo 1",
-        speakerTag: "ESPACIO DE PREGUNTAS Y DEBATE",
-        notes: `<p><strong>Cierre:</strong> Agradecimiento y apertura del espacio de debate.</p>`,
-        render: () => `
-          <div class="flex-1 flex flex-col justify-center items-center text-center max-w-3xl mx-auto p-4">
-            <div id="card-thanks-trigger" class="liquid-glass-yellow rounded-3xl p-10 md:p-14 border-2 border-amber-400 w-full shadow-xl flex flex-col items-center cursor-pointer transition hover:scale-[1.02]" onclick="openCelebration()" title="Clic para abrir espacio de preguntas">
-              <h2 class="text-5xl md:text-6xl font-black text-slate-900 mb-3 leading-tight">
-                Muchas Gracias<br>por su atención
-              </h2>
-              <div class="w-20 h-1 bg-amber-400 rounded-full mb-5"></div>
-              <p class="text-2xl font-black text-amber-950 mb-2">
-                ¿Dudas? ¿Preguntas? ¡Los escuchamos!
-              </p>
-              <p class="text-sm font-semibold text-slate-600">
-                Espacio abierto para debate, consultas y reflexiones
-              </p>
-            </div>
-          </div>
-        `
-      },
-
-      // 30. Bibliografía Consultada (1/3)
+      // 29. Bibliografía Consultada (1/3)
       {
         category: "FUENTES ACADÉMICAS",
         timing: "GRUPO 1",
@@ -1409,7 +1383,7 @@
         `
       },
 
-      // 31. Bibliografía Consultada (2/3)
+      // 30. Bibliografía Consultada (2/3)
       {
         category: "FUENTES ACADÉMICAS",
         timing: "GRUPO 1",
@@ -1432,7 +1406,7 @@
         `
       },
 
-      // 32. Bibliografía Consultada (3/3)
+      // 31. Bibliografía Consultada (3/3)
       {
         category: "FUENTES ACADÉMICAS",
         timing: "GRUPO 1",
@@ -1471,7 +1445,33 @@
             </div>
           </div>
         `
-      }
+      },
+
+// 32. Dudas y Consultas
+      {
+        category: "CIERRE & DEBATE",
+        timing: "GRUPO 1",
+        title: "Dudas y Consultas",
+        speaker: "Equipo Grupo 1",
+        speakerTag: "ESPACIO DE PREGUNTAS Y DEBATE",
+        notes: `<p><strong>Cierre:</strong> Agradecimiento y apertura del espacio de debate.</p>`,
+        render: () => `
+          <div class="flex-1 flex flex-col justify-center items-center text-center max-w-3xl mx-auto p-4">
+            <div id="card-thanks-trigger" class="liquid-glass-yellow rounded-3xl p-10 md:p-14 border-2 border-amber-400 w-full shadow-xl flex flex-col items-center cursor-pointer transition hover:scale-[1.02]" onclick="openCelebration()" title="Clic para abrir espacio de preguntas">
+              <h2 class="text-5xl md:text-6xl font-black text-slate-900 mb-3 leading-tight">
+                Muchas Gracias<br>por su atención
+              </h2>
+              <div class="w-20 h-1 bg-amber-400 rounded-full mb-5"></div>
+              <p class="text-2xl font-black text-amber-950 mb-2">
+                ¿Dudas? ¿Preguntas? ¡Los escuchamos!
+              </p>
+              <p class="text-sm font-semibold text-slate-600">
+                Espacio abierto para debate, consultas y reflexiones
+              </p>
+            </div>
+          </div>
+        `
+      },
     ];
 
     let currentSlide = 0;
