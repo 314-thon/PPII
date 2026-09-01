@@ -49,7 +49,7 @@
       backdrop-filter: blur(24px) saturate(180%);
       -webkit-backdrop-filter: blur(24px) saturate(180%);
       box-shadow: 0 8px 30px 0 rgba(15, 23, 42, 0.04);
-      transition: all 0.95s cubic-bezier(0.16, 1, 0.3, 1);
+      transition: all 0.6s cubic-bezier(0.16, 1, 0.3, 1);
     }
     
     .liquid-glass-yellow {
@@ -57,7 +57,7 @@
       backdrop-filter: blur(24px) saturate(180%);
       -webkit-backdrop-filter: blur(24px) saturate(180%);
       box-shadow: 0 8px 30px 0 rgba(245, 158, 11, 0.06);
-      transition: all 0.95s cubic-bezier(0.16, 1, 0.3, 1);
+      transition: all 0.6s cubic-bezier(0.16, 1, 0.3, 1);
     }
 
     /* Smooth Slide Transition */
@@ -68,66 +68,65 @@
     .slide-active {
       opacity: 1;
       transform: translateY(0) scale(1);
-      transition: opacity 0.85s cubic-bezier(0.16, 1, 0.3, 1), transform 0.85s cubic-bezier(0.16, 1, 0.3, 1);
+      transition: opacity 0.75s cubic-bezier(0.16, 1, 0.3, 1), transform 0.75s cubic-bezier(0.16, 1, 0.3, 1);
     }
 
-    /* Depth Zoom & Background Blur on Hover with Focal Centering */
+    /* Grid resting & hover subtle states */
     .didactic-grid {
       position: relative;
-      transition: all 0.95s cubic-bezier(0.16, 1, 0.3, 1);
-    }
-    .didactic-grid.has-focus .didactic-card:not(.is-focal) {
-      opacity: 0.12 !important;
-      filter: blur(6px) grayscale(50%) !important;
-      transform: scale(0.94) !important;
-      pointer-events: none;
+      transition: all 0.6s cubic-bezier(0.16, 1, 0.3, 1);
     }
 
     .didactic-card {
-      transition: transform 0.95s cubic-bezier(0.16, 1, 0.3, 1), 
-                  box-shadow 0.95s cubic-bezier(0.16, 1, 0.3, 1),
-                  opacity 0.85s cubic-bezier(0.16, 1, 0.3, 1),
-                  filter 0.85s cubic-bezier(0.16, 1, 0.3, 1),
-                  background 0.85s cubic-bezier(0.16, 1, 0.3, 1),
-                  border-color 0.85s cubic-bezier(0.16, 1, 0.3, 1);
-      will-change: transform, box-shadow, filter, opacity;
+      transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), 
+                  box-shadow 0.4s cubic-bezier(0.16, 1, 0.3, 1),
+                  border-color 0.4s cubic-bezier(0.16, 1, 0.3, 1),
+                  background 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+      will-change: transform, box-shadow;
       position: relative;
       display: flex;
       flex-direction: column;
       justify-content: center;
       align-items: center;
+      cursor: pointer;
     }
     
-    .didactic-card.is-focal {
-      opacity: 1 !important;
-      filter: none !important;
-      z-index: 50 !important;
-      background: rgba(255, 255, 255, 0.98) !important;
-      box-shadow: 0 35px 80px -15px rgba(15, 23, 42, 0.28) !important;
-      border-color: rgba(245, 158, 11, 0.85) !important;
-    }
-    
-    /* Header title scaling: Gigantic multiline in rest, shrinks smoothly on hover */
-    .card-header-block {
-      transition: transform 0.95s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.8s ease;
-      transform-origin: center center;
-      width: 100%;
-    }
-    .didactic-card.is-focal .card-header-block {
-      transform: translateY(-6px) scale(0.72);
+    .didactic-card:hover {
+      transform: translateY(-4px) scale(1.02);
+      box-shadow: 0 16px 36px -10px rgba(15, 23, 42, 0.12);
+      border-color: rgba(245, 158, 11, 0.8);
+      background: rgba(255, 255, 255, 0.98);
     }
 
-    /* Hover details smoothly expand with well-proportioned image fitting 100% inside stage */
-    .hover-details {
-      max-height: 0;
+    /* Centered Spotlight Modal inside Slide Body */
+    .spotlight-overlay {
+      position: absolute;
+      inset: 0;
+      background: rgba(248, 250, 252, 0.85);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      z-index: 40;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 1rem;
       opacity: 0;
-      overflow: hidden;
-      width: 100%;
-      transition: max-height 0.95s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.85s cubic-bezier(0.16, 1, 0.3, 1);
+      pointer-events: none;
+      transition: opacity 0.5s cubic-bezier(0.16, 1, 0.3, 1);
     }
-    .didactic-card.is-focal .hover-details {
-      max-height: 480px;
+
+    .spotlight-overlay.active {
       opacity: 1;
+      pointer-events: auto;
+    }
+
+    .spotlight-content {
+      transform: scale(0.92) translateY(12px);
+      transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    .spotlight-overlay.active .spotlight-content {
+      transform: scale(1) translateY(0);
     }
 
     /* Custom Scrollbar */
@@ -199,7 +198,7 @@
     <div id="slide-stage" class="w-full max-w-[1420px] aspect-[16/9] liquid-glass border border-slate-300/90 rounded-3xl p-8 md:p-10 flex flex-col justify-between relative overflow-hidden transition-all duration-1000">
       
       <!-- Slide Header Area (Hidden on Slide 1) -->
-      <div id="slide-header" class="shrink-0 mb-3">
+      <div id="slide-header" class="shrink-0 mb-3 z-10">
         <div class="flex items-center justify-between mb-1">
           <span id="slide-category" class="font-mono text-xs font-bold uppercase tracking-widest text-amber-800 bg-amber-100 px-2.5 py-0.5 rounded-full border border-amber-300/80">MARCO TEÓRICO</span>
           <span id="slide-timing" class="font-mono text-xs text-slate-500 font-semibold">GRUPO 1</span>
@@ -210,13 +209,13 @@
         <div class="w-full h-px bg-gradient-to-r from-transparent via-slate-300/70 to-transparent mt-3"></div>
       </div>
 
-      <!-- Slide Body (Dynamic with Hover Expansions and Visuals) -->
-      <div id="slide-body" class="flex-1 flex flex-col justify-center overflow-visible relative">
+      <!-- Slide Body (Dynamic Content Area with Centered Click Spotlight) -->
+      <div id="slide-body" class="flex-1 flex flex-col justify-center overflow-hidden relative">
         <!-- Injected by JS -->
       </div>
 
       <!-- Slide Footer Bar -->
-      <div class="h-6 border-t border-slate-200/60 pt-1.5 flex items-center justify-between text-[11px] text-slate-400 font-mono shrink-0">
+      <div class="h-6 border-t border-slate-200/60 pt-1.5 flex items-center justify-between text-[11px] text-slate-400 font-mono shrink-0 z-10">
         <div class="flex items-center gap-1.5">
           <span class="w-1.5 h-1.5 rounded-full bg-amber-400"></span>
           <span>Prácticas Profesionalizantes II — TP Nº1 • Prof. Santoro Martín</span>
@@ -400,40 +399,20 @@
         notes: `<p><strong>Definición & Componentes:</strong> Conjunto ordenado de personas, procesos y herramientas. Explicar los 3 componentes: Equipos, Personas y Datos.</p>`,
         render: () => `
           <div class="grid grid-cols-2 gap-8 h-full items-stretch didactic-grid p-2">
-            <div class="liquid-glass rounded-3xl p-6 md:p-8 flex flex-col justify-center items-center didactic-card border border-amber-300 hover:border-amber-500 text-center cursor-pointer">
-              <div class="card-header-block flex flex-col items-center">
-                <h3 class="text-4xl md:text-5xl font-black text-slate-900 leading-[1.08] tracking-tight">
-                  Sistema<br>de<br>Información
-                </h3>
-              </div>
-              <div class="hover-details w-full pt-2">
-                <img src="assets/images/nobg/overview_systems_nobg.png" alt="Concepto SI" class="w-full max-h-36 md:max-h-40 object-contain drop-shadow-xl mx-auto mb-2"/>
-                <p class="text-xs md:text-sm font-bold text-slate-800 leading-relaxed">
-                  Un sistema de información es un <span class="text-amber-950 font-black">conjunto ordenado de personas, procesos y herramientas</span> para administrar, recuperar y procesar datos con un fin común.
-                </p>
-              </div>
+            <div class="liquid-glass rounded-3xl p-8 flex flex-col justify-center items-center didactic-card border border-amber-300 text-center"
+                 onclick="openSpotlight('Sistema de Información', 'assets/images/nobg/overview_systems_nobg.png', 'Un sistema de información es un <strong class=\'text-amber-950 font-black\'>conjunto ordenado de personas, procesos y herramientas</strong> para administrar, recuperar y procesar datos con un fin común.')">
+              <h3 class="text-4xl md:text-5xl lg:text-6xl font-black text-slate-900 leading-[1.08] tracking-tight">
+                Sistema<br>de<br>Información
+              </h3>
+              <span class="mt-4 text-xs font-mono text-amber-700 bg-amber-100/80 px-3 py-1 rounded-full font-bold">Clic para ver detalle</span>
             </div>
 
-            <div class="liquid-glass rounded-3xl p-6 md:p-8 flex flex-col justify-center items-center didactic-card border border-indigo-300 hover:border-indigo-500 text-center cursor-pointer">
-              <div class="card-header-block flex flex-col items-center">
-                <h3 class="text-4xl md:text-5xl font-black text-slate-900 leading-[1.08] tracking-tight">
-                  Componentes<br>Principales
-                </h3>
-              </div>
-              <div class="hover-details w-full pt-2">
-                <img src="assets/images/nobg/cloud_architecture_nobg.png" alt="Componentes SI" class="w-full max-h-32 md:max-h-36 object-contain drop-shadow-xl mx-auto mb-2"/>
-                <div class="space-y-1.5 w-full text-left">
-                  <div class="p-2 rounded-xl bg-white/90 border border-slate-200 text-xs">
-                    <strong class="text-slate-900 font-bold">Equipos:</strong> Elementos tecnológicos físicos o virtuales.
-                  </div>
-                  <div class="p-2 rounded-xl bg-white/90 border border-slate-200 text-xs">
-                    <strong class="text-slate-900 font-bold">Personas:</strong> Individuos con rol activo en el sistema.
-                  </div>
-                  <div class="p-2 rounded-xl bg-white/90 border border-slate-200 text-xs">
-                    <strong class="text-slate-900 font-bold">Datos:</strong> Información cualitativa o cuantitativa.
-                  </div>
-                </div>
-              </div>
+            <div class="liquid-glass rounded-3xl p-8 flex flex-col justify-center items-center didactic-card border border-indigo-300 text-center"
+                 onclick="openSpotlight('Componentes Principales', 'assets/images/nobg/cloud_architecture_nobg.png', '<div class=\'space-y-2 text-left w-full\'><div class=\'p-2.5 rounded-xl bg-white/90 border border-slate-200 text-sm\'><strong class=\'text-slate-900 font-bold\'>Equipos:</strong> Elementos tecnológicos físicos o virtuales (hardware, software, redes).</div><div class=\'p-2.5 rounded-xl bg-white/90 border border-slate-200 text-sm\'><strong class=\'text-slate-900 font-bold\'>Personas:</strong> Individuos que cumplen un rol activo en el sistema.</div><div class=\'p-2.5 rounded-xl bg-white/90 border border-slate-200 text-sm\'><strong class=\'text-slate-900 font-bold\'>Datos:</strong> Elementos cualitativos o cuantitativos procesados.</div></div>')">
+              <h3 class="text-4xl md:text-5xl lg:text-6xl font-black text-slate-900 leading-[1.08] tracking-tight">
+                Componentes<br>Principales
+              </h3>
+              <span class="mt-4 text-xs font-mono text-indigo-700 bg-indigo-100/80 px-3 py-1 rounded-full font-bold">Clic para ver detalle</span>
             </div>
           </div>
         `
@@ -448,47 +427,29 @@
         speakerTag: "TEMA 1 • EJEMPLOS DE SISTEMAS",
         notes: `<p><strong>Ejemplos:</strong> Control de calidad, Bases de datos de bibliotecas y Hojas de cálculo.</p>`,
         render: () => `
-          <div class="grid grid-cols-3 gap-5 h-full items-stretch didactic-grid p-2">
-            <div class="liquid-glass rounded-3xl p-5 flex flex-col justify-center items-center didactic-card border border-amber-300 hover:border-amber-500 text-center cursor-pointer">
-              <div class="card-header-block flex flex-col items-center">
-                <h4 class="text-3xl md:text-4xl font-black text-slate-900 leading-[1.1]">
-                  Control<br>de<br>Calidad
-                </h4>
-              </div>
-              <div class="hover-details w-full pt-2">
-                <img src="assets/images/nobg/data_governance_nobg.png" alt="Calidad" class="w-full max-h-32 md:max-h-36 object-contain drop-shadow-xl mx-auto mb-2"/>
-                <p class="text-xs text-slate-700 leading-relaxed font-medium">
-                  Sistemas que solicitan retroalimentación al cliente y evalúan resultados para informes gerenciales.
-                </p>
-              </div>
+          <div class="grid grid-cols-3 gap-6 h-full items-stretch didactic-grid p-2">
+            <div class="liquid-glass rounded-3xl p-6 flex flex-col justify-center items-center didactic-card border border-amber-300 text-center"
+                 onclick="openSpotlight('Control de Calidad', 'assets/images/nobg/data_governance_nobg.png', 'Sistemas que solicitan retroalimentación al cliente y evalúan resultados estadísticamente para elaborar informes orientados a la gerencia.')">
+              <h4 class="text-3xl md:text-4xl font-black text-slate-900 leading-[1.1]">
+                Control<br>de<br>Calidad
+              </h4>
+              <span class="mt-3 text-[11px] font-mono text-amber-700 bg-amber-100/80 px-2.5 py-0.5 rounded-full font-bold">Clic para ver</span>
             </div>
 
-            <div class="liquid-glass rounded-3xl p-5 flex flex-col justify-center items-center didactic-card border border-indigo-300 hover:border-indigo-500 text-center cursor-pointer">
-              <div class="card-header-block flex flex-col items-center">
-                <h4 class="text-3xl md:text-4xl font-black text-slate-900 leading-[1.1]">
-                  Bases<br>de Datos<br>Bibliotecas
-                </h4>
-              </div>
-              <div class="hover-details w-full pt-2">
-                <img src="assets/images/nobg/academic_library_nobg.png" alt="Biblioteca" class="w-full max-h-32 md:max-h-36 object-contain drop-shadow-xl mx-auto mb-2"/>
-                <p class="text-xs text-slate-700 leading-relaxed font-medium">
-                  Sistemas con gran volumen de documentos para ubicar y recuperar registros con precisión.
-                </p>
-              </div>
+            <div class="liquid-glass rounded-3xl p-6 flex flex-col justify-center items-center didactic-card border border-indigo-300 text-center"
+                 onclick="openSpotlight('Bases de Datos de Bibliotecas', 'assets/images/nobg/academic_library_nobg.png', 'Sistemas que contienen un gran volumen de documentos (libros, revistas, tesis) para ubicar y recuperar registros precisa y rápidamente.')">
+              <h4 class="text-3xl md:text-4xl font-black text-slate-900 leading-[1.1]">
+                Bases<br>de Datos<br>Bibliotecas
+              </h4>
+              <span class="mt-3 text-[11px] font-mono text-indigo-700 bg-indigo-100/80 px-2.5 py-0.5 rounded-full font-bold">Clic para ver</span>
             </div>
 
-            <div class="liquid-glass rounded-3xl p-5 flex flex-col justify-center items-center didactic-card border border-emerald-300 hover:border-emerald-500 text-center cursor-pointer">
-              <div class="card-header-block flex flex-col items-center">
-                <h4 class="text-3xl md:text-4xl font-black text-slate-900 leading-[1.1]">
-                  Hojas<br>de<br>Cálculo
-                </h4>
-              </div>
-              <div class="hover-details w-full pt-2">
-                <img src="assets/images/nobg/mis_dashboard_nobg.png" alt="Hojas de Calculo" class="w-full max-h-32 md:max-h-36 object-contain drop-shadow-xl mx-auto mb-2"/>
-                <p class="text-xs text-slate-700 leading-relaxed font-medium">
-                  Sistemas que cuantifican datos brutos y estructuran directrices financieras.
-                </p>
-              </div>
+            <div class="liquid-glass rounded-3xl p-6 flex flex-col justify-center items-center didactic-card border border-emerald-300 text-center"
+                 onclick="openSpotlight('Hojas de Cálculo', 'assets/images/nobg/mis_dashboard_nobg.png', 'Sistemas en los que se ingresa información en bruto para organizarla de manera cuantificable y obtener directrices financieras.')">
+              <h4 class="text-3xl md:text-4xl font-black text-slate-900 leading-[1.1]">
+                Hojas<br>de<br>Cálculo
+              </h4>
+              <span class="mt-3 text-[11px] font-mono text-emerald-700 bg-emerald-100/80 px-2.5 py-0.5 rounded-full font-bold">Clic para ver</span>
             </div>
           </div>
         `
@@ -504,32 +465,20 @@
         notes: `<p><strong>Impacto y Ventajas Clave:</strong> Organización y vinculación de datos en tiempo real, e integración para operar como bloque sólido.</p>`,
         render: () => `
           <div class="grid grid-cols-2 gap-8 h-full items-stretch didactic-grid p-2">
-            <div class="liquid-glass rounded-3xl p-6 md:p-8 flex flex-col justify-center items-center didactic-card border border-amber-300 hover:border-amber-500 text-center cursor-pointer">
-              <div class="card-header-block flex flex-col items-center">
-                <h3 class="text-4xl md:text-5xl lg:text-6xl font-black text-slate-900 leading-[1.05] tracking-tight">
-                  Impacto<br>Operativo
-                </h3>
-              </div>
-              <div class="hover-details w-full pt-2">
-                <img src="assets/images/nobg/overview_systems_nobg.png" alt="Impacto" class="w-full max-h-36 md:max-h-40 object-contain drop-shadow-xl mx-auto mb-2"/>
-                <p class="text-xs md:text-sm text-slate-700 leading-relaxed font-medium">
-                  Permiten a las empresas organizar y vincular datos de diferentes áreas en tiempo real desde una sola plataforma para captar, almacenar y analizar información.
-                </p>
-              </div>
+            <div class="liquid-glass rounded-3xl p-8 flex flex-col justify-center items-center didactic-card border border-amber-300 text-center"
+                 onclick="openSpotlight('Impacto Operativo', 'assets/images/nobg/overview_systems_nobg.png', 'Permiten a las empresas organizar y vincular datos de diferentes áreas. Los trabajadores pueden localizar información de alto valor en tiempo real desde una sola plataforma para captar, almacenar y analizar datos.')">
+              <h3 class="text-4xl md:text-5xl lg:text-6xl font-black text-slate-900 leading-[1.05] tracking-tight">
+                Impacto<br>Operativo
+              </h3>
+              <span class="mt-4 text-xs font-mono text-amber-700 bg-amber-100/80 px-3 py-1 rounded-full font-bold">Clic para ver detalle</span>
             </div>
 
-            <div class="liquid-glass rounded-3xl p-6 md:p-8 flex flex-col justify-center items-center didactic-card border border-emerald-300 hover:border-emerald-500 text-center cursor-pointer">
-              <div class="card-header-block flex flex-col items-center">
-                <h3 class="text-4xl md:text-5xl lg:text-6xl font-black text-slate-900 leading-[1.05] tracking-tight">
-                  Ventajas<br>Clave
-                </h3>
-              </div>
-              <div class="hover-details w-full pt-2">
-                <img src="assets/images/nobg/meli_logistics_nobg.png" alt="Ventajas Clave" class="w-full max-h-36 md:max-h-40 object-contain drop-shadow-xl mx-auto mb-2"/>
-                <p class="text-xs md:text-sm text-slate-700 leading-relaxed font-medium">
-                  <strong>Integración y Tiempos:</strong> Centralizan datos para operar como un bloque sólido y automatizan tareas rutinarias, liberando tiempo para actividades de alto valor.
-                </p>
-              </div>
+            <div class="liquid-glass rounded-3xl p-8 flex flex-col justify-center items-center didactic-card border border-emerald-300 text-center"
+                 onclick="openSpotlight('Ventajas Clave', 'assets/images/nobg/meli_logistics_nobg.png', '<strong>Integración y Tiempos:</strong> Centralizan datos para operar como un bloque sólido y automatizan tareas rutinarias, permitiendo a los colaboradores focalizarse en actividades más rentables y de mayor valor.')">
+              <h3 class="text-4xl md:text-5xl lg:text-6xl font-black text-slate-900 leading-[1.05] tracking-tight">
+                Ventajas<br>Clave
+              </h3>
+              <span class="mt-4 text-xs font-mono text-emerald-700 bg-emerald-100/80 px-3 py-1 rounded-full font-bold">Clic para ver detalle</span>
             </div>
           </div>
         `
@@ -544,54 +493,36 @@
         speakerTag: "TEMA 3 • VENTAJAS DE LOS SI",
         notes: `<p><strong>6 Ventajas:</strong> Integración, Procesos, Disponibilidad, Gestión, Costos y Seguridad.</p>`,
         render: () => `
-          <div class="grid grid-cols-3 gap-4 h-full items-stretch didactic-grid p-2">
-            <div class="liquid-glass rounded-2xl p-5 flex flex-col justify-center items-center didactic-card border border-amber-300 hover:border-amber-500 text-center cursor-pointer">
-              <div class="card-header-block">
-                <h5 class="text-2xl md:text-3xl font-black text-slate-900">Integración</h5>
-              </div>
-              <div class="hover-details w-full pt-2">
-                <p class="text-xs text-slate-700 font-medium">Unificación para mejorar la planeación global.</p>
-              </div>
+          <div class="grid grid-cols-3 gap-5 h-full items-stretch didactic-grid p-2">
+            <div class="liquid-glass rounded-2xl p-6 flex flex-col justify-center items-center didactic-card border border-amber-300 text-center"
+                 onclick="openSpotlight('Integración', 'assets/images/nobg/overview_systems_nobg.png', 'Unificación centralizada de áreas para mejorar la planeación global y eliminar inconsistencias.')">
+              <h5 class="text-3xl font-black text-slate-900">Integración</h5>
+              <span class="mt-2 text-[10px] font-mono text-amber-700 bg-amber-100 px-2 py-0.5 rounded-full font-bold">Ver detalle</span>
             </div>
-            <div class="liquid-glass rounded-2xl p-5 flex flex-col justify-center items-center didactic-card border border-emerald-300 hover:border-emerald-500 text-center cursor-pointer">
-              <div class="card-header-block">
-                <h5 class="text-2xl md:text-3xl font-black text-slate-900">Procesos</h5>
-              </div>
-              <div class="hover-details w-full pt-2">
-                <p class="text-xs text-slate-700 font-medium">Optimización operativa y disminución de errores.</p>
-              </div>
+            <div class="liquid-glass rounded-2xl p-6 flex flex-col justify-center items-center didactic-card border border-emerald-300 text-center"
+                 onclick="openSpotlight('Optimización de Procesos', 'assets/images/nobg/cloud_architecture_nobg.png', 'Optimización operativa continua y disminución drástica de errores humanos y duplicación de tareas.')">
+              <h5 class="text-3xl font-black text-slate-900">Procesos</h5>
+              <span class="mt-2 text-[10px] font-mono text-emerald-700 bg-emerald-100 px-2 py-0.5 rounded-full font-bold">Ver detalle</span>
             </div>
-            <div class="liquid-glass rounded-2xl p-5 flex flex-col justify-center items-center didactic-card border border-indigo-300 hover:border-indigo-500 text-center cursor-pointer">
-              <div class="card-header-block">
-                <h5 class="text-2xl md:text-3xl font-black text-slate-900">Disponibilidad</h5>
-              </div>
-              <div class="hover-details w-full pt-2">
-                <p class="text-xs text-slate-700 font-medium">Acceso permanente a grandes volúmenes de datos.</p>
-              </div>
+            <div class="liquid-glass rounded-2xl p-6 flex flex-col justify-center items-center didactic-card border border-indigo-300 text-center"
+                 onclick="openSpotlight('Disponibilidad', 'assets/images/nobg/data_governance_nobg.png', 'Acceso permanente y seguro a grandes volúmenes de datos desde cualquier plataforma o sede.')">
+              <h5 class="text-3xl font-black text-slate-900">Disponibilidad</h5>
+              <span class="mt-2 text-[10px] font-mono text-indigo-700 bg-indigo-100 px-2 py-0.5 rounded-full font-bold">Ver detalle</span>
             </div>
-            <div class="liquid-glass rounded-2xl p-5 flex flex-col justify-center items-center didactic-card border border-blue-300 hover:border-blue-500 text-center cursor-pointer">
-              <div class="card-header-block">
-                <h5 class="text-2xl md:text-3xl font-black text-slate-900">Gestión</h5>
-              </div>
-              <div class="hover-details w-full pt-2">
-                <p class="text-xs text-slate-700 font-medium">Control riguroso de operaciones y mejora continua.</p>
-              </div>
+            <div class="liquid-glass rounded-2xl p-6 flex flex-col justify-center items-center didactic-card border border-blue-300 text-center"
+                 onclick="openSpotlight('Control de Gestión', 'assets/images/nobg/mis_dashboard_nobg.png', 'Control riguroso de operaciones, medición de SLAs e impulso a la mejora continua.')">
+              <h5 class="text-3xl font-black text-slate-900">Gestión</h5>
+              <span class="mt-2 text-[10px] font-mono text-blue-700 bg-blue-100 px-2 py-0.5 rounded-full font-bold">Ver detalle</span>
             </div>
-            <div class="liquid-glass rounded-2xl p-5 flex flex-col justify-center items-center didactic-card border border-yellow-300 hover:border-yellow-500 text-center cursor-pointer">
-              <div class="card-header-block">
-                <h5 class="text-2xl md:text-3xl font-black text-slate-900">Costos</h5>
-              </div>
-              <div class="hover-details w-full pt-2">
-                <p class="text-xs text-slate-700 font-medium">Ahorro en costes administrativos y operativos.</p>
-              </div>
+            <div class="liquid-glass rounded-2xl p-6 flex flex-col justify-center items-center didactic-card border border-yellow-300 text-center"
+                 onclick="openSpotlight('Reducción de Costos', 'assets/images/nobg/dss_simulation_nobg.png', 'Ahorro sustancial en costes administrativos y operativos gracias a la automatización inteligente.')">
+              <h5 class="text-3xl font-black text-slate-900">Costos</h5>
+              <span class="mt-2 text-[10px] font-mono text-yellow-800 bg-yellow-100 px-2 py-0.5 rounded-full font-bold">Ver detalle</span>
             </div>
-            <div class="liquid-glass rounded-2xl p-5 flex flex-col justify-center items-center didactic-card border border-rose-300 hover:border-rose-500 text-center cursor-pointer">
-              <div class="card-header-block">
-                <h5 class="text-2xl md:text-3xl font-black text-slate-900">Seguridad</h5>
-              </div>
-              <div class="hover-details w-full pt-2">
-                <p class="text-xs text-slate-700 font-medium">Máxima protección de datos sensibles.</p>
-              </div>
+            <div class="liquid-glass rounded-2xl p-6 flex flex-col justify-center items-center didactic-card border border-rose-300 text-center"
+                 onclick="openSpotlight('Seguridad de la Información', 'assets/images/nobg/data_governance_nobg.png', 'Máxima protección, gobernanza y cifrado de datos sensibles ante riesgos de ciberseguridad.')">
+              <h5 class="text-3xl font-black text-slate-900">Seguridad</h5>
+              <span class="mt-2 text-[10px] font-mono text-rose-700 bg-rose-100 px-2 py-0.5 rounded-full font-bold">Ver detalle</span>
             </div>
           </div>
         `
@@ -606,54 +537,36 @@
         speakerTag: "TEMA 3 • VENTAJAS ORGANIZACIONALES",
         notes: `<p><strong>5 Ejes:</strong> Automatización, RRHH, Innovación, Finanzas y Adaptación al mercado.</p>`,
         render: () => `
-          <div class="grid grid-cols-3 gap-4 h-full items-stretch didactic-grid p-2">
-            <div class="liquid-glass rounded-2xl p-4 flex flex-col justify-center items-center didactic-card border border-amber-300 hover:border-amber-500 text-center cursor-pointer">
-              <div class="card-header-block">
-                <h5 class="text-xl md:text-2xl font-black text-slate-900">Automatización</h5>
-              </div>
-              <div class="hover-details w-full pt-1.5">
-                <p class="text-xs text-slate-700 font-medium">Reducción de carga manual y mayor eficiencia.</p>
-              </div>
+          <div class="grid grid-cols-3 gap-5 h-full items-stretch didactic-grid p-2">
+            <div class="liquid-glass rounded-2xl p-5 flex flex-col justify-center items-center didactic-card border border-amber-300 text-center"
+                 onclick="openSpotlight('Automatización', 'assets/images/nobg/overview_systems_nobg.png', 'Reducción sistemática de carga manual y aumento de la eficiencia operativa en toda la cadena de valor.')">
+              <h5 class="text-2xl font-black text-slate-900">Automatización</h5>
+              <span class="mt-2 text-[10px] font-mono text-amber-700 bg-amber-100 px-2 py-0.5 rounded-full font-bold">Ver detalle</span>
             </div>
-            <div class="liquid-glass rounded-2xl p-4 flex flex-col justify-center items-center didactic-card border border-indigo-300 hover:border-indigo-500 text-center cursor-pointer">
-              <div class="card-header-block">
-                <h5 class="text-xl md:text-2xl font-black text-slate-900 leading-tight">Recursos<br>Humanos</h5>
-              </div>
-              <div class="hover-details w-full pt-1.5">
-                <p class="text-xs text-slate-700 font-medium">Nómina, desempeño y satisfacción del personal.</p>
-              </div>
+            <div class="liquid-glass rounded-2xl p-5 flex flex-col justify-center items-center didactic-card border border-indigo-300 text-center"
+                 onclick="openSpotlight('Recursos Humanos', 'assets/images/nobg/team_qa_dialogue_nobg.png', 'Gestión ágil de nómina, evaluación objetiva de desempeño y monitoreo de satisfacción del personal.')">
+              <h5 class="text-2xl font-black text-slate-900 leading-tight">Recursos<br>Humanos</h5>
+              <span class="mt-2 text-[10px] font-mono text-indigo-700 bg-indigo-100 px-2 py-0.5 rounded-full font-bold">Ver detalle</span>
             </div>
-            <div class="liquid-glass rounded-2xl p-4 flex flex-col justify-center items-center didactic-card border border-emerald-300 hover:border-emerald-500 text-center cursor-pointer">
-              <div class="card-header-block">
-                <h5 class="text-xl md:text-2xl font-black text-slate-900 leading-tight">Innovación<br>& I+D</h5>
-              </div>
-              <div class="hover-details w-full pt-1.5">
-                <p class="text-xs text-slate-700 font-medium">Plataformas de experimentación tecnológica.</p>
-              </div>
+            <div class="liquid-glass rounded-2xl p-5 flex flex-col justify-center items-center didactic-card border border-emerald-300 text-center"
+                 onclick="openSpotlight('Innovación & I+D', 'assets/images/nobg/future_decision_ai_nobg.png', 'Plataformas de experimentación tecnológica, análisis ágil y desarrollo de nuevas soluciones comerciales.')">
+              <h5 class="text-2xl font-black text-slate-900 leading-tight">Innovación<br>& I+D</h5>
+              <span class="mt-2 text-[10px] font-mono text-emerald-700 bg-emerald-100 px-2 py-0.5 rounded-full font-bold">Ver detalle</span>
             </div>
-            <div class="liquid-glass rounded-2xl p-4 flex flex-col justify-center items-center didactic-card border border-yellow-300 hover:border-yellow-500 text-center cursor-pointer">
-              <div class="card-header-block">
-                <h5 class="text-xl md:text-2xl font-black text-slate-900 leading-tight">Seguimiento<br>Financiero</h5>
-              </div>
-              <div class="hover-details w-full pt-1.5">
-                <p class="text-xs text-slate-700 font-medium">Gestión contable, facturación y previsión sólida.</p>
-              </div>
+            <div class="liquid-glass rounded-2xl p-5 flex flex-col justify-center items-center didactic-card border border-yellow-300 text-center"
+                 onclick="openSpotlight('Seguimiento Financiero', 'assets/images/nobg/mis_dashboard_nobg.png', 'Gestión contable en tiempo real, facturación electrónica y previsión presupuestaria sólida.')">
+              <h5 class="text-2xl font-black text-slate-900 leading-tight">Seguimiento<br>Financiero</h5>
+              <span class="mt-2 text-[10px] font-mono text-yellow-800 bg-yellow-100 px-2 py-0.5 rounded-full font-bold">Ver detalle</span>
             </div>
-            <div class="liquid-glass rounded-2xl p-4 flex flex-col justify-center items-center didactic-card border border-sky-300 hover:border-sky-500 text-center cursor-pointer">
-              <div class="card-header-block">
-                <h5 class="text-xl md:text-2xl font-black text-slate-900 leading-tight">Adaptación<br>al Mercado</h5>
-              </div>
-              <div class="hover-details w-full pt-1.5">
-                <p class="text-xs text-slate-700 font-medium">Análisis dinámico de tendencias y competencia.</p>
-              </div>
+            <div class="liquid-glass rounded-2xl p-5 flex flex-col justify-center items-center didactic-card border border-sky-300 text-center"
+                 onclick="openSpotlight('Adaptación al Mercado', 'assets/images/nobg/dss_simulation_nobg.png', 'Análisis dinámico de tendencias, monitoreo de competencia y rápida respuesta a cambios del entorno.')">
+              <h5 class="text-2xl font-black text-slate-900 leading-tight">Adaptación<br>al Mercado</h5>
+              <span class="mt-2 text-[10px] font-mono text-sky-700 bg-sky-100 px-2 py-0.5 rounded-full font-bold">Ver detalle</span>
             </div>
-            <div class="liquid-glass rounded-2xl p-4 flex flex-col justify-center items-center didactic-card border border-slate-300 text-center">
-              <div class="card-header-block">
-                <h5 class="text-xl md:text-2xl font-black text-slate-900 leading-tight">Alineación<br>Global</h5>
-              </div>
-              <div class="hover-details w-full pt-1.5">
-                <p class="text-xs text-slate-700 font-medium">Coordinación multinivel en tiempo real.</p>
-              </div>
+            <div class="liquid-glass rounded-2xl p-5 flex flex-col justify-center items-center didactic-card border border-slate-300 text-center"
+                 onclick="openSpotlight('Alineación Global', 'assets/images/nobg/cloud_architecture_nobg.png', 'Coordinación multinivel en tiempo real entre la dirección estratégica y las operaciones diarias.')">
+              <h5 class="text-2xl font-black text-slate-900 leading-tight">Alineación<br>Global</h5>
+              <span class="mt-2 text-[10px] font-mono text-slate-700 bg-slate-100 px-2 py-0.5 rounded-full font-bold">Ver detalle</span>
             </div>
           </div>
         `
@@ -744,51 +657,31 @@
         speakerTag: "TEMA 5 • CATEGORÍAS DSS POWER",
         notes: `<p><strong>Taxonomía Power:</strong> Basados en Datos, Modelos, Conocimiento, Documentos y Grupo (GDSS).<br><strong>Pase de palabra a Martín Avilas para el Bloque 2.</strong></p>`,
         render: () => `
-          <div class="grid grid-cols-5 gap-3 h-full items-stretch didactic-grid p-2">
-            <div class="liquid-glass rounded-2xl p-3.5 flex flex-col justify-center items-center didactic-card border border-amber-300 hover:border-amber-500 text-center cursor-pointer">
-              <div class="card-header-block">
-                <h5 class="text-lg md:text-xl font-black text-slate-900 leading-tight">Basados<br>en Datos</h5>
-              </div>
-              <div class="hover-details w-full pt-1.5">
-                <img src="assets/images/nobg/data_governance_nobg.png" alt="Datos" class="w-full max-h-24 md:max-h-28 object-contain drop-shadow-md mx-auto mb-1.5"/>
-                <p class="text-[11px] md:text-xs text-slate-700 font-medium">Archivos masivos, informes, EIS y SIG.</p>
-              </div>
+          <div class="grid grid-cols-5 gap-3.5 h-full items-stretch didactic-grid p-2">
+            <div class="liquid-glass rounded-2xl p-4 flex flex-col justify-center items-center didactic-card border border-amber-300 text-center"
+                 onclick="openSpotlight('DSS Basados en Datos', 'assets/images/nobg/data_governance_nobg.png', 'Archivos masivos, informes de gestión, EIS y SIG. Permiten una alta manipulación y análisis de series de datos históricos y transaccionales.')">
+              <h5 class="text-lg md:text-xl font-black text-slate-900 leading-tight">Basados<br>en Datos</h5>
+              <span class="mt-2 text-[10px] font-mono text-amber-700 bg-amber-100 px-2 py-0.5 rounded-full font-bold">Ver</span>
             </div>
-            <div class="liquid-glass rounded-2xl p-3.5 flex flex-col justify-center items-center didactic-card border border-indigo-300 hover:border-indigo-500 text-center cursor-pointer">
-              <div class="card-header-block">
-                <h5 class="text-lg md:text-xl font-black text-slate-900 leading-tight">Basados<br>en Modelos</h5>
-              </div>
-              <div class="hover-details w-full pt-1.5">
-                <img src="assets/images/nobg/dss_simulation_nobg.png" alt="Modelos" class="w-full max-h-24 md:max-h-28 object-contain drop-shadow-md mx-auto mb-1.5"/>
-                <p class="text-[11px] md:text-xs text-slate-700 font-medium">Modelos financieros y de optimización analítica.</p>
-              </div>
+            <div class="liquid-glass rounded-2xl p-4 flex flex-col justify-center items-center didactic-card border border-indigo-300 text-center"
+                 onclick="openSpotlight('DSS Basados en Modelos', 'assets/images/nobg/dss_simulation_nobg.png', 'Modelos financieros, contables, estadísticos y de optimización analítica para simulación cuantitativa de escenarios.')">
+              <h5 class="text-lg md:text-xl font-black text-slate-900 leading-tight">Basados<br>en Modelos</h5>
+              <span class="mt-2 text-[10px] font-mono text-indigo-700 bg-indigo-100 px-2 py-0.5 rounded-full font-bold">Ver</span>
             </div>
-            <div class="liquid-glass rounded-2xl p-3.5 flex flex-col justify-center items-center didactic-card border border-emerald-300 hover:border-emerald-500 text-center cursor-pointer">
-              <div class="card-header-block">
-                <h5 class="text-lg md:text-xl font-black text-slate-900 leading-tight">Basados en<br>Conocimiento</h5>
-              </div>
-              <div class="hover-details w-full pt-1.5">
-                <img src="assets/images/nobg/future_decision_ai_nobg.png" alt="Conocimiento" class="w-full max-h-24 md:max-h-28 object-contain drop-shadow-md mx-auto mb-1.5"/>
-                <p class="text-[11px] md:text-xs text-slate-700 font-medium">Sistemas expertos de diagnóstico y predicción.</p>
-              </div>
+            <div class="liquid-glass rounded-2xl p-4 flex flex-col justify-center items-center didactic-card border border-emerald-300 text-center"
+                 onclick="openSpotlight('DSS Basados en Conocimiento', 'assets/images/nobg/future_decision_ai_nobg.png', 'Sistemas expertos de asesoramiento, diagnóstico inteligente y sugerencia probabilística de cursos de acción.')">
+              <h5 class="text-lg md:text-xl font-black text-slate-900 leading-tight">Basados en<br>Conocimiento</h5>
+              <span class="mt-2 text-[10px] font-mono text-emerald-700 bg-emerald-100 px-2 py-0.5 rounded-full font-bold">Ver</span>
             </div>
-            <div class="liquid-glass rounded-2xl p-3.5 flex flex-col justify-center items-center didactic-card border border-yellow-300 hover:border-amber-500 text-center cursor-pointer">
-              <div class="card-header-block">
-                <h5 class="text-lg md:text-xl font-black text-slate-900 leading-tight">Basados en<br>Documentos</h5>
-              </div>
-              <div class="hover-details w-full pt-1.5">
-                <img src="assets/images/nobg/overview_systems_nobg.png" alt="Documentos" class="w-full max-h-24 md:max-h-28 object-contain drop-shadow-md mx-auto mb-1.5"/>
-                <p class="text-[11px] md:text-xs text-slate-700 font-medium">Tecnologías para recuperación textual.</p>
-              </div>
+            <div class="liquid-glass rounded-2xl p-4 flex flex-col justify-center items-center didactic-card border border-yellow-300 text-center"
+                 onclick="openSpotlight('DSS Basados en Documentos', 'assets/images/nobg/overview_systems_nobg.png', 'Integración de motores de búsqueda y tecnologías para recuperación, indexación y clasificación de documentos corporativos no estructurados.')">
+              <h5 class="text-lg md:text-xl font-black text-slate-900 leading-tight">Basados en<br>Documentos</h5>
+              <span class="mt-2 text-[10px] font-mono text-yellow-800 bg-yellow-100 px-2 py-0.5 rounded-full font-bold">Ver</span>
             </div>
-            <div class="liquid-glass rounded-2xl p-3.5 flex flex-col justify-center items-center didactic-card border border-rose-300 hover:border-rose-500 text-center cursor-pointer">
-              <div class="card-header-block">
-                <h5 class="text-lg md:text-xl font-black text-slate-900 leading-tight">Comuni<br>cación<br>& Grupo</h5>
-              </div>
-              <div class="hover-details w-full pt-1.5">
-                <img src="assets/images/nobg/eis_executive_nobg.png" alt="Grupo" class="w-full max-h-24 md:max-h-28 object-contain drop-shadow-md mx-auto mb-1.5"/>
-                <p class="text-[11px] md:text-xs text-slate-700 font-medium">Coordinación para decisiones compartidas (GDSS).</p>
-              </div>
+            <div class="liquid-glass rounded-2xl p-4 flex flex-col justify-center items-center didactic-card border border-rose-300 text-center"
+                 onclick="openSpotlight('Comunicación & Grupo (GDSS)', 'assets/images/nobg/eis_executive_nobg.png', 'Plataformas de colaboración y coordinación sincrónica para consensuar decisiones complejas en equipos ejecutivos.')">
+              <h5 class="text-lg md:text-xl font-black text-slate-900 leading-tight">Comuni<br>cación<br>& Grupo</h5>
+              <span class="mt-2 text-[10px] font-mono text-rose-700 bg-rose-100 px-2 py-0.5 rounded-full font-bold">Ver</span>
             </div>
           </div>
         `
@@ -832,41 +725,25 @@
         notes: `<p><strong>Funciones C-Level:</strong> Dashboards, Drill-down, Variables exógenas y Acceso móvil seguro.</p>`,
         render: () => `
           <div class="grid grid-cols-2 gap-6 h-full items-stretch didactic-grid p-2">
-            <div class="liquid-glass rounded-3xl p-5 flex flex-col justify-center items-center didactic-card border border-indigo-300 text-center cursor-pointer">
-              <div class="card-header-block">
-                <h4 class="text-2xl md:text-3xl font-black text-slate-900 leading-tight">Executive<br>Dashboards</h4>
-              </div>
-              <div class="hover-details w-full pt-1.5">
-                <img src="assets/images/nobg/eis_executive_nobg.png" alt="Dashboards" class="w-full max-h-28 md:max-h-32 object-contain drop-shadow-md mx-auto mb-1.5"/>
-                <p class="text-xs text-slate-700 font-medium">Visualización de KPIs consolidados e indicadores semaforizados para un control rápido.</p>
-              </div>
+            <div class="liquid-glass rounded-3xl p-6 flex flex-col justify-center items-center didactic-card border border-indigo-300 text-center"
+                 onclick="openSpotlight('Executive Dashboards', 'assets/images/nobg/eis_executive_nobg.png', 'Visualización de KPIs consolidados e indicadores semaforizados para un control rápido y ejecutivo en tiempo real.')">
+              <h4 class="text-2xl md:text-3xl font-black text-slate-900 leading-tight">Executive<br>Dashboards</h4>
+              <span class="mt-3 text-xs font-mono text-indigo-700 bg-indigo-100 px-3 py-1 rounded-full font-bold">Ver detalle</span>
             </div>
-            <div class="liquid-glass rounded-3xl p-5 flex flex-col justify-center items-center didactic-card border border-indigo-300 text-center cursor-pointer">
-              <div class="card-header-block">
-                <h4 class="text-2xl md:text-3xl font-black text-slate-900 leading-tight">Desglose<br>Analítico<br>(Drill-Down)</h4>
-              </div>
-              <div class="hover-details w-full pt-1.5">
-                <img src="assets/images/nobg/cloud_architecture_nobg.png" alt="Drill Down" class="w-full max-h-28 md:max-h-32 object-contain drop-shadow-md mx-auto mb-1.5"/>
-                <p class="text-xs text-slate-700 font-medium">Capacidad de profundizar en los datos según la necesidad.</p>
-              </div>
+            <div class="liquid-glass rounded-3xl p-6 flex flex-col justify-center items-center didactic-card border border-indigo-300 text-center"
+                 onclick="openSpotlight('Desglose Analítico (Drill-Down)', 'assets/images/nobg/cloud_architecture_nobg.png', 'Capacidad analítica para profundizar desde un KPI global hasta el nivel departamental o transacción individual.')">
+              <h4 class="text-2xl md:text-3xl font-black text-slate-900 leading-tight">Desglose<br>Analítico<br>(Drill-Down)</h4>
+              <span class="mt-3 text-xs font-mono text-indigo-700 bg-indigo-100 px-3 py-1 rounded-full font-bold">Ver detalle</span>
             </div>
-            <div class="liquid-glass rounded-3xl p-5 flex flex-col justify-center items-center didactic-card border border-indigo-300 text-center cursor-pointer">
-              <div class="card-header-block">
-                <h4 class="text-2xl md:text-3xl font-black text-slate-900 leading-tight">Variables<br>Exógenas</h4>
-              </div>
-              <div class="hover-details w-full pt-1.5">
-                <img src="assets/images/nobg/dss_simulation_nobg.png" alt="Variables Exogenas" class="w-full max-h-28 md:max-h-32 object-contain drop-shadow-md mx-auto mb-1.5"/>
-                <p class="text-xs text-slate-700 font-medium">Integración del contexto macroeconómico (divisas, inflación y competencia).</p>
-              </div>
+            <div class="liquid-glass rounded-3xl p-6 flex flex-col justify-center items-center didactic-card border border-indigo-300 text-center"
+                 onclick="openSpotlight('Variables Exógenas', 'assets/images/nobg/dss_simulation_nobg.png', 'Integración del contexto macroeconómico: fluctuaciones de tipo de cambio, inflación, tasas y comportamiento de competidores.')">
+              <h4 class="text-2xl md:text-3xl font-black text-slate-900 leading-tight">Variables<br>Exógenas</h4>
+              <span class="mt-3 text-xs font-mono text-indigo-700 bg-indigo-100 px-3 py-1 rounded-full font-bold">Ver detalle</span>
             </div>
-            <div class="liquid-glass rounded-3xl p-5 flex flex-col justify-center items-center didactic-card border border-indigo-300 text-center cursor-pointer">
-              <div class="card-header-block">
-                <h4 class="text-2xl md:text-3xl font-black text-slate-900 leading-tight">Acceso<br>Móvil</h4>
-              </div>
-              <div class="hover-details w-full pt-1.5">
-                <img src="assets/images/nobg/meli_logistics_nobg.png" alt="Acceso Movil" class="w-full max-h-28 md:max-h-32 object-contain drop-shadow-md mx-auto mb-1.5"/>
-                <p class="text-xs text-slate-700 font-medium">Conexión segura y disponible desde cualquier dispositivo.</p>
-              </div>
+            <div class="liquid-glass rounded-3xl p-6 flex flex-col justify-center items-center didactic-card border border-indigo-300 text-center"
+                 onclick="openSpotlight('Acceso Móvil Seguro', 'assets/images/nobg/meli_logistics_nobg.png', 'Conexión cifrada de alta disponibilidad accesible desde smartphones y tablets corporativas las 24 horas.')">
+              <h4 class="text-2xl md:text-3xl font-black text-slate-900 leading-tight">Acceso<br>Móvil</h4>
+              <span class="mt-3 text-xs font-mono text-indigo-700 bg-indigo-100 px-3 py-1 rounded-full font-bold">Ver detalle</span>
             </div>
           </div>
         `
@@ -1212,40 +1089,22 @@
         notes: `<p><strong>Integración:</strong> MIS (operaciones diarias, GMV, SLAs), DSS (IA riesgo y logística predictiva), EIS (tableros C-Level en USD).</p>`,
         render: () => `
           <div class="grid grid-cols-3 gap-6 h-full items-stretch didactic-grid p-2">
-            <div class="liquid-glass rounded-3xl p-5 flex flex-col justify-center items-center didactic-card border border-blue-300 hover:border-blue-500 text-center cursor-pointer">
-              <div class="card-header-block">
-                <h4 class="text-2xl md:text-3xl font-black text-slate-900 leading-tight">Sistemas<br>MIS<br>(Gerencial)</h4>
-              </div>
-              <div class="hover-details w-full pt-1.5">
-                <img src="assets/images/nobg/mis_dashboard_nobg.png" alt="MIS MELI" class="w-full max-h-32 md:max-h-36 object-contain drop-shadow-xl mx-auto mb-2"/>
-                <p class="text-xs text-slate-700 leading-relaxed font-medium">
-                  Tableros interactivos tácticos que supervisan operaciones diarias, GMV y SLA de envíos.
-                </p>
-              </div>
+            <div class="liquid-glass rounded-3xl p-6 flex flex-col justify-center items-center didactic-card border border-blue-300 text-center"
+                 onclick="openSpotlight('Sistemas MIS en MELI', 'assets/images/nobg/mis_dashboard_nobg.png', 'Tableros interactivos tácticos que supervisan en vivo operaciones de comercio electrónico, volumen bruto vendido (GMV), stock de fulfillment en almacenes y cumplimiento estricto de entregas (SLAs).')">
+              <h4 class="text-3xl md:text-4xl font-black text-slate-900 leading-tight">Sistemas<br>MIS<br>(Gerencial)</h4>
+              <span class="mt-3 text-xs font-mono text-blue-700 bg-blue-100 px-3 py-1 rounded-full font-bold">Ver detalle</span>
             </div>
 
-            <div class="liquid-glass rounded-3xl p-5 flex flex-col justify-center items-center didactic-card border border-amber-300 hover:border-amber-500 text-center cursor-pointer">
-              <div class="card-header-block">
-                <h4 class="text-2xl md:text-3xl font-black text-slate-900 leading-tight">Sistemas<br>DSS<br>(Analítico)</h4>
-              </div>
-              <div class="hover-details w-full pt-1.5">
-                <img src="assets/images/nobg/future_decision_ai_nobg.png" alt="DSS MELI" class="w-full max-h-32 md:max-h-36 object-contain drop-shadow-xl mx-auto mb-2"/>
-                <p class="text-xs text-slate-700 leading-relaxed font-medium">
-                  Modelos de IA para evaluación de riesgo crediticio y simulación logística predictiva.
-                </p>
-              </div>
+            <div class="liquid-glass rounded-3xl p-6 flex flex-col justify-center items-center didactic-card border border-amber-300 text-center"
+                 onclick="openSpotlight('Sistemas DSS en MELI', 'assets/images/nobg/future_decision_ai_nobg.png', 'Modelos predictivos de IA para evaluación automática de scoring crediticio de Mercado Crédito en segundos y ruteo logístico dinámico ante picos de demanda como CyberMonday y HotSale.')">
+              <h4 class="text-3xl md:text-4xl font-black text-slate-900 leading-tight">Sistemas<br>DSS<br>(Analítico)</h4>
+              <span class="mt-3 text-xs font-mono text-amber-700 bg-amber-100 px-3 py-1 rounded-full font-bold">Ver detalle</span>
             </div>
 
-            <div class="liquid-glass rounded-3xl p-5 flex flex-col justify-center items-center didactic-card border border-emerald-300 hover:border-emerald-500 text-center cursor-pointer">
-              <div class="card-header-block">
-                <h4 class="text-2xl md:text-3xl font-black text-slate-900 leading-tight">Sistemas<br>EIS<br>(Ejecutivo)</h4>
-              </div>
-              <div class="hover-details w-full pt-1.5">
-                <img src="assets/images/nobg/cloud_architecture_nobg.png" alt="EIS MELI" class="w-full max-h-32 md:max-h-36 object-contain drop-shadow-xl mx-auto mb-2"/>
-                <p class="text-xs text-slate-700 leading-relaxed font-medium">
-                  Tableros globales para alta dirección con conversión a dólares de los 18 países.
-                </p>
-              </div>
+            <div class="liquid-glass rounded-3xl p-6 flex flex-col justify-center items-center didactic-card border border-emerald-300 text-center"
+                 onclick="openSpotlight('Sistemas EIS en MELI', 'assets/images/nobg/cloud_architecture_nobg.png', 'Tableros consolidados para la alta dirección corporativa (C-Level) con conversión en tiempo real a dólares de métricas operativas e ingresos financieros provenientes de los 18 países.')">
+              <h4 class="text-3xl md:text-4xl font-black text-slate-900 leading-tight">Sistemas<br>EIS<br>(Ejecutivo)</h4>
+              <span class="mt-3 text-xs font-mono text-emerald-700 bg-emerald-100 px-3 py-1 rounded-full font-bold">Ver detalle</span>
             </div>
           </div>
         `
@@ -1261,32 +1120,20 @@
         notes: `<p><strong>2 Lecciones:</strong> Calidad de Datos (Garbage In, Garbage Out) y Madurez Organizacional.</p>`,
         render: () => `
           <div class="grid grid-cols-2 gap-8 h-full items-stretch didactic-grid p-2">
-            <div class="liquid-glass rounded-3xl p-6 md:p-8 flex flex-col justify-center items-center didactic-card border border-rose-300 hover:border-rose-500 text-center cursor-pointer">
-              <div class="card-header-block flex flex-col items-center">
-                <h3 class="text-4xl md:text-5xl font-black text-slate-900 leading-[1.08] tracking-tight">
-                  Calidad<br>de Datos<br><span class="text-2xl font-bold text-slate-600">(GIGO)</span>
-                </h3>
-              </div>
-              <div class="hover-details w-full pt-2">
-                <img src="assets/images/nobg/data_governance_nobg.png" alt="GIGO" class="w-full max-h-36 md:max-h-40 object-contain drop-shadow-xl mx-auto mb-2"/>
-                <p class="text-xs md:text-sm text-slate-700 leading-relaxed font-medium">
-                  Los modelos predictivos (DSS) pierden utilidad si los datos operativos de base (MIS) son inconsistentes o desfasados.
-                </p>
-              </div>
+            <div class="liquid-glass rounded-3xl p-8 flex flex-col justify-center items-center didactic-card border border-rose-300 text-center"
+                 onclick="openSpotlight('Calidad de Datos (GIGO)', 'assets/images/nobg/data_governance_nobg.png', 'Los algoritmos avanzados y modelos predictivos (DSS) pierden toda su utilidad si los datos operativos de base (MIS) son inconsistentes, incompletos o desfasados en el tiempo. Garbage In, Garbage Out.')">
+              <h3 class="text-4xl md:text-5xl lg:text-6xl font-black text-slate-900 leading-[1.08] tracking-tight">
+                Calidad<br>de Datos<br><span class="text-2xl md:text-3xl font-bold text-slate-600">(GIGO)</span>
+              </h3>
+              <span class="mt-4 text-xs font-mono text-rose-700 bg-rose-100/80 px-3 py-1 rounded-full font-bold">Clic para ver detalle</span>
             </div>
 
-            <div class="liquid-glass rounded-3xl p-6 md:p-8 flex flex-col justify-center items-center didactic-card border border-amber-300 hover:border-amber-500 text-center cursor-pointer">
-              <div class="card-header-block flex flex-col items-center">
-                <h3 class="text-4xl md:text-5xl font-black text-slate-900 leading-[1.08] tracking-tight">
-                  Madurez<br>Organizacional
-                </h3>
-              </div>
-              <div class="hover-details w-full pt-2">
-                <img src="assets/images/nobg/overview_systems_nobg.png" alt="Madurez" class="w-full max-h-36 md:max-h-40 object-contain drop-shadow-xl mx-auto mb-2"/>
-                <p class="text-xs md:text-sm text-slate-700 leading-relaxed font-medium">
-                  La tecnología no corrige procesos deficientes; acelera la cultura existente. Si la base es sólida, escala el negocio; si es caótica, solo automatiza el caos.
-                </p>
-              </div>
+            <div class="liquid-glass rounded-3xl p-8 flex flex-col justify-center items-center didactic-card border border-amber-300 text-center"
+                 onclick="openSpotlight('Madurez Organizacional', 'assets/images/nobg/overview_systems_nobg.png', 'La tecnología no corrige procesos deficientes; acelera la cultura existente. Si la base organizacional es sólida, escala el negocio exponencialmente; si es caótica, la tecnología solo automatiza el caos.')">
+              <h3 class="text-4xl md:text-5xl lg:text-6xl font-black text-slate-900 leading-[1.08] tracking-tight">
+                Madurez<br>Organizacional
+              </h3>
+              <span class="mt-4 text-xs font-mono text-amber-700 bg-amber-100/80 px-3 py-1 rounded-full font-bold">Clic para ver detalle</span>
             </div>
           </div>
         `
@@ -1302,32 +1149,16 @@
         notes: `<p><strong>FOTF:</strong> Fortalezas, Oportunidades, Debilidades y Amenazas de los sistemas de información.</p>`,
         render: () => `
           <div class="grid grid-cols-2 gap-8 h-full items-stretch didactic-grid p-2">
-            <div class="liquid-glass rounded-3xl p-6 md:p-8 flex flex-col justify-center items-center didactic-card border border-amber-300 text-center">
-              <div class="card-header-block">
-                <h4 class="text-3xl md:text-4xl font-black text-slate-900 leading-tight mb-2">Fortalezas<br>& Debilidades</h4>
-              </div>
-              <div class="hover-details w-full pt-2 space-y-2 text-left">
-                <div class="p-2.5 rounded-xl bg-white/90 border border-slate-200 text-xs md:text-sm">
-                  <strong class="text-emerald-900 font-bold">Fortalezas:</strong> Centralizan datos y eliminan discrepancias gerenciales.
-                </div>
-                <div class="p-2.5 rounded-xl bg-white/90 border border-slate-200 text-xs md:text-sm">
-                  <strong class="text-rose-900 font-bold">Debilidades:</strong> Costos de mantenimiento, infoxicación y resistencia inicial al cambio.
-                </div>
-              </div>
+            <div class="liquid-glass rounded-3xl p-8 flex flex-col justify-center items-center didactic-card border border-amber-300 text-center"
+                 onclick="openSpotlight('Fortalezas y Debilidades', 'assets/images/nobg/overview_systems_nobg.png', '<div class=\'space-y-2 text-left w-full\'><div class=\'p-3 rounded-xl bg-white/90 border border-slate-200 text-sm\'><strong class=\'text-emerald-900 font-bold\'>Fortalezas:</strong> Centralizan datos y eliminan discrepancias gerenciales entre áreas.</div><div class=\'p-3 rounded-xl bg-white/90 border border-slate-200 text-sm\'><strong class=\'text-rose-900 font-bold\'>Debilidades:</strong> Costos elevados de mantenimiento, infoxicación por sobrecarga de datos y resistencia inicial al cambio cultural.</div></div>')">
+              <h4 class="text-4xl md:text-5xl font-black text-slate-900 leading-tight mb-2">Fortalezas<br>& Debilidades</h4>
+              <span class="mt-3 text-xs font-mono text-amber-700 bg-amber-100 px-3 py-1 rounded-full font-bold">Clic para ver desglose</span>
             </div>
 
-            <div class="liquid-glass rounded-3xl p-6 md:p-8 flex flex-col justify-center items-center didactic-card border border-indigo-300 text-center">
-              <div class="card-header-block">
-                <h4 class="text-3xl md:text-4xl font-black text-slate-900 leading-tight mb-2">Oportunidades<br>& Amenazas</h4>
-              </div>
-              <div class="hover-details w-full pt-2 space-y-2 text-left">
-                <div class="p-2.5 rounded-xl bg-white/90 border border-slate-200 text-xs md:text-sm">
-                  <strong class="text-indigo-900 font-bold">Oportunidades:</strong> BI descentralizado y analítica predictiva.
-                </div>
-                <div class="p-2.5 rounded-xl bg-white/90 border border-slate-200 text-xs md:text-sm">
-                  <strong class="text-amber-900 font-bold">Amenazas:</strong> Ciberataques, fugas y rápida obsolescencia de software.
-                </div>
-              </div>
+            <div class="liquid-glass rounded-3xl p-8 flex flex-col justify-center items-center didactic-card border border-indigo-300 text-center"
+                 onclick="openSpotlight('Oportunidades y Amenazas', 'assets/images/nobg/future_decision_ai_nobg.png', '<div class=\'space-y-2 text-left w-full\'><div class=\'p-3 rounded-xl bg-white/90 border border-slate-200 text-sm\'><strong class=\'text-indigo-900 font-bold\'>Oportunidades:</strong> Expansión de BI descentralizado (self-service) y analítica predictiva avanzada con IA.</div><div class=\'p-3 rounded-xl bg-white/90 border border-slate-200 text-sm\'><strong class=\'text-amber-900 font-bold\'>Amenazas:</strong> Exposición a ciberataques, fugas de datos y rápida obsolescencia de software.</div></div>')">
+              <h4 class="text-4xl md:text-5xl font-black text-slate-900 leading-tight mb-2">Oportunidades<br>& Amenazas</h4>
+              <span class="mt-3 text-xs font-mono text-indigo-700 bg-indigo-100 px-3 py-1 rounded-full font-bold">Clic para ver desglose</span>
             </div>
           </div>
         `
@@ -1537,57 +1368,61 @@
     let timerInterval = null;
     let timerRunning = false;
 
-    // Responsive & Precise Focal Centering without Clipping
-    function attachCardFocalCentering() {
-      const parentGrid = slideBody.querySelector('.didactic-grid');
-      const cards = slideBody.querySelectorAll('.didactic-card');
-      if (!parentGrid || !cards.length) return;
+    // ==========================================
+    // CLEAN CENTERED SPOTLIGHT ON CLICK (NEVER COVERS TITLE)
+    // ==========================================
+    function openSpotlight(title, imgSrc, bodyHtml) {
+      // Remove any existing overlay
+      closeSpotlight();
 
-      cards.forEach(card => {
-        // Compute and store initial resting coordinates relative to slideBody
-        card.addEventListener('mouseenter', () => {
-          parentGrid.classList.add('has-focus');
-          card.classList.add('is-focal');
+      const overlay = document.createElement('div');
+      overlay.id = 'active-spotlight';
+      overlay.className = 'spotlight-overlay active';
+      overlay.onclick = (e) => {
+        if (e.target === overlay || e.target.closest('#btn-close-spotlight')) {
+          closeSpotlight();
+        }
+      };
 
-          const bodyRect = slideBody.getBoundingClientRect();
-          const cardRect = card.getBoundingClientRect();
+      overlay.innerHTML = `
+        <div class="spotlight-content liquid-glass border-2 border-amber-400 rounded-3xl max-w-2xl w-full p-6 md:p-8 flex flex-col items-center text-center shadow-2xl relative max-h-[92%] overflow-y-auto" onclick="event.stopPropagation()">
+          <button id="btn-close-spotlight" class="absolute top-4 right-4 text-slate-400 hover:text-slate-900 bg-slate-100 hover:bg-slate-200 rounded-full w-8 h-8 flex items-center justify-center font-bold text-sm transition" title="Cerrar (Esc)">✕</button>
+          
+          <h3 class="text-2xl md:text-3xl font-black text-slate-900 tracking-tight mb-3 pr-8">
+            ${title}
+          </h3>
 
-          // True center of slide body
-          const targetCenterX = bodyRect.left + bodyRect.width / 2;
-          const targetCenterY = bodyRect.top + bodyRect.height / 2;
+          ${imgSrc ? `
+            <div class="w-full flex items-center justify-center p-2 mb-3">
+              <img src="${imgSrc}" alt="${title}" class="max-h-40 md:max-h-44 object-contain drop-shadow-xl"/>
+            </div>
+          ` : ''}
 
-          // Current center of card before scaling
-          const currentCenterX = cardRect.left + cardRect.width / 2;
-          const currentCenterY = cardRect.top + cardRect.height / 2;
+          <div class="text-sm md:text-base text-slate-700 leading-relaxed font-medium w-full">
+            ${bodyHtml}
+          </div>
 
-          const deltaX = targetCenterX - currentCenterX;
-          const deltaY = targetCenterY - currentCenterY;
+          <div class="mt-4 pt-3 border-t border-slate-200 w-full flex items-center justify-between text-xs text-slate-400 font-mono">
+            <span>Presiona <kbd class="px-1.5 py-0.5 bg-slate-100 rounded border text-slate-700">Esc</kbd> o haz clic afuera para volver</span>
+            <button onclick="closeSpotlight()" class="text-amber-800 font-bold hover:underline">Volver a Diapositiva ✕</button>
+          </div>
+        </div>
+      `;
 
-          // Dynamic responsive scale factor that never overflows stage top/bottom
-          let scale = 1.15;
-          if (parentGrid.classList.contains('grid-cols-2')) scale = 1.12;
-          else if (parentGrid.classList.contains('grid-cols-3')) scale = 1.22;
-          else if (parentGrid.classList.contains('grid-cols-5') || parentGrid.classList.contains('grid-cols-6')) scale = 1.35;
+      slideBody.appendChild(overlay);
+    }
 
-          card.style.transform = `translate3d(${deltaX}px, ${deltaY}px, 0) scale(${scale})`;
-        });
-
-        card.addEventListener('mouseleave', () => {
-          card.classList.remove('is-focal');
-          card.style.transform = '';
-          // Only remove has-focus if no other card is hovered
-          setTimeout(() => {
-            const hasAnyHover = slideBody.querySelector('.didactic-card:hover');
-            if (!hasAnyHover) {
-              parentGrid.classList.remove('has-focus');
-            }
-          }, 50);
-        });
-      });
+    function closeSpotlight() {
+      const active = document.getElementById('active-spotlight');
+      if (active) {
+        active.classList.remove('active');
+        setTimeout(() => active.remove(), 250);
+      }
     }
 
     function renderSlide(index) {
       if (index < 0 || index >= totalSlides) return;
+      closeSpotlight();
       currentSlide = index;
       const data = slidesData[currentSlide];
 
@@ -1620,7 +1455,6 @@
           el.classList.remove('slide-enter');
           el.classList.add('slide-active');
         }
-        attachCardFocalCentering();
         if (typeof data.afterRender === 'function') {
           data.afterRender();
         }
@@ -1685,6 +1519,10 @@
     }
 
     function nextSlide() {
+      if (document.getElementById('active-spotlight')) {
+        closeSpotlight();
+        return;
+      }
       if (currentSlide < totalSlides - 1) {
         renderSlide(currentSlide + 1);
       } else {
@@ -1693,6 +1531,10 @@
     }
 
     function prevSlide() {
+      if (document.getElementById('active-spotlight')) {
+        closeSpotlight();
+        return;
+      }
       if (currentSlide > 0) renderSlide(currentSlide - 1);
     }
 
@@ -1709,6 +1551,13 @@
 
     // Keyboard navigation
     document.addEventListener('keydown', (e) => {
+      if (document.getElementById('active-spotlight')) {
+        if (e.key === 'Escape') {
+          closeSpotlight();
+          return;
+        }
+      }
+
       if (e.key === 'g' || e.key === 'G') {
         e.preventDefault();
         toggleGrid();
