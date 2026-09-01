@@ -877,29 +877,24 @@
         notes: `<p><strong>Nivel Estratégico:</strong> Visión general, objetivos corporativos y dirección general.</p>`,
         render: () => `
 <div class="grid grid-cols-12 gap-8 h-full items-center p-2">
-            <!-- Left Interactive SVG Pyramid Diagram -->
-            <div class="col-span-5 flex flex-col items-center justify-center p-4">
-              <svg viewBox="0 0 320 280" class="w-full max-w-[300px] drop-shadow-lg transition-all duration-500">
-                <!-- Top: Estrategico -->
-                <polygon points="160,20 230,100 90,100" class="fill-indigo-500 stroke-indigo-600 stroke-2 drop-shadow-md text-white transition-all duration-300 cursor-pointer" onclick="renderSlide(16)"/>
-                <text x="160" y="70" text-anchor="middle" class="font-sans text-[12px] fill-white font-black pointer-events-none">1. ESTRATÉGICO</text>
-                <text x="160" y="86" text-anchor="middle" class="font-sans text-[10px] fill-indigo-100 font-bold pointer-events-none">EIS / ESS</text>
+            <!-- Left Polished SVG Pyramid Diagram (Text 100% Contained Inside) -->
+            <div class="col-span-5 flex flex-col items-center justify-center p-2">
+              <svg viewBox="0 0 380 300" class="w-full max-w-[340px] drop-shadow-md select-none transition-all">
+                <!-- Top Tier: Estrategico -->
+                <polygon points="190,20 275,105 105,105" fill="#4F46E5" stroke="#3730A3" stroke-width="2.5" class="drop-shadow-lg cursor-pointer" onclick="renderSlide(16)"/>
+                <text x="190" y="68" text-anchor="middle" font-family="'Inter', sans-serif" font-size="12.5px" fill="#FFFFFF" font-weight="900" class="pointer-events-none tracking-tight">1. ESTRATÉGICO</text>
+                <text x="190" y="86" text-anchor="middle" font-family="'Inter', sans-serif" font-size="10.5px" fill="#E0E7FF" font-weight="700" class="pointer-events-none">EIS / ESS</text>
 
-                <!-- Middle: Tactico -->
-                <polygon points="90,105 230,105 275,185 45,185" class="fill-amber-100/70 stroke-amber-300 stroke-1 opacity-60 transition-all duration-300 cursor-pointer" onclick="renderSlide(17)"/>
-                <text x="160" y="145" text-anchor="middle" class="font-sans text-[12px] fill-amber-950 font-bold pointer-events-none">2. TÁCTICO</text>
-                <text x="160" y="162" text-anchor="middle" class="font-sans text-[10px] fill-amber-800 font-medium pointer-events-none">MIS / DSS</text>
+                <!-- Middle Tier: Tactico -->
+                <polygon points="105,112 275,112 320,198 60,198" fill="#FFFBEB" stroke="#FDE68A" stroke-width="1.5" class="hover:fill-amber-100 transition-all cursor-pointer" onclick="renderSlide(17)"/>
+                <text x="190" y="152" text-anchor="middle" font-family="'Inter', sans-serif" font-size="13.5px" fill="#92400E" font-weight="800" class="pointer-events-none tracking-tight">2. TÁCTICO</text>
+                <text x="190" y="172" text-anchor="middle" font-family="'Inter', sans-serif" font-size="11px" fill="#B45309" font-weight="600" class="pointer-events-none">MIS / DSS</text>
 
-                <!-- Base: Operativo -->
-                <polygon points="45,190 275,190 315,270 5,270" class="fill-sky-100/70 stroke-sky-300 stroke-1 opacity-60 transition-all duration-300 cursor-pointer" onclick="renderSlide(18)"/>
-                <text x="160" y="230" text-anchor="middle" class="font-sans text-[12px] fill-sky-950 font-bold pointer-events-none">3. OPERATIVO</text>
-                <text x="160" y="247" text-anchor="middle" class="font-sans text-[10px] fill-sky-800 font-medium pointer-events-none">TPS (Transaccional)</text>
+                <!-- Base Tier: Operativo -->
+                <polygon points="60,205 320,205 365,290 15,290" fill="#F0F9FF" stroke="#BAE6FD" stroke-width="1.5" class="hover:fill-sky-100 transition-all cursor-pointer" onclick="renderSlide(18)"/>
+                <text x="190" y="244" text-anchor="middle" font-family="'Inter', sans-serif" font-size="14px" fill="#0369A1" font-weight="800" class="pointer-events-none tracking-tight">3. OPERATIVO</text>
+                <text x="190" y="264" text-anchor="middle" font-family="'Inter', sans-serif" font-size="11px" fill="#0284C7" font-weight="600" class="pointer-events-none">TPS (Transaccional)</text>
               </svg>
-              <div class="flex items-center gap-2 mt-4 text-[11px] font-mono">
-                <span class="px-2.5 py-1 rounded-full text-xs font-bold cursor-pointer bg-indigo-600 text-white shadow-sm" onclick="renderSlide(16)">Estratégico</span>
-                <span class="px-2.5 py-1 rounded-full text-xs font-bold cursor-pointer bg-amber-50 text-amber-900 border border-amber-200" onclick="renderSlide(17)">Táctico</span>
-                <span class="px-2.5 py-1 rounded-full text-xs font-bold cursor-pointer bg-sky-50 text-sky-900 border border-sky-200" onclick="renderSlide(18)">Operativo</span>
-              </div>
             </div>
             <!-- Right Content Area -->
             <div class="col-span-7 flex flex-col justify-center space-y-4">
@@ -928,29 +923,24 @@
         notes: `<p><strong>Nivel Táctico:</strong> Departamentos, creación de acciones para ejecutar la estrategia y planificación detallada.</p>`,
         render: () => `
 <div class="grid grid-cols-12 gap-8 h-full items-center p-2">
-            <!-- Left Interactive SVG Pyramid Diagram -->
-            <div class="col-span-5 flex flex-col items-center justify-center p-4">
-              <svg viewBox="0 0 320 280" class="w-full max-w-[300px] drop-shadow-lg transition-all duration-500">
-                <!-- Top: Estrategico -->
-                <polygon points="160,20 230,100 90,100" class="fill-indigo-100/70 stroke-indigo-300 stroke-1 opacity-60 transition-all duration-300 cursor-pointer" onclick="renderSlide(16)"/>
-                <text x="160" y="70" text-anchor="middle" class="font-sans text-[12px] fill-indigo-900 font-bold pointer-events-none">1. ESTRATÉGICO</text>
-                <text x="160" y="86" text-anchor="middle" class="font-sans text-[10px] fill-indigo-700 font-medium pointer-events-none">EIS / ESS</text>
+            <!-- Left Polished SVG Pyramid Diagram (Text 100% Contained Inside) -->
+            <div class="col-span-5 flex flex-col items-center justify-center p-2">
+              <svg viewBox="0 0 380 300" class="w-full max-w-[340px] drop-shadow-md select-none transition-all">
+                <!-- Top Tier: Estrategico -->
+                <polygon points="190,20 275,105 105,105" fill="#EEF2FF" stroke="#C7D2FE" stroke-width="1.5" class="hover:fill-indigo-100 transition-all cursor-pointer" onclick="renderSlide(16)"/>
+                <text x="190" y="68" text-anchor="middle" font-family="'Inter', sans-serif" font-size="12.5px" fill="#4338CA" font-weight="800" class="pointer-events-none tracking-tight">1. ESTRATÉGICO</text>
+                <text x="190" y="86" text-anchor="middle" font-family="'Inter', sans-serif" font-size="10.5px" fill="#6366F1" font-weight="600" class="pointer-events-none">EIS / ESS</text>
 
-                <!-- Middle: Tactico -->
-                <polygon points="90,105 230,105 275,185 45,185" class="fill-amber-400 stroke-amber-500 stroke-2 drop-shadow-md transition-all duration-300 cursor-pointer" onclick="renderSlide(17)"/>
-                <text x="160" y="145" text-anchor="middle" class="font-sans text-[12px] fill-slate-950 font-black pointer-events-none">2. TÁCTICO</text>
-                <text x="160" y="162" text-anchor="middle" class="font-sans text-[10px] fill-amber-950 font-bold pointer-events-none">MIS / DSS</text>
+                <!-- Middle Tier: Tactico -->
+                <polygon points="105,112 275,112 320,198 60,198" fill="#F59E0B" stroke="#D97706" stroke-width="2.5" class="drop-shadow-lg cursor-pointer" onclick="renderSlide(17)"/>
+                <text x="190" y="152" text-anchor="middle" font-family="'Inter', sans-serif" font-size="13.5px" fill="#0F172A" font-weight="900" class="pointer-events-none tracking-tight">2. TÁCTICO</text>
+                <text x="190" y="172" text-anchor="middle" font-family="'Inter', sans-serif" font-size="11px" fill="#1E293B" font-weight="700" class="pointer-events-none">MIS / DSS</text>
 
-                <!-- Base: Operativo -->
-                <polygon points="45,190 275,190 315,270 5,270" class="fill-sky-100/70 stroke-sky-300 stroke-1 opacity-60 transition-all duration-300 cursor-pointer" onclick="renderSlide(18)"/>
-                <text x="160" y="230" text-anchor="middle" class="font-sans text-[12px] fill-sky-950 font-bold pointer-events-none">3. OPERATIVO</text>
-                <text x="160" y="247" text-anchor="middle" class="font-sans text-[10px] fill-sky-800 font-medium pointer-events-none">TPS (Transaccional)</text>
+                <!-- Base Tier: Operativo -->
+                <polygon points="60,205 320,205 365,290 15,290" fill="#F0F9FF" stroke="#BAE6FD" stroke-width="1.5" class="hover:fill-sky-100 transition-all cursor-pointer" onclick="renderSlide(18)"/>
+                <text x="190" y="244" text-anchor="middle" font-family="'Inter', sans-serif" font-size="14px" fill="#0369A1" font-weight="800" class="pointer-events-none tracking-tight">3. OPERATIVO</text>
+                <text x="190" y="264" text-anchor="middle" font-family="'Inter', sans-serif" font-size="11px" fill="#0284C7" font-weight="600" class="pointer-events-none">TPS (Transaccional)</text>
               </svg>
-              <div class="flex items-center gap-2 mt-4 text-[11px] font-mono">
-                <span class="px-2.5 py-1 rounded-full text-xs font-bold cursor-pointer bg-indigo-50 text-indigo-800 border border-indigo-200" onclick="renderSlide(16)">Estratégico</span>
-                <span class="px-2.5 py-1 rounded-full text-xs font-bold cursor-pointer bg-amber-400 text-slate-950 font-bold shadow-sm" onclick="renderSlide(17)">Táctico</span>
-                <span class="px-2.5 py-1 rounded-full text-xs font-bold cursor-pointer bg-sky-50 text-sky-900 border border-sky-200" onclick="renderSlide(18)">Operativo</span>
-              </div>
             </div>
             <!-- Right Content Area -->
             <div class="col-span-7 flex flex-col justify-center space-y-4">
@@ -984,29 +974,24 @@
         notes: `<p><strong>Nivel Operativo:</strong> Agentes ejecutores de acciones tácticas, corta duración y rol de todos.</p>`,
         render: () => `
 <div class="grid grid-cols-12 gap-8 h-full items-center p-2">
-            <!-- Left Interactive SVG Pyramid Diagram -->
-            <div class="col-span-5 flex flex-col items-center justify-center p-4">
-              <svg viewBox="0 0 320 280" class="w-full max-w-[300px] drop-shadow-lg transition-all duration-500">
-                <!-- Top: Estrategico -->
-                <polygon points="160,20 230,100 90,100" class="fill-indigo-100/70 stroke-indigo-300 stroke-1 opacity-60 transition-all duration-300 cursor-pointer" onclick="renderSlide(16)"/>
-                <text x="160" y="70" text-anchor="middle" class="font-sans text-[12px] fill-indigo-900 font-bold pointer-events-none">1. ESTRATÉGICO</text>
-                <text x="160" y="86" text-anchor="middle" class="font-sans text-[10px] fill-indigo-700 font-medium pointer-events-none">EIS / ESS</text>
+            <!-- Left Polished SVG Pyramid Diagram (Text 100% Contained Inside) -->
+            <div class="col-span-5 flex flex-col items-center justify-center p-2">
+              <svg viewBox="0 0 380 300" class="w-full max-w-[340px] drop-shadow-md select-none transition-all">
+                <!-- Top Tier: Estrategico -->
+                <polygon points="190,20 275,105 105,105" fill="#EEF2FF" stroke="#C7D2FE" stroke-width="1.5" class="hover:fill-indigo-100 transition-all cursor-pointer" onclick="renderSlide(16)"/>
+                <text x="190" y="68" text-anchor="middle" font-family="'Inter', sans-serif" font-size="12.5px" fill="#4338CA" font-weight="800" class="pointer-events-none tracking-tight">1. ESTRATÉGICO</text>
+                <text x="190" y="86" text-anchor="middle" font-family="'Inter', sans-serif" font-size="10.5px" fill="#6366F1" font-weight="600" class="pointer-events-none">EIS / ESS</text>
 
-                <!-- Middle: Tactico -->
-                <polygon points="90,105 230,105 275,185 45,185" class="fill-amber-100/70 stroke-amber-300 stroke-1 opacity-60 transition-all duration-300 cursor-pointer" onclick="renderSlide(17)"/>
-                <text x="160" y="145" text-anchor="middle" class="font-sans text-[12px] fill-amber-950 font-bold pointer-events-none">2. TÁCTICO</text>
-                <text x="160" y="162" text-anchor="middle" class="font-sans text-[10px] fill-amber-800 font-medium pointer-events-none">MIS / DSS</text>
+                <!-- Middle Tier: Tactico -->
+                <polygon points="105,112 275,112 320,198 60,198" fill="#FFFBEB" stroke="#FDE68A" stroke-width="1.5" class="hover:fill-amber-100 transition-all cursor-pointer" onclick="renderSlide(17)"/>
+                <text x="190" y="152" text-anchor="middle" font-family="'Inter', sans-serif" font-size="13.5px" fill="#92400E" font-weight="800" class="pointer-events-none tracking-tight">2. TÁCTICO</text>
+                <text x="190" y="172" text-anchor="middle" font-family="'Inter', sans-serif" font-size="11px" fill="#B45309" font-weight="600" class="pointer-events-none">MIS / DSS</text>
 
-                <!-- Base: Operativo -->
-                <polygon points="45,190 275,190 315,270 5,270" class="fill-sky-400 stroke-sky-500 stroke-2 drop-shadow-md transition-all duration-300 cursor-pointer" onclick="renderSlide(18)"/>
-                <text x="160" y="230" text-anchor="middle" class="font-sans text-[12px] fill-slate-950 font-black pointer-events-none">3. OPERATIVO</text>
-                <text x="160" y="247" text-anchor="middle" class="font-sans text-[10px] fill-sky-950 font-bold pointer-events-none">TPS (Transaccional)</text>
+                <!-- Base Tier: Operativo -->
+                <polygon points="60,205 320,205 365,290 15,290" fill="#0284C7" stroke="#0369A1" stroke-width="2.5" class="drop-shadow-lg cursor-pointer" onclick="renderSlide(18)"/>
+                <text x="190" y="244" text-anchor="middle" font-family="'Inter', sans-serif" font-size="14px" fill="#FFFFFF" font-weight="900" class="pointer-events-none tracking-tight">3. OPERATIVO</text>
+                <text x="190" y="264" text-anchor="middle" font-family="'Inter', sans-serif" font-size="11px" fill="#E0F2FE" font-weight="700" class="pointer-events-none">TPS (Transaccional)</text>
               </svg>
-              <div class="flex items-center gap-2 mt-4 text-[11px] font-mono">
-                <span class="px-2.5 py-1 rounded-full text-xs font-bold cursor-pointer bg-indigo-50 text-indigo-800 border border-indigo-200" onclick="renderSlide(16)">Estratégico</span>
-                <span class="px-2.5 py-1 rounded-full text-xs font-bold cursor-pointer bg-amber-50 text-amber-900 border border-amber-200" onclick="renderSlide(17)">Táctico</span>
-                <span class="px-2.5 py-1 rounded-full text-xs font-bold cursor-pointer bg-sky-400 text-slate-950 font-bold shadow-sm" onclick="renderSlide(18)">Operativo</span>
-              </div>
             </div>
             <!-- Right Content Area -->
             <div class="col-span-7 flex flex-col justify-center space-y-4">
