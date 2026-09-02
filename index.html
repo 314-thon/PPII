@@ -140,18 +140,27 @@
       position: relative;
       display: flex;
       flex-direction: column;
-      justify-content: center;
+      justify-content: space-between;
       align-items: center;
       cursor: pointer;
       box-shadow: var(--card-shadow), var(--card-highlight);
+      border-top: 1px solid rgba(255, 255, 255, 0.65);
+    }
+
+    html.dark .didactic-card {
+      border-top: 1px solid rgba(255, 255, 255, 0.15);
     }
     
     @media (hover: hover) and (pointer: fine) {
       .didactic-card:hover {
-        transform: translateY(-3px) scale(1.018);
-        box-shadow: var(--card-shadow-hover), var(--card-highlight);
-        border-color: rgba(245, 158, 11, 0.7);
+        transform: translateY(-4px) scale(1.018);
+        box-shadow: 0 18px 36px -10px rgba(15, 23, 42, 0.14), 0 0 0 1px rgba(245, 158, 11, 0.35), var(--card-highlight);
+        border-color: rgba(245, 158, 11, 0.75);
         z-index: 10;
+      }
+      html.dark .didactic-card:hover {
+        box-shadow: 0 22px 42px -12px rgba(0, 0, 0, 0.75), 0 0 24px rgba(245, 158, 11, 0.2), var(--card-highlight);
+        border-color: rgba(245, 158, 11, 0.65);
       }
     }
 
@@ -775,18 +784,50 @@
         notes: `<p><strong>Definición & Componentes:</strong> Conjunto ordenado de personas, procesos y herramientas. Explicar los 3 componentes: Equipos, Personas y Datos.</p>`,
         render: () => `
           <div class="grid grid-cols-2 gap-8 h-full items-stretch didactic-grid">
-            <div class="liquid-glass rounded-3xl p-8 flex flex-col justify-center items-center didactic-card border border-amber-300 text-center"
+            <!-- 01: Sistema de Información -->
+            <div class="group liquid-glass rounded-3xl p-6 md:p-8 flex flex-col justify-between items-center didactic-card border border-amber-300/90 dark:border-amber-500/30 bg-amber-500/[0.03] dark:bg-amber-400/[0.02] text-center"
                  onclick="triggerSpotlightKey(this, 's3_c1')">
-              <h3 class="text-4xl md:text-5xl lg:text-6xl font-black text-slate-900 leading-[1.08] tracking-tight">
-                Sistema<br>de<br>Información
-              </h3>
+              <div class="w-full flex items-center justify-between">
+                <span class="font-mono text-xs font-bold tracking-widest text-amber-800 dark:text-amber-400 bg-amber-400/15 px-3 py-1 rounded-lg border border-amber-400/30">01 / 02</span>
+                <span class="text-xs font-mono text-slate-400 dark:text-slate-500 flex items-center gap-1 group-hover:text-amber-600 dark:group-hover:text-amber-400 transition-colors">
+                  <span>Detalle</span>
+                  <svg class="w-3.5 h-3.5 transition-transform duration-200 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path></svg>
+                </span>
+              </div>
+              <div class="flex flex-col items-center justify-center my-auto py-3">
+                <div class="w-18 h-18 md:w-22 md:h-22 rounded-3xl bg-amber-500/10 dark:bg-amber-400/10 border border-amber-500/20 flex items-center justify-center mb-4 text-amber-600 dark:text-amber-400 group-hover:scale-110 group-hover:bg-amber-500/20 transition-all duration-300 shadow-inner">
+                  <svg class="w-10 h-10 md:w-11 md:h-11" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10"></path></svg>
+                </div>
+                <h3 class="text-4xl md:text-5xl lg:text-6xl font-black text-slate-900 dark:text-slate-100 leading-[1.08] tracking-tight">
+                  Sistema<br>de<br>Información
+                </h3>
+              </div>
+              <div class="w-full pt-3 border-t border-slate-200/50 dark:border-white/5 flex items-center justify-center text-xs font-mono font-semibold text-slate-400 dark:text-slate-500 group-hover:text-amber-600 dark:group-hover:text-amber-400 transition-colors">
+                <span class="w-1.5 h-1.5 rounded-full bg-amber-400 mr-2 animate-pulse"></span>Clic para ampliar
+              </div>
             </div>
 
-            <div class="liquid-glass rounded-3xl p-8 flex flex-col justify-center items-center didactic-card border border-indigo-300 text-center"
+            <!-- 02: Componentes Principales -->
+            <div class="group liquid-glass rounded-3xl p-6 md:p-8 flex flex-col justify-between items-center didactic-card border border-indigo-300/90 dark:border-indigo-500/30 bg-indigo-500/[0.03] dark:bg-indigo-400/[0.02] text-center"
                  onclick="triggerSpotlightKey(this, 's3_c2')">
-              <h3 class="text-4xl md:text-5xl lg:text-6xl font-black text-slate-900 leading-[1.08] tracking-tight">
-                Componentes<br>Principales
-              </h3>
+              <div class="w-full flex items-center justify-between">
+                <span class="font-mono text-xs font-bold tracking-widest text-indigo-800 dark:text-indigo-400 bg-indigo-400/15 px-3 py-1 rounded-lg border border-indigo-400/30">02 / 02</span>
+                <span class="text-xs font-mono text-slate-400 dark:text-slate-500 flex items-center gap-1 group-hover:text-indigo-600 dark:group-hover:text-indigo-400 transition-colors">
+                  <span>Detalle</span>
+                  <svg class="w-3.5 h-3.5 transition-transform duration-200 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path></svg>
+                </span>
+              </div>
+              <div class="flex flex-col items-center justify-center my-auto py-3">
+                <div class="w-18 h-18 md:w-22 md:h-22 rounded-3xl bg-indigo-500/10 dark:bg-indigo-400/10 border border-indigo-500/20 flex items-center justify-center mb-4 text-indigo-600 dark:text-indigo-400 group-hover:scale-110 group-hover:bg-indigo-500/20 transition-all duration-300 shadow-inner">
+                  <svg class="w-10 h-10 md:w-11 md:h-11" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z"></path></svg>
+                </div>
+                <h3 class="text-4xl md:text-5xl lg:text-6xl font-black text-slate-900 dark:text-slate-100 leading-[1.08] tracking-tight">
+                  Componentes<br>Principales
+                </h3>
+              </div>
+              <div class="w-full pt-3 border-t border-slate-200/50 dark:border-white/5 flex items-center justify-center text-xs font-mono font-semibold text-slate-400 dark:text-slate-500 group-hover:text-indigo-600 dark:group-hover:text-indigo-400 transition-colors">
+                <span class="w-1.5 h-1.5 rounded-full bg-indigo-400 mr-2 animate-pulse"></span>Clic para ampliar
+              </div>
             </div>
           </div>
         `
@@ -802,25 +843,73 @@
         notes: `<p><strong>Ejemplos:</strong> Control de calidad, Bases de datos de bibliotecas y Hojas de cálculo.</p>`,
         render: () => `
           <div class="grid grid-cols-3 gap-6 h-full items-stretch didactic-grid">
-            <div class="liquid-glass rounded-3xl p-6 flex flex-col justify-center items-center didactic-card border border-amber-300 text-center"
+            <!-- 01: Control de Calidad -->
+            <div class="group liquid-glass rounded-3xl p-5 md:p-6 flex flex-col justify-between items-center didactic-card border border-amber-300/90 dark:border-amber-500/30 bg-amber-500/[0.03] dark:bg-amber-400/[0.02] text-center"
                  onclick="triggerSpotlightKey(this, 's4_c1')">
-              <h4 class="text-3xl md:text-4xl font-black text-slate-900 leading-[1.1]">
-                Control<br>de<br>Calidad
-              </h4>
+              <div class="w-full flex items-center justify-between">
+                <span class="font-mono text-[11px] font-bold tracking-widest text-amber-800 dark:text-amber-400 bg-amber-400/15 px-2.5 py-0.5 rounded-md border border-amber-400/30">01 / 03</span>
+                <span class="text-xs font-mono text-slate-400 dark:text-slate-500 flex items-center gap-1 group-hover:text-amber-600 dark:group-hover:text-amber-400 transition-colors">
+                  <span>Detalle</span>
+                  <svg class="w-3.5 h-3.5 transition-transform duration-200 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path></svg>
+                </span>
+              </div>
+              <div class="flex flex-col items-center justify-center my-auto py-2">
+                <div class="w-16 h-16 md:w-18 md:h-18 rounded-2xl bg-amber-500/10 dark:bg-amber-400/10 border border-amber-500/20 flex items-center justify-center mb-3 text-amber-600 dark:text-amber-400 group-hover:scale-110 group-hover:bg-amber-500/20 transition-all duration-300 shadow-inner">
+                  <svg class="w-8 h-8 md:w-9 md:h-9" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"></path></svg>
+                </div>
+                <h4 class="text-2xl md:text-3xl lg:text-4xl font-black text-slate-900 dark:text-slate-100 leading-[1.1]">
+                  Control<br>de<br>Calidad
+                </h4>
+              </div>
+              <div class="w-full pt-3 border-t border-slate-200/50 dark:border-white/5 flex items-center justify-center text-xs font-mono font-semibold text-slate-400 dark:text-slate-500 group-hover:text-amber-600 dark:group-hover:text-amber-400 transition-colors">
+                <span class="w-1.5 h-1.5 rounded-full bg-amber-400 mr-2 animate-pulse"></span>Clic para ampliar
+              </div>
             </div>
 
-            <div class="liquid-glass rounded-3xl p-6 flex flex-col justify-center items-center didactic-card border border-indigo-300 text-center"
+            <!-- 02: Bases de Datos Bibliotecas -->
+            <div class="group liquid-glass rounded-3xl p-5 md:p-6 flex flex-col justify-between items-center didactic-card border border-indigo-300/90 dark:border-indigo-500/30 bg-indigo-500/[0.03] dark:bg-indigo-400/[0.02] text-center"
                  onclick="triggerSpotlightKey(this, 's4_c2')">
-              <h4 class="text-3xl md:text-4xl font-black text-slate-900 leading-[1.1]">
-                Bases<br>de Datos<br>Bibliotecas
-              </h4>
+              <div class="w-full flex items-center justify-between">
+                <span class="font-mono text-[11px] font-bold tracking-widest text-indigo-800 dark:text-indigo-400 bg-indigo-400/15 px-2.5 py-0.5 rounded-md border border-indigo-400/30">02 / 03</span>
+                <span class="text-xs font-mono text-slate-400 dark:text-slate-500 flex items-center gap-1 group-hover:text-indigo-600 dark:group-hover:text-indigo-400 transition-colors">
+                  <span>Detalle</span>
+                  <svg class="w-3.5 h-3.5 transition-transform duration-200 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path></svg>
+                </span>
+              </div>
+              <div class="flex flex-col items-center justify-center my-auto py-2">
+                <div class="w-16 h-16 md:w-18 md:h-18 rounded-2xl bg-indigo-500/10 dark:bg-indigo-400/10 border border-indigo-500/20 flex items-center justify-center mb-3 text-indigo-600 dark:text-indigo-400 group-hover:scale-110 group-hover:bg-indigo-500/20 transition-all duration-300 shadow-inner">
+                  <svg class="w-8 h-8 md:w-9 md:h-9" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"></path></svg>
+                </div>
+                <h4 class="text-2xl md:text-3xl lg:text-4xl font-black text-slate-900 dark:text-slate-100 leading-[1.1]">
+                  Bases<br>de Datos<br>Bibliotecas
+                </h4>
+              </div>
+              <div class="w-full pt-3 border-t border-slate-200/50 dark:border-white/5 flex items-center justify-center text-xs font-mono font-semibold text-slate-400 dark:text-slate-500 group-hover:text-indigo-600 dark:group-hover:text-indigo-400 transition-colors">
+                <span class="w-1.5 h-1.5 rounded-full bg-indigo-400 mr-2 animate-pulse"></span>Clic para ampliar
+              </div>
             </div>
 
-            <div class="liquid-glass rounded-3xl p-6 flex flex-col justify-center items-center didactic-card border border-emerald-300 text-center"
+            <!-- 03: Hojas de Cálculo -->
+            <div class="group liquid-glass rounded-3xl p-5 md:p-6 flex flex-col justify-between items-center didactic-card border border-emerald-300/90 dark:border-emerald-500/30 bg-emerald-500/[0.03] dark:bg-emerald-400/[0.02] text-center"
                  onclick="triggerSpotlightKey(this, 's4_c3')">
-              <h4 class="text-3xl md:text-4xl font-black text-slate-900 leading-[1.1]">
-                Hojas<br>de<br>Cálculo
-              </h4>
+              <div class="w-full flex items-center justify-between">
+                <span class="font-mono text-[11px] font-bold tracking-widest text-emerald-800 dark:text-emerald-400 bg-emerald-400/15 px-2.5 py-0.5 rounded-md border border-emerald-400/30">03 / 03</span>
+                <span class="text-xs font-mono text-slate-400 dark:text-slate-500 flex items-center gap-1 group-hover:text-emerald-600 dark:group-hover:text-emerald-400 transition-colors">
+                  <span>Detalle</span>
+                  <svg class="w-3.5 h-3.5 transition-transform duration-200 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path></svg>
+                </span>
+              </div>
+              <div class="flex flex-col items-center justify-center my-auto py-2">
+                <div class="w-16 h-16 md:w-18 md:h-18 rounded-2xl bg-emerald-500/10 dark:bg-emerald-400/10 border border-emerald-500/20 flex items-center justify-center mb-3 text-emerald-600 dark:text-emerald-400 group-hover:scale-110 group-hover:bg-emerald-500/20 transition-all duration-300 shadow-inner">
+                  <svg class="w-8 h-8 md:w-9 md:h-9" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M3 10h18M3 14h18m-9-4v8m-7 4h14a2 2 0 002-2V6a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"></path></svg>
+                </div>
+                <h4 class="text-2xl md:text-3xl lg:text-4xl font-black text-slate-900 dark:text-slate-100 leading-[1.1]">
+                  Hojas<br>de<br>Cálculo
+                </h4>
+              </div>
+              <div class="w-full pt-3 border-t border-slate-200/50 dark:border-white/5 flex items-center justify-center text-xs font-mono font-semibold text-slate-400 dark:text-slate-500 group-hover:text-emerald-600 dark:group-hover:text-emerald-400 transition-colors">
+                <span class="w-1.5 h-1.5 rounded-full bg-emerald-400 mr-2 animate-pulse"></span>Clic para ampliar
+              </div>
             </div>
           </div>
         `
@@ -836,18 +925,50 @@
         notes: `<p><strong>Impacto y Ventajas Clave:</strong> Organización y vinculación de datos en tiempo real, e integración para operar como bloque sólido.</p>`,
         render: () => `
           <div class="grid grid-cols-2 gap-8 h-full items-stretch didactic-grid">
-            <div class="liquid-glass rounded-3xl p-8 flex flex-col justify-center items-center didactic-card border border-amber-300 text-center"
+            <!-- 01: Impacto Operativo -->
+            <div class="group liquid-glass rounded-3xl p-6 md:p-8 flex flex-col justify-between items-center didactic-card border border-amber-300/90 dark:border-amber-500/30 bg-amber-500/[0.03] dark:bg-amber-400/[0.02] text-center"
                  onclick="triggerSpotlightKey(this, 's5_c1')">
-              <h3 class="text-4xl md:text-5xl lg:text-6xl font-black text-slate-900 leading-[1.05] tracking-tight">
-                Impacto<br>Operativo
-              </h3>
+              <div class="w-full flex items-center justify-between">
+                <span class="font-mono text-xs font-bold tracking-widest text-amber-800 dark:text-amber-400 bg-amber-400/15 px-3 py-1 rounded-lg border border-amber-400/30">01 / 02</span>
+                <span class="text-xs font-mono text-slate-400 dark:text-slate-500 flex items-center gap-1 group-hover:text-amber-600 dark:group-hover:text-amber-400 transition-colors">
+                  <span>Detalle</span>
+                  <svg class="w-3.5 h-3.5 transition-transform duration-200 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path></svg>
+                </span>
+              </div>
+              <div class="flex flex-col items-center justify-center my-auto py-3">
+                <div class="w-18 h-18 md:w-22 md:h-22 rounded-3xl bg-amber-500/10 dark:bg-amber-400/10 border border-amber-500/20 flex items-center justify-center mb-4 text-amber-600 dark:text-amber-400 group-hover:scale-110 group-hover:bg-amber-500/20 transition-all duration-300 shadow-inner">
+                  <svg class="w-10 h-10 md:w-11 md:h-11" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M13 10V3L4 14h7v7l9-11h-7z"></path></svg>
+                </div>
+                <h3 class="text-4xl md:text-5xl lg:text-6xl font-black text-slate-900 dark:text-slate-100 leading-[1.05] tracking-tight">
+                  Impacto<br>Operativo
+                </h3>
+              </div>
+              <div class="w-full pt-3 border-t border-slate-200/50 dark:border-white/5 flex items-center justify-center text-xs font-mono font-semibold text-slate-400 dark:text-slate-500 group-hover:text-amber-600 dark:group-hover:text-amber-400 transition-colors">
+                <span class="w-1.5 h-1.5 rounded-full bg-amber-400 mr-2 animate-pulse"></span>Clic para ampliar
+              </div>
             </div>
 
-            <div class="liquid-glass rounded-3xl p-8 flex flex-col justify-center items-center didactic-card border border-emerald-300 text-center"
+            <!-- 02: Ventajas Clave -->
+            <div class="group liquid-glass rounded-3xl p-6 md:p-8 flex flex-col justify-between items-center didactic-card border border-emerald-300/90 dark:border-emerald-500/30 bg-emerald-500/[0.03] dark:bg-emerald-400/[0.02] text-center"
                  onclick="triggerSpotlightKey(this, 's5_c2')">
-              <h3 class="text-4xl md:text-5xl lg:text-6xl font-black text-slate-900 leading-[1.05] tracking-tight">
-                Ventajas<br>Clave
-              </h3>
+              <div class="w-full flex items-center justify-between">
+                <span class="font-mono text-xs font-bold tracking-widest text-emerald-800 dark:text-emerald-400 bg-emerald-400/15 px-3 py-1 rounded-lg border border-emerald-400/30">02 / 02</span>
+                <span class="text-xs font-mono text-slate-400 dark:text-slate-500 flex items-center gap-1 group-hover:text-emerald-600 dark:group-hover:text-emerald-400 transition-colors">
+                  <span>Detalle</span>
+                  <svg class="w-3.5 h-3.5 transition-transform duration-200 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path></svg>
+                </span>
+              </div>
+              <div class="flex flex-col items-center justify-center my-auto py-3">
+                <div class="w-18 h-18 md:w-22 md:h-22 rounded-3xl bg-emerald-500/10 dark:bg-emerald-400/10 border border-emerald-500/20 flex items-center justify-center mb-4 text-emerald-600 dark:text-emerald-400 group-hover:scale-110 group-hover:bg-emerald-500/20 transition-all duration-300 shadow-inner">
+                  <svg class="w-10 h-10 md:w-11 md:h-11" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M9 12l2 2 4-4M7.835 4.697a3.42 3.42 0 001.946-.806 3.42 3.42 0 014.438 0 3.42 3.42 0 001.946.806 3.42 3.42 0 013.138 3.138 3.42 3.42 0 00.806 1.946 3.42 3.42 0 010 4.438 3.42 3.42 0 00-.806 1.946 3.42 3.42 0 01-3.138 3.138 3.42 3.42 0 00-1.946.806 3.42 3.42 0 01-4.438 0 3.42 3.42 0 00-1.946-.806 3.42 3.42 0 01-3.138-3.138 3.42 3.42 0 00-.806-1.946 3.42 3.42 0 010-4.438 3.42 3.42 0 00.806-1.946 3.42 3.42 0 013.138-3.138z"></path></svg>
+                </div>
+                <h3 class="text-4xl md:text-5xl lg:text-6xl font-black text-slate-900 dark:text-slate-100 leading-[1.05] tracking-tight">
+                  Ventajas<br>Clave
+                </h3>
+              </div>
+              <div class="w-full pt-3 border-t border-slate-200/50 dark:border-white/5 flex items-center justify-center text-xs font-mono font-semibold text-slate-400 dark:text-slate-500 group-hover:text-emerald-600 dark:group-hover:text-emerald-400 transition-colors">
+                <span class="w-1.5 h-1.5 rounded-full bg-emerald-400 mr-2 animate-pulse"></span>Clic para ampliar
+              </div>
             </div>
           </div>
         `
@@ -862,30 +983,131 @@
         speakerTag: "TEMA 3 • VENTAJAS DE LOS SI",
         notes: `<p><strong>6 Ventajas:</strong> Integración, Procesos, Disponibilidad, Gestión, Costos y Seguridad.</p>`,
         render: () => `
-          <div class="grid grid-cols-3 gap-5 h-full items-stretch didactic-grid">
-            <div class="liquid-glass rounded-2xl p-6 flex flex-col justify-center items-center didactic-card border border-amber-300 text-center"
+          <div class="grid grid-cols-3 gap-4 md:gap-5 h-full items-stretch didactic-grid">
+            <!-- 01: Integración -->
+            <div class="group liquid-glass rounded-3xl p-4 md:p-5 flex flex-col justify-between items-center didactic-card border border-amber-300/80 dark:border-amber-500/30 bg-amber-500/[0.03] dark:bg-amber-400/[0.02] text-center"
                  onclick="triggerSpotlightKey(this, 's6_c1')">
-              <h5 class="text-3xl font-black text-slate-900">Integración</h5>
+              <div class="w-full flex items-center justify-between">
+                <span class="font-mono text-[10px] font-bold tracking-widest text-amber-800 dark:text-amber-400 bg-amber-400/15 px-2 py-0.5 rounded-md border border-amber-400/30">01 / 06</span>
+                <span class="text-[10px] font-mono text-slate-400 dark:text-slate-500 flex items-center gap-0.5 group-hover:text-amber-600 dark:group-hover:text-amber-400 transition-colors">
+                  <span class="hidden xl:inline">Detalle</span>
+                  <svg class="w-3 h-3 transition-transform duration-200 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path></svg>
+                </span>
+              </div>
+              <div class="flex flex-col items-center justify-center my-auto py-1">
+                <div class="w-12 h-12 md:w-14 md:h-14 rounded-2xl bg-amber-500/10 dark:bg-amber-400/10 border border-amber-500/20 flex items-center justify-center mb-2.5 text-amber-600 dark:text-amber-400 group-hover:scale-110 group-hover:bg-amber-500/20 transition-all duration-300 shadow-inner">
+                  <svg class="w-6 h-6 md:w-7 md:h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M13.828 10.172a4 4 0 00-5.656 0l-4 4a4 4 0 105.656 5.656l1.102-1.101m-.758-4.899a4 4 0 005.656 0l4-4a4 4 0 00-5.656-5.656l-1.1 1.1"></path></svg>
+                </div>
+                <h5 class="text-xl md:text-2xl lg:text-3xl font-black text-slate-900 dark:text-slate-100">Integración</h5>
+              </div>
+              <div class="w-full pt-2 border-t border-slate-200/50 dark:border-white/5 flex items-center justify-center text-[10px] font-mono font-semibold text-slate-400 dark:text-slate-500 group-hover:text-amber-600 dark:group-hover:text-amber-400 transition-colors">
+                <span class="w-1.5 h-1.5 rounded-full bg-amber-400 mr-1.5 animate-pulse"></span>Clic para ampliar
+              </div>
             </div>
-            <div class="liquid-glass rounded-2xl p-6 flex flex-col justify-center items-center didactic-card border border-emerald-300 text-center"
+
+            <!-- 02: Procesos -->
+            <div class="group liquid-glass rounded-3xl p-4 md:p-5 flex flex-col justify-between items-center didactic-card border border-emerald-300/80 dark:border-emerald-500/30 bg-emerald-500/[0.03] dark:bg-emerald-400/[0.02] text-center"
                  onclick="triggerSpotlightKey(this, 's6_c2')">
-              <h5 class="text-3xl font-black text-slate-900">Procesos</h5>
+              <div class="w-full flex items-center justify-between">
+                <span class="font-mono text-[10px] font-bold tracking-widest text-emerald-800 dark:text-emerald-400 bg-emerald-400/15 px-2 py-0.5 rounded-md border border-emerald-400/30">02 / 06</span>
+                <span class="text-[10px] font-mono text-slate-400 dark:text-slate-500 flex items-center gap-0.5 group-hover:text-emerald-600 dark:group-hover:text-emerald-400 transition-colors">
+                  <span class="hidden xl:inline">Detalle</span>
+                  <svg class="w-3 h-3 transition-transform duration-200 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path></svg>
+                </span>
+              </div>
+              <div class="flex flex-col items-center justify-center my-auto py-1">
+                <div class="w-12 h-12 md:w-14 md:h-14 rounded-2xl bg-emerald-500/10 dark:bg-emerald-400/10 border border-emerald-500/20 flex items-center justify-center mb-2.5 text-emerald-600 dark:text-emerald-400 group-hover:scale-110 group-hover:bg-emerald-500/20 transition-all duration-300 shadow-inner">
+                  <svg class="w-6 h-6 md:w-7 md:h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"></path><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path></svg>
+                </div>
+                <h5 class="text-xl md:text-2xl lg:text-3xl font-black text-slate-900 dark:text-slate-100">Procesos</h5>
+              </div>
+              <div class="w-full pt-2 border-t border-slate-200/50 dark:border-white/5 flex items-center justify-center text-[10px] font-mono font-semibold text-slate-400 dark:text-slate-500 group-hover:text-emerald-600 dark:group-hover:text-emerald-400 transition-colors">
+                <span class="w-1.5 h-1.5 rounded-full bg-emerald-400 mr-1.5 animate-pulse"></span>Clic para ampliar
+              </div>
             </div>
-            <div class="liquid-glass rounded-2xl p-6 flex flex-col justify-center items-center didactic-card border border-indigo-300 text-center"
+
+            <!-- 03: Disponibilidad -->
+            <div class="group liquid-glass rounded-3xl p-4 md:p-5 flex flex-col justify-between items-center didactic-card border border-indigo-300/80 dark:border-indigo-500/30 bg-indigo-500/[0.03] dark:bg-indigo-400/[0.02] text-center"
                  onclick="triggerSpotlightKey(this, 's6_c3')">
-              <h5 class="text-3xl font-black text-slate-900">Disponibilidad</h5>
+              <div class="w-full flex items-center justify-between">
+                <span class="font-mono text-[10px] font-bold tracking-widest text-indigo-800 dark:text-indigo-400 bg-indigo-400/15 px-2 py-0.5 rounded-md border border-indigo-400/30">03 / 06</span>
+                <span class="text-[10px] font-mono text-slate-400 dark:text-slate-500 flex items-center gap-0.5 group-hover:text-indigo-600 dark:group-hover:text-indigo-400 transition-colors">
+                  <span class="hidden xl:inline">Detalle</span>
+                  <svg class="w-3 h-3 transition-transform duration-200 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path></svg>
+                </span>
+              </div>
+              <div class="flex flex-col items-center justify-center my-auto py-1">
+                <div class="w-12 h-12 md:w-14 md:h-14 rounded-2xl bg-indigo-500/10 dark:bg-indigo-400/10 border border-indigo-500/20 flex items-center justify-center mb-2.5 text-indigo-600 dark:text-indigo-400 group-hover:scale-110 group-hover:bg-indigo-500/20 transition-all duration-300 shadow-inner">
+                  <svg class="w-6 h-6 md:w-7 md:h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+                </div>
+                <h5 class="text-xl md:text-2xl lg:text-3xl font-black text-slate-900 dark:text-slate-100">Disponibilidad</h5>
+              </div>
+              <div class="w-full pt-2 border-t border-slate-200/50 dark:border-white/5 flex items-center justify-center text-[10px] font-mono font-semibold text-slate-400 dark:text-slate-500 group-hover:text-indigo-600 dark:group-hover:text-indigo-400 transition-colors">
+                <span class="w-1.5 h-1.5 rounded-full bg-indigo-400 mr-1.5 animate-pulse"></span>Clic para ampliar
+              </div>
             </div>
-            <div class="liquid-glass rounded-2xl p-6 flex flex-col justify-center items-center didactic-card border border-blue-300 text-center"
+
+            <!-- 04: Gestión -->
+            <div class="group liquid-glass rounded-3xl p-4 md:p-5 flex flex-col justify-between items-center didactic-card border border-blue-300/80 dark:border-blue-500/30 bg-blue-500/[0.03] dark:bg-blue-400/[0.02] text-center"
                  onclick="triggerSpotlightKey(this, 's6_c4')">
-              <h5 class="text-3xl font-black text-slate-900">Gestión</h5>
+              <div class="w-full flex items-center justify-between">
+                <span class="font-mono text-[10px] font-bold tracking-widest text-blue-800 dark:text-blue-400 bg-blue-400/15 px-2 py-0.5 rounded-md border border-blue-400/30">04 / 06</span>
+                <span class="text-[10px] font-mono text-slate-400 dark:text-slate-500 flex items-center gap-0.5 group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors">
+                  <span class="hidden xl:inline">Detalle</span>
+                  <svg class="w-3 h-3 transition-transform duration-200 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path></svg>
+                </span>
+              </div>
+              <div class="flex flex-col items-center justify-center my-auto py-1">
+                <div class="w-12 h-12 md:w-14 md:h-14 rounded-2xl bg-blue-500/10 dark:bg-blue-400/10 border border-blue-500/20 flex items-center justify-center mb-2.5 text-blue-600 dark:text-blue-400 group-hover:scale-110 group-hover:bg-blue-500/20 transition-all duration-300 shadow-inner">
+                  <svg class="w-6 h-6 md:w-7 md:h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"></path></svg>
+                </div>
+                <h5 class="text-xl md:text-2xl lg:text-3xl font-black text-slate-900 dark:text-slate-100">Gestión</h5>
+              </div>
+              <div class="w-full pt-2 border-t border-slate-200/50 dark:border-white/5 flex items-center justify-center text-[10px] font-mono font-semibold text-slate-400 dark:text-slate-500 group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors">
+                <span class="w-1.5 h-1.5 rounded-full bg-blue-400 mr-1.5 animate-pulse"></span>Clic para ampliar
+              </div>
             </div>
-            <div class="liquid-glass rounded-2xl p-6 flex flex-col justify-center items-center didactic-card border border-yellow-300 text-center"
+
+            <!-- 05: Costos -->
+            <div class="group liquid-glass rounded-3xl p-4 md:p-5 flex flex-col justify-between items-center didactic-card border border-amber-300/80 dark:border-amber-500/30 bg-yellow-500/[0.03] dark:bg-yellow-400/[0.02] text-center"
                  onclick="triggerSpotlightKey(this, 's6_c5')">
-              <h5 class="text-3xl font-black text-slate-900">Costos</h5>
+              <div class="w-full flex items-center justify-between">
+                <span class="font-mono text-[10px] font-bold tracking-widest text-amber-800 dark:text-amber-400 bg-amber-400/15 px-2 py-0.5 rounded-md border border-amber-400/30">05 / 06</span>
+                <span class="text-[10px] font-mono text-slate-400 dark:text-slate-500 flex items-center gap-0.5 group-hover:text-amber-600 dark:group-hover:text-amber-400 transition-colors">
+                  <span class="hidden xl:inline">Detalle</span>
+                  <svg class="w-3 h-3 transition-transform duration-200 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path></svg>
+                </span>
+              </div>
+              <div class="flex flex-col items-center justify-center my-auto py-1">
+                <div class="w-12 h-12 md:w-14 md:h-14 rounded-2xl bg-yellow-500/10 dark:bg-yellow-400/10 border border-yellow-500/20 flex items-center justify-center mb-2.5 text-yellow-600 dark:text-yellow-400 group-hover:scale-110 group-hover:bg-yellow-500/20 transition-all duration-300 shadow-inner">
+                  <svg class="w-6 h-6 md:w-7 md:h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+                </div>
+                <h5 class="text-xl md:text-2xl lg:text-3xl font-black text-slate-900 dark:text-slate-100">Costos</h5>
+              </div>
+              <div class="w-full pt-2 border-t border-slate-200/50 dark:border-white/5 flex items-center justify-center text-[10px] font-mono font-semibold text-slate-400 dark:text-slate-500 group-hover:text-amber-600 dark:group-hover:text-amber-400 transition-colors">
+                <span class="w-1.5 h-1.5 rounded-full bg-amber-400 mr-1.5 animate-pulse"></span>Clic para ampliar
+              </div>
             </div>
-            <div class="liquid-glass rounded-2xl p-6 flex flex-col justify-center items-center didactic-card border border-rose-300 text-center"
+
+            <!-- 06: Seguridad -->
+            <div class="group liquid-glass rounded-3xl p-4 md:p-5 flex flex-col justify-between items-center didactic-card border border-rose-300/80 dark:border-rose-500/30 bg-rose-500/[0.03] dark:bg-rose-400/[0.02] text-center"
                  onclick="triggerSpotlightKey(this, 's6_c6')">
-              <h5 class="text-3xl font-black text-slate-900">Seguridad</h5>
+              <div class="w-full flex items-center justify-between">
+                <span class="font-mono text-[10px] font-bold tracking-widest text-rose-800 dark:text-rose-400 bg-rose-400/15 px-2 py-0.5 rounded-md border border-rose-400/30">06 / 06</span>
+                <span class="text-[10px] font-mono text-slate-400 dark:text-slate-500 flex items-center gap-0.5 group-hover:text-rose-600 dark:group-hover:text-rose-400 transition-colors">
+                  <span class="hidden xl:inline">Detalle</span>
+                  <svg class="w-3 h-3 transition-transform duration-200 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path></svg>
+                </span>
+              </div>
+              <div class="flex flex-col items-center justify-center my-auto py-1">
+                <div class="w-12 h-12 md:w-14 md:h-14 rounded-2xl bg-rose-500/10 dark:bg-rose-400/10 border border-rose-500/20 flex items-center justify-center mb-2.5 text-rose-600 dark:text-rose-400 group-hover:scale-110 group-hover:bg-rose-500/20 transition-all duration-300 shadow-inner">
+                  <svg class="w-6 h-6 md:w-7 md:h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"></path></svg>
+                </div>
+                <h5 class="text-xl md:text-2xl lg:text-3xl font-black text-slate-900 dark:text-slate-100">Seguridad</h5>
+              </div>
+              <div class="w-full pt-2 border-t border-slate-200/50 dark:border-white/5 flex items-center justify-center text-[10px] font-mono font-semibold text-slate-400 dark:text-slate-500 group-hover:text-rose-600 dark:group-hover:text-rose-400 transition-colors">
+                <span class="w-1.5 h-1.5 rounded-full bg-rose-400 mr-1.5 animate-pulse"></span>Clic para ampliar
+              </div>
             </div>
           </div>
         `
@@ -900,30 +1122,131 @@
         speakerTag: "TEMA 3 • VENTAJAS ORGANIZACIONALES",
         notes: `<p><strong>5 Ejes:</strong> Automatización, RRHH, Innovación, Finanzas y Adaptación al mercado.</p>`,
         render: () => `
-          <div class="grid grid-cols-3 gap-5 h-full items-stretch didactic-grid">
-            <div class="liquid-glass rounded-2xl p-5 flex flex-col justify-center items-center didactic-card border border-amber-300 text-center"
+          <div class="grid grid-cols-3 gap-4 md:gap-5 h-full items-stretch didactic-grid">
+            <!-- 01: Automatización -->
+            <div class="group liquid-glass rounded-3xl p-4 md:p-5 flex flex-col justify-between items-center didactic-card border border-amber-300/80 dark:border-amber-500/30 bg-amber-500/[0.03] dark:bg-amber-400/[0.02] text-center"
                  onclick="triggerSpotlightKey(this, 's7_c1')">
-              <h5 class="text-2xl font-black text-slate-900">Automatización</h5>
+              <div class="w-full flex items-center justify-between">
+                <span class="font-mono text-[10px] font-bold tracking-widest text-amber-800 dark:text-amber-400 bg-amber-400/15 px-2 py-0.5 rounded-md border border-amber-400/30">01 / 06</span>
+                <span class="text-[10px] font-mono text-slate-400 dark:text-slate-500 flex items-center gap-0.5 group-hover:text-amber-600 dark:group-hover:text-amber-400 transition-colors">
+                  <span class="hidden xl:inline">Detalle</span>
+                  <svg class="w-3 h-3 transition-transform duration-200 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path></svg>
+                </span>
+              </div>
+              <div class="flex flex-col items-center justify-center my-auto py-1">
+                <div class="w-12 h-12 md:w-14 md:h-14 rounded-2xl bg-amber-500/10 dark:bg-amber-400/10 border border-amber-500/20 flex items-center justify-center mb-2.5 text-amber-600 dark:text-amber-400 group-hover:scale-110 group-hover:bg-amber-500/20 transition-all duration-300 shadow-inner">
+                  <svg class="w-6 h-6 md:w-7 md:h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M13 10V3L4 14h7v7l9-11h-7z"></path></svg>
+                </div>
+                <h5 class="text-xl md:text-2xl lg:text-3xl font-black text-slate-900 dark:text-slate-100">Automatización</h5>
+              </div>
+              <div class="w-full pt-2 border-t border-slate-200/50 dark:border-white/5 flex items-center justify-center text-[10px] font-mono font-semibold text-slate-400 dark:text-slate-500 group-hover:text-amber-600 dark:group-hover:text-amber-400 transition-colors">
+                <span class="w-1.5 h-1.5 rounded-full bg-amber-400 mr-1.5 animate-pulse"></span>Clic para ampliar
+              </div>
             </div>
-            <div class="liquid-glass rounded-2xl p-5 flex flex-col justify-center items-center didactic-card border border-indigo-300 text-center"
+
+            <!-- 02: Recursos Humanos -->
+            <div class="group liquid-glass rounded-3xl p-4 md:p-5 flex flex-col justify-between items-center didactic-card border border-indigo-300/80 dark:border-indigo-500/30 bg-indigo-500/[0.03] dark:bg-indigo-400/[0.02] text-center"
                  onclick="triggerSpotlightKey(this, 's7_c2')">
-              <h5 class="text-2xl font-black text-slate-900 leading-tight">Recursos<br>Humanos</h5>
+              <div class="w-full flex items-center justify-between">
+                <span class="font-mono text-[10px] font-bold tracking-widest text-indigo-800 dark:text-indigo-400 bg-indigo-400/15 px-2 py-0.5 rounded-md border border-indigo-400/30">02 / 06</span>
+                <span class="text-[10px] font-mono text-slate-400 dark:text-slate-500 flex items-center gap-0.5 group-hover:text-indigo-600 dark:group-hover:text-indigo-400 transition-colors">
+                  <span class="hidden xl:inline">Detalle</span>
+                  <svg class="w-3 h-3 transition-transform duration-200 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path></svg>
+                </span>
+              </div>
+              <div class="flex flex-col items-center justify-center my-auto py-1">
+                <div class="w-12 h-12 md:w-14 md:h-14 rounded-2xl bg-indigo-500/10 dark:bg-indigo-400/10 border border-indigo-500/20 flex items-center justify-center mb-2.5 text-indigo-600 dark:text-indigo-400 group-hover:scale-110 group-hover:bg-indigo-500/20 transition-all duration-300 shadow-inner">
+                  <svg class="w-6 h-6 md:w-7 md:h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z"></path></svg>
+                </div>
+                <h5 class="text-xl md:text-2xl lg:text-3xl font-black text-slate-900 dark:text-slate-100 leading-tight">Recursos<br>Humanos</h5>
+              </div>
+              <div class="w-full pt-2 border-t border-slate-200/50 dark:border-white/5 flex items-center justify-center text-[10px] font-mono font-semibold text-slate-400 dark:text-slate-500 group-hover:text-indigo-600 dark:group-hover:text-indigo-400 transition-colors">
+                <span class="w-1.5 h-1.5 rounded-full bg-indigo-400 mr-1.5 animate-pulse"></span>Clic para ampliar
+              </div>
             </div>
-            <div class="liquid-glass rounded-2xl p-5 flex flex-col justify-center items-center didactic-card border border-emerald-300 text-center"
+
+            <!-- 03: Innovación & I+D -->
+            <div class="group liquid-glass rounded-3xl p-4 md:p-5 flex flex-col justify-between items-center didactic-card border border-emerald-300/80 dark:border-emerald-500/30 bg-emerald-500/[0.03] dark:bg-emerald-400/[0.02] text-center"
                  onclick="triggerSpotlightKey(this, 's7_c3')">
-              <h5 class="text-2xl font-black text-slate-900 leading-tight">Innovación<br>& I+D</h5>
+              <div class="w-full flex items-center justify-between">
+                <span class="font-mono text-[10px] font-bold tracking-widest text-emerald-800 dark:text-emerald-400 bg-emerald-400/15 px-2 py-0.5 rounded-md border border-emerald-400/30">03 / 06</span>
+                <span class="text-[10px] font-mono text-slate-400 dark:text-slate-500 flex items-center gap-0.5 group-hover:text-emerald-600 dark:group-hover:text-emerald-400 transition-colors">
+                  <span class="hidden xl:inline">Detalle</span>
+                  <svg class="w-3 h-3 transition-transform duration-200 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path></svg>
+                </span>
+              </div>
+              <div class="flex flex-col items-center justify-center my-auto py-1">
+                <div class="w-12 h-12 md:w-14 md:h-14 rounded-2xl bg-emerald-500/10 dark:bg-emerald-400/10 border border-emerald-500/20 flex items-center justify-center mb-2.5 text-emerald-600 dark:text-emerald-400 group-hover:scale-110 group-hover:bg-emerald-500/20 transition-all duration-300 shadow-inner">
+                  <svg class="w-6 h-6 md:w-7 md:h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"></path></svg>
+                </div>
+                <h5 class="text-xl md:text-2xl lg:text-3xl font-black text-slate-900 dark:text-slate-100 leading-tight">Innovación<br>& I+D</h5>
+              </div>
+              <div class="w-full pt-2 border-t border-slate-200/50 dark:border-white/5 flex items-center justify-center text-[10px] font-mono font-semibold text-slate-400 dark:text-slate-500 group-hover:text-emerald-600 dark:group-hover:text-emerald-400 transition-colors">
+                <span class="w-1.5 h-1.5 rounded-full bg-emerald-400 mr-1.5 animate-pulse"></span>Clic para ampliar
+              </div>
             </div>
-            <div class="liquid-glass rounded-2xl p-5 flex flex-col justify-center items-center didactic-card border border-yellow-300 text-center"
+
+            <!-- 04: Seguimiento Financiero -->
+            <div class="group liquid-glass rounded-3xl p-4 md:p-5 flex flex-col justify-between items-center didactic-card border border-amber-300/80 dark:border-amber-500/30 bg-yellow-500/[0.03] dark:bg-yellow-400/[0.02] text-center"
                  onclick="triggerSpotlightKey(this, 's7_c4')">
-              <h5 class="text-2xl font-black text-slate-900 leading-tight">Seguimiento<br>Financiero</h5>
+              <div class="w-full flex items-center justify-between">
+                <span class="font-mono text-[10px] font-bold tracking-widest text-amber-800 dark:text-amber-400 bg-amber-400/15 px-2 py-0.5 rounded-md border border-amber-400/30">04 / 06</span>
+                <span class="text-[10px] font-mono text-slate-400 dark:text-slate-500 flex items-center gap-0.5 group-hover:text-amber-600 dark:group-hover:text-amber-400 transition-colors">
+                  <span class="hidden xl:inline">Detalle</span>
+                  <svg class="w-3 h-3 transition-transform duration-200 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path></svg>
+                </span>
+              </div>
+              <div class="flex flex-col items-center justify-center my-auto py-1">
+                <div class="w-12 h-12 md:w-14 md:h-14 rounded-2xl bg-yellow-500/10 dark:bg-yellow-400/10 border border-yellow-500/20 flex items-center justify-center mb-2.5 text-yellow-600 dark:text-yellow-400 group-hover:scale-110 group-hover:bg-yellow-500/20 transition-all duration-300 shadow-inner">
+                  <svg class="w-6 h-6 md:w-7 md:h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M9 7h6m0 10v-3m-3 3h.01M9 17h.01M9 14h.01M12 14h.01M15 11h.01M12 11h.01M9 11h.01M7 21h10a2 2 0 002-2V5a2 2 0 00-2-2H7a2 2 0 00-2 2v14a2 2 0 002 2z"></path></svg>
+                </div>
+                <h5 class="text-xl md:text-2xl lg:text-3xl font-black text-slate-900 dark:text-slate-100 leading-tight">Seguimiento<br>Financiero</h5>
+              </div>
+              <div class="w-full pt-2 border-t border-slate-200/50 dark:border-white/5 flex items-center justify-center text-[10px] font-mono font-semibold text-slate-400 dark:text-slate-500 group-hover:text-amber-600 dark:group-hover:text-amber-400 transition-colors">
+                <span class="w-1.5 h-1.5 rounded-full bg-amber-400 mr-1.5 animate-pulse"></span>Clic para ampliar
+              </div>
             </div>
-            <div class="liquid-glass rounded-2xl p-5 flex flex-col justify-center items-center didactic-card border border-sky-300 text-center"
+
+            <!-- 05: Adaptación al Mercado -->
+            <div class="group liquid-glass rounded-3xl p-4 md:p-5 flex flex-col justify-between items-center didactic-card border border-sky-300/80 dark:border-sky-500/30 bg-sky-500/[0.03] dark:bg-sky-400/[0.02] text-center"
                  onclick="triggerSpotlightKey(this, 's7_c5')">
-              <h5 class="text-2xl font-black text-slate-900 leading-tight">Adaptación<br>al Mercado</h5>
+              <div class="w-full flex items-center justify-between">
+                <span class="font-mono text-[10px] font-bold tracking-widest text-sky-800 dark:text-sky-400 bg-sky-400/15 px-2 py-0.5 rounded-md border border-sky-400/30">05 / 06</span>
+                <span class="text-[10px] font-mono text-slate-400 dark:text-slate-500 flex items-center gap-0.5 group-hover:text-sky-600 dark:group-hover:text-sky-400 transition-colors">
+                  <span class="hidden xl:inline">Detalle</span>
+                  <svg class="w-3 h-3 transition-transform duration-200 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path></svg>
+                </span>
+              </div>
+              <div class="flex flex-col items-center justify-center my-auto py-1">
+                <div class="w-12 h-12 md:w-14 md:h-14 rounded-2xl bg-sky-500/10 dark:bg-sky-400/10 border border-sky-500/20 flex items-center justify-center mb-2.5 text-sky-600 dark:text-sky-400 group-hover:scale-110 group-hover:bg-sky-500/20 transition-all duration-300 shadow-inner">
+                  <svg class="w-6 h-6 md:w-7 md:h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M7 12l3-3 3 3 4-4M8 21l4-4 4 4M3 4h18M4 4h16v12a1 1 0 01-1 1H5a1 1 0 01-1-1V4z"></path></svg>
+                </div>
+                <h5 class="text-xl md:text-2xl lg:text-3xl font-black text-slate-900 dark:text-slate-100 leading-tight">Adaptación<br>al Mercado</h5>
+              </div>
+              <div class="w-full pt-2 border-t border-slate-200/50 dark:border-white/5 flex items-center justify-center text-[10px] font-mono font-semibold text-slate-400 dark:text-slate-500 group-hover:text-sky-600 dark:group-hover:text-sky-400 transition-colors">
+                <span class="w-1.5 h-1.5 rounded-full bg-sky-400 mr-1.5 animate-pulse"></span>Clic para ampliar
+              </div>
             </div>
-            <div class="liquid-glass rounded-2xl p-5 flex flex-col justify-center items-center didactic-card border border-slate-300 text-center"
+
+            <!-- 06: Alineación Global -->
+            <div class="group liquid-glass rounded-3xl p-4 md:p-5 flex flex-col justify-between items-center didactic-card border border-slate-300/80 dark:border-slate-600/30 bg-slate-500/[0.03] dark:bg-slate-400/[0.02] text-center"
                  onclick="triggerSpotlightKey(this, 's7_c6')">
-              <h5 class="text-2xl font-black text-slate-900 leading-tight">Alineación<br>Global</h5>
+              <div class="w-full flex items-center justify-between">
+                <span class="font-mono text-[10px] font-bold tracking-widest text-slate-800 dark:text-slate-300 bg-slate-200/80 dark:bg-slate-700/50 px-2 py-0.5 rounded-md border border-slate-300 dark:border-slate-600">06 / 06</span>
+                <span class="text-[10px] font-mono text-slate-400 dark:text-slate-500 flex items-center gap-0.5 group-hover:text-slate-900 dark:group-hover:text-slate-200 transition-colors">
+                  <span class="hidden xl:inline">Detalle</span>
+                  <svg class="w-3 h-3 transition-transform duration-200 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path></svg>
+                </span>
+              </div>
+              <div class="flex flex-col items-center justify-center my-auto py-1">
+                <div class="w-12 h-12 md:w-14 md:h-14 rounded-2xl bg-slate-500/10 dark:bg-slate-400/10 border border-slate-500/20 flex items-center justify-center mb-2.5 text-slate-600 dark:text-slate-300 group-hover:scale-110 group-hover:bg-slate-500/20 transition-all duration-300 shadow-inner">
+                  <svg class="w-6 h-6 md:w-7 md:h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M3.055 11H5a2 2 0 012 2v1a2 2 0 002 2 2 2 0 012 2v2.945M8 3.935V5.5A2.5 2.5 0 0010.5 8h.5a2 2 0 012 2 2 2 0 104 0 2 2 0 012-2h1.064M15 20.488V18a2 2 0 012-2h3.064M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+                </div>
+                <h5 class="text-xl md:text-2xl lg:text-3xl font-black text-slate-900 dark:text-slate-100 leading-tight">Alineación<br>Global</h5>
+              </div>
+              <div class="w-full pt-2 border-t border-slate-200/50 dark:border-white/5 flex items-center justify-center text-[10px] font-mono font-semibold text-slate-400 dark:text-slate-500 group-hover:text-slate-900 dark:group-hover:text-slate-200 transition-colors">
+                <span class="w-1.5 h-1.5 rounded-full bg-slate-400 mr-1.5 animate-pulse"></span>Clic para ampliar
+              </div>
             </div>
           </div>
         `
@@ -939,17 +1262,50 @@
         notes: `<p><strong>Tipos 1/2:</strong> MIS, SIA, SIM, Ventas, CRM, TPS, BMP y ERP.</p>`,
         render: () => `
           <div class="grid grid-cols-2 gap-6 h-full items-stretch didactic-grid">
-            <div class="liquid-glass rounded-3xl p-6 flex flex-col justify-center space-y-3 border border-amber-300">
-              <div class="p-3 rounded-xl bg-white/90 border border-slate-200 text-base font-bold text-slate-900">• Sistemas de Información Gerencial (MIS)</div>
-              <div class="p-3 rounded-xl bg-white/90 border border-slate-200 text-base font-bold text-slate-900">• Sistemas de Información Administrativa</div>
-              <div class="p-3 rounded-xl bg-white/90 border border-slate-200 text-base font-bold text-slate-900">• Sistema de Información de Marketing (SIM)</div>
-              <div class="p-3 rounded-xl bg-white/90 border border-slate-200 text-base font-bold text-slate-900">• Sistemas de Ventas</div>
+            <div class="liquid-glass rounded-3xl p-5 md:p-6 flex flex-col justify-center space-y-2.5 border border-amber-300/80 dark:border-amber-500/30 bg-amber-500/[0.02]">
+              <div class="flex items-center justify-between pb-2 border-b border-amber-300/40 dark:border-amber-500/20 mb-1">
+                <span class="font-mono text-[11px] font-bold uppercase tracking-wider text-amber-900 dark:text-amber-300">Gestión & Operaciones Internas</span>
+                <span class="font-mono text-[10px] text-amber-800 dark:text-amber-400 bg-amber-400/15 px-2 py-0.5 rounded border border-amber-400/30">Parte A</span>
+              </div>
+              <div class="p-3 rounded-2xl bg-white/80 dark:bg-slate-900/60 border border-slate-200/80 dark:border-white/10 text-sm md:text-[15px] font-bold text-slate-900 dark:text-slate-100 flex items-center gap-3 shadow-xs hover:border-amber-400 transition-colors">
+                <span class="w-6 h-6 rounded-lg bg-amber-500/10 dark:bg-amber-400/15 text-amber-700 dark:text-amber-400 flex items-center justify-center font-mono text-xs font-black shrink-0">01</span>
+                <span>Sistemas de Información Gerencial (MIS)</span>
+              </div>
+              <div class="p-3 rounded-2xl bg-white/80 dark:bg-slate-900/60 border border-slate-200/80 dark:border-white/10 text-sm md:text-[15px] font-bold text-slate-900 dark:text-slate-100 flex items-center gap-3 shadow-xs hover:border-amber-400 transition-colors">
+                <span class="w-6 h-6 rounded-lg bg-amber-500/10 dark:bg-amber-400/15 text-amber-700 dark:text-amber-400 flex items-center justify-center font-mono text-xs font-black shrink-0">02</span>
+                <span>Sistemas de Información Administrativa</span>
+              </div>
+              <div class="p-3 rounded-2xl bg-white/80 dark:bg-slate-900/60 border border-slate-200/80 dark:border-white/10 text-sm md:text-[15px] font-bold text-slate-900 dark:text-slate-100 flex items-center gap-3 shadow-xs hover:border-amber-400 transition-colors">
+                <span class="w-6 h-6 rounded-lg bg-amber-500/10 dark:bg-amber-400/15 text-amber-700 dark:text-amber-400 flex items-center justify-center font-mono text-xs font-black shrink-0">03</span>
+                <span>Sistema de Información de Marketing (SIM)</span>
+              </div>
+              <div class="p-3 rounded-2xl bg-white/80 dark:bg-slate-900/60 border border-slate-200/80 dark:border-white/10 text-sm md:text-[15px] font-bold text-slate-900 dark:text-slate-100 flex items-center gap-3 shadow-xs hover:border-amber-400 transition-colors">
+                <span class="w-6 h-6 rounded-lg bg-amber-500/10 dark:bg-amber-400/15 text-amber-700 dark:text-amber-400 flex items-center justify-center font-mono text-xs font-black shrink-0">04</span>
+                <span>Sistemas de Ventas</span>
+              </div>
             </div>
-            <div class="liquid-glass rounded-3xl p-6 flex flex-col justify-center space-y-3 border border-indigo-300">
-              <div class="p-3 rounded-xl bg-white/90 border border-slate-200 text-base font-bold text-slate-900">• Gestión de Relaciones con Clientes (CRM)</div>
-              <div class="p-3 rounded-xl bg-white/90 border border-slate-200 text-base font-bold text-slate-900">• Sistemas de Procesamiento de Transacciones (TPS)</div>
-              <div class="p-3 rounded-xl bg-white/90 border border-slate-200 text-base font-bold text-slate-900">• Sistemas de Control de Procesos (BMP)</div>
-              <div class="p-3 rounded-xl bg-white/90 border border-slate-200 text-base font-bold text-slate-900">• Sistema de Planificación de Recursos (ERP)</div>
+
+            <div class="liquid-glass rounded-3xl p-5 md:p-6 flex flex-col justify-center space-y-2.5 border border-indigo-300/80 dark:border-indigo-500/30 bg-indigo-500/[0.02]">
+              <div class="flex items-center justify-between pb-2 border-b border-indigo-300/40 dark:border-indigo-500/20 mb-1">
+                <span class="font-mono text-[11px] font-bold uppercase tracking-wider text-indigo-900 dark:text-indigo-300">Transacciones & Procesos Centrales</span>
+                <span class="font-mono text-[10px] text-indigo-800 dark:text-indigo-400 bg-indigo-400/15 px-2 py-0.5 rounded border border-indigo-400/30">Parte B</span>
+              </div>
+              <div class="p-3 rounded-2xl bg-white/80 dark:bg-slate-900/60 border border-slate-200/80 dark:border-white/10 text-sm md:text-[15px] font-bold text-slate-900 dark:text-slate-100 flex items-center gap-3 shadow-xs hover:border-indigo-400 transition-colors">
+                <span class="w-6 h-6 rounded-lg bg-indigo-500/10 dark:bg-indigo-400/15 text-indigo-700 dark:text-indigo-400 flex items-center justify-center font-mono text-xs font-black shrink-0">05</span>
+                <span>Gestión de Relaciones con Clientes (CRM)</span>
+              </div>
+              <div class="p-3 rounded-2xl bg-white/80 dark:bg-slate-900/60 border border-slate-200/80 dark:border-white/10 text-sm md:text-[15px] font-bold text-slate-900 dark:text-slate-100 flex items-center gap-3 shadow-xs hover:border-indigo-400 transition-colors">
+                <span class="w-6 h-6 rounded-lg bg-indigo-500/10 dark:bg-indigo-400/15 text-indigo-700 dark:text-indigo-400 flex items-center justify-center font-mono text-xs font-black shrink-0">06</span>
+                <span>Sistemas de Procesamiento de Transacciones (TPS)</span>
+              </div>
+              <div class="p-3 rounded-2xl bg-white/80 dark:bg-slate-900/60 border border-slate-200/80 dark:border-white/10 text-sm md:text-[15px] font-bold text-slate-900 dark:text-slate-100 flex items-center gap-3 shadow-xs hover:border-indigo-400 transition-colors">
+                <span class="w-6 h-6 rounded-lg bg-indigo-500/10 dark:bg-indigo-400/15 text-indigo-700 dark:text-indigo-400 flex items-center justify-center font-mono text-xs font-black shrink-0">07</span>
+                <span>Sistemas de Control de Procesos (BMP)</span>
+              </div>
+              <div class="p-3 rounded-2xl bg-white/80 dark:bg-slate-900/60 border border-slate-200/80 dark:border-white/10 text-sm md:text-[15px] font-bold text-slate-900 dark:text-slate-100 flex items-center gap-3 shadow-xs hover:border-indigo-400 transition-colors">
+                <span class="w-6 h-6 rounded-lg bg-indigo-500/10 dark:bg-indigo-400/15 text-indigo-700 dark:text-indigo-400 flex items-center justify-center font-mono text-xs font-black shrink-0">08</span>
+                <span>Sistema de Planificación de Recursos (ERP)</span>
+              </div>
             </div>
           </div>
         `
@@ -965,16 +1321,46 @@
         notes: `<p><strong>Tipos 2/2:</strong> EIS, DSS, SCM, SIE, GDSS, EDSS y SIC.</p>`,
         render: () => `
           <div class="grid grid-cols-2 gap-6 h-full items-stretch didactic-grid">
-            <div class="liquid-glass rounded-3xl p-6 flex flex-col justify-center space-y-3 border border-emerald-300">
-              <div class="p-3 rounded-xl bg-white/90 border border-slate-200 text-base font-bold text-slate-900">• Sistemas de Apoyo a Ejecutivos (EIS)</div>
-              <div class="p-3 rounded-xl bg-white/90 border border-slate-200 text-base font-bold text-slate-900">• Sistemas de Soporte de Decisiones (DSS)</div>
-              <div class="p-3 rounded-xl bg-white/90 border border-slate-200 text-base font-bold text-slate-900">• Administración de Cadena de Suministros (SCM)</div>
-              <div class="p-3 rounded-xl bg-white/90 border border-slate-200 text-base font-bold text-slate-900">• Sistemas de Información Estratégicos (SIE)</div>
+            <div class="liquid-glass rounded-3xl p-5 md:p-6 flex flex-col justify-center space-y-2.5 border border-emerald-300/80 dark:border-emerald-500/30 bg-emerald-500/[0.02]">
+              <div class="flex items-center justify-between pb-2 border-b border-emerald-300/40 dark:border-emerald-500/20 mb-1">
+                <span class="font-mono text-[11px] font-bold uppercase tracking-wider text-emerald-900 dark:text-emerald-300">Nivel Estratégico & Cadena de Valor</span>
+                <span class="font-mono text-[10px] text-emerald-800 dark:text-emerald-400 bg-emerald-400/15 px-2 py-0.5 rounded border border-emerald-400/30">Parte C</span>
+              </div>
+              <div class="p-3 rounded-2xl bg-white/80 dark:bg-slate-900/60 border border-slate-200/80 dark:border-white/10 text-sm md:text-[15px] font-bold text-slate-900 dark:text-slate-100 flex items-center gap-3 shadow-xs hover:border-emerald-400 transition-colors">
+                <span class="w-6 h-6 rounded-lg bg-emerald-500/10 dark:bg-emerald-400/15 text-emerald-700 dark:text-emerald-400 flex items-center justify-center font-mono text-xs font-black shrink-0">09</span>
+                <span>Sistemas de Apoyo a Ejecutivos (EIS)</span>
+              </div>
+              <div class="p-3 rounded-2xl bg-white/80 dark:bg-slate-900/60 border border-slate-200/80 dark:border-white/10 text-sm md:text-[15px] font-bold text-slate-900 dark:text-slate-100 flex items-center gap-3 shadow-xs hover:border-emerald-400 transition-colors">
+                <span class="w-6 h-6 rounded-lg bg-emerald-500/10 dark:bg-emerald-400/15 text-emerald-700 dark:text-emerald-400 flex items-center justify-center font-mono text-xs font-black shrink-0">10</span>
+                <span>Sistemas de Soporte de Decisiones (DSS)</span>
+              </div>
+              <div class="p-3 rounded-2xl bg-white/80 dark:bg-slate-900/60 border border-slate-200/80 dark:border-white/10 text-sm md:text-[15px] font-bold text-slate-900 dark:text-slate-100 flex items-center gap-3 shadow-xs hover:border-emerald-400 transition-colors">
+                <span class="w-6 h-6 rounded-lg bg-emerald-500/10 dark:bg-emerald-400/15 text-emerald-700 dark:text-emerald-400 flex items-center justify-center font-mono text-xs font-black shrink-0">11</span>
+                <span>Administración de Cadena de Suministros (SCM)</span>
+              </div>
+              <div class="p-3 rounded-2xl bg-white/80 dark:bg-slate-900/60 border border-slate-200/80 dark:border-white/10 text-sm md:text-[15px] font-bold text-slate-900 dark:text-slate-100 flex items-center gap-3 shadow-xs hover:border-emerald-400 transition-colors">
+                <span class="w-6 h-6 rounded-lg bg-emerald-500/10 dark:bg-emerald-400/15 text-emerald-700 dark:text-emerald-400 flex items-center justify-center font-mono text-xs font-black shrink-0">12</span>
+                <span>Sistemas de Información Estratégicos (SIE)</span>
+              </div>
             </div>
-            <div class="liquid-glass rounded-3xl p-6 flex flex-col justify-center space-y-3 border border-yellow-300">
-              <div class="p-3 rounded-xl bg-white/90 border border-slate-200 text-base font-bold text-slate-900">• Sistemas para Toma de Decisiones en Grupo (GDSS)</div>
-              <div class="p-3 rounded-xl bg-white/90 border border-slate-200 text-base font-bold text-slate-900">• Sistemas Expertos de Soporte (EDSS)</div>
-              <div class="p-3 rounded-xl bg-white/90 border border-slate-200 text-base font-bold text-slate-900">• Sistema de Información Contable (SIC)</div>
+
+            <div class="liquid-glass rounded-3xl p-5 md:p-6 flex flex-col justify-center space-y-2.5 border border-yellow-300/80 dark:border-yellow-500/30 bg-yellow-500/[0.02]">
+              <div class="flex items-center justify-between pb-2 border-b border-yellow-300/40 dark:border-yellow-500/20 mb-1">
+                <span class="font-mono text-[11px] font-bold uppercase tracking-wider text-amber-900 dark:text-amber-300">Colaboración & Especialización</span>
+                <span class="font-mono text-[10px] text-amber-800 dark:text-amber-400 bg-amber-400/15 px-2 py-0.5 rounded border border-amber-400/30">Parte D</span>
+              </div>
+              <div class="p-3 rounded-2xl bg-white/80 dark:bg-slate-900/60 border border-slate-200/80 dark:border-white/10 text-sm md:text-[15px] font-bold text-slate-900 dark:text-slate-100 flex items-center gap-3 shadow-xs hover:border-amber-400 transition-colors">
+                <span class="w-6 h-6 rounded-lg bg-yellow-500/10 dark:bg-yellow-400/15 text-amber-700 dark:text-amber-400 flex items-center justify-center font-mono text-xs font-black shrink-0">13</span>
+                <span>Sistemas para Toma de Decisiones en Grupo (GDSS)</span>
+              </div>
+              <div class="p-3 rounded-2xl bg-white/80 dark:bg-slate-900/60 border border-slate-200/80 dark:border-white/10 text-sm md:text-[15px] font-bold text-slate-900 dark:text-slate-100 flex items-center gap-3 shadow-xs hover:border-amber-400 transition-colors">
+                <span class="w-6 h-6 rounded-lg bg-yellow-500/10 dark:bg-yellow-400/15 text-amber-700 dark:text-amber-400 flex items-center justify-center font-mono text-xs font-black shrink-0">14</span>
+                <span>Sistemas Expertos de Soporte (EDSS)</span>
+              </div>
+              <div class="p-3 rounded-2xl bg-white/80 dark:bg-slate-900/60 border border-slate-200/80 dark:border-white/10 text-sm md:text-[15px] font-bold text-slate-900 dark:text-slate-100 flex items-center gap-3 shadow-xs hover:border-amber-400 transition-colors">
+                <span class="w-6 h-6 rounded-lg bg-yellow-500/10 dark:bg-yellow-400/15 text-amber-700 dark:text-amber-400 flex items-center justify-center font-mono text-xs font-black shrink-0">15</span>
+                <span>Sistema de Información Contable (SIC)</span>
+              </div>
             </div>
           </div>
         `
@@ -1015,25 +1401,109 @@
         notes: `<p><strong>Taxonomía Power:</strong> Basados en Datos, Modelos, Conocimiento, Documentos y Grupo (GDSS).<br><strong>Pase de palabra a Martín Avilas para el Bloque 2.</strong></p>`,
         render: () => `
           <div class="grid grid-cols-5 gap-3.5 h-full items-stretch didactic-grid">
-            <div class="liquid-glass rounded-2xl p-4 flex flex-col justify-center items-center didactic-card border border-amber-300 text-center"
+            <!-- 01: Basados en Datos -->
+            <div class="group liquid-glass rounded-3xl p-4 md:p-5 flex flex-col justify-between items-center didactic-card border border-amber-300/80 dark:border-amber-500/30 bg-amber-500/[0.03] dark:bg-amber-400/[0.02] text-center"
                  onclick="triggerSpotlightKey(this, 's11_c1')">
-              <h5 class="text-lg md:text-xl font-black text-slate-900 leading-tight">Basados<br>en Datos</h5>
+              <div class="w-full flex items-center justify-between">
+                <span class="font-mono text-[10px] font-bold tracking-widest text-amber-800 dark:text-amber-400 bg-amber-400/15 px-2 py-0.5 rounded-md border border-amber-400/30">01 / 05</span>
+                <span class="text-[10px] font-mono text-slate-400 dark:text-slate-500 flex items-center gap-0.5 group-hover:text-amber-600 dark:group-hover:text-amber-400 transition-colors">
+                  <span class="hidden xl:inline">Detalle</span>
+                  <svg class="w-3 h-3 transition-transform duration-200 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path></svg>
+                </span>
+              </div>
+              <div class="flex flex-col items-center justify-center my-auto py-2">
+                <div class="w-13 h-13 md:w-15 md:h-15 rounded-2xl bg-amber-500/10 dark:bg-amber-400/10 border border-amber-500/20 flex items-center justify-center mb-3 text-amber-600 dark:text-amber-400 group-hover:scale-110 group-hover:bg-amber-500/20 transition-all duration-300 shadow-inner">
+                  <svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M4 7v10c0 2.21 3.582 4 8 4s8-1.79 8-4V7M4 7c0 2.21 3.582 4 8 4s8-1.79 8-4M4 7c0-2.21 3.582-4 8-4s8 1.79 8 4m0 5c0 2.21-3.582 4-8 4s-8-1.79-8-4"></path></svg>
+                </div>
+                <h5 class="text-base md:text-lg lg:text-xl font-black text-slate-900 dark:text-slate-100 leading-tight">Basados<br>en Datos</h5>
+              </div>
+              <div class="w-full pt-2.5 border-t border-slate-200/50 dark:border-white/5 flex items-center justify-center text-[10px] font-mono font-semibold text-slate-400 dark:text-slate-500 group-hover:text-amber-600 dark:group-hover:text-amber-400 transition-colors">
+                <span class="w-1.5 h-1.5 rounded-full bg-amber-400 mr-1.5 animate-pulse"></span>Clic para ampliar
+              </div>
             </div>
-            <div class="liquid-glass rounded-2xl p-4 flex flex-col justify-center items-center didactic-card border border-indigo-300 text-center"
+
+            <!-- 02: Basados en Modelos -->
+            <div class="group liquid-glass rounded-3xl p-4 md:p-5 flex flex-col justify-between items-center didactic-card border border-indigo-300/80 dark:border-indigo-500/30 bg-indigo-500/[0.03] dark:bg-indigo-400/[0.02] text-center"
                  onclick="triggerSpotlightKey(this, 's11_c2')">
-              <h5 class="text-lg md:text-xl font-black text-slate-900 leading-tight">Basados<br>en Modelos</h5>
+              <div class="w-full flex items-center justify-between">
+                <span class="font-mono text-[10px] font-bold tracking-widest text-indigo-800 dark:text-indigo-400 bg-indigo-400/15 px-2 py-0.5 rounded-md border border-indigo-400/30">02 / 05</span>
+                <span class="text-[10px] font-mono text-slate-400 dark:text-slate-500 flex items-center gap-0.5 group-hover:text-indigo-600 dark:group-hover:text-indigo-400 transition-colors">
+                  <span class="hidden xl:inline">Detalle</span>
+                  <svg class="w-3 h-3 transition-transform duration-200 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path></svg>
+                </span>
+              </div>
+              <div class="flex flex-col items-center justify-center my-auto py-2">
+                <div class="w-13 h-13 md:w-15 md:h-15 rounded-2xl bg-indigo-500/10 dark:bg-indigo-400/10 border border-indigo-500/20 flex items-center justify-center mb-3 text-indigo-600 dark:text-indigo-400 group-hover:scale-110 group-hover:bg-indigo-500/20 transition-all duration-300 shadow-inner">
+                  <svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"></path></svg>
+                </div>
+                <h5 class="text-base md:text-lg lg:text-xl font-black text-slate-900 dark:text-slate-100 leading-tight">Basados<br>en Modelos</h5>
+              </div>
+              <div class="w-full pt-2.5 border-t border-slate-200/50 dark:border-white/5 flex items-center justify-center text-[10px] font-mono font-semibold text-slate-400 dark:text-slate-500 group-hover:text-indigo-600 dark:group-hover:text-indigo-400 transition-colors">
+                <span class="w-1.5 h-1.5 rounded-full bg-indigo-400 mr-1.5 animate-pulse"></span>Clic para ampliar
+              </div>
             </div>
-            <div class="liquid-glass rounded-2xl p-4 flex flex-col justify-center items-center didactic-card border border-emerald-300 text-center"
+
+            <!-- 03: Basados en Conocimiento -->
+            <div class="group liquid-glass rounded-3xl p-4 md:p-5 flex flex-col justify-between items-center didactic-card border border-emerald-300/80 dark:border-emerald-500/30 bg-emerald-500/[0.03] dark:bg-emerald-400/[0.02] text-center"
                  onclick="triggerSpotlightKey(this, 's11_c3')">
-              <h5 class="text-lg md:text-xl font-black text-slate-900 leading-tight">Basados en<br>Conocimiento</h5>
+              <div class="w-full flex items-center justify-between">
+                <span class="font-mono text-[10px] font-bold tracking-widest text-emerald-800 dark:text-emerald-400 bg-emerald-400/15 px-2 py-0.5 rounded-md border border-emerald-400/30">03 / 05</span>
+                <span class="text-[10px] font-mono text-slate-400 dark:text-slate-500 flex items-center gap-0.5 group-hover:text-emerald-600 dark:group-hover:text-emerald-400 transition-colors">
+                  <span class="hidden xl:inline">Detalle</span>
+                  <svg class="w-3 h-3 transition-transform duration-200 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path></svg>
+                </span>
+              </div>
+              <div class="flex flex-col items-center justify-center my-auto py-2">
+                <div class="w-13 h-13 md:w-15 md:h-15 rounded-2xl bg-emerald-500/10 dark:bg-emerald-400/10 border border-emerald-500/20 flex items-center justify-center mb-3 text-emerald-600 dark:text-emerald-400 group-hover:scale-110 group-hover:bg-emerald-500/20 transition-all duration-300 shadow-inner">
+                  <svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"></path></svg>
+                </div>
+                <h5 class="text-base md:text-lg lg:text-xl font-black text-slate-900 dark:text-slate-100 leading-tight">Basados en<br>Conocimiento</h5>
+              </div>
+              <div class="w-full pt-2.5 border-t border-slate-200/50 dark:border-white/5 flex items-center justify-center text-[10px] font-mono font-semibold text-slate-400 dark:text-slate-500 group-hover:text-emerald-600 dark:group-hover:text-emerald-400 transition-colors">
+                <span class="w-1.5 h-1.5 rounded-full bg-emerald-400 mr-1.5 animate-pulse"></span>Clic para ampliar
+              </div>
             </div>
-            <div class="liquid-glass rounded-2xl p-4 flex flex-col justify-center items-center didactic-card border border-yellow-300 text-center"
+
+            <!-- 04: Basados en Documentos -->
+            <div class="group liquid-glass rounded-3xl p-4 md:p-5 flex flex-col justify-between items-center didactic-card border border-amber-300/80 dark:border-amber-500/30 bg-yellow-500/[0.03] dark:bg-yellow-400/[0.02] text-center"
                  onclick="triggerSpotlightKey(this, 's11_c4')">
-              <h5 class="text-lg md:text-xl font-black text-slate-900 leading-tight">Basados en<br>Documentos</h5>
+              <div class="w-full flex items-center justify-between">
+                <span class="font-mono text-[10px] font-bold tracking-widest text-amber-800 dark:text-amber-400 bg-amber-400/15 px-2 py-0.5 rounded-md border border-amber-400/30">04 / 05</span>
+                <span class="text-[10px] font-mono text-slate-400 dark:text-slate-500 flex items-center gap-0.5 group-hover:text-amber-600 dark:group-hover:text-amber-400 transition-colors">
+                  <span class="hidden xl:inline">Detalle</span>
+                  <svg class="w-3 h-3 transition-transform duration-200 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path></svg>
+                </span>
+              </div>
+              <div class="flex flex-col items-center justify-center my-auto py-2">
+                <div class="w-13 h-13 md:w-15 md:h-15 rounded-2xl bg-yellow-500/10 dark:bg-yellow-400/10 border border-yellow-500/20 flex items-center justify-center mb-3 text-yellow-600 dark:text-yellow-400 group-hover:scale-110 group-hover:bg-yellow-500/20 transition-all duration-300 shadow-inner">
+                  <svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path></svg>
+                </div>
+                <h5 class="text-base md:text-lg lg:text-xl font-black text-slate-900 dark:text-slate-100 leading-tight">Basados en<br>Documentos</h5>
+              </div>
+              <div class="w-full pt-2.5 border-t border-slate-200/50 dark:border-white/5 flex items-center justify-center text-[10px] font-mono font-semibold text-slate-400 dark:text-slate-500 group-hover:text-amber-600 dark:group-hover:text-amber-400 transition-colors">
+                <span class="w-1.5 h-1.5 rounded-full bg-amber-400 mr-1.5 animate-pulse"></span>Clic para ampliar
+              </div>
             </div>
-            <div class="liquid-glass rounded-2xl p-4 flex flex-col justify-center items-center didactic-card border border-rose-300 text-center"
+
+            <!-- 05: Comunicación & Grupo -->
+            <div class="group liquid-glass rounded-3xl p-4 md:p-5 flex flex-col justify-between items-center didactic-card border border-rose-300/80 dark:border-rose-500/30 bg-rose-500/[0.03] dark:bg-rose-400/[0.02] text-center"
                  onclick="triggerSpotlightKey(this, 's11_c5')">
-              <h5 class="text-[15px] md:text-base lg:text-lg font-black text-slate-900 leading-snug">Comunicación<br>& Grupo</h5>
+              <div class="w-full flex items-center justify-between">
+                <span class="font-mono text-[10px] font-bold tracking-widest text-rose-800 dark:text-rose-400 bg-rose-400/15 px-2 py-0.5 rounded-md border border-rose-400/30">05 / 05</span>
+                <span class="text-[10px] font-mono text-slate-400 dark:text-slate-500 flex items-center gap-0.5 group-hover:text-rose-600 dark:group-hover:text-rose-400 transition-colors">
+                  <span class="hidden xl:inline">Detalle</span>
+                  <svg class="w-3 h-3 transition-transform duration-200 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path></svg>
+                </span>
+              </div>
+              <div class="flex flex-col items-center justify-center my-auto py-2">
+                <div class="w-13 h-13 md:w-15 md:h-15 rounded-2xl bg-rose-500/10 dark:bg-rose-400/10 border border-rose-500/20 flex items-center justify-center mb-3 text-rose-600 dark:text-rose-400 group-hover:scale-110 group-hover:bg-rose-500/20 transition-all duration-300 shadow-inner">
+                  <svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z"></path></svg>
+                </div>
+                <h5 class="text-[15px] md:text-base lg:text-lg font-black text-slate-900 dark:text-slate-100 leading-snug">Comunicación<br>& Grupo</h5>
+              </div>
+              <div class="w-full pt-2.5 border-t border-slate-200/50 dark:border-white/5 flex items-center justify-center text-[10px] font-mono font-semibold text-slate-400 dark:text-slate-500 group-hover:text-rose-600 dark:group-hover:text-rose-400 transition-colors">
+                <span class="w-1.5 h-1.5 rounded-full bg-rose-400 mr-1.5 animate-pulse"></span>Clic para ampliar
+              </div>
             </div>
           </div>
         `
@@ -1076,22 +1546,89 @@
         speakerTag: "TEMA 6 • DASHBOARDS & DRILL-DOWN EIS",
         notes: `<p><strong>Funciones C-Level:</strong> Dashboards, Drill-down, Variables exógenas y Acceso móvil seguro.</p>`,
         render: () => `
-          <div class="grid grid-cols-2 gap-6 h-full items-stretch didactic-grid">
-            <div class="liquid-glass rounded-3xl p-6 flex flex-col justify-center items-center didactic-card border border-indigo-300 text-center"
+          <div class="grid grid-cols-2 gap-5 md:gap-6 h-full items-stretch didactic-grid">
+            <!-- 01: Executive Dashboards -->
+            <div class="group liquid-glass rounded-3xl p-5 md:p-6 flex flex-col justify-between items-center didactic-card border border-indigo-300/80 dark:border-indigo-500/30 bg-indigo-500/[0.03] dark:bg-indigo-400/[0.02] text-center"
                  onclick="triggerSpotlightKey(this, 's13_c1')">
-              <h4 class="text-2xl md:text-3xl font-black text-slate-900 leading-tight">Executive<br>Dashboards</h4>
+              <div class="w-full flex items-center justify-between">
+                <span class="font-mono text-[11px] font-bold tracking-widest text-indigo-800 dark:text-indigo-400 bg-indigo-400/15 px-2.5 py-0.5 rounded-md border border-indigo-400/30">01 / 04</span>
+                <span class="text-xs font-mono text-slate-400 dark:text-slate-500 flex items-center gap-1 group-hover:text-indigo-600 dark:group-hover:text-indigo-400 transition-colors">
+                  <span>Detalle</span>
+                  <svg class="w-3.5 h-3.5 transition-transform duration-200 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path></svg>
+                </span>
+              </div>
+              <div class="flex flex-col items-center justify-center my-auto py-2">
+                <div class="w-14 h-14 md:w-16 md:h-16 rounded-2xl bg-indigo-500/10 dark:bg-indigo-400/10 border border-indigo-500/20 flex items-center justify-center mb-3 text-indigo-600 dark:text-indigo-400 group-hover:scale-110 group-hover:bg-indigo-500/20 transition-all duration-300 shadow-inner">
+                  <svg class="w-7 h-7 md:w-8 md:h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M9 17V7m0 10a2 2 0 01-2 2H5a2 2 0 01-2-2V7a2 2 0 012-2h2a2 2 0 012 2m0 10a2 2 0 002 2h2a2 2 0 002-2M9 7a2 2 0 012-2h2a2 2 0 012 2m0 10V7m0 10a2 2 0 002 2h2a2 2 0 002-2V7a2 2 0 00-2-2h-2a2 2 0 00-2 2"></path></svg>
+                </div>
+                <h4 class="text-2xl md:text-3xl font-black text-slate-900 dark:text-slate-100 leading-tight">Executive<br>Dashboards</h4>
+              </div>
+              <div class="w-full pt-2.5 border-t border-slate-200/50 dark:border-white/5 flex items-center justify-center text-xs font-mono font-semibold text-slate-400 dark:text-slate-500 group-hover:text-indigo-600 dark:group-hover:text-indigo-400 transition-colors">
+                <span class="w-1.5 h-1.5 rounded-full bg-indigo-400 mr-2 animate-pulse"></span>Clic para ampliar
+              </div>
             </div>
-            <div class="liquid-glass rounded-3xl p-6 flex flex-col justify-center items-center didactic-card border border-indigo-300 text-center"
+
+            <!-- 02: Desglose Analítico (Drill-Down) -->
+            <div class="group liquid-glass rounded-3xl p-5 md:p-6 flex flex-col justify-between items-center didactic-card border border-blue-300/80 dark:border-blue-500/30 bg-blue-500/[0.03] dark:bg-blue-400/[0.02] text-center"
                  onclick="triggerSpotlightKey(this, 's13_c2')">
-              <h4 class="text-2xl md:text-3xl font-black text-slate-900 leading-tight">Desglose<br>Analítico<br>(Drill-Down)</h4>
+              <div class="w-full flex items-center justify-between">
+                <span class="font-mono text-[11px] font-bold tracking-widest text-blue-800 dark:text-blue-400 bg-blue-400/15 px-2.5 py-0.5 rounded-md border border-blue-400/30">02 / 04</span>
+                <span class="text-xs font-mono text-slate-400 dark:text-slate-500 flex items-center gap-1 group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors">
+                  <span>Detalle</span>
+                  <svg class="w-3.5 h-3.5 transition-transform duration-200 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path></svg>
+                </span>
+              </div>
+              <div class="flex flex-col items-center justify-center my-auto py-2">
+                <div class="w-14 h-14 md:w-16 md:h-16 rounded-2xl bg-blue-500/10 dark:bg-blue-400/10 border border-blue-500/20 flex items-center justify-center mb-3 text-blue-600 dark:text-blue-400 group-hover:scale-110 group-hover:bg-blue-500/20 transition-all duration-300 shadow-inner">
+                  <svg class="w-7 h-7 md:w-8 md:h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10"></path></svg>
+                </div>
+                <h4 class="text-2xl md:text-3xl font-black text-slate-900 dark:text-slate-100 leading-tight">Desglose<br>Analítico<br>(Drill-Down)</h4>
+              </div>
+              <div class="w-full pt-2.5 border-t border-slate-200/50 dark:border-white/5 flex items-center justify-center text-xs font-mono font-semibold text-slate-400 dark:text-slate-500 group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors">
+                <span class="w-1.5 h-1.5 rounded-full bg-blue-400 mr-2 animate-pulse"></span>Clic para ampliar
+              </div>
             </div>
-            <div class="liquid-glass rounded-3xl p-6 flex flex-col justify-center items-center didactic-card border border-indigo-300 text-center"
+
+            <!-- 03: Variables Exógenas -->
+            <div class="group liquid-glass rounded-3xl p-5 md:p-6 flex flex-col justify-between items-center didactic-card border border-amber-300/80 dark:border-amber-500/30 bg-amber-500/[0.03] dark:bg-amber-400/[0.02] text-center"
                  onclick="triggerSpotlightKey(this, 's13_c3')">
-              <h4 class="text-2xl md:text-3xl font-black text-slate-900 leading-tight">Variables<br>Exógenas</h4>
+              <div class="w-full flex items-center justify-between">
+                <span class="font-mono text-[11px] font-bold tracking-widest text-amber-800 dark:text-amber-400 bg-amber-400/15 px-2.5 py-0.5 rounded-md border border-amber-400/30">03 / 04</span>
+                <span class="text-xs font-mono text-slate-400 dark:text-slate-500 flex items-center gap-1 group-hover:text-amber-600 dark:group-hover:text-amber-400 transition-colors">
+                  <span>Detalle</span>
+                  <svg class="w-3.5 h-3.5 transition-transform duration-200 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path></svg>
+                </span>
+              </div>
+              <div class="flex flex-col items-center justify-center my-auto py-2">
+                <div class="w-14 h-14 md:w-16 md:h-16 rounded-2xl bg-amber-500/10 dark:bg-amber-400/10 border border-amber-500/20 flex items-center justify-center mb-3 text-amber-600 dark:text-amber-400 group-hover:scale-110 group-hover:bg-amber-500/20 transition-all duration-300 shadow-inner">
+                  <svg class="w-7 h-7 md:w-8 md:h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M21 12a9 9 0 01-9 9m9-9a9 9 0 00-9-9m9 9H3m9 9a9 9 0 01-9-9m9 9c1.657 0 3-4.03 3-9s-1.343-9-3-9m0 18c-1.657 0-3-4.03-3-9s1.343-9 3-9m-9 9a9 9 0 019-9"></path></svg>
+                </div>
+                <h4 class="text-2xl md:text-3xl font-black text-slate-900 dark:text-slate-100 leading-tight">Variables<br>Exógenas</h4>
+              </div>
+              <div class="w-full pt-2.5 border-t border-slate-200/50 dark:border-white/5 flex items-center justify-center text-xs font-mono font-semibold text-slate-400 dark:text-slate-500 group-hover:text-amber-600 dark:group-hover:text-amber-400 transition-colors">
+                <span class="w-1.5 h-1.5 rounded-full bg-amber-400 mr-2 animate-pulse"></span>Clic para ampliar
+              </div>
             </div>
-            <div class="liquid-glass rounded-3xl p-6 flex flex-col justify-center items-center didactic-card border border-indigo-300 text-center"
+
+            <!-- 04: Acceso Móvil -->
+            <div class="group liquid-glass rounded-3xl p-5 md:p-6 flex flex-col justify-between items-center didactic-card border border-emerald-300/80 dark:border-emerald-500/30 bg-emerald-500/[0.03] dark:bg-emerald-400/[0.02] text-center"
                  onclick="triggerSpotlightKey(this, 's13_c4')">
-              <h4 class="text-2xl md:text-3xl font-black text-slate-900 leading-tight">Acceso<br>Móvil</h4>
+              <div class="w-full flex items-center justify-between">
+                <span class="font-mono text-[11px] font-bold tracking-widest text-emerald-800 dark:text-emerald-400 bg-emerald-400/15 px-2.5 py-0.5 rounded-md border border-emerald-400/30">04 / 04</span>
+                <span class="text-xs font-mono text-slate-400 dark:text-slate-500 flex items-center gap-1 group-hover:text-emerald-600 dark:group-hover:text-emerald-400 transition-colors">
+                  <span>Detalle</span>
+                  <svg class="w-3.5 h-3.5 transition-transform duration-200 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path></svg>
+                </span>
+              </div>
+              <div class="flex flex-col items-center justify-center my-auto py-2">
+                <div class="w-14 h-14 md:w-16 md:h-16 rounded-2xl bg-emerald-500/10 dark:bg-emerald-400/10 border border-emerald-500/20 flex items-center justify-center mb-3 text-emerald-600 dark:text-emerald-400 group-hover:scale-110 group-hover:bg-emerald-500/20 transition-all duration-300 shadow-inner">
+                  <svg class="w-7 h-7 md:w-8 md:h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M12 18h.01M8 21h8a2 2 0 002-2V5a2 2 0 00-2-2H8a2 2 0 00-2 2v14a2 2 0 002 2z"></path></svg>
+                </div>
+                <h4 class="text-2xl md:text-3xl font-black text-slate-900 dark:text-slate-100 leading-tight">Acceso<br>Móvil</h4>
+              </div>
+              <div class="w-full pt-2.5 border-t border-slate-200/50 dark:border-white/5 flex items-center justify-center text-xs font-mono font-semibold text-slate-400 dark:text-slate-500 group-hover:text-emerald-600 dark:group-hover:text-emerald-400 transition-colors">
+                <span class="w-1.5 h-1.5 rounded-full bg-emerald-400 mr-2 animate-pulse"></span>Clic para ampliar
+              </div>
             </div>
           </div>
         `
@@ -1130,20 +1667,32 @@
         speakerTag: "TEMA 7 • REPORTES Y CONTROL MIS",
         notes: `<p><strong>Apoyo MIS:</strong> Informes periódicos, comparación real vs planificado/objetivos, acceso a bases históricas.</p>`,
         render: () => `
-          <div class="flex-1 flex flex-col justify-center max-w-4xl mx-auto space-y-4">
-            <h4 class="text-xl font-black text-slate-900 text-center mb-2">Estos sistemas apoyan la gestión empresarial mediante:</h4>
-            <div class="liquid-glass rounded-2xl p-5 border border-amber-300 shadow-sm flex items-start gap-4">
-              <p class="text-base md:text-lg font-semibold text-slate-800">
+          <div class="flex-1 flex flex-col justify-center max-w-4xl mx-auto space-y-3.5">
+            <h4 class="text-lg md:text-xl font-black text-slate-900 dark:text-slate-100 text-center mb-1">Estos sistemas apoyan la gestión empresarial mediante:</h4>
+            
+            <div class="liquid-glass rounded-2xl p-4 md:p-5 border border-amber-300/80 dark:border-amber-500/30 bg-amber-500/[0.02] shadow-sm flex items-center gap-4 transition hover:border-amber-400">
+              <div class="w-12 h-12 rounded-xl bg-amber-500/10 dark:bg-amber-400/15 border border-amber-500/20 text-amber-600 dark:text-amber-400 flex items-center justify-center shrink-0">
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path></svg>
+              </div>
+              <p class="text-sm md:text-base font-semibold text-slate-800 dark:text-slate-200">
                 • <strong>Generación automatizada de informes periódicos</strong> sobre el estado financiero, ventas, inventarios y recursos humanos.
               </p>
             </div>
-            <div class="liquid-glass rounded-2xl p-5 border border-amber-300 shadow-sm flex items-start gap-4">
-              <p class="text-base md:text-lg font-semibold text-slate-800">
+
+            <div class="liquid-glass rounded-2xl p-4 md:p-5 border border-amber-300/80 dark:border-amber-500/30 bg-amber-500/[0.02] shadow-sm flex items-center gap-4 transition hover:border-amber-400">
+              <div class="w-12 h-12 rounded-xl bg-indigo-500/10 dark:bg-indigo-400/15 border border-indigo-500/20 text-indigo-600 dark:text-indigo-400 flex items-center justify-center shrink-0">
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"></path></svg>
+              </div>
+              <p class="text-sm md:text-base font-semibold text-slate-800 dark:text-slate-200">
                 • <strong>Comparación entre los resultados reales planificados y los objetivos presupuestados</strong> para facilitar el control de gestión.
               </p>
             </div>
-            <div class="liquid-glass rounded-2xl p-5 border border-amber-300 shadow-sm flex items-start gap-4">
-              <p class="text-base md:text-lg font-semibold text-slate-800">
+
+            <div class="liquid-glass rounded-2xl p-4 md:p-5 border border-amber-300/80 dark:border-amber-500/30 bg-amber-500/[0.02] shadow-sm flex items-center gap-4 transition hover:border-amber-400">
+              <div class="w-12 h-12 rounded-xl bg-emerald-500/10 dark:bg-emerald-400/15 border border-emerald-500/20 text-emerald-600 dark:text-emerald-400 flex items-center justify-center shrink-0">
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M4 7v10c0 2.21 3.582 4 8 4s8-1.79 8-4V7M4 7c0 2.21 3.582 4 8 4s8-1.79 8-4M4 7c0-2.21 3.582-4 8-4s8 1.79 8 4m0 5c0 2.21-3.582 4-8 4s-8-1.79-8-4"></path></svg>
+              </div>
+              <p class="text-sm md:text-base font-semibold text-slate-800 dark:text-slate-200">
                 • <strong>Acceso estructurado a bases de datos históricas</strong> para identificar patrones de rendimiento y tendencias internas.
               </p>
             </div>
@@ -1361,21 +1910,41 @@
         speakerTag: "TEMA 10 • DECISIONES BASADAS EN DATOS (DDDM)",
         notes: `<p><strong>DDDM:</strong> Énfasis en datos y análisis en lugar de intuición. Fuentes de datos múltiples e interpretación para alinear metas.<br><strong>Pase de palabra a Evelyn Gaitán para el Bloque 3.</strong></p>`,
         render: () => `
-          <div class="flex-1 flex flex-col justify-center max-w-4xl mx-auto space-y-4">
-            <div class="liquid-glass rounded-2xl p-6 border border-amber-300 shadow-sm">
-              <p class="text-base md:text-lg text-slate-800 leading-relaxed font-semibold">
-                Es un enfoque que <strong class="text-amber-950">enfatiza el uso de datos y análisis en lugar de la intuición</strong> para fundamentar las decisiones comerciales.
-              </p>
+          <div class="flex-1 flex flex-col justify-center max-w-4xl mx-auto space-y-3.5">
+            <div class="liquid-glass rounded-2xl p-5 md:p-6 border border-amber-300/80 dark:border-amber-500/30 bg-amber-500/[0.03] shadow-sm flex items-start gap-4 transition hover:border-amber-400">
+              <div class="w-12 h-12 rounded-2xl bg-amber-500/10 dark:bg-amber-400/15 border border-amber-500/20 text-amber-700 dark:text-amber-400 flex items-center justify-center font-mono font-black text-sm shrink-0 shadow-inner">
+                01
+              </div>
+              <div class="flex-1">
+                <span class="font-mono text-[10px] font-bold uppercase tracking-wider text-amber-900 dark:text-amber-400 bg-amber-400/15 px-2 py-0.5 rounded border border-amber-400/30 inline-block mb-1.5">Enfoque vs. Intuición</span>
+                <p class="text-base md:text-lg text-slate-800 dark:text-slate-200 leading-relaxed font-semibold">
+                  Es un enfoque que <strong class="text-amber-950 dark:text-amber-300">enfatiza el uso de datos y análisis en lugar de la intuición</strong> para fundamentar las decisiones comerciales.
+                </p>
+              </div>
             </div>
-            <div class="liquid-glass rounded-2xl p-6 border border-indigo-300 shadow-sm">
-              <p class="text-base md:text-lg text-slate-800 leading-relaxed font-semibold">
-                Implica aprovechar <strong class="text-indigo-950">fuentes de datos como los comentarios de los clientes, las tendencias del mercado y los datos financieros</strong> a fin de guiar el proceso de toma de decisiones.
-              </p>
+
+            <div class="liquid-glass rounded-2xl p-5 md:p-6 border border-indigo-300/80 dark:border-indigo-500/30 bg-indigo-500/[0.03] shadow-sm flex items-start gap-4 transition hover:border-indigo-400">
+              <div class="w-12 h-12 rounded-2xl bg-indigo-500/10 dark:bg-indigo-400/15 border border-indigo-500/20 text-indigo-700 dark:text-indigo-400 flex items-center justify-center font-mono font-black text-sm shrink-0 shadow-inner">
+                02
+              </div>
+              <div class="flex-1">
+                <span class="font-mono text-[10px] font-bold uppercase tracking-wider text-indigo-900 dark:text-indigo-400 bg-indigo-400/15 px-2 py-0.5 rounded border border-indigo-400/30 inline-block mb-1.5">Fuentes Multidimensionales</span>
+                <p class="text-base md:text-lg text-slate-800 dark:text-slate-200 leading-relaxed font-semibold">
+                  Implica aprovechar <strong class="text-indigo-950 dark:text-indigo-300">fuentes de datos como los comentarios de los clientes, las tendencias del mercado y los datos financieros</strong> a fin de guiar el proceso de toma de decisiones.
+                </p>
+              </div>
             </div>
-            <div class="liquid-glass rounded-2xl p-6 border border-emerald-300 shadow-sm">
-              <p class="text-base md:text-lg text-slate-800 leading-relaxed font-semibold">
-                Al recopilar, analizar e interpretar datos, las organizaciones pueden <strong class="text-emerald-950">tomar mejores decisiones que se alinean más estrechamente con las metas y objetivos</strong> del negocio.
-              </p>
+
+            <div class="liquid-glass rounded-2xl p-5 md:p-6 border border-emerald-300/80 dark:border-emerald-500/30 bg-emerald-500/[0.03] shadow-sm flex items-start gap-4 transition hover:border-emerald-400">
+              <div class="w-12 h-12 rounded-2xl bg-emerald-500/10 dark:bg-emerald-400/15 border border-emerald-500/20 text-emerald-700 dark:text-emerald-400 flex items-center justify-center font-mono font-black text-sm shrink-0 shadow-inner">
+                03
+              </div>
+              <div class="flex-1">
+                <span class="font-mono text-[10px] font-bold uppercase tracking-wider text-emerald-900 dark:text-emerald-400 bg-emerald-400/15 px-2 py-0.5 rounded border border-emerald-400/30 inline-block mb-1.5">Impacto en Objetivos</span>
+                <p class="text-base md:text-lg text-slate-800 dark:text-slate-200 leading-relaxed font-semibold">
+                  Al recopilar, analizar e interpretar datos, las organizaciones pueden <strong class="text-emerald-950 dark:text-emerald-300">tomar mejores decisiones que se alinean más estrechamente con las metas y objetivos</strong> del negocio.
+                </p>
+              </div>
             </div>
           </div>
         `
@@ -1412,20 +1981,39 @@
         notes: `<p><strong>MELI:</strong> Fundada en 1999, 18 países, 100M+ usuarios. 6 Unidades integradas.</p>`,
         render: () => `
           <div class="grid grid-cols-2 gap-8 h-full items-center p-2">
-            <div class="liquid-glass rounded-3xl p-8 md:p-10 border border-amber-300 shadow-sm flex flex-col justify-center text-center">
-              <h3 class="text-4xl md:text-5xl font-black text-slate-900 mb-4 leading-tight">Contexto<br>& Unidades</h3>
-              <p class="text-base md:text-lg text-slate-800 leading-relaxed font-semibold">
+            <div class="liquid-glass rounded-3xl p-8 md:p-10 border border-amber-300/80 dark:border-amber-500/30 bg-amber-500/[0.02] shadow-sm flex flex-col justify-center text-center">
+              <span class="font-mono text-[10px] font-bold uppercase tracking-wider text-amber-900 dark:text-amber-400 bg-amber-400/15 px-3 py-1 rounded-full border border-amber-400/30 inline-block mx-auto mb-3">Ecosistema Latinoamericano</span>
+              <h3 class="text-4xl md:text-5xl font-black text-slate-900 dark:text-slate-100 mb-4 leading-tight">Contexto<br>& Unidades</h3>
+              <p class="text-base md:text-lg text-slate-800 dark:text-slate-200 leading-relaxed font-semibold">
                 Fundada en 1999, opera en <strong>18 países con más de 100 millones de usuarios activos</strong>. Integra Marketplace, Mercado Pago, Envíos, Crédito, Ads y Shops.
               </p>
             </div>
-            <div class="flex flex-col items-center justify-center p-4">
-              <div class="grid grid-cols-2 gap-3.5 w-full max-w-sm">
-                <div class="p-3.5 rounded-2xl bg-white/90 border border-amber-200 text-sm font-bold text-center shadow-sm">Mercado Envíos</div>
-                <div class="p-3.5 rounded-2xl bg-white/90 border border-amber-200 text-sm font-bold text-center shadow-sm">Mercado Pago</div>
-                <div class="p-3.5 rounded-2xl bg-white/90 border border-amber-200 text-sm font-bold text-center shadow-sm">Mercado Libre</div>
-                <div class="p-3.5 rounded-2xl bg-white/90 border border-amber-200 text-sm font-bold text-center shadow-sm">Mercado Shops</div>
-                <div class="p-3.5 rounded-2xl bg-white/90 border border-amber-200 text-sm font-bold text-center shadow-sm">Mercado Crédito</div>
-                <div class="p-3.5 rounded-2xl bg-white/90 border border-amber-200 text-sm font-bold text-center shadow-sm">Mercado Ads</div>
+            <div class="flex flex-col items-center justify-center p-2">
+              <div class="grid grid-cols-2 gap-3 w-full max-w-sm">
+                <div class="p-3.5 rounded-2xl bg-white/85 dark:bg-slate-900/70 border border-amber-200/80 dark:border-white/10 text-sm font-bold text-center shadow-xs flex items-center gap-2.5 justify-center hover:border-amber-400 transition-colors">
+                  <svg class="w-4 h-4 text-amber-600 dark:text-amber-400 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16V6a1 1 0 00-1-1H4a1 1 0 00-1 1v10a1 1 0 001 1h1m8-1a1 1 0 01-1 1H9m4-1V8a1 1 0 011-1h2.586a1 1 0 01.707.293l3.414 3.414a1 1 0 01.293.707V16a1 1 0 01-1 1h-1m-6-1a1 1 0 001 1h1M5 17a2 2 0 104 0m-4 0a2 2 0 114 0m6 0a2 2 0 104 0m-4 0a2 2 0 114 0"></path></svg>
+                  <span>Mercado Envíos</span>
+                </div>
+                <div class="p-3.5 rounded-2xl bg-white/85 dark:bg-slate-900/70 border border-amber-200/80 dark:border-white/10 text-sm font-bold text-center shadow-xs flex items-center gap-2.5 justify-center hover:border-amber-400 transition-colors">
+                  <svg class="w-4 h-4 text-blue-600 dark:text-blue-400 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 10h18M7 15h1m4 0h1m-7 4h12a3 3 0 003-3V8a3 3 0 00-3-3H6a3 3 0 00-3 3v8a3 3 0 003 3z"></path></svg>
+                  <span>Mercado Pago</span>
+                </div>
+                <div class="p-3.5 rounded-2xl bg-white/85 dark:bg-slate-900/70 border border-amber-200/80 dark:border-white/10 text-sm font-bold text-center shadow-xs flex items-center gap-2.5 justify-center hover:border-amber-400 transition-colors">
+                  <svg class="w-4 h-4 text-amber-500 dark:text-amber-400 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z"></path></svg>
+                  <span>Mercado Libre</span>
+                </div>
+                <div class="p-3.5 rounded-2xl bg-white/85 dark:bg-slate-900/70 border border-amber-200/80 dark:border-white/10 text-sm font-bold text-center shadow-xs flex items-center gap-2.5 justify-center hover:border-amber-400 transition-colors">
+                  <svg class="w-4 h-4 text-emerald-600 dark:text-emerald-400 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"></path></svg>
+                  <span>Mercado Shops</span>
+                </div>
+                <div class="p-3.5 rounded-2xl bg-white/85 dark:bg-slate-900/70 border border-amber-200/80 dark:border-white/10 text-sm font-bold text-center shadow-xs flex items-center gap-2.5 justify-center hover:border-amber-400 transition-colors">
+                  <svg class="w-4 h-4 text-indigo-600 dark:text-indigo-400 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+                  <span>Mercado Crédito</span>
+                </div>
+                <div class="p-3.5 rounded-2xl bg-white/85 dark:bg-slate-900/70 border border-amber-200/80 dark:border-white/10 text-sm font-bold text-center shadow-xs flex items-center gap-2.5 justify-center hover:border-amber-400 transition-colors">
+                  <svg class="w-4 h-4 text-rose-600 dark:text-rose-400 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 5.882V19.24a1.76 1.76 0 01-3.417.592l-2.147-6.15M18 13a3 3 0 100-6M5.436 13.683A4.001 4.001 0 017 6h1.832c4.1 0 7.625-1.234 9.168-3v14c-1.543-1.766-5.067-3-9.168-3H7a3.988 3.988 0 01-1.564-.317z"></path></svg>
+                  <span>Mercado Ads</span>
+                </div>
               </div>
             </div>
           </div>
@@ -1441,20 +2029,32 @@
         speakerTag: "TEMA 14 • LOGÍSTICA, RIESGO Y SILOS",
         notes: `<p><strong>3 Problemas Críticos:</strong> Logística (cuellos de botella), Riesgo (crédito masivo automático), Silos (18 países).</p>`,
         render: () => `
-          <div class="flex-1 flex flex-col justify-center max-w-4xl mx-auto space-y-4">
-            <h4 class="text-2xl font-black text-slate-900 text-center mb-2">Problemas Críticos a Resolver</h4>
-            <div class="liquid-glass rounded-2xl p-6 border border-rose-300 shadow-sm">
-              <p class="text-base md:text-lg font-semibold text-slate-800">
+          <div class="flex-1 flex flex-col justify-center max-w-4xl mx-auto space-y-3.5">
+            <h4 class="text-xl md:text-2xl font-black text-slate-900 dark:text-slate-100 text-center mb-1">Problemas Críticos a Resolver</h4>
+            
+            <div class="liquid-glass rounded-2xl p-5 border border-rose-300/80 dark:border-rose-500/30 bg-rose-500/[0.03] shadow-sm flex items-center gap-4 transition hover:border-rose-400">
+              <div class="w-12 h-12 rounded-xl bg-rose-500/10 dark:bg-rose-400/15 border border-rose-500/20 text-rose-600 dark:text-rose-400 flex items-center justify-center shrink-0">
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+              </div>
+              <p class="text-base md:text-lg font-semibold text-slate-800 dark:text-slate-200">
                 • <strong>Logística:</strong> Cuellos de botella en picos de demanda.
               </p>
             </div>
-            <div class="liquid-glass rounded-2xl p-6 border border-rose-300 shadow-sm">
-              <p class="text-base md:text-lg font-semibold text-slate-800">
+
+            <div class="liquid-glass rounded-2xl p-5 border border-rose-300/80 dark:border-rose-500/30 bg-rose-500/[0.03] shadow-sm flex items-center gap-4 transition hover:border-rose-400">
+              <div class="w-12 h-12 rounded-xl bg-amber-500/10 dark:bg-amber-400/15 border border-amber-500/20 text-amber-600 dark:text-amber-400 flex items-center justify-center shrink-0">
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"></path></svg>
+              </div>
+              <p class="text-base md:text-lg font-semibold text-slate-800 dark:text-slate-200">
                 • <strong>Riesgo:</strong> Evaluación masiva y automática de créditos.
               </p>
             </div>
-            <div class="liquid-glass rounded-2xl p-6 border border-rose-300 shadow-sm">
-              <p class="text-base md:text-lg font-semibold text-slate-800">
+
+            <div class="liquid-glass rounded-2xl p-5 border border-rose-300/80 dark:border-rose-500/30 bg-rose-500/[0.03] shadow-sm flex items-center gap-4 transition hover:border-rose-400">
+              <div class="w-12 h-12 rounded-xl bg-indigo-500/10 dark:bg-indigo-400/15 border border-indigo-500/20 text-indigo-600 dark:text-indigo-400 flex items-center justify-center shrink-0">
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M3.055 11H5a2 2 0 012 2v1a2 2 0 002 2 2 2 0 012 2v2.945M8 3.935V5.5A2.5 2.5 0 0010.5 8h.5a2 2 0 012 2 2 2 0 104 0 2 2 0 012-2h1.064M15 20.488V18a2 2 0 012-2h3.064M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+              </div>
+              <p class="text-base md:text-lg font-semibold text-slate-800 dark:text-slate-200">
                 • <strong>Silos:</strong> Dispersión regional de información en 18 países.
               </p>
             </div>
@@ -1472,19 +2072,67 @@
         notes: `<p><strong>Integración:</strong> MIS (operaciones diarias, GMV, SLAs), DSS (IA riesgo y logística predictiva), EIS (tableros C-Level en USD).</p>`,
         render: () => `
           <div class="grid grid-cols-3 gap-6 h-full items-stretch didactic-grid">
-            <div class="liquid-glass rounded-3xl p-6 flex flex-col justify-center items-center didactic-card border border-blue-300 text-center"
+            <!-- 01: Sistemas MIS (Gerencial) -->
+            <div class="group liquid-glass rounded-3xl p-5 md:p-6 flex flex-col justify-between items-center didactic-card border border-blue-300/80 dark:border-blue-500/30 bg-blue-500/[0.03] dark:bg-blue-400/[0.02] text-center"
                  onclick="triggerSpotlightKey(this, 's24_c1')">
-              <h4 class="text-3xl md:text-4xl font-black text-slate-900 leading-tight">Sistemas<br>MIS<br>(Gerencial)</h4>
+              <div class="w-full flex items-center justify-between">
+                <span class="font-mono text-[11px] font-bold tracking-widest text-blue-800 dark:text-blue-400 bg-blue-400/15 px-2.5 py-0.5 rounded-md border border-blue-400/30">01 / 03</span>
+                <span class="text-xs font-mono text-slate-400 dark:text-slate-500 flex items-center gap-1 group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors">
+                  <span>Detalle</span>
+                  <svg class="w-3.5 h-3.5 transition-transform duration-200 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path></svg>
+                </span>
+              </div>
+              <div class="flex flex-col items-center justify-center my-auto py-2">
+                <div class="w-16 h-16 md:w-18 md:h-18 rounded-2xl bg-blue-500/10 dark:bg-blue-400/10 border border-blue-500/20 flex items-center justify-center mb-3 text-blue-600 dark:text-blue-400 group-hover:scale-110 group-hover:bg-blue-500/20 transition-all duration-300 shadow-inner">
+                  <svg class="w-8 h-8 md:w-9 md:h-9" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4"></path></svg>
+                </div>
+                <h4 class="text-2xl md:text-3xl lg:text-4xl font-black text-slate-900 dark:text-slate-100 leading-tight">Sistemas<br>MIS<br>(Gerencial)</h4>
+              </div>
+              <div class="w-full pt-2.5 border-t border-slate-200/50 dark:border-white/5 flex items-center justify-center text-xs font-mono font-semibold text-slate-400 dark:text-slate-500 group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors">
+                <span class="w-1.5 h-1.5 rounded-full bg-blue-400 mr-2 animate-pulse"></span>Clic para ampliar
+              </div>
             </div>
 
-            <div class="liquid-glass rounded-3xl p-6 flex flex-col justify-center items-center didactic-card border border-amber-300 text-center"
+            <!-- 02: Sistemas DSS (Analítico) -->
+            <div class="group liquid-glass rounded-3xl p-5 md:p-6 flex flex-col justify-between items-center didactic-card border border-amber-300/80 dark:border-amber-500/30 bg-amber-500/[0.03] dark:bg-amber-400/[0.02] text-center"
                  onclick="triggerSpotlightKey(this, 's24_c2')">
-              <h4 class="text-3xl md:text-4xl font-black text-slate-900 leading-tight">Sistemas<br>DSS<br>(Analítico)</h4>
+              <div class="w-full flex items-center justify-between">
+                <span class="font-mono text-[11px] font-bold tracking-widest text-amber-800 dark:text-amber-400 bg-amber-400/15 px-2.5 py-0.5 rounded-md border border-amber-400/30">02 / 03</span>
+                <span class="text-xs font-mono text-slate-400 dark:text-slate-500 flex items-center gap-1 group-hover:text-amber-600 dark:group-hover:text-amber-400 transition-colors">
+                  <span>Detalle</span>
+                  <svg class="w-3.5 h-3.5 transition-transform duration-200 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path></svg>
+                </span>
+              </div>
+              <div class="flex flex-col items-center justify-center my-auto py-2">
+                <div class="w-16 h-16 md:w-18 md:h-18 rounded-2xl bg-amber-500/10 dark:bg-amber-400/10 border border-amber-500/20 flex items-center justify-center mb-3 text-amber-600 dark:text-amber-400 group-hover:scale-110 group-hover:bg-amber-500/20 transition-all duration-300 shadow-inner">
+                  <svg class="w-8 h-8 md:w-9 md:h-9" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"></path></svg>
+                </div>
+                <h4 class="text-2xl md:text-3xl lg:text-4xl font-black text-slate-900 dark:text-slate-100 leading-tight">Sistemas<br>DSS<br>(Analítico)</h4>
+              </div>
+              <div class="w-full pt-2.5 border-t border-slate-200/50 dark:border-white/5 flex items-center justify-center text-xs font-mono font-semibold text-slate-400 dark:text-slate-500 group-hover:text-amber-600 dark:group-hover:text-amber-400 transition-colors">
+                <span class="w-1.5 h-1.5 rounded-full bg-amber-400 mr-2 animate-pulse"></span>Clic para ampliar
+              </div>
             </div>
 
-            <div class="liquid-glass rounded-3xl p-6 flex flex-col justify-center items-center didactic-card border border-emerald-300 text-center"
+            <!-- 03: Sistemas EIS (Ejecutivo) -->
+            <div class="group liquid-glass rounded-3xl p-5 md:p-6 flex flex-col justify-between items-center didactic-card border border-emerald-300/80 dark:border-emerald-500/30 bg-emerald-500/[0.03] dark:bg-emerald-400/[0.02] text-center"
                  onclick="triggerSpotlightKey(this, 's24_c3')">
-              <h4 class="text-3xl md:text-4xl font-black text-slate-900 leading-tight">Sistemas<br>EIS<br>(Ejecutivo)</h4>
+              <div class="w-full flex items-center justify-between">
+                <span class="font-mono text-[11px] font-bold tracking-widest text-emerald-800 dark:text-emerald-400 bg-emerald-400/15 px-2.5 py-0.5 rounded-md border border-emerald-400/30">03 / 03</span>
+                <span class="text-xs font-mono text-slate-400 dark:text-slate-500 flex items-center gap-1 group-hover:text-emerald-600 dark:group-hover:text-emerald-400 transition-colors">
+                  <span>Detalle</span>
+                  <svg class="w-3.5 h-3.5 transition-transform duration-200 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path></svg>
+                </span>
+              </div>
+              <div class="flex flex-col items-center justify-center my-auto py-2">
+                <div class="w-16 h-16 md:w-18 md:h-18 rounded-2xl bg-emerald-500/10 dark:bg-emerald-400/10 border border-emerald-500/20 flex items-center justify-center mb-3 text-emerald-600 dark:text-emerald-400 group-hover:scale-110 group-hover:bg-emerald-500/20 transition-all duration-300 shadow-inner">
+                  <svg class="w-8 h-8 md:w-9 md:h-9" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+                </div>
+                <h4 class="text-2xl md:text-3xl lg:text-4xl font-black text-slate-900 dark:text-slate-100 leading-tight">Sistemas<br>EIS<br>(Ejecutivo)</h4>
+              </div>
+              <div class="w-full pt-2.5 border-t border-slate-200/50 dark:border-white/5 flex items-center justify-center text-xs font-mono font-semibold text-slate-400 dark:text-slate-500 group-hover:text-emerald-600 dark:group-hover:text-emerald-400 transition-colors">
+                <span class="w-1.5 h-1.5 rounded-full bg-emerald-400 mr-2 animate-pulse"></span>Clic para ampliar
+              </div>
             </div>
           </div>
         `
@@ -1500,18 +2148,50 @@
         notes: `<p><strong>2 Lecciones:</strong> Calidad de Datos (Garbage In, Garbage Out) y Madurez Organizacional.</p>`,
         render: () => `
           <div class="grid grid-cols-2 gap-8 h-full items-stretch didactic-grid">
-            <div class="liquid-glass rounded-3xl p-8 flex flex-col justify-center items-center didactic-card border border-rose-300 text-center"
+            <!-- 01: Calidad de Datos (GIGO) -->
+            <div class="group liquid-glass rounded-3xl p-6 md:p-8 flex flex-col justify-between items-center didactic-card border border-rose-300/80 dark:border-rose-500/30 bg-rose-500/[0.03] dark:bg-rose-400/[0.02] text-center"
                  onclick="triggerSpotlightKey(this, 's25_c1')">
-              <h3 class="text-4xl md:text-5xl lg:text-6xl font-black text-slate-900 leading-[1.08] tracking-tight">
-                Calidad<br>de Datos<br><span class="text-2xl md:text-3xl font-bold text-slate-600">(GIGO)</span>
-              </h3>
+              <div class="w-full flex items-center justify-between">
+                <span class="font-mono text-xs font-bold tracking-widest text-rose-800 dark:text-rose-400 bg-rose-400/15 px-3 py-1 rounded-lg border border-rose-400/30">01 / 02</span>
+                <span class="text-xs font-mono text-slate-400 dark:text-slate-500 flex items-center gap-1 group-hover:text-rose-600 dark:group-hover:text-rose-400 transition-colors">
+                  <span>Detalle</span>
+                  <svg class="w-3.5 h-3.5 transition-transform duration-200 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path></svg>
+                </span>
+              </div>
+              <div class="flex flex-col items-center justify-center my-auto py-3">
+                <div class="w-18 h-18 md:w-22 md:h-22 rounded-3xl bg-rose-500/10 dark:bg-rose-400/10 border border-rose-500/20 flex items-center justify-center mb-4 text-rose-600 dark:text-rose-400 group-hover:scale-110 group-hover:bg-rose-500/20 transition-all duration-300 shadow-inner">
+                  <svg class="w-10 h-10 md:w-11 md:h-11" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"></path></svg>
+                </div>
+                <h3 class="text-4xl md:text-5xl lg:text-6xl font-black text-slate-900 dark:text-slate-100 leading-[1.08] tracking-tight">
+                  Calidad<br>de Datos<br><span class="text-2xl md:text-3xl font-bold text-slate-600 dark:text-slate-400">(GIGO)</span>
+                </h3>
+              </div>
+              <div class="w-full pt-3 border-t border-slate-200/50 dark:border-white/5 flex items-center justify-center text-xs font-mono font-semibold text-slate-400 dark:text-slate-500 group-hover:text-rose-600 dark:group-hover:text-rose-400 transition-colors">
+                <span class="w-1.5 h-1.5 rounded-full bg-rose-400 mr-2 animate-pulse"></span>Clic para ampliar
+              </div>
             </div>
 
-            <div class="liquid-glass rounded-3xl p-8 flex flex-col justify-center items-center didactic-card border border-amber-300 text-center"
+            <!-- 02: Madurez Organizacional -->
+            <div class="group liquid-glass rounded-3xl p-6 md:p-8 flex flex-col justify-between items-center didactic-card border border-amber-300/80 dark:border-amber-500/30 bg-amber-500/[0.03] dark:bg-amber-400/[0.02] text-center"
                  onclick="triggerSpotlightKey(this, 's25_c2')">
-              <h3 class="text-4xl md:text-5xl lg:text-6xl font-black text-slate-900 leading-[1.08] tracking-tight">
-                Madurez<br>Organizacional
-              </h3>
+              <div class="w-full flex items-center justify-between">
+                <span class="font-mono text-xs font-bold tracking-widest text-amber-800 dark:text-amber-400 bg-amber-400/15 px-3 py-1 rounded-lg border border-amber-400/30">02 / 02</span>
+                <span class="text-xs font-mono text-slate-400 dark:text-slate-500 flex items-center gap-1 group-hover:text-amber-600 dark:group-hover:text-amber-400 transition-colors">
+                  <span>Detalle</span>
+                  <svg class="w-3.5 h-3.5 transition-transform duration-200 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path></svg>
+                </span>
+              </div>
+              <div class="flex flex-col items-center justify-center my-auto py-3">
+                <div class="w-18 h-18 md:w-22 md:h-22 rounded-3xl bg-amber-500/10 dark:bg-amber-400/10 border border-amber-500/20 flex items-center justify-center mb-4 text-amber-600 dark:text-amber-400 group-hover:scale-110 group-hover:bg-amber-500/20 transition-all duration-300 shadow-inner">
+                  <svg class="w-10 h-10 md:w-11 md:h-11" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"></path></svg>
+                </div>
+                <h3 class="text-4xl md:text-5xl lg:text-6xl font-black text-slate-900 dark:text-slate-100 leading-[1.08] tracking-tight">
+                  Madurez<br>Organizacional
+                </h3>
+              </div>
+              <div class="w-full pt-3 border-t border-slate-200/50 dark:border-white/5 flex items-center justify-center text-xs font-mono font-semibold text-slate-400 dark:text-slate-500 group-hover:text-amber-600 dark:group-hover:text-amber-400 transition-colors">
+                <span class="w-1.5 h-1.5 rounded-full bg-amber-400 mr-2 animate-pulse"></span>Clic para ampliar
+              </div>
             </div>
           </div>
         `
@@ -1527,14 +2207,46 @@
         notes: `<p><strong>FOTF:</strong> Fortalezas, Oportunidades, Debilidades y Amenazas de los sistemas de información.</p>`,
         render: () => `
           <div class="grid grid-cols-2 gap-8 h-full items-stretch didactic-grid">
-            <div class="liquid-glass rounded-3xl p-8 flex flex-col justify-center items-center didactic-card border border-amber-300 text-center"
+            <!-- 01: Fortalezas & Debilidades -->
+            <div class="group liquid-glass rounded-3xl p-6 md:p-8 flex flex-col justify-between items-center didactic-card border border-amber-300/80 dark:border-amber-500/30 bg-amber-500/[0.03] dark:bg-amber-400/[0.02] text-center"
                  onclick="triggerSpotlightKey(this, 's26_c1')">
-              <h4 class="text-4xl md:text-5xl font-black text-slate-900 leading-tight mb-2">Fortalezas<br>& Debilidades</h4>
+              <div class="w-full flex items-center justify-between">
+                <span class="font-mono text-xs font-bold tracking-widest text-amber-800 dark:text-amber-400 bg-amber-400/15 px-3 py-1 rounded-lg border border-amber-400/30">01 / 02</span>
+                <span class="text-xs font-mono text-slate-400 dark:text-slate-500 flex items-center gap-1 group-hover:text-amber-600 dark:group-hover:text-amber-400 transition-colors">
+                  <span>Detalle</span>
+                  <svg class="w-3.5 h-3.5 transition-transform duration-200 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path></svg>
+                </span>
+              </div>
+              <div class="flex flex-col items-center justify-center my-auto py-3">
+                <div class="w-18 h-18 md:w-22 md:h-22 rounded-3xl bg-amber-500/10 dark:bg-amber-400/10 border border-amber-500/20 flex items-center justify-center mb-4 text-amber-600 dark:text-amber-400 group-hover:scale-110 group-hover:bg-amber-500/20 transition-all duration-300 shadow-inner">
+                  <svg class="w-10 h-10 md:w-11 md:h-11" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M3 6l3 1m0 0l-3 9a5.002 5.002 0 006.001 0M6 7l3 9M6 7l6-2m6 2l3-1m-3 1l-3 9a5.002 5.002 0 006.001 0M18 7l3 9m-3-9l-6-2m0-2v2m0 16V5m0 16H9m3 0h3"></path></svg>
+                </div>
+                <h4 class="text-4xl md:text-5xl font-black text-slate-900 dark:text-slate-100 leading-tight mb-2">Fortalezas<br>& Debilidades</h4>
+              </div>
+              <div class="w-full pt-3 border-t border-slate-200/50 dark:border-white/5 flex items-center justify-center text-xs font-mono font-semibold text-slate-400 dark:text-slate-500 group-hover:text-amber-600 dark:group-hover:text-amber-400 transition-colors">
+                <span class="w-1.5 h-1.5 rounded-full bg-amber-400 mr-2 animate-pulse"></span>Clic para ampliar
+              </div>
             </div>
 
-            <div class="liquid-glass rounded-3xl p-8 flex flex-col justify-center items-center didactic-card border border-indigo-300 text-center"
+            <!-- 02: Oportunidades & Amenazas -->
+            <div class="group liquid-glass rounded-3xl p-6 md:p-8 flex flex-col justify-between items-center didactic-card border border-indigo-300/80 dark:border-indigo-500/30 bg-indigo-500/[0.03] dark:bg-indigo-400/[0.02] text-center"
                  onclick="triggerSpotlightKey(this, 's26_c2')">
-              <h4 class="text-4xl md:text-5xl font-black text-slate-900 leading-tight mb-2">Oportunidades<br>& Amenazas</h4>
+              <div class="w-full flex items-center justify-between">
+                <span class="font-mono text-xs font-bold tracking-widest text-indigo-800 dark:text-indigo-400 bg-indigo-400/15 px-3 py-1 rounded-lg border border-indigo-400/30">02 / 02</span>
+                <span class="text-xs font-mono text-slate-400 dark:text-slate-500 flex items-center gap-1 group-hover:text-indigo-600 dark:group-hover:text-indigo-400 transition-colors">
+                  <span>Detalle</span>
+                  <svg class="w-3.5 h-3.5 transition-transform duration-200 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path></svg>
+                </span>
+              </div>
+              <div class="flex flex-col items-center justify-center my-auto py-3">
+                <div class="w-18 h-18 md:w-22 md:h-22 rounded-3xl bg-indigo-500/10 dark:bg-indigo-400/10 border border-indigo-500/20 flex items-center justify-center mb-4 text-indigo-600 dark:text-indigo-400 group-hover:scale-110 group-hover:bg-indigo-500/20 transition-all duration-300 shadow-inner">
+                  <svg class="w-10 h-10 md:w-11 md:h-11" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"></path></svg>
+                </div>
+                <h4 class="text-4xl md:text-5xl font-black text-slate-900 dark:text-slate-100 leading-tight mb-2">Oportunidades<br>& Amenazas</h4>
+              </div>
+              <div class="w-full pt-3 border-t border-slate-200/50 dark:border-white/5 flex items-center justify-center text-xs font-mono font-semibold text-slate-400 dark:text-slate-500 group-hover:text-indigo-600 dark:group-hover:text-indigo-400 transition-colors">
+                <span class="w-1.5 h-1.5 rounded-full bg-indigo-400 mr-2 animate-pulse"></span>Clic para ampliar
+              </div>
             </div>
           </div>
         `
@@ -1549,21 +2261,36 @@
         speakerTag: "TEMA 11 & 13 • TENDENCIAS (DECISION INTELLIGENCE)",
         notes: `<p><strong>Tendencias:</strong> Asistentes proactivos, Decision Intelligence (acciones en tiempo real) e IA Generativa con lenguaje cotidiano.</p>`,
         render: () => `
-          <div class="flex-1 flex flex-col justify-center max-w-4xl mx-auto space-y-4">
-            <div class="liquid-glass rounded-2xl p-6 border border-amber-300 shadow-sm text-center">
-              <p class="text-lg md:text-xl text-slate-900 font-bold">
-                Las plataformas pasan de ser herramientas de consulta pasiva a <span class="text-amber-950 font-black">asistentes estratégicos proactivos</span>.
+          <div class="flex-1 flex flex-col justify-center max-w-4xl mx-auto space-y-3.5">
+            <div class="liquid-glass rounded-2xl p-5 md:p-6 border border-amber-300/80 dark:border-amber-500/30 bg-amber-500/[0.03] shadow-sm text-center transition hover:border-amber-400">
+              <div class="inline-flex items-center gap-2 mb-2 px-3 py-0.5 rounded-full bg-amber-400/15 border border-amber-400/30 text-amber-800 dark:text-amber-400 font-mono text-[10px] uppercase font-bold tracking-wider">
+                <span class="w-1.5 h-1.5 rounded-full bg-amber-400 animate-ping"></span> Paradigma Emergente
+              </div>
+              <p class="text-lg md:text-xl text-slate-900 dark:text-slate-100 font-bold">
+                Las plataformas pasan de ser herramientas de consulta pasiva a <span class="text-amber-950 dark:text-amber-300 font-black">asistentes estratégicos proactivos</span>.
               </p>
             </div>
-            <div class="liquid-glass rounded-2xl p-6 border border-indigo-300 shadow-sm">
-              <p class="text-base md:text-lg font-semibold text-slate-800">
-                • <strong>Inteligencia de Decisiones (Decision Intelligence):</strong> Evolución hacia modelos que no solo simulan escenarios, sino que sugieren o ejecutan acciones en tiempo real.
-              </p>
+
+            <div class="liquid-glass rounded-2xl p-4 md:p-5 border border-indigo-300/80 dark:border-indigo-500/30 bg-indigo-500/[0.03] shadow-sm flex items-start gap-4 transition hover:border-indigo-400">
+              <div class="w-12 h-12 rounded-2xl bg-indigo-500/10 dark:bg-indigo-400/15 border border-indigo-500/20 text-indigo-600 dark:text-indigo-400 flex items-center justify-center shrink-0 shadow-inner">
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M13 10V3L4 14h7v7l9-11h-7z"></path></svg>
+              </div>
+              <div class="flex-1 pt-1">
+                <p class="text-base md:text-lg font-semibold text-slate-800 dark:text-slate-200">
+                  • <strong>Inteligencia de Decisiones (Decision Intelligence):</strong> Evolución hacia modelos que no solo simulan escenarios, sino que sugieren o ejecutan acciones en tiempo real.
+                </p>
+              </div>
             </div>
-            <div class="liquid-glass rounded-2xl p-6 border border-emerald-300 shadow-sm">
-              <p class="text-base md:text-lg font-semibold text-slate-800">
-                • <strong>IA Generativa y Lenguaje Natural:</strong> La consulta se vuelve conversacional; los directivos pueden solicitar diagnósticos y proyecciones en lenguaje cotidiano.
-              </p>
+
+            <div class="liquid-glass rounded-2xl p-4 md:p-5 border border-emerald-300/80 dark:border-emerald-500/30 bg-emerald-500/[0.03] shadow-sm flex items-start gap-4 transition hover:border-emerald-400">
+              <div class="w-12 h-12 rounded-2xl bg-emerald-500/10 dark:bg-emerald-400/15 border border-emerald-500/20 text-emerald-600 dark:text-emerald-400 flex items-center justify-center shrink-0 shadow-inner">
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M8 10h.01M12 10h.01M16 10h.01M9 16H5a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v8a2 2 0 01-2 2h-5l-5 5v-5z"></path></svg>
+              </div>
+              <div class="flex-1 pt-1">
+                <p class="text-base md:text-lg font-semibold text-slate-800 dark:text-slate-200">
+                  • <strong>IA Generativa y Lenguaje Natural:</strong> La consulta se vuelve conversacional; los directivos pueden solicitar diagnósticos y proyecciones en lenguaje cotidiano.
+                </p>
+              </div>
             </div>
           </div>
         `
@@ -1578,21 +2305,38 @@
         speakerTag: "SÍNTESIS & RESPUESTA FORMAL",
         notes: `<p><strong>Conclusión:</strong> Motor de datos a conocimiento, articulación de datos sólidos y eliminación de la intuición a ciegas.</p>`,
         render: () => `
-          <div class="flex-1 flex flex-col justify-center max-w-4xl mx-auto space-y-4">
-            <div class="liquid-glass rounded-2xl p-6 border border-amber-300 shadow-sm">
-              <p class="text-base md:text-lg text-slate-800 font-semibold text-center">
-                Los sistemas de información (MIS, DSS, EIS) son el <strong class="text-amber-950 font-black">motor que convierte los datos operativos diarios en conocimiento estratégico</strong>.
-              </p>
+          <div class="flex-1 flex flex-col justify-center max-w-4xl mx-auto space-y-3.5">
+            <div class="liquid-glass rounded-2xl p-5 md:p-6 border border-amber-300/80 dark:border-amber-500/30 bg-amber-500/[0.03] shadow-sm flex items-start gap-4 transition hover:border-amber-400">
+              <div class="w-12 h-12 rounded-2xl bg-amber-500/10 dark:bg-amber-400/15 border border-amber-500/20 text-amber-700 dark:text-amber-400 flex items-center justify-center shrink-0 font-mono font-black text-sm shadow-inner">
+                01
+              </div>
+              <div class="flex-1 pt-0.5">
+                <p class="text-base md:text-lg text-slate-800 dark:text-slate-200 font-semibold text-left">
+                  Los sistemas de información (MIS, DSS, EIS) son el <strong class="text-amber-950 dark:text-amber-300 font-black">motor que convierte los datos operativos diarios en conocimiento estratégico</strong>.
+                </p>
+              </div>
             </div>
-            <div class="liquid-glass rounded-2xl p-6 border border-indigo-300 shadow-sm">
-              <p class="text-base md:text-lg text-slate-800 font-semibold text-center">
-                La herramienta por sí sola no genera ventajas; su verdadero valor radica en <strong class="text-indigo-950 font-black">articular datos sólidos que conecten la gestión operativa con la visión directiva</strong>.
-              </p>
+
+            <div class="liquid-glass rounded-2xl p-5 md:p-6 border border-indigo-300/80 dark:border-indigo-500/30 bg-indigo-500/[0.03] shadow-sm flex items-start gap-4 transition hover:border-indigo-400">
+              <div class="w-12 h-12 rounded-2xl bg-indigo-500/10 dark:bg-indigo-400/15 border border-indigo-500/20 text-indigo-700 dark:text-indigo-400 flex items-center justify-center shrink-0 font-mono font-black text-sm shadow-inner">
+                02
+              </div>
+              <div class="flex-1 pt-0.5">
+                <p class="text-base md:text-lg text-slate-800 dark:text-slate-200 font-semibold text-left">
+                  La herramienta por sí sola no genera ventajas; su verdadero valor radica en <strong class="text-indigo-950 dark:text-indigo-300 font-black">articular datos sólidos que conecten la gestión operativa con la visión directiva</strong>.
+                </p>
+              </div>
             </div>
-            <div class="liquid-glass rounded-2xl p-6 border border-emerald-300 shadow-sm">
-              <p class="text-base md:text-lg text-slate-800 font-semibold text-center">
-                Una información precisa y oportuna <strong class="text-emerald-950 font-black">elimina la intuición a ciegas</strong> (evitando el Garbage In, Garbage Out) y transforma una gestión reactiva en una estrategia proactiva.
-              </p>
+
+            <div class="liquid-glass rounded-2xl p-5 md:p-6 border border-emerald-300/80 dark:border-emerald-500/30 bg-emerald-500/[0.03] shadow-sm flex items-start gap-4 transition hover:border-emerald-400">
+              <div class="w-12 h-12 rounded-2xl bg-emerald-500/10 dark:bg-emerald-400/15 border border-emerald-500/20 text-emerald-700 dark:text-emerald-400 flex items-center justify-center shrink-0 font-mono font-black text-sm shadow-inner">
+                03
+              </div>
+              <div class="flex-1 pt-0.5">
+                <p class="text-base md:text-lg text-slate-800 dark:text-slate-200 font-semibold text-left">
+                  Una información precisa y oportuna <strong class="text-emerald-950 dark:text-emerald-300 font-black">elimina la intuición a ciegas</strong> (evitando el Garbage In, Garbage Out) y transforma una gestión reactiva en una estrategia proactiva.
+                </p>
+              </div>
             </div>
           </div>
         `
