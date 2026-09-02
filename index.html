@@ -11,8 +11,8 @@
       theme: {
         extend: {
           fontFamily: {
-            sans: ['Inter', 'system-ui', '-apple-system', 'Segoe UI', 'Roboto', 'sans-serif'],
-            mono: ['JetBrains Mono', 'Menlo', 'monospace']
+            sans: ['"Plus Jakarta Sans"', 'Inter', 'system-ui', '-apple-system', 'Segoe UI', 'Roboto', 'sans-serif'],
+            mono: ['"JetBrains Mono"', 'Menlo', 'monospace']
           },
           colors: {
             meli: {
@@ -33,82 +33,144 @@
   </script>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
   <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.9.3/dist/confetti.browser.min.js"></script>
   <style>
-    body {
-      font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
-      user-select: none;
-      -webkit-user-select: none;
-      background: radial-gradient(circle at 15% 15%, rgba(255, 249, 217, 0.55) 0%, rgba(240, 249, 255, 0.6) 40%, rgba(248, 250, 252, 1) 90%);
+    :root {
+      --ease-out: cubic-bezier(0.23, 1, 0.32, 1);
+      --ease-spring: cubic-bezier(0.32, 0.72, 0, 1);
+      --ease-in-out: cubic-bezier(0.77, 0, 0.175, 1);
+      --stage-bg: radial-gradient(circle at 15% 15%, rgba(254, 243, 199, 0.45) 0%, rgba(241, 245, 249, 0.65) 45%, rgba(248, 250, 252, 1) 100%);
+      --card-glass: rgba(255, 255, 255, 0.94);
+      --card-glass-yellow: rgba(255, 249, 217, 0.95);
+      --card-border: rgba(226, 232, 240, 0.9);
+      --card-highlight: inset 0 1px 1px 0 rgba(255, 255, 255, 0.85);
+      --card-shadow: 0 1px 3px 0 rgba(15, 23, 42, 0.04), 0 10px 25px -5px rgba(15, 23, 42, 0.06);
+      --card-shadow-hover: 0 20px 35px -8px rgba(15, 23, 42, 0.14);
     }
 
-    /* Apple Liquid Glass Clean & Non-Clashing */
+    html.dark {
+      --stage-bg: radial-gradient(circle at 20% 15%, rgba(30, 58, 138, 0.25) 0%, rgba(15, 23, 42, 0.75) 40%, #070B12 100%);
+      --card-glass: rgba(15, 23, 42, 0.88);
+      --card-glass-yellow: rgba(26, 28, 35, 0.92);
+      --card-border: rgba(255, 255, 255, 0.09);
+      --card-highlight: inset 0 1px 1px 0 rgba(255, 255, 255, 0.12);
+      --card-shadow: 0 4px 20px -2px rgba(0, 0, 0, 0.5);
+      --card-shadow-hover: 0 20px 40px -10px rgba(0, 0, 0, 0.75);
+    }
+
+    body {
+      font-family: 'Plus Jakarta Sans', 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+      user-select: none;
+      -webkit-user-select: none;
+      background: var(--stage-bg);
+      transition: background 0.3s var(--ease-out), color 0.3s var(--ease-out);
+    }
+
+    /* Double-Bezel Glass Containers */
     .liquid-glass {
-      background: rgba(255, 255, 255, 0.94);
-      backdrop-filter: blur(24px) saturate(180%);
-      -webkit-backdrop-filter: blur(24px) saturate(180%);
-      box-shadow: 0 8px 30px 0 rgba(15, 23, 42, 0.04);
+      background: var(--card-glass);
+      backdrop-filter: blur(24px) saturate(170%);
+      -webkit-backdrop-filter: blur(24px) saturate(170%);
+      box-shadow: var(--card-shadow), var(--card-highlight);
+      border: 1px solid var(--card-border);
+      position: relative;
     }
     
     .liquid-glass-yellow {
-      background: rgba(255, 249, 217, 0.94);
-      backdrop-filter: blur(24px) saturate(180%);
-      -webkit-backdrop-filter: blur(24px) saturate(180%);
-      box-shadow: 0 8px 30px 0 rgba(245, 158, 11, 0.06);
+      background: var(--card-glass-yellow);
+      backdrop-filter: blur(24px) saturate(170%);
+      -webkit-backdrop-filter: blur(24px) saturate(170%);
+      box-shadow: var(--card-shadow), var(--card-highlight);
+      border: 1px solid rgba(245, 158, 11, 0.35);
+      position: relative;
     }
 
-    /* Smooth Slide Transition */
+    /* Fast, Hardware-Accelerated Directional Slide Transitions (Emil Kowalski bar) */
+    .slide-enter-next {
+      opacity: 0;
+      transform: translateX(20px) scale(0.992);
+    }
+    .slide-enter-prev {
+      opacity: 0;
+      transform: translateX(-20px) scale(0.992);
+    }
     .slide-enter {
       opacity: 0;
-      transform: translateY(6px) scale(0.995);
+      transform: translateY(10px) scale(0.992);
     }
     .slide-active {
       opacity: 1;
-      transform: translateY(0) scale(1);
-      transition: opacity 0.65s cubic-bezier(0.16, 1, 0.3, 1), transform 0.65s cubic-bezier(0.16, 1, 0.3, 1);
+      transform: translateX(0) translateY(0) scale(1);
+      transition: opacity 260ms var(--ease-out), transform 260ms var(--ease-out);
     }
 
-    /* Grid resting & hover subtle states */
+    /* Cascading Stagger for Didactic Grid Cards */
+    .slide-active .didactic-grid .didactic-card:nth-child(1) { animation: cardStagger 240ms var(--ease-out) 0ms backwards; }
+    .slide-active .didactic-grid .didactic-card:nth-child(2) { animation: cardStagger 240ms var(--ease-out) 35ms backwards; }
+    .slide-active .didactic-grid .didactic-card:nth-child(3) { animation: cardStagger 240ms var(--ease-out) 70ms backwards; }
+    .slide-active .didactic-grid .didactic-card:nth-child(4) { animation: cardStagger 240ms var(--ease-out) 105ms backwards; }
+    .slide-active .didactic-grid .didactic-card:nth-child(5) { animation: cardStagger 240ms var(--ease-out) 140ms backwards; }
+    .slide-active .didactic-grid .didactic-card:nth-child(6) { animation: cardStagger 240ms var(--ease-out) 175ms backwards; }
+
+    @keyframes cardStagger {
+      from {
+        opacity: 0;
+        transform: translateY(8px) scale(0.98);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+      }
+    }
+
+    /* Interactive Didactic Cards & Micro-interactions */
     .didactic-grid {
       position: relative;
-      padding: 0.5rem;
-      margin: -0.5rem;
+      padding: 0.35rem;
+      margin: -0.35rem;
     }
 
     .didactic-card {
-      transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), 
-                  box-shadow 0.4s cubic-bezier(0.16, 1, 0.3, 1),
-                  border-color 0.4s cubic-bezier(0.16, 1, 0.3, 1),
-                  background 0.4s cubic-bezier(0.16, 1, 0.3, 1);
-      will-change: transform, box-shadow;
+      transition: transform 180ms var(--ease-out), 
+                  box-shadow 220ms var(--ease-out),
+                  border-color 200ms ease,
+                  background 200ms ease;
+      will-change: transform;
       position: relative;
       display: flex;
       flex-direction: column;
       justify-content: center;
       align-items: center;
       cursor: pointer;
+      box-shadow: var(--card-shadow), var(--card-highlight);
     }
     
-    .didactic-card:hover {
-      transform: scale(1.025);
-      box-shadow: 0 18px 40px -10px rgba(15, 23, 42, 0.14);
-      border-color: rgba(245, 158, 11, 0.85);
-      background: rgba(255, 255, 255, 0.98);
-      z-index: 10;
+    @media (hover: hover) and (pointer: fine) {
+      .didactic-card:hover {
+        transform: translateY(-3px) scale(1.018);
+        box-shadow: var(--card-shadow-hover), var(--card-highlight);
+        border-color: rgba(245, 158, 11, 0.7);
+        z-index: 10;
+      }
+    }
+
+    .didactic-card:active {
+      transform: scale(0.975);
+      transition-duration: 90ms;
     }
 
     /* FLIP Morphing Card Flying Container */
     .morph-overlay {
       position: fixed;
       inset: 0;
-      background: rgba(15, 23, 42, 0.35);
+      background: rgba(15, 23, 42, 0.45);
       backdrop-filter: blur(0px);
       -webkit-backdrop-filter: blur(0px);
       z-index: 60;
       opacity: 0;
       pointer-events: none;
-      transition: opacity 0.55s cubic-bezier(0.16, 1, 0.3, 1), backdrop-filter 0.55s cubic-bezier(0.16, 1, 0.3, 1);
+      transition: opacity 320ms var(--ease-out), backdrop-filter 320ms var(--ease-out);
       cursor: pointer;
     }
 
@@ -123,10 +185,10 @@
       position: fixed;
       z-index: 70;
       border-radius: 1.5rem;
-      background: rgba(255, 255, 255, 0.98);
-      border: 2px solid rgba(245, 158, 11, 0.9);
-      box-shadow: 0 30px 80px -15px rgba(15, 23, 42, 0.32);
-      transition: all 0.62s cubic-bezier(0.16, 1, 0.3, 1);
+      background: var(--card-glass);
+      border: 1px solid rgba(245, 158, 11, 0.6);
+      box-shadow: 0 25px 70px -12px rgba(15, 23, 42, 0.4), var(--card-highlight);
+      transition: all 360ms var(--ease-spring);
       will-change: top, left, width, height, transform;
       overflow: hidden;
       display: flex;
@@ -143,15 +205,15 @@
       flex-direction: column;
       align-items: center;
       justify-content: center;
-      padding: 1.75rem 2.25rem;
+      padding: 2rem 2.5rem;
       text-align: center;
       overflow-y: auto;
     }
 
     .morph-details-content {
       opacity: 0;
-      transform: translateY(12px);
-      transition: opacity 0.45s ease 0.15s, transform 0.45s cubic-bezier(0.16, 1, 0.3, 1) 0.15s;
+      transform: translateY(10px);
+      transition: opacity 280ms ease 90ms, transform 280ms var(--ease-out) 90ms;
       width: 100%;
       display: flex;
       flex-direction: column;
@@ -163,81 +225,248 @@
       transform: translateY(0);
     }
 
+    /* Executive Dark Mode Overrides */
+    html.dark body {
+      color: #f1f5f9;
+    }
+    html.dark header,
+    html.dark footer {
+      background-color: rgba(11, 15, 23, 0.88) !important;
+      border-color: rgba(255, 255, 255, 0.08) !important;
+    }
+    html.dark .text-slate-900,
+    html.dark .text-slate-800 {
+      color: #f8fafc !important;
+    }
+    html.dark .text-slate-700 {
+      color: #e2e8f0 !important;
+    }
+    html.dark .text-slate-600 {
+      color: #cbd5e1 !important;
+    }
+    html.dark .text-slate-500 {
+      color: #94a3b8 !important;
+    }
+    html.dark .text-slate-400 {
+      color: #64748b !important;
+    }
+    html.dark .text-amber-950 {
+      color: #fde68a !important;
+    }
+    html.dark .text-amber-900,
+    html.dark .text-amber-800 {
+      color: #fbbf24 !important;
+    }
+    html.dark .text-indigo-950,
+    html.dark .text-indigo-900,
+    html.dark .text-indigo-800 {
+      color: #a5b4fc !important;
+    }
+    html.dark .text-emerald-950,
+    html.dark .text-emerald-900,
+    html.dark .text-emerald-800 {
+      color: #6ee7b7 !important;
+    }
+    html.dark .text-blue-900 {
+      color: #93c5fd !important;
+    }
+    html.dark .text-rose-900 {
+      color: #fda4af !important;
+    }
+    html.dark .bg-white\/90,
+    html.dark .bg-white\/95,
+    html.dark .bg-white\/85,
+    html.dark .bg-white\/80,
+    html.dark .bg-white {
+      background-color: rgba(17, 24, 39, 0.85) !important;
+      color: #f1f5f9;
+    }
+    html.dark .border-slate-200,
+    html.dark .border-slate-200\/80,
+    html.dark .border-slate-200\/60,
+    html.dark .border-slate-300,
+    html.dark .border-slate-300\/90,
+    html.dark .border-slate-300\/70,
+    html.dark .border-slate-300\/80 {
+      border-color: rgba(255, 255, 255, 0.09) !important;
+    }
+    html.dark .border-amber-300,
+    html.dark .border-amber-200,
+    html.dark .border-amber-300\/80,
+    html.dark .border-amber-400 {
+      border-color: rgba(245, 158, 11, 0.35) !important;
+    }
+    html.dark .border-indigo-300,
+    html.dark .border-indigo-400 {
+      border-color: rgba(99, 102, 241, 0.35) !important;
+    }
+    html.dark .border-emerald-300 {
+      border-color: rgba(16, 185, 129, 0.35) !important;
+    }
+    html.dark .border-rose-300 {
+      border-color: rgba(244, 63, 94, 0.35) !important;
+    }
+    html.dark .bg-amber-100,
+    html.dark .bg-amber-100\/70,
+    html.dark .bg-amber-50\/60 {
+      background-color: rgba(120, 53, 15, 0.35) !important;
+    }
+    html.dark .bg-amber-50\/70,
+    html.dark .hover\:bg-amber-50\/70:hover {
+      background-color: rgba(120, 53, 15, 0.2) !important;
+    }
+    html.dark .bg-slate-100 {
+      background-color: rgba(30, 41, 59, 0.8) !important;
+    }
+    html.dark .bg-slate-200\/80 {
+      background-color: rgba(30, 41, 59, 0.9) !important;
+    }
+    html.dark kbd {
+      background-color: rgba(30, 41, 59, 0.9) !important;
+      border-color: rgba(255, 255, 255, 0.12) !important;
+      color: #e2e8f0 !important;
+    }
+    html.dark svg polygon[fill="#FFFDF0"] {
+      fill: rgba(30, 41, 59, 0.6) !important;
+      stroke: rgba(245, 158, 11, 0.3) !important;
+    }
+    html.dark svg text[fill="#92400E"],
+    html.dark svg text[fill="#78350F"] {
+      fill: #cbd5e1 !important;
+    }
+    html.dark #notes-drawer {
+      background-color: rgba(11, 15, 23, 0.96) !important;
+      border-color: rgba(255, 255, 255, 0.1) !important;
+    }
+    html.dark #grid-modal > div {
+      background-color: rgba(11, 15, 23, 0.96) !important;
+      border-color: rgba(255, 255, 255, 0.1) !important;
+    }
+    html.dark #grid-modal .border-b {
+      border-color: rgba(255, 255, 255, 0.08) !important;
+    }
+    html.dark #celebration-modal {
+      background-color: rgba(7, 11, 18, 0.8) !important;
+    }
+    html.dark #close-celebration {
+      background-color: rgba(17, 24, 39, 0.95) !important;
+      color: #f8fafc !important;
+      border-color: rgba(255, 255, 255, 0.15) !important;
+    }
+    html.dark .divide-slate-200 > :not([hidden]) ~ :not([hidden]) {
+      border-color: rgba(255, 255, 255, 0.08) !important;
+    }
+
+    /* Accessibility: Reduced Motion */
+    @media (prefers-reduced-motion: reduce) {
+      *, ::before, ::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+      }
+      .slide-enter, .slide-enter-next, .slide-enter-prev, .slide-active {
+        transform: none !important;
+        transition: opacity 120ms ease !important;
+      }
+      .morph-flying-card {
+        transition: none !important;
+      }
+    }
+
     /* Custom Scrollbar */
     ::-webkit-scrollbar {
       width: 5px;
       height: 5px;
     }
     ::-webkit-scrollbar-track {
-      background: rgba(0, 0, 0, 0.02);
+      background: transparent;
     }
     ::-webkit-scrollbar-thumb {
-      background: rgba(203, 213, 225, 0.8);
-      border-radius: 4px;
+      background: rgba(148, 163, 184, 0.35);
+      border-radius: 9999px;
+    }
+    html.dark ::-webkit-scrollbar-thumb {
+      background: rgba(148, 163, 184, 0.2);
     }
   </style>
 </head>
-<body class="text-slate-800 antialiased overflow-hidden w-screen h-screen flex flex-col justify-between selection:bg-amber-200 selection:text-slate-900">
+<body class="text-slate-800 antialiased overflow-hidden w-screen h-screen flex flex-col justify-between selection:bg-amber-400/30 selection:text-amber-900 dark:selection:text-amber-200">
 
   <!-- Top Glass Header Bar -->
-  <header class="h-14 px-6 border-b border-slate-200/80 bg-white/85 backdrop-blur-xl flex items-center justify-between z-30 shrink-0 shadow-sm">
-    <div class="flex items-center gap-4">
+  <header class="h-14 px-4 md:px-6 border-b border-slate-200/80 bg-white/85 backdrop-blur-xl flex items-center justify-between z-30 shrink-0 shadow-sm transition-colors duration-300">
+    <div class="flex items-center gap-3 md:gap-4">
       <div class="flex items-center gap-2">
-        <span class="w-3 h-3 rounded-full bg-amber-400 shadow-[0_0_10px_#FFE600] animate-pulse"></span>
-        <span class="font-mono text-xs tracking-wider text-slate-700 font-bold uppercase">IFTS 18 • PRÁCTICAS PROFESIONALIZANTES II — TP Nº1</span>
+        <span class="w-2.5 h-2.5 rounded-full bg-amber-400 shadow-[0_0_8px_#FFE600] animate-pulse"></span>
+        <span class="font-mono text-[11px] md:text-xs tracking-wider text-slate-700 font-bold uppercase truncate max-w-[200px] sm:max-w-none">IFTS 18 • PP II — TP Nº1</span>
       </div>
-      <span class="text-slate-300">|</span>
-      <span id="header-speaker-badge" class="px-3 py-1 rounded-full text-xs font-semibold font-mono bg-amber-100 text-amber-950 border border-amber-300/80 shadow-sm">
+      <span class="text-slate-300 hidden sm:inline">|</span>
+      <span id="header-speaker-badge" class="px-2.5 py-0.5 rounded-full text-[11px] font-semibold font-mono bg-amber-100 text-amber-950 border border-amber-300/80 shadow-xs">
         GRUPO 1
+      </span>
+      <span id="speaker-segment-pill" class="hidden lg:inline-block px-2.5 py-0.5 rounded-full text-[10px] font-mono font-bold tracking-wider uppercase bg-slate-100 text-slate-600 border border-slate-200">
+        Bloque 1 • Araujo
       </span>
     </div>
 
     <!-- Center Slide Counter & Progress -->
-    <div class="flex items-center gap-3">
-      <span id="slide-num" class="font-mono text-sm font-extrabold text-slate-700">01 / 32</span>
-      <div class="w-44 h-2 bg-slate-200/80 rounded-full overflow-hidden p-0.5 shadow-inner">
-        <div id="progress-bar" class="h-full bg-gradient-to-r from-amber-400 via-yellow-400 to-amber-500 rounded-full transition-all duration-1000 w-[3.12%] shadow-sm"></div>
+    <div class="flex items-center gap-2.5 md:gap-3">
+      <span id="slide-num" class="font-mono text-xs md:text-sm font-extrabold text-slate-700 tracking-tight">01 / 32</span>
+      <div class="relative w-32 md:w-48 h-2 bg-slate-200/80 rounded-full overflow-hidden p-0.5 shadow-inner" title="Progreso de la exposición (Bloques: 1-11 Araujo | 12-20 Avilas | 21-32 Gaitán)">
+        <!-- Speaker segment dividers -->
+        <div class="absolute inset-y-0 left-[34.4%] w-px bg-slate-400/40 z-10 pointer-events-none"></div>
+        <div class="absolute inset-y-0 left-[62.5%] w-px bg-slate-400/40 z-10 pointer-events-none"></div>
+        <div id="progress-bar" class="h-full bg-gradient-to-r from-amber-400 via-yellow-400 to-amber-500 rounded-full transition-all duration-500 w-[3.12%] shadow-xs"></div>
       </div>
     </div>
 
     <!-- Right Presentation Tools -->
-    <div class="flex items-center gap-2">
+    <div class="flex items-center gap-1.5 md:gap-2">
       <!-- 20-min Timer -->
-      <div id="timer-box" class="flex items-center gap-1.5 px-3.5 py-1 bg-white/90 border border-slate-200 rounded-full font-mono text-xs text-slate-700 cursor-pointer hover:border-amber-400 shadow-sm transition" title="Click para Iniciar/Pausar cronómetro">
+      <div id="timer-box" class="flex items-center gap-1.5 px-3 py-1 bg-white/90 border border-slate-200 rounded-full font-mono text-xs text-slate-700 cursor-pointer hover:border-amber-400 active:scale-[0.97] shadow-xs transition" title="Click para Iniciar/Pausar cronómetro de 20 min">
+        <span id="timer-dot" class="w-1.5 h-1.5 rounded-full bg-slate-400 transition-colors"></span>
         <svg class="w-3.5 h-3.5 text-amber-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
-        <span id="timer-display" class="font-bold">20:00</span>
+        <span id="timer-display" class="font-bold font-mono">20:00</span>
       </div>
 
+      <!-- Theme Switch (T) -->
+      <button id="btn-theme" class="px-2.5 py-1 bg-white/90 border border-slate-200 hover:border-amber-400 active:scale-[0.97] text-slate-700 rounded-full text-xs font-medium flex items-center gap-1 shadow-xs transition" title="Alternar Modo Oscuro / Claro (T)">
+        <svg class="w-3.5 h-3.5" fill="currentColor" viewBox="0 0 20 20"><path d="M17.293 13.293A8 8 0 016.707 2.707a8.001 8.001 0 1010.586 10.586z"></path></svg>
+        <kbd class="font-mono text-[9px] px-1 py-0.2 bg-slate-100 rounded text-slate-500 hidden sm:inline">T</kbd>
+      </button>
+
       <!-- Speaker Notes (N) -->
-      <button id="btn-notes" class="px-3.5 py-1 bg-white/90 border border-slate-200 hover:border-amber-400 text-slate-700 rounded-full text-xs font-medium flex items-center gap-1.5 shadow-sm transition">
+      <button id="btn-notes" class="px-2.5 md:px-3 py-1 bg-white/90 border border-slate-200 hover:border-amber-400 active:scale-[0.97] text-slate-700 rounded-full text-xs font-medium flex items-center gap-1.5 shadow-xs transition" title="Notas del orador (N)">
         <svg class="w-3.5 h-3.5 text-slate-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path></svg>
-        <span>Notas (N)</span>
+        <span class="hidden sm:inline">Notas</span>
+        <kbd class="font-mono text-[9px] px-1 py-0.2 bg-slate-100 rounded text-slate-500 hidden sm:inline">N</kbd>
       </button>
 
       <!-- Thumbnails Grid (G) -->
-      <button id="btn-grid" class="px-3.5 py-1 bg-white/90 border border-slate-200 hover:border-amber-400 text-slate-700 rounded-full text-xs font-medium flex items-center gap-1.5 shadow-sm transition">
+      <button id="btn-grid" class="px-2.5 md:px-3 py-1 bg-white/90 border border-slate-200 hover:border-amber-400 active:scale-[0.97] text-slate-700 rounded-full text-xs font-medium flex items-center gap-1.5 shadow-xs transition" title="Índice de diapositivas (G)">
         <svg class="w-3.5 h-3.5 text-slate-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2V6zM14 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2V6zM4 16a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2v-2zM14 16a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2v-2z"></path></svg>
-        <span>Índice (G)</span>
+        <span class="hidden sm:inline">Índice</span>
+        <kbd class="font-mono text-[9px] px-1 py-0.2 bg-slate-100 rounded text-slate-500 hidden sm:inline">G</kbd>
       </button>
 
       <!-- Fullscreen (F) -->
-      <button id="btn-fullscreen" class="p-1.5 bg-white/90 border border-slate-200 hover:border-amber-400 text-slate-700 rounded-full text-xs shadow-sm transition" title="Pantalla Completa (F)">
-        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 8V4m0 0h4M4 4l5 5m11-1V4m0 0h-4m4 0l-5 5M4 16v4m0 0h4m-4 0l5-5m11 5l-5-5m5 5v-4m0 4h-4"></path></svg>
+      <button id="btn-fullscreen" class="p-1.5 md:px-2.5 py-1 bg-white/90 border border-slate-200 hover:border-amber-400 active:scale-[0.97] text-slate-700 rounded-full text-xs font-medium flex items-center gap-1 shadow-xs transition" title="Pantalla Completa (F)">
+        <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 8V4m0 0h4M4 4l5 5m11-1V4m0 0h-4m4 0l-5 5M4 16v4m0 0h4m-4 0l5-5m11 5l-5-5m5 5v-4m0 4h-4"></path></svg>
+        <kbd class="font-mono text-[9px] px-1 py-0.2 bg-slate-100 rounded text-slate-500 hidden sm:inline">F</kbd>
       </button>
     </div>
   </header>
 
-  <!-- Main Slide Viewport (16:9 Aspect Ratio) -->
-  <main class="flex-1 w-full h-[calc(100vh-7rem)] flex items-center justify-center p-3 md:p-6 relative overflow-hidden">
-    <div id="slide-stage" class="w-full max-w-[1420px] aspect-[16/9] liquid-glass border border-slate-300/90 rounded-3xl p-8 md:p-10 flex flex-col justify-between relative overflow-hidden transition-all duration-1000">
+  <!-- Main Slide Viewport (16:9 Aspect Ratio Auto-Scaling) -->
+  <main class="flex-1 w-full h-[calc(100vh-7rem)] flex items-center justify-center p-2 sm:p-4 md:p-6 relative overflow-hidden">
+    <div id="slide-stage" style="aspect-ratio: 16/9; width: min(calc((100vh - 7.5rem) * 16 / 9), calc(100vw - 2.5rem), 1460px); max-height: calc(100vh - 7.5rem);" class="liquid-glass rounded-3xl p-6 sm:p-8 md:p-10 flex flex-col justify-between relative overflow-hidden transition-all duration-500 shadow-xl">
       
       <!-- Slide Header Area (Hidden on Slide 1) -->
       <div id="slide-header" class="shrink-0 mb-3 z-10">
-        <div class="flex items-center justify-between mb-1">
-          <span id="slide-category" class="font-mono text-xs font-bold uppercase tracking-widest text-amber-800 bg-amber-100 px-2.5 py-0.5 rounded-full border border-amber-300/80">MARCO TEÓRICO</span>
-          <span id="slide-timing" class="font-mono text-xs text-slate-500 font-semibold">GRUPO 1</span>
+        <div class="flex items-center justify-between mb-1.5">
+          <span id="slide-category" class="font-mono text-[11px] font-bold uppercase tracking-[0.16em] text-amber-800 bg-amber-100 px-3 py-0.5 rounded-full border border-amber-300/80 shadow-xs">MARCO TEÓRICO</span>
+          <span id="slide-timing" class="font-mono text-[11px] text-slate-500 font-semibold tracking-wide">GRUPO 1</span>
         </div>
-        <h1 id="slide-title" class="text-2xl md:text-3xl font-extrabold text-slate-900 tracking-tight leading-snug text-center">
+        <h1 id="slide-title" class="text-2xl md:text-3xl lg:text-[32px] font-extrabold text-slate-900 tracking-[-0.02em] leading-tight text-center">
           Título de la Diapositiva
         </h1>
         <div class="w-full h-px bg-gradient-to-r from-transparent via-slate-300/70 to-transparent mt-3"></div>
@@ -252,71 +481,83 @@
       <div class="h-6 border-t border-slate-200/60 pt-1.5 flex items-center justify-between text-[11px] text-slate-400 font-mono shrink-0 z-10">
         <div class="flex items-center gap-1.5">
           <span class="w-1.5 h-1.5 rounded-full bg-amber-400"></span>
-          <span>Prácticas Profesionalizantes II — TP Nº1 • Prof. Santoro Martín</span>
+          <span class="truncate">Prácticas Profesionalizantes II — TP Nº1 • Prof. Santoro Martín</span>
         </div>
-        <div>Alumnos: Araujo Roberto • Avilas Martín • Gaitán Evelyn</div>
+        <div class="truncate pl-2">Alumnos: Araujo Roberto • Avilas Martín • Gaitán Evelyn</div>
       </div>
 
     </div>
   </main>
 
-  <!-- Bottom Navigation Bar -->
-  <footer class="h-14 px-6 border-t border-slate-200/80 bg-white/85 backdrop-blur-xl flex items-center justify-between z-30 shrink-0 shadow-sm">
-    <div class="flex items-center gap-3 text-xs text-slate-500">
-      <span class="flex items-center gap-1"><kbd class="px-1.5 py-0.5 bg-white border border-slate-200 rounded font-mono text-[10px] text-slate-700 shadow-sm">←</kbd> <kbd class="px-1.5 py-0.5 bg-white border border-slate-200 rounded font-mono text-[10px] text-slate-700 shadow-sm">→</kbd> Navegar</span>
-      <span class="text-slate-300">•</span>
-      <span class="flex items-center gap-1"><kbd class="px-1.5 py-0.5 bg-white border border-slate-200 rounded font-mono text-[10px] text-slate-700 shadow-sm">Espacio</kbd> Avanzar</span>
-      <span class="text-slate-300">•</span>
-      <span class="flex items-center gap-1"><kbd class="px-1.5 py-0.5 bg-white border border-slate-200 rounded font-mono text-[10px] text-slate-700 shadow-sm">G</kbd> Abrir/Cerrar Índice</span>
-      <span class="text-slate-300">•</span>
-      <span class="flex items-center gap-1"><kbd class="px-1.5 py-0.5 bg-white border border-slate-200 rounded font-mono text-[10px] text-slate-700 shadow-sm">N</kbd> Notas de orador</span>
+  <!-- Bottom Navigation Dock -->
+  <footer class="h-14 px-4 md:px-6 border-t border-slate-200/80 bg-white/85 backdrop-blur-xl flex items-center justify-between z-30 shrink-0 shadow-sm transition-colors duration-300">
+    <div class="flex items-center gap-2 md:gap-3 text-xs text-slate-500">
+      <span class="flex items-center gap-1"><kbd class="px-1.5 py-0.5 bg-white border border-slate-200 rounded font-mono text-[10px] text-slate-700 shadow-xs">←</kbd> <kbd class="px-1.5 py-0.5 bg-white border border-slate-200 rounded font-mono text-[10px] text-slate-700 shadow-xs">→</kbd> <span class="hidden sm:inline">Navegar</span></span>
+      <span class="text-slate-300 hidden sm:inline">•</span>
+      <span class="hidden md:flex items-center gap-1"><kbd class="px-1.5 py-0.5 bg-white border border-slate-200 rounded font-mono text-[10px] text-slate-700 shadow-xs">Espacio</kbd> Avanzar</span>
+      <span class="text-slate-300 hidden md:inline">•</span>
+      <span class="hidden lg:flex items-center gap-1"><kbd class="px-1.5 py-0.5 bg-white border border-slate-200 rounded font-mono text-[10px] text-slate-700 shadow-xs">G</kbd> Índice</span>
+      <span class="text-slate-300 hidden lg:inline">•</span>
+      <span class="hidden lg:flex items-center gap-1"><kbd class="px-1.5 py-0.5 bg-white border border-slate-200 rounded font-mono text-[10px] text-slate-700 shadow-xs">N</kbd> Notas</span>
+      <span class="text-slate-300 hidden lg:inline">•</span>
+      <span class="hidden xl:flex items-center gap-1"><kbd class="px-1.5 py-0.5 bg-white border border-slate-200 rounded font-mono text-[10px] text-slate-700 shadow-xs">T</kbd> Tema</span>
     </div>
 
-    <div class="flex items-center gap-2">
-      <button id="btn-prev" class="px-4 py-2 bg-white hover:bg-slate-50 border border-slate-200 text-slate-700 rounded-xl text-xs font-bold flex items-center gap-1.5 shadow-sm transition disabled:opacity-30 disabled:cursor-not-allowed">
-        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path></svg>
+    <div class="flex items-center gap-2.5">
+      <!-- Button-in-Button Prev -->
+      <button id="btn-prev" class="group px-3.5 py-2 bg-white hover:bg-slate-50 border border-slate-200 text-slate-700 rounded-xl text-xs font-bold flex items-center gap-2 shadow-xs transition-all duration-150 active:scale-[0.97] disabled:opacity-30 disabled:cursor-not-allowed disabled:pointer-events-none">
+        <span class="w-5 h-5 rounded-full bg-slate-100 flex items-center justify-center transition-transform duration-150 group-hover:-translate-x-0.5">
+          <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M15 19l-7-7 7-7"></path></svg>
+        </span>
         <span>Anterior</span>
       </button>
-      <button id="btn-next" class="px-5 py-2 bg-gradient-to-r from-amber-400 via-yellow-400 to-amber-500 hover:from-amber-500 hover:to-yellow-500 text-slate-950 font-bold rounded-xl text-xs flex items-center gap-1.5 shadow-md shadow-amber-300/40 transition">
-        <span>Siguiente</span>
-        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path></svg>
+
+      <!-- Button-in-Button Next -->
+      <button id="btn-next" class="group px-4 py-2 bg-gradient-to-r from-amber-400 via-yellow-400 to-amber-500 hover:from-amber-500 hover:to-yellow-500 text-slate-950 font-bold rounded-xl text-xs flex items-center gap-2 shadow-md shadow-amber-300/30 transition-all duration-150 active:scale-[0.97]">
+        <span id="btn-next-text">Siguiente</span>
+        <span class="w-5 h-5 rounded-full bg-slate-950/10 flex items-center justify-center transition-transform duration-150 group-hover:translate-x-0.5">
+          <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M9 5l7 7-7 7"></path></svg>
+        </span>
       </button>
     </div>
   </footer>
 
   <!-- Speaker Notes Drawer (N) -->
-  <aside id="notes-drawer" class="fixed right-0 top-14 bottom-14 w-96 bg-white/95 backdrop-blur-2xl border-l border-slate-200 shadow-2xl p-6 transform translate-x-full transition-transform duration-1000 z-40 flex flex-col">
+  <aside id="notes-drawer" class="fixed right-0 top-14 bottom-14 w-96 bg-white/95 backdrop-blur-2xl border-l border-slate-200 shadow-2xl p-6 transform translate-x-full transition-transform duration-300 ease-[cubic-bezier(0.32,0.72,0,1)] z-40 flex flex-col">
     <div class="flex items-center justify-between border-b border-slate-200 pb-3 mb-4">
       <div class="flex items-center gap-2">
         <svg class="w-4 h-4 text-amber-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path></svg>
-        <h3 class="font-mono text-xs font-bold uppercase text-slate-800">Guion de Exposición & Notas</h3>
+        <h3 class="font-mono text-xs font-bold uppercase tracking-wider text-slate-800">Guion de Exposición & Notas</h3>
       </div>
-      <button id="close-notes" class="text-slate-400 hover:text-slate-700 p-1">✕</button>
+      <button id="close-notes" class="text-slate-400 hover:text-slate-700 active:scale-95 p-1 rounded-lg transition" title="Cerrar (Esc)">✕</button>
     </div>
-    <div id="notes-speaker-tag" class="text-xs font-mono text-amber-800 bg-amber-100 p-2 rounded-lg border border-amber-300/70 mb-3 font-semibold text-center">Expositor: Grupo 1</div>
+    <div id="notes-speaker-tag" class="text-xs font-mono text-amber-800 bg-amber-100 p-2 rounded-xl border border-amber-300/70 mb-3 font-semibold text-center shadow-xs">Expositor: Grupo 1</div>
     <div id="notes-content" class="flex-1 overflow-y-auto pr-1 text-xs text-slate-700 leading-relaxed space-y-3">
       <!-- Injected by JS -->
     </div>
   </aside>
 
   <!-- Slide Jump Grid Modal (G) - Toggle on G key or click -->
-  <div id="grid-modal" class="fixed inset-0 bg-slate-900/40 backdrop-blur-md z-50 hidden flex items-center justify-center p-6">
+  <div id="grid-modal" class="fixed inset-0 bg-slate-900/50 backdrop-blur-md z-50 hidden flex items-center justify-center p-4 sm:p-6 transition-opacity duration-200">
     <div class="liquid-glass border border-slate-300 rounded-3xl max-w-6xl w-full max-h-[85vh] flex flex-col shadow-2xl overflow-hidden bg-white/95">
-      <div class="p-5 border-b border-slate-200 flex items-center justify-between">
-        <h3 class="font-bold text-lg text-slate-900">Índice de Diapositivas (32 Slides — TP Nº1)</h3>
-        <button id="close-grid" class="text-slate-700 hover:text-slate-950 text-xs font-mono px-3 py-1.5 bg-slate-100 hover:bg-slate-200 rounded-full border border-slate-300 transition">Cerrar (G)</button>
+      <div class="p-4 sm:p-5 border-b border-slate-200 flex items-center justify-between">
+        <div class="flex items-center gap-2">
+          <span class="w-2 h-2 rounded-full bg-amber-400"></span>
+          <h3 class="font-bold text-base sm:text-lg text-slate-900 tracking-tight">Índice de Diapositivas (32 Slides — TP Nº1)</h3>
+        </div>
+        <button id="close-grid" class="text-slate-700 hover:text-slate-950 active:scale-95 text-xs font-mono px-3 py-1.5 bg-slate-100 hover:bg-slate-200 rounded-full border border-slate-300 transition">Cerrar (G)</button>
       </div>
-      <div id="grid-container" class="p-6 grid grid-cols-3 md:grid-cols-6 gap-3 overflow-y-auto max-h-[70vh]">
-        <!-- Thumbnails -->
+      <div id="grid-container" class="p-4 sm:p-6 grid grid-cols-2 sm:grid-cols-3 md:grid-cols-6 gap-3 overflow-y-auto max-h-[70vh]">
+        <!-- Thumbnails Injected by JS -->
       </div>
     </div>
   </div>
 
   <!-- Fullscreen Celebration Modal for Finalizar -->
-  <div id="celebration-modal" class="fixed inset-0 bg-slate-900/60 backdrop-blur-xl z-50 hidden flex flex-col items-center justify-center p-6 transition-all duration-700 opacity-0 scale-95">
+  <div id="celebration-modal" class="fixed inset-0 bg-slate-900/60 backdrop-blur-xl z-50 hidden flex flex-col items-center justify-center p-4 sm:p-6 transition-all duration-300 opacity-0 scale-95">
     
     <!-- Main Clickable Celebratory Card -->
-    <div id="celebration-card" class="liquid-glass-yellow border-2 border-amber-400 rounded-3xl max-w-4xl w-full p-8 md:p-12 flex flex-col items-center justify-center text-center shadow-2xl relative overflow-hidden cursor-pointer select-none transition-transform duration-300 hover:scale-[1.01]" title="¡Haz clic en la tarjeta para tirar más confeti!">
+    <div id="celebration-card" class="liquid-glass-yellow border-2 border-amber-400 rounded-3xl max-w-4xl w-full p-8 md:p-12 flex flex-col items-center justify-center text-center shadow-2xl relative overflow-hidden cursor-pointer select-none transition-transform duration-200 hover:scale-[1.01] active:scale-[0.99]" title="¡Haz clic en la tarjeta para tirar más confeti!">
       
       <h2 class="text-4xl md:text-6xl font-black text-slate-900 tracking-tight mb-3">
         ¡Muchas Gracias por su atención!
@@ -343,7 +584,7 @@
 
     <!-- Volver Button positioned OUTSIDE and BELOW the card -->
     <div class="mt-6 flex items-center justify-center z-50">
-      <button id="close-celebration" class="px-6 py-2.5 bg-white/95 hover:bg-white text-slate-800 hover:text-slate-950 text-xs font-mono font-bold rounded-full border border-slate-300 shadow-lg hover:shadow-xl transition-all duration-300 flex items-center gap-2 cursor-pointer">
+      <button id="close-celebration" class="px-6 py-2.5 bg-white/95 hover:bg-white active:scale-95 text-slate-800 hover:text-slate-950 text-xs font-mono font-bold rounded-full border border-slate-300 shadow-lg hover:shadow-xl transition-all duration-200 flex items-center gap-2 cursor-pointer">
         <svg class="w-4 h-4 text-slate-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path></svg>
         <span>← Volver a Diapositivas</span>
       </button>
@@ -1475,6 +1716,7 @@
 
     let currentSlide = 0;
     const totalSlides = slidesData.length;
+    let isTransitioning = false;
 
     // DOM Elements
     const slideStage = document.getElementById('slide-stage');
@@ -1486,8 +1728,10 @@
     const slideNum = document.getElementById('slide-num');
     const progressBar = document.getElementById('progress-bar');
     const headerSpeakerBadge = document.getElementById('header-speaker-badge');
+    const speakerSegmentPill = document.getElementById('speaker-segment-pill');
     const btnPrev = document.getElementById('btn-prev');
     const btnNext = document.getElementById('btn-next');
+    const btnNextText = document.getElementById('btn-next-text');
 
     // Notes elements
     const notesDrawer = document.getElementById('notes-drawer');
@@ -1510,12 +1754,60 @@
     // Timer elements
     const timerBox = document.getElementById('timer-box');
     const timerDisplay = document.getElementById('timer-display');
+    const timerDot = document.getElementById('timer-dot');
     let timerSeconds = 20 * 60;
     let timerInterval = null;
     let timerRunning = false;
 
+    // Theme elements
+    const btnTheme = document.getElementById('btn-theme');
+
     // ==========================================
-    // FLIP MORPHING CARD SPOTLIGHT (PHYSICAL FLIGHT FROM GRID TO CENTER & BACK)
+    // THEME MANAGEMENT (EXECUTIVE DARK / SLATE LIGHT)
+    // ==========================================
+    function initTheme() {
+      const savedTheme = localStorage.getItem('presentation_theme');
+      if (savedTheme) {
+        setTheme(savedTheme);
+      } else {
+        const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+        setTheme(prefersDark ? 'dark' : 'light');
+      }
+    }
+
+    function setTheme(theme) {
+      const html = document.documentElement;
+      if (theme === 'dark') {
+        html.classList.add('dark');
+        html.classList.remove('light');
+        localStorage.setItem('presentation_theme', 'dark');
+        updateThemeIcon(true);
+      } else {
+        html.classList.remove('dark');
+        html.classList.add('light');
+        localStorage.setItem('presentation_theme', 'light');
+        updateThemeIcon(false);
+      }
+    }
+
+    function toggleTheme() {
+      const isDark = document.documentElement.classList.contains('dark');
+      setTheme(isDark ? 'light' : 'dark');
+    }
+
+    function updateThemeIcon(isDark) {
+      if (!btnTheme) return;
+      btnTheme.innerHTML = isDark 
+        ? `<svg class="w-3.5 h-3.5 text-amber-400" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 2a1 1 0 011 1v1a1 1 0 11-2 0V3a1 1 0 011-1zm4 8a4 4 0 11-8 0 4 4 0 018 0zm-.464 4.95l.707.707a1 1 0 001.414-1.414l-.707-.707a1 1 0 00-1.414 1.414zm2.12-10.607a1 1 0 010 1.414l-.706.707a1 1 0 11-1.414-1.414l.707-.707a1 1 0 011.414 0zM17 11a1 1 0 100-2h-1a1 1 0 100 2h1zm-7 4a1 1 0 011 1v1a1 1 0 11-2 0v-1a1 1 0 011-1zM5.05 6.464A1 1 0 106.465 5.05l-.708-.707a1 1 0 00-1.414 1.414l.707.707zm1.414 8.486l-.707.707a1 1 0 01-1.414-1.414l.707-.707a1 1 0 011.414 1.414zM4 11a1 1 0 100-2H3a1 1 0 000 2h1z" clip-rule="evenodd"></path></svg><kbd class="font-mono text-[9px] px-1 py-0.2 bg-slate-800 text-slate-300 rounded hidden sm:inline">T</kbd>`
+        : `<svg class="w-3.5 h-3.5 text-slate-700" fill="currentColor" viewBox="0 0 20 20"><path d="M17.293 13.293A8 8 0 016.707 2.707a8.001 8.001 0 1010.586 10.586z"></path></svg><kbd class="font-mono text-[9px] px-1 py-0.2 bg-slate-100 text-slate-500 rounded hidden sm:inline">T</kbd>`;
+    }
+
+    if (btnTheme) {
+      btnTheme.addEventListener('click', toggleTheme);
+    }
+
+    // ==========================================
+    // FLIP MORPHING CARD SPOTLIGHT
     // ==========================================
     let activeMorphState = null;
 
@@ -1524,24 +1816,22 @@
 
       const rect = cardEl.getBoundingClientRect();
       
-      // Target dimensions for a prominent, expansive centered card
-      const targetWidth = Math.min(window.innerWidth * 0.76, 820);
-      const targetHeight = Math.min(window.innerHeight * 0.78, 580);
+      const targetWidth = Math.min(window.innerWidth * 0.78, 840);
+      const targetHeight = Math.min(window.innerHeight * 0.80, 600);
       const targetLeft = (window.innerWidth - targetWidth) / 2;
       const targetTop = (window.innerHeight - targetHeight) / 2;
 
-      // Create Fullscreen Backdrop
+      // Backdrop
       const overlay = document.createElement('div');
       overlay.id = 'morph-overlay';
       overlay.className = 'morph-overlay';
       overlay.onclick = () => closeMorphSpotlight();
 
-      // Create Flying Morph Card
+      // Flying Card
       const flyingCard = document.createElement('div');
       flyingCard.id = 'morph-flying-card';
       flyingCard.className = 'morph-flying-card';
       
-      // Set initial geometry matching the clicked card
       flyingCard.style.top = `${rect.top}px`;
       flyingCard.style.left = `${rect.left}px`;
       flyingCard.style.width = `${rect.width}px`;
@@ -1549,16 +1839,16 @@
 
       flyingCard.innerHTML = `
         <div class="morph-card-inner" onclick="event.stopPropagation()">
-          <button id="btn-close-morph" class="absolute top-4 right-4 text-slate-400 hover:text-slate-900 bg-slate-100 hover:bg-slate-200 rounded-full w-8 h-8 flex items-center justify-center font-bold text-sm transition" onclick="closeMorphSpotlight()" title="Cerrar">✕</button>
+          <button id="btn-close-morph" class="absolute top-4 right-4 text-slate-400 hover:text-slate-900 dark:hover:text-slate-100 bg-slate-100 dark:bg-slate-800 hover:bg-slate-200 dark:hover:bg-slate-700 rounded-full w-8 h-8 flex items-center justify-center font-bold text-sm transition active:scale-95" onclick="closeMorphSpotlight()" title="Cerrar (Esc)">✕</button>
           
-          <h3 class="text-3xl md:text-4xl font-black text-slate-900 tracking-tight mb-2 transition-all">
+          <h3 class="text-2xl md:text-3xl lg:text-4xl font-black text-slate-900 tracking-tight mb-3 transition-all">
             ${title}
           </h3>
 
           <div class="morph-details-content">
             ${imgSrc ? `
               <div class="w-full flex items-center justify-center p-2 mb-3">
-                <img src="${imgSrc}" alt="${title}" class="max-h-48 md:max-h-56 object-cover rounded-2xl shadow-lg border border-slate-200"/>
+                <img src="${imgSrc}" alt="${title}" class="max-h-48 md:max-h-56 object-cover rounded-2xl shadow-md border border-slate-200 dark:border-slate-700/60"/>
               </div>
             ` : ''}
 
@@ -1569,7 +1859,6 @@
         </div>
       `;
 
-      // Hide origin card cleanly
       cardEl.style.visibility = 'hidden';
 
       document.body.appendChild(overlay);
@@ -1582,7 +1871,7 @@
         origRect: rect
       };
 
-      // Trigger Morph Animation in next frame
+      // Trigger animation using double RAF for 60fps start
       requestAnimationFrame(() => {
         requestAnimationFrame(() => {
           overlay.classList.add('active');
@@ -1600,7 +1889,6 @@
       const { cardEl, overlay, flyingCard, origRect } = activeMorphState;
       activeMorphState = null;
 
-      // Animate back to origin position
       overlay.classList.remove('active');
       flyingCard.classList.remove('expanded');
       flyingCard.style.top = `${origRect.top}px`;
@@ -1612,10 +1900,13 @@
         cardEl.style.visibility = '';
         overlay.remove();
         flyingCard.remove();
-      }, 580);
+      }, 340);
     }
 
-    function renderSlide(index) {
+    // ==========================================
+    // SLIDE RENDERING WITH DIRECTIONAL MOMENTUM
+    // ==========================================
+    function renderSlide(index, forcedDirection) {
       if (index < 0 || index >= totalSlides) return;
       if (activeMorphState) {
         activeMorphState.cardEl.style.visibility = '';
@@ -1624,6 +1915,8 @@
         activeMorphState = null;
       }
 
+      const prevIndex = currentSlide;
+      const direction = forcedDirection || (index >= prevIndex ? 'next' : 'prev');
       currentSlide = index;
       const data = slidesData[currentSlide];
 
@@ -1639,33 +1932,51 @@
       slideNum.textContent = `${String(currentSlide + 1).padStart(2, '0')} / ${String(totalSlides).padStart(2, '0')}`;
       headerSpeakerBadge.textContent = data.speakerTag || data.timing;
 
+      // Update Speaker Segment Indicator Pill
+      if (speakerSegmentPill) {
+        if (currentSlide <= 10) {
+          speakerSegmentPill.textContent = 'Bloque 1 • Araujo';
+          speakerSegmentPill.className = 'hidden lg:inline-block px-2.5 py-0.5 rounded-full text-[10px] font-mono font-bold tracking-wider uppercase bg-amber-100 text-amber-900 border border-amber-300 dark:bg-amber-950/40 dark:text-amber-300 dark:border-amber-700/50';
+        } else if (currentSlide <= 19) {
+          speakerSegmentPill.textContent = 'Bloque 2 • Avilas';
+          speakerSegmentPill.className = 'hidden lg:inline-block px-2.5 py-0.5 rounded-full text-[10px] font-mono font-bold tracking-wider uppercase bg-indigo-100 text-indigo-900 border border-indigo-300 dark:bg-indigo-950/40 dark:text-indigo-300 dark:border-indigo-700/50';
+        } else {
+          speakerSegmentPill.textContent = 'Bloque 3 • Gaitán';
+          speakerSegmentPill.className = 'hidden lg:inline-block px-2.5 py-0.5 rounded-full text-[10px] font-mono font-bold tracking-wider uppercase bg-emerald-100 text-emerald-900 border border-emerald-300 dark:bg-emerald-950/40 dark:text-emerald-300 dark:border-emerald-700/50';
+        }
+      }
+
       // Update Progress Bar
       const pct = ((currentSlide + 1) / totalSlides) * 100;
       progressBar.style.width = `${pct}%`;
 
-      // Render Body with transition
+      // Render Body with Directional Transition
       slideBody.innerHTML = `
-        <div class="slide-enter w-full h-full flex flex-col justify-center">
+        <div class="slide-enter-${direction} w-full h-full flex flex-col justify-center">
           ${data.render()}
         </div>
       `;
 
-      setTimeout(() => {
-        const el = slideBody.querySelector('.slide-enter');
-        if (el) {
-          el.classList.remove('slide-enter');
-          el.classList.add('slide-active');
-        }
-        if (typeof data.afterRender === 'function') {
-          data.afterRender();
-        }
-      }, 25);
+      requestAnimationFrame(() => {
+        requestAnimationFrame(() => {
+          const el = slideBody.querySelector(`.slide-enter-${direction}`);
+          if (el) {
+            el.classList.remove(`slide-enter-${direction}`);
+            el.classList.add('slide-active');
+          }
+          if (typeof data.afterRender === 'function') {
+            data.afterRender();
+          }
+        });
+      });
 
-      // Buttons state
+      // Navigation Buttons State
       btnPrev.disabled = currentSlide === 0;
-      btnNext.textContent = currentSlide === totalSlides - 1 ? 'Finalizar' : 'Siguiente';
+      if (btnNextText) {
+        btnNextText.textContent = currentSlide === totalSlides - 1 ? 'Finalizar' : 'Siguiente';
+      }
 
-      // Update Notes
+      // Update Speaker Notes
       notesSpeakerTag.textContent = `Expositor: ${data.speaker}`;
       notesContent.innerHTML = data.notes;
     }
@@ -1693,11 +2004,13 @@
 
     function openCelebration() {
       celebrationModal.classList.remove('hidden');
-      setTimeout(() => {
-        celebrationModal.classList.remove('opacity-0', 'scale-95');
-        celebrationModal.classList.add('opacity-100', 'scale-100');
-        launchConfetti();
-      }, 20);
+      requestAnimationFrame(() => {
+        requestAnimationFrame(() => {
+          celebrationModal.classList.remove('opacity-0', 'scale-95');
+          celebrationModal.classList.add('opacity-100', 'scale-100');
+          launchConfetti();
+        });
+      });
     }
 
     function closeCelebrationModal() {
@@ -1705,7 +2018,7 @@
       celebrationModal.classList.add('opacity-0', 'scale-95');
       setTimeout(() => {
         celebrationModal.classList.add('hidden');
-      }, 500);
+      }, 300);
     }
 
     if (closeCelebration) closeCelebration.addEventListener('click', (e) => {
@@ -1725,7 +2038,7 @@
         return;
       }
       if (currentSlide < totalSlides - 1) {
-        renderSlide(currentSlide + 1);
+        renderSlide(currentSlide + 1, 'next');
       } else {
         openCelebration();
       }
@@ -1736,7 +2049,9 @@
         closeMorphSpotlight();
         return;
       }
-      if (currentSlide > 0) renderSlide(currentSlide - 1);
+      if (currentSlide > 0) {
+        renderSlide(currentSlide - 1, 'prev');
+      }
     }
 
     // Toggle Grid Index (G key & button)
@@ -1765,6 +2080,12 @@
         return;
       }
 
+      if (e.key === 't' || e.key === 'T') {
+        e.preventDefault();
+        toggleTheme();
+        return;
+      }
+
       if (!celebrationModal.classList.contains('hidden')) {
         if (e.key === 'Escape' || e.key === 'ArrowLeft' || e.key === 'Backspace') {
           closeCelebrationModal();
@@ -1775,6 +2096,13 @@
       if (!gridModal.classList.contains('hidden')) {
         if (e.key === 'Escape') gridModal.classList.add('hidden');
         return;
+      }
+
+      if (!notesDrawer.classList.contains('translate-x-full')) {
+        if (e.key === 'Escape') {
+          notesDrawer.classList.add('translate-x-full');
+          return;
+        }
       }
 
       if (e.key === 'ArrowRight' || e.key === ' ' || e.key === 'PageDown') {
@@ -1788,9 +2116,9 @@
       } else if (e.key === 'n' || e.key === 'N') {
         toggleNotes();
       } else if (e.key === 'Home') {
-        renderSlide(0);
+        renderSlide(0, 'prev');
       } else if (e.key === 'End') {
-        renderSlide(totalSlides - 1);
+        renderSlide(totalSlides - 1, 'next');
       }
     });
 
@@ -1812,21 +2140,38 @@
       gridContainer.innerHTML = '';
       slidesData.forEach((s, idx) => {
         const item = document.createElement('div');
-        item.className = `p-2.5 rounded-xl border cursor-pointer transition flex flex-col justify-between h-24 ${idx === currentSlide ? 'liquid-glass-yellow border-amber-400 font-bold shadow-md' : 'liquid-glass border-slate-200 hover:border-amber-400'}`;
+        const isActive = idx === currentSlide;
+        
+        let speakerColor = 'text-amber-700 dark:text-amber-400 border-amber-300 dark:border-amber-700/60';
+        if (idx >= 11 && idx <= 19) {
+          speakerColor = 'text-indigo-700 dark:text-indigo-400 border-indigo-300 dark:border-indigo-700/60';
+        } else if (idx >= 20) {
+          speakerColor = 'text-emerald-700 dark:text-emerald-400 border-emerald-300 dark:border-emerald-700/60';
+        }
+
+        item.className = `p-2.5 rounded-2xl border cursor-pointer transition-all duration-150 flex flex-col justify-between h-24 select-none ${
+          isActive 
+            ? 'liquid-glass-yellow ring-2 ring-amber-400 border-amber-500 font-bold shadow-md scale-[1.02]' 
+            : 'liquid-glass border-slate-200 dark:border-slate-800 hover:border-amber-400 hover:scale-[1.02]'
+        }`;
+        
         item.innerHTML = `
           <div>
             <div class="flex items-center justify-between text-[10px] font-mono mb-1">
-              <span class="text-amber-700 font-bold">${String(idx + 1).padStart(2, '0')}</span>
-              <span class="text-slate-500 truncate">${s.speaker.split(' ')[0]}</span>
+              <span class="font-bold ${speakerColor}">${String(idx + 1).padStart(2, '0')}</span>
+              <span class="text-slate-500 dark:text-slate-400 text-[9px] truncate font-medium">${s.speaker.split(' ')[0]}</span>
             </div>
-            <div class="text-[11px] font-semibold text-slate-800 line-clamp-2 leading-tight">${s.title}</div>
+            <div class="text-[11px] font-semibold text-slate-800 dark:text-slate-200 line-clamp-2 leading-tight">${s.title}</div>
           </div>
-          <div class="text-[8px] font-mono text-slate-500 uppercase truncate">${s.category}</div>
+          <div class="text-[8px] font-mono text-slate-400 dark:text-slate-500 uppercase truncate tracking-wider">${s.category}</div>
         `;
+        
         item.addEventListener('click', () => {
-          renderSlide(idx);
+          const dir = idx >= currentSlide ? 'next' : 'prev';
+          renderSlide(idx, dir);
           gridModal.classList.add('hidden');
         });
+        
         gridContainer.appendChild(item);
       });
     }
@@ -1841,19 +2186,26 @@
     }
     document.getElementById('btn-fullscreen').addEventListener('click', toggleFullScreen);
 
-    // Timer
+    // Timer Implementation
     function updateTimerDisplay() {
       const mins = Math.floor(timerSeconds / 60);
       const secs = timerSeconds % 60;
       timerDisplay.textContent = `${String(mins).padStart(2, '0')}:${String(secs).padStart(2, '0')}`;
+      
       if (timerSeconds <= 120) {
-        timerBox.classList.add('border-rose-400', 'text-rose-600', 'bg-rose-50');
+        timerBox.classList.add('border-rose-400', 'text-rose-600', 'bg-rose-50', 'dark:bg-rose-950/40');
+        if (timerDot) timerDot.className = 'w-1.5 h-1.5 rounded-full bg-rose-500 animate-ping';
+      } else if (timerRunning) {
+        if (timerDot) timerDot.className = 'w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse';
+      } else {
+        if (timerDot) timerDot.className = 'w-1.5 h-1.5 rounded-full bg-slate-400';
       }
     }
 
     timerBox.addEventListener('click', () => {
       if (!timerRunning) {
         timerRunning = true;
+        updateTimerDisplay();
         timerInterval = setInterval(() => {
           if (timerSeconds > 0) {
             timerSeconds--;
@@ -1861,16 +2213,48 @@
           } else {
             clearInterval(timerInterval);
             timerRunning = false;
+            updateTimerDisplay();
           }
         }, 1000);
       } else {
         clearInterval(timerInterval);
         timerRunning = false;
+        updateTimerDisplay();
       }
     });
 
-    // Init First Slide
-    renderSlide(0);
+    // Touch Swipe Gestures for Tablets / Touchscreens
+    let touchStartX = 0;
+    let touchStartY = 0;
+    let touchEndX = 0;
+    let touchEndY = 0;
+
+    document.addEventListener('touchstart', (e) => {
+      touchStartX = e.changedTouches[0].screenX;
+      touchStartY = e.changedTouches[0].screenY;
+    }, { passive: true });
+
+    document.addEventListener('touchend', (e) => {
+      touchEndX = e.changedTouches[0].screenX;
+      touchEndY = e.changedTouches[0].screenY;
+      handleSwipeGesture();
+    }, { passive: true });
+
+    function handleSwipeGesture() {
+      const diffX = touchEndX - touchStartX;
+      const diffY = touchEndY - touchStartY;
+      if (Math.abs(diffX) > Math.abs(diffY) && Math.abs(diffX) > 50) {
+        if (diffX < 0) {
+          nextSlide();
+        } else {
+          prevSlide();
+        }
+      }
+    }
+
+    // Initialize Theme & First Slide
+    initTheme();
+    renderSlide(0, 'next');
   </script>
 </body>
 </html>
